@@ -1,0 +1,60 @@
+name: build-release
+
+on:
+  workflow_dispatch:
+    inputs:
+      k8s-version:
+        description: 'Kubernetes version from kubernetools/specs (e.g. v1.36)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
+
+      - name: Download latest docgen binary
+        run: |
+          TAG=$(gh release view --repo kubernetools/docgen --json tagName -q .tagName)
+          gh release download "$TAG" \
+            --repo kubernetools/docgen \
+            --pattern "*linux-x86_64" \
+            --output docgen
+          chmod +x docgen
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Generate site
+        run: |
+          ./docgen generate \
+            --k8s-version "${{ inputs.k8s-version }}" \
+            --out ./site \
+            --token "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Create pull request
+        run: |
+          BRANCH="site/${{ inputs.k8s-version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add ./site
+          if git diff --cached --quiet; then
+            echo "No changes generated; site is already up to date."
+            exit 0
+          fi
+          git commit -m "build: generate site for Kubernetes ${{ inputs.k8s-version }}"
+          git push --force origin "$BRANCH"
+          gh pr create \
+            --title "Site: Kubernetes ${{ inputs.k8s-version }}" \
+            --body "Automated site build for Kubernetes \`${{ inputs.k8s-version }}\` using the latest docgen release." \
+            --head "$BRANCH" \
+            --base main \
+          || echo "PR already exists for branch $BRANCH"
+        env:
+          GH_TOKEN: ${{ github.token }}
