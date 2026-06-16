@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EndpointSlice v1 (discovery.k8s.io) &mdash; Kubernetes v1.36 | Kubernetes API Reference</title>
+  <meta name="description" content="Kubernetes EndpointSlice API reference for v1.36. EndpointSlice represents a set of service endpoints. Most EndpointSlices are created by the EndpointSlice controller to ">
+  <link rel="canonical" href="https://kubernetools.com/docs/v1.36/discovery.k8s.io/v1/endpointslice/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"EndpointSlice represents a set of service endpoints. Most EndpointSlices are created by the EndpointSlice controller to represent the Pods selected by Service objects. For a given service there may be multiple EndpointSlice objects which must be joined to produce the full set of endpoints; you can find all of the slices for a given service by listing EndpointSlices in the service's namespace whose `kubernetes.io/service-name` label contains the service's name.","name":"EndpointSlice — Kubernetes v1.36 API Reference","url":"https://kubernetools.com/docs/v1.36/discovery.k8s.io/v1/endpointslice/"}</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      color: #111;
+      background: #fff;
+    }
+    a { color: #0066cc; }
+    a:hover { color: #004499; }
+    nav[aria-label="Breadcrumb"] ol {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      gap: 0.25rem 0.5rem;
+      font-size: 0.9em;
+    }
+    nav[aria-label="Breadcrumb"] li + li::before {
+      content: "/";
+      color: #777;
+      margin-right: 0.5rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75em;
+      background: #f0f0f0;
+      color: #444;
+      padding: 0.1em 0.5em;
+      border-radius: 3px;
+      font-family: monospace;
+      vertical-align: middle;
+    }
+    .type { font-family: monospace; font-size: 0.85em; color: #555; margin-left: 0.5em; }
+    dt.req::after { content: " *"; }
+    dl {
+      display: grid;
+      grid-template-columns: minmax(140px, max-content) 1fr;
+      gap: 0.75rem 1.5rem;
+      margin: 0;
+    }
+    dt { font-family: monospace; font-weight: 600; align-self: start; }
+    dd { margin: 0; color: #333; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.85em;
+      color: #777;
+    }
+    nav ul { list-style: none; padding: 0; }
+    nav ul li { margin: 0.4rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Breadcrumb">
+      <ol>
+        
+        <li>
+          
+            <a href="/docs/">Docs</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/v1.36/">v1.36</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/v1.36/discovery.k8s.io/">discovery.k8s.io</a>
+          
+        </li>
+        
+        <li>
+          
+            <span aria-current="page">EndpointSlice</span>
+          
+        </li>
+        
+      </ol>
+    </nav>
+  </header>
+  <main>
+    
+<article>
+  <h1>EndpointSlice <span class="badge">discovery.k8s.io/v1</span></h1>
+  
+  
+  <p>EndpointSlice represents a set of service endpoints. Most EndpointSlices are created by the EndpointSlice controller to represent the Pods selected by Service objects. For a given service there may be multiple EndpointSlice objects which must be joined to produce the full set of endpoints; you can find all of the slices for a given service by listing EndpointSlices in the service&#x27;s namespace whose `kubernetes.io&#x2f;service-name` label contains the service&#x27;s name.</p>
+  
+  <section aria-labelledby="fields-heading">
+    <h2 id="fields-heading">Fields</h2>
+    
+    <dl>
+      
+      <dt>
+        apiVersion<span class="type">string</span>
+      </dt>
+      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
+      
+      <dt>
+        kind<span class="type">string</span>
+      </dt>
+      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt>
+        metadata<span class="type">ObjectMeta</span>
+      </dt>
+      <dd>Standard object&#x27;s metadata.</dd>
+      
+      <dt class="req">
+        addressType<span class="type">string</span>
+      </dt>
+      <dd>addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. This field is immutable after creation. The following address types are currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN: Represents a Fully Qualified Domain Name. (Deprecated) The EndpointSlice controller only generates, and kube-proxy only processes, slices of addressType &quot;IPv4&quot; and &quot;IPv6&quot;. No semantics are defined for the &quot;FQDN&quot; type.</dd>
+      
+      <dt>
+        endpoints<span class="type">[]Endpoint</span>
+      </dt>
+      <dd>endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.</dd>
+      
+      <dt>
+        ports<span class="type">[]EndpointPort</span>
+      </dt>
+      <dd>ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. Each slice may include a maximum of 100 ports. Services always have at least 1 port, so EndpointSlices generated by the EndpointSlice controller will likewise always have at least 1 port. EndpointSlices used for other purposes may have an empty ports list.</dd>
+      
+    </dl>
+    
+  </section>
+  
+  <section aria-labelledby="list-heading">
+    <h2 id="list-heading">EndpointSliceList</h2>
+    
+    <p>EndpointSliceList represents a list of endpoint slices</p>
+    
+    <dl>
+      
+      <dt>
+        apiVersion<span class="type">string</span>
+      </dt>
+      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
+      
+      <dt>
+        kind<span class="type">string</span>
+      </dt>
+      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt>
+        metadata<span class="type">ListMeta</span>
+      </dt>
+      <dd>Standard list metadata.</dd>
+      
+      <dt class="req">
+        items<span class="type"><a href="/docs/v1.36/discovery.k8s.io/v1/endpointslice/" aria-label="[]EndpointSlice type reference">[]EndpointSlice</a></span>
+      </dt>
+      <dd>items is the list of endpoint slices</dd>
+      
+    </dl>
+  </section>
+  
+</article>
+
+  </main>
+  <footer>
+    <p>Kubernetools &mdash; Kubernetes API Reference</p>
+  </footer>
+</body>
+</html>
