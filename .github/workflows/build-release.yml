@@ -35,6 +35,7 @@ jobs:
           ./docgen generate \
             --k8s-version "${{ inputs.k8s-version }}" \
             --out ./site \
+            --base-url https://www.kubernetools.com \
             --token "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Create pull request
