@@ -7,6 +7,11 @@ on:
         description: 'Kubernetes version from kubernetools/specs (e.g. v1.36)'
         required: true
         type: string
+      is-latest:
+        description: 'Mark this version as latest (writes sitemap.xml and robots.txt with /docs/latest/ URLs)'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -36,7 +41,8 @@ jobs:
             --k8s-version "${{ inputs.k8s-version }}" \
             --out ./site \
             --base-url https://www.kubernetools.com \
-            --token "${{ secrets.GITHUB_TOKEN }}"
+            --token "${{ secrets.GITHUB_TOKEN }}" \
+            ${{ inputs.is-latest && '--is-latest' || '' }}
 
       - name: Create pull request
         run: |
