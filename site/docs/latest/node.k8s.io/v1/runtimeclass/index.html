@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RuntimeClass v1 (node.k8s.io) &mdash; Kubernetes v1.36 (latest) | Kubernetes API Reference</title>
+  <meta name="description" content="Kubernetes RuntimeClass API reference for v1.36. RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which ">
+  <link rel="canonical" href="/docs/latest/node.k8s.io/v1/runtimeclass/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.  For more details, see https://kubernetes.io/docs/concepts/containers/runtime-class/","name":"RuntimeClass — Kubernetes v1.36 API Reference","url":"https://www.kubernetools.com/docs/latest/node.k8s.io/v1/runtimeclass/"}</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      color: #111;
+      background: #fff;
+    }
+    a { color: #0066cc; }
+    a:hover { color: #004499; }
+    nav[aria-label="Breadcrumb"] ol {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      gap: 0.25rem 0.5rem;
+      font-size: 0.9em;
+    }
+    nav[aria-label="Breadcrumb"] li + li::before {
+      content: "/";
+      color: #777;
+      margin-right: 0.5rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75em;
+      background: #f0f0f0;
+      color: #444;
+      padding: 0.1em 0.5em;
+      border-radius: 3px;
+      font-family: monospace;
+      vertical-align: middle;
+    }
+    .type { font-family: monospace; font-size: 0.85em; color: #555; margin-left: 0.5em; }
+    dt.req::after { content: " *"; }
+    dl {
+      display: grid;
+      grid-template-columns: minmax(140px, max-content) 1fr;
+      gap: 0.75rem 1.5rem;
+      margin: 0;
+    }
+    dt { font-family: monospace; font-weight: 600; align-self: start; }
+    dd { margin: 0; color: #333; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.85em;
+      color: #777;
+    }
+    nav ul { list-style: none; padding: 0; }
+    nav ul li { margin: 0.4rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Breadcrumb">
+      <ol>
+        
+        <li>
+          
+            <a href="/docs/">Docs</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/latest/">v1.36 (latest)</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/latest/node.k8s.io/">node.k8s.io</a>
+          
+        </li>
+        
+        <li>
+          
+            <span aria-current="page">RuntimeClass</span>
+          
+        </li>
+        
+      </ol>
+    </nav>
+  </header>
+  <main>
+    
+<article>
+  <h1>RuntimeClass <span class="badge">node.k8s.io/v1</span></h1>
+  
+  
+  <p>RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.  For more details, see https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;containers&#x2f;runtime-class&#x2f;</p>
+  
+  <section aria-labelledby="fields-heading">
+    <h2 id="fields-heading">Fields</h2>
+    
+    <dl>
+      
+      <dt>
+        apiVersion<span class="type">string</span>
+      </dt>
+      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
+      
+      <dt>
+        kind<span class="type">string</span>
+      </dt>
+      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt>
+        metadata<span class="type">ObjectMeta</span>
+      </dt>
+      <dd>More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+      
+      <dt class="req">
+        handler<span class="type">string</span>
+      </dt>
+      <dd>handler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node &amp; CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called &quot;runc&quot; might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The Handler must be lowercase, conform to the DNS Label (RFC 1123) requirements, and is immutable.</dd>
+      
+      <dt>
+        overhead<span class="type">Overhead</span>
+      </dt>
+      <dd>overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
+ https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;scheduling-eviction&#x2f;pod-overhead&#x2f;</dd>
+      
+      <dt>
+        scheduling<span class="type">Scheduling</span>
+      </dt>
+      <dd>scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.</dd>
+      
+    </dl>
+    
+  </section>
+  
+  <section aria-labelledby="list-heading">
+    <h2 id="list-heading">RuntimeClassList</h2>
+    
+    <p>RuntimeClassList is a list of RuntimeClass objects.</p>
+    
+    <dl>
+      
+      <dt>
+        apiVersion<span class="type">string</span>
+      </dt>
+      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
+      
+      <dt>
+        kind<span class="type">string</span>
+      </dt>
+      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt>
+        metadata<span class="type">ListMeta</span>
+      </dt>
+      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+      
+      <dt class="req">
+        items<span class="type"><a href="/docs/latest/node.k8s.io/v1/runtimeclass/" aria-label="[]RuntimeClass type reference">[]RuntimeClass</a></span>
+      </dt>
+      <dd>items is a list of schema objects.</dd>
+      
+    </dl>
+  </section>
+  
+</article>
+
+  </main>
+  <footer>
+    <p>Kubernetools &mdash; Kubernetes API Reference</p>
+  </footer>
+</body>
+</html>

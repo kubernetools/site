@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endpoints v1 (core) &mdash; Kubernetes v1.36 (latest) | Kubernetes API Reference</title>
+  <meta name="description" content="Kubernetes Endpoints API reference for v1.36. Endpoints is a collection of endpoints that implement the actual service. Example:
+
+	 Name: &quot;mysvc&quot;,
+	 Subsets: [
+	   {
+">
+  <link rel="canonical" href="/docs/latest/core/v1/endpoints/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"Endpoints is a collection of endpoints that implement the actual service. Example:\n\n\t Name: \"mysvc\",\n\t Subsets: [\n\t   {\n\t     Addresses: [{\"ip\": \"10.10.1.1\"}, {\"ip\": \"10.10.2.2\"}],\n\t     Ports: [{\"name\": \"a\", \"port\": 8675}, {\"name\": \"b\", \"port\": 309}]\n\t   },\n\t   {\n\t     Addresses: [{\"ip\": \"10.10.3.3\"}],\n\t     Ports: [{\"name\": \"a\", \"port\": 93}, {\"name\": \"b\", \"port\": 76}]\n\t   },\n\t]\n\nEndpoints is a legacy API and does not contain information about all Service features. Use discoveryv1.EndpointSlice for complete information about Service endpoints.\n\nDeprecated: This API is deprecated in v1.33+. Use discoveryv1.EndpointSlice.","name":"Endpoints — Kubernetes v1.36 API Reference","url":"https://www.kubernetools.com/docs/latest/core/v1/endpoints/"}</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      color: #111;
+      background: #fff;
+    }
+    a { color: #0066cc; }
+    a:hover { color: #004499; }
+    nav[aria-label="Breadcrumb"] ol {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      gap: 0.25rem 0.5rem;
+      font-size: 0.9em;
+    }
+    nav[aria-label="Breadcrumb"] li + li::before {
+      content: "/";
+      color: #777;
+      margin-right: 0.5rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75em;
+      background: #f0f0f0;
+      color: #444;
+      padding: 0.1em 0.5em;
+      border-radius: 3px;
+      font-family: monospace;
+      vertical-align: middle;
+    }
+    .type { font-family: monospace; font-size: 0.85em; color: #555; margin-left: 0.5em; }
+    dt.req::after { content: " *"; }
+    dl {
+      display: grid;
+      grid-template-columns: minmax(140px, max-content) 1fr;
+      gap: 0.75rem 1.5rem;
+      margin: 0;
+    }
+    dt { font-family: monospace; font-weight: 600; align-self: start; }
+    dd { margin: 0; color: #333; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.85em;
+      color: #777;
+    }
+    nav ul { list-style: none; padding: 0; }
+    nav ul li { margin: 0.4rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Breadcrumb">
+      <ol>
+        
+        <li>
+          
+            <a href="/docs/">Docs</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/latest/">v1.36 (latest)</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/latest/core/">core</a>
+          
+        </li>
+        
+        <li>
+          
+            <span aria-current="page">Endpoints</span>
+          
+        </li>
+        
+      </ol>
+    </nav>
+  </header>
+  <main>
+    
+<article>
+  <h1>Endpoints <span class="badge">core/v1</span></h1>
+  
+  
+  <p>Endpoints is a collection of endpoints that implement the actual service. Example:
+
+	 Name: &quot;mysvc&quot;,
+	 Subsets: [
+	   {
+	     Addresses: [{&quot;ip&quot;: &quot;10.10.1.1&quot;}, {&quot;ip&quot;: &quot;10.10.2.2&quot;}],
+	     Ports: [{&quot;name&quot;: &quot;a&quot;, &quot;port&quot;: 8675}, {&quot;name&quot;: &quot;b&quot;, &quot;port&quot;: 309}]
+	   },
+	   {
+	     Addresses: [{&quot;ip&quot;: &quot;10.10.3.3&quot;}],
+	     Ports: [{&quot;name&quot;: &quot;a&quot;, &quot;port&quot;: 93}, {&quot;name&quot;: &quot;b&quot;, &quot;port&quot;: 76}]
+	   },
+	]
+
+Endpoints is a legacy API and does not contain information about all Service features. Use discoveryv1.EndpointSlice for complete information about Service endpoints.
+
+Deprecated: This API is deprecated in v1.33+. Use discoveryv1.EndpointSlice.</p>
+  
+  <section aria-labelledby="fields-heading">
+    <h2 id="fields-heading">Fields</h2>
+    
+    <dl>
+      
+      <dt>
+        apiVersion<span class="type">string</span>
+      </dt>
+      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
+      
+      <dt>
+        kind<span class="type">string</span>
+      </dt>
+      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt>
+        metadata<span class="type">ObjectMeta</span>
+      </dt>
+      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+      
+      <dt>
+        subsets<span class="type">[]EndpointSubset</span>
+      </dt>
+      <dd>The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.</dd>
+      
+    </dl>
+    
+  </section>
+  
+  <section aria-labelledby="list-heading">
+    <h2 id="list-heading">EndpointsList</h2>
+    
+    <p>EndpointsList is a list of endpoints. Deprecated: This API is deprecated in v1.33+.</p>
+    
+    <dl>
+      
+      <dt>
+        apiVersion<span class="type">string</span>
+      </dt>
+      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
+      
+      <dt>
+        kind<span class="type">string</span>
+      </dt>
+      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt>
+        metadata<span class="type">ListMeta</span>
+      </dt>
+      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt class="req">
+        items<span class="type"><a href="/docs/latest/core/v1/endpoints/" aria-label="[]Endpoints type reference">[]Endpoints</a></span>
+      </dt>
+      <dd>List of endpoints.</dd>
+      
+    </dl>
+  </section>
+  
+</article>
+
+  </main>
+  <footer>
+    <p>Kubernetools &mdash; Kubernetes API Reference</p>
+  </footer>
+</body>
+</html>
