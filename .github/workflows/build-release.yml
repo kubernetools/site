@@ -3,15 +3,10 @@ name: build-release
 on:
   workflow_dispatch:
     inputs:
-      k8s-version:
-        description: 'Kubernetes version from kubernetools/specs (e.g. v1.36)'
+      latest_version:
+        description: 'Latest Kubernetes version (e.g. v1.36). The 3 previous versions will also be built.'
         required: true
         type: string
-      is-latest:
-        description: 'Mark this version as latest (writes sitemap.xml and robots.txt with /docs/latest/ URLs)'
-        required: false
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -35,31 +30,47 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - name: Generate site
+      - name: Delete site directory
+        run: rm -rf ./site
+
+      - name: Generate site for latest version
         run: |
           ./docgen generate \
-            --k8s-version "${{ inputs.k8s-version }}" \
+            --k8s-version "${{ inputs.latest_version }}" \
             --out ./site \
             --base-url https://www.kubernetools.com \
             --token "${{ secrets.GITHUB_TOKEN }}" \
-            ${{ inputs.is-latest && '--is-latest' || '' }}
+            --is-latest
+
+      - name: Generate site for previous versions
+        run: |
+          LATEST="${{ inputs.latest_version }}"
+          MINOR=$(echo "$LATEST" | sed 's/v1\.//')
+          for i in 1 2 3; do
+            PREV_VERSION="v1.$((MINOR - i))"
+            ./docgen generate \
+              --k8s-version "$PREV_VERSION" \
+              --out ./site \
+              --base-url https://www.kubernetools.com \
+              --token "${{ secrets.GITHUB_TOKEN }}"
+          done
 
       - name: Create pull request
         run: |
-          BRANCH="site/${{ inputs.k8s-version }}"
+          BRANCH="site/rebuild-${{ inputs.latest_version }}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add ./site
+          git add -A ./site
           if git diff --cached --quiet; then
             echo "No changes generated; site is already up to date."
             exit 0
           fi
-          git commit -m "build: generate site for Kubernetes ${{ inputs.k8s-version }}"
+          git commit -m "build: rebuild site for Kubernetes ${{ inputs.latest_version }} and 3 previous versions"
           git push --force origin "$BRANCH"
           gh pr create \
-            --title "Site: Kubernetes ${{ inputs.k8s-version }}" \
-            --body "Automated site build for Kubernetes \`${{ inputs.k8s-version }}\` using the latest docgen release." \
+            --title "Site: Rebuild for Kubernetes ${{ inputs.latest_version }}" \
+            --body "Automated site rebuild for Kubernetes \`${{ inputs.latest_version }}\` (latest, with \`--is-latest\`) and 3 previous versions." \
             --head "$BRANCH" \
             --base main \
           || echo "PR already exists for branch $BRANCH"
