@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSIStorageCapacity v1 (storage.k8s.io) &mdash; Kubernetes v1.36 (latest) | Kubernetes API Reference</title>
+  <meta name="description" content="Kubernetes CSIStorageCapacity API reference for v1.36. CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this describes the available">
+  <link rel="canonical" href="/docs/latest/storage.k8s.io/v1/csistoragecapacity/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this describes the available capacity in a particular topology segment.  This can be used when considering where to instantiate new PersistentVolumes.\n\nFor example this can express things like: - StorageClass \"standard\" has \"1234 GiB\" available in \"topology.kubernetes.io/zone=us-east1\" - StorageClass \"localssd\" has \"10 GiB\" available in \"kubernetes.io/hostname=knode-abc123\"\n\nThe following three cases all imply that no capacity is available for a certain combination: - no object exists with suitable topology and storage class name - such an object exists, but the capacity is unset - such an object exists, but the capacity is zero\n\nThe producer of these objects can decide which approach is more suitable.\n\nThey are consumed by the kube-scheduler when a CSI driver opts into capacity-aware scheduling with CSIDriverSpec.StorageCapacity. The scheduler compares the MaximumVolumeSize against the requested size of pending volumes to filter out unsuitable nodes. If MaximumVolumeSize is unset, it falls back to a comparison against the less precise Capacity. If that is also unset, the scheduler assumes that capacity is insufficient and tries some other node.","name":"CSIStorageCapacity — Kubernetes v1.36 API Reference","url":"https://www.kubernetools.com/docs/latest/storage.k8s.io/v1/csistoragecapacity/"}</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      color: #111;
+      background: #fff;
+    }
+    a { color: #0066cc; }
+    a:hover { color: #004499; }
+    nav[aria-label="Breadcrumb"] ol {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      gap: 0.25rem 0.5rem;
+      font-size: 0.9em;
+    }
+    nav[aria-label="Breadcrumb"] li + li::before {
+      content: "/";
+      color: #777;
+      margin-right: 0.5rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75em;
+      background: #f0f0f0;
+      color: #444;
+      padding: 0.1em 0.5em;
+      border-radius: 3px;
+      font-family: monospace;
+      vertical-align: middle;
+    }
+    .type { font-family: monospace; font-size: 0.85em; color: #555; margin-left: 0.5em; }
+    dt.req::after { content: " *"; }
+    dl {
+      display: grid;
+      grid-template-columns: minmax(140px, max-content) 1fr;
+      gap: 0.75rem 1.5rem;
+      margin: 0;
+    }
+    dt { font-family: monospace; font-weight: 600; align-self: start; }
+    dd { margin: 0; color: #333; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.85em;
+      color: #777;
+    }
+    nav ul { list-style: none; padding: 0; }
+    nav ul li { margin: 0.4rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Breadcrumb">
+      <ol>
+        
+        <li>
+          
+            <a href="/docs/">Docs</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/latest/">v1.36 (latest)</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/latest/storage.k8s.io/">storage.k8s.io</a>
+          
+        </li>
+        
+        <li>
+          
+            <span aria-current="page">CSIStorageCapacity</span>
+          
+        </li>
+        
+      </ol>
+    </nav>
+  </header>
+  <main>
+    
+<article>
+  <h1>CSIStorageCapacity <span class="badge">storage.k8s.io/v1</span></h1>
+  
+  
+  <p>CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this describes the available capacity in a particular topology segment.  This can be used when considering where to instantiate new PersistentVolumes.
+
+For example this can express things like: - StorageClass &quot;standard&quot; has &quot;1234 GiB&quot; available in &quot;topology.kubernetes.io&#x2f;zone=us-east1&quot; - StorageClass &quot;localssd&quot; has &quot;10 GiB&quot; available in &quot;kubernetes.io&#x2f;hostname=knode-abc123&quot;
+
+The following three cases all imply that no capacity is available for a certain combination: - no object exists with suitable topology and storage class name - such an object exists, but the capacity is unset - such an object exists, but the capacity is zero
+
+The producer of these objects can decide which approach is more suitable.
+
+They are consumed by the kube-scheduler when a CSI driver opts into capacity-aware scheduling with CSIDriverSpec.StorageCapacity. The scheduler compares the MaximumVolumeSize against the requested size of pending volumes to filter out unsuitable nodes. If MaximumVolumeSize is unset, it falls back to a comparison against the less precise Capacity. If that is also unset, the scheduler assumes that capacity is insufficient and tries some other node.</p>
+  
+  <section aria-labelledby="fields-heading">
+    <h2 id="fields-heading">Fields</h2>
+    
+    <dl>
+      
+      <dt>
+        apiVersion<span class="type">string</span>
+      </dt>
+      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
+      
+      <dt>
+        kind<span class="type">string</span>
+      </dt>
+      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt>
+        metadata<span class="type">ObjectMeta</span>
+      </dt>
+      <dd>Standard object&#x27;s metadata. The name has no particular meaning. It must be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
+
+Objects are namespaced.
+
+More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+      
+      <dt class="req">
+        storageClassName<span class="type">string</span>
+      </dt>
+      <dd>storageClassName represents the name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.</dd>
+      
+      <dt>
+        capacity<span class="type">Quantity</span>
+      </dt>
+      <dd>capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+
+The semantic is currently (CSI spec 1.2) defined as: The available capacity, in bytes, of the storage that can be used to provision volumes. If not set, that information is currently unavailable.</dd>
+      
+      <dt>
+        maximumVolumeSize<span class="type">Quantity</span>
+      </dt>
+      <dd>maximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+
+This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.</dd>
+      
+      <dt>
+        nodeTopology<span class="type">LabelSelector</span>
+      </dt>
+      <dd>nodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.</dd>
+      
+    </dl>
+    
+  </section>
+  
+  <section aria-labelledby="list-heading">
+    <h2 id="list-heading">CSIStorageCapacityList</h2>
+    
+    <p>CSIStorageCapacityList is a collection of CSIStorageCapacity objects.</p>
+    
+    <dl>
+      
+      <dt>
+        apiVersion<span class="type">string</span>
+      </dt>
+      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
+      
+      <dt>
+        kind<span class="type">string</span>
+      </dt>
+      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt>
+        metadata<span class="type">ListMeta</span>
+      </dt>
+      <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+      
+      <dt class="req">
+        items<span class="type"><a href="/docs/latest/storage.k8s.io/v1/csistoragecapacity/" aria-label="[]CSIStorageCapacity type reference">[]CSIStorageCapacity</a></span>
+      </dt>
+      <dd>items is the list of CSIStorageCapacity objects.</dd>
+      
+    </dl>
+  </section>
+  
+</article>
+
+  </main>
+  <footer>
+    <p>Kubernetools &mdash; Kubernetes API Reference</p>
+  </footer>
+</body>
+</html>
