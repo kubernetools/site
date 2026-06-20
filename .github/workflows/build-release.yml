@@ -30,8 +30,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - name: Delete site directory
-        run: rm -rf ./site
+      - name: Delete generated site content
+        run: |
+          rm -rf ./site/docs/latest ./site/docs/v*
+          rm -f ./site/robots.txt ./site/sitemap.xml
 
       - name: Generate site for latest version
         run: |
