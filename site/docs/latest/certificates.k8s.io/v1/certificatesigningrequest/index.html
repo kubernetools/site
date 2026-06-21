@@ -116,30 +116,36 @@ This API can be used to request client certificates to authenticate to kube-apis
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>certificates.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>CertificateSigningRequest</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>No description available.</dd>
       
+      
+      
       <dt class="req">
         spec<span class="type">CertificateSigningRequestSpec</span>
       </dt>
       <dd>spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.</dd>
       
+      
+      
       <dt>
         status<span class="type">CertificateSigningRequestStatus</span>
       </dt>
       <dd>status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.</dd>
+      
       
     </dl>
     
@@ -152,25 +158,29 @@ This API can be used to request client certificates to authenticate to kube-apis
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>certificates.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>CertificateSigningRequestList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>No description available.</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/latest/certificates.k8s.io/v1/certificatesigningrequest/" aria-label="[]CertificateSigningRequest type reference">[]CertificateSigningRequest</a></span>
       </dt>
       <dd>items is a collection of CertificateSigningRequest objects</dd>
+      
       
     </dl>
   </section>

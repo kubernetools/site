@@ -110,30 +110,36 @@
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>flowcontrol.apiserver.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>PriorityLevelConfiguration</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>`metadata` is the standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt>
         spec<span class="type">PriorityLevelConfigurationSpec</span>
       </dt>
       <dd>`spec` is the specification of the desired behavior of a &quot;request-priority&quot;. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
       
+      
+      
       <dt>
         status<span class="type">PriorityLevelConfigurationStatus</span>
       </dt>
       <dd>`status` is the current status of a &quot;request-priority&quot;. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+      
       
     </dl>
     
@@ -146,25 +152,29 @@
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>flowcontrol.apiserver.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>PriorityLevelConfigurationList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>`metadata` is the standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/v1.35/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfiguration/" aria-label="[]PriorityLevelConfiguration type reference">[]PriorityLevelConfiguration</a></span>
       </dt>
       <dd>`items` is a list of request-priorities.</dd>
+      
       
     </dl>
   </section>

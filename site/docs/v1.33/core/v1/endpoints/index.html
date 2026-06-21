@@ -131,25 +131,29 @@ Deprecated: This API is deprecated in v1.33+. Use discoveryv1.EndpointSlice.</p>
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>Endpoints</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt>
         subsets<span class="type">[]EndpointSubset</span>
       </dt>
       <dd>The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.</dd>
+      
       
     </dl>
     
@@ -162,25 +166,29 @@ Deprecated: This API is deprecated in v1.33+. Use discoveryv1.EndpointSlice.</p>
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>EndpointsList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/v1.33/core/v1/endpoints/" aria-label="[]Endpoints type reference">[]Endpoints</a></span>
       </dt>
       <dd>List of endpoints.</dd>
+      
       
     </dl>
   </section>

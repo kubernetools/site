@@ -122,20 +122,23 @@ This is an alpha type and requires enabling the DynamicResourceAllocation featur
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>resource.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>ResourceClaimTemplate</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>Standard object metadata</dd>
+      
+      
       
       <dt class="req">
         spec<span class="type">ResourceClaimTemplateSpec</span>
@@ -143,6 +146,7 @@ This is an alpha type and requires enabling the DynamicResourceAllocation featur
       <dd>Describes the ResourceClaim that is to be generated.
 
 This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore.</dd>
+      
       
     </dl>
     
@@ -155,25 +159,29 @@ This field is immutable. A ResourceClaim will get created by the control plane f
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>resource.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>ResourceClaimTemplateList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>Standard list metadata</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/v1.34/resource.k8s.io/v1beta2/resourceclaimtemplate/" aria-label="[]ResourceClaimTemplate type reference">[]ResourceClaimTemplate</a></span>
       </dt>
       <dd>Items is the list of resource claim templates.</dd>
+      
       
     </dl>
   </section>

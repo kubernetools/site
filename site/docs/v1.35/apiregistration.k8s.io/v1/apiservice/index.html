@@ -110,30 +110,36 @@
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>apiregistration.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>APIService</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt>
         spec<span class="type">APIServiceSpec</span>
       </dt>
       <dd>Spec contains information for locating and communicating with a server</dd>
       
+      
+      
       <dt>
         status<span class="type">APIServiceStatus</span>
       </dt>
       <dd>Status contains derived information about an API server</dd>
+      
       
     </dl>
     
@@ -146,25 +152,29 @@
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>apiregistration.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>APIServiceList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/v1.35/apiregistration.k8s.io/v1/apiservice/" aria-label="[]APIService type reference">[]APIService</a></span>
       </dt>
       <dd>Items is the list of APIService</dd>
+      
       
     </dl>
   </section>

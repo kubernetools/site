@@ -110,30 +110,36 @@
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>apiextensions.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>CustomResourceDefinition</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>Standard object&#x27;s metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt class="req">
         spec<span class="type">CustomResourceDefinitionSpec</span>
       </dt>
       <dd>spec describes how the user wants the resources to appear</dd>
       
+      
+      
       <dt>
         status<span class="type">CustomResourceDefinitionStatus</span>
       </dt>
       <dd>status indicates the actual state of the CustomResourceDefinition</dd>
+      
       
     </dl>
     
@@ -146,25 +152,29 @@
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>apiextensions.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>CustomResourceDefinitionList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>Standard object&#x27;s metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/v1.34/apiextensions.k8s.io/v1/customresourcedefinition/" aria-label="[]CustomResourceDefinition type reference">[]CustomResourceDefinition</a></span>
       </dt>
       <dd>items list individual CustomResourceDefinition objects</dd>
+      
       
     </dl>
   </section>

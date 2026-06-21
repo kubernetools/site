@@ -116,25 +116,30 @@
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>storage.k8s.io/v1alpha1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>VolumeAttributesClass</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt class="req">
         driverName<span class="type">string</span>
       </dt>
       <dd>Name of the CSI driver This field is immutable.</dd>
+      
+      
       
       <dt>
         parameters<span class="type">map[string]string</span>
@@ -142,6 +147,7 @@
       <dd>parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.
 
 This field is required and must contain at least one key&#x2f;value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an &quot;Infeasible&quot; state in the modifyVolumeStatus field.</dd>
+      
       
     </dl>
     
@@ -154,25 +160,29 @@ This field is required and must contain at least one key&#x2f;value pair. The ke
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>storage.k8s.io/v1alpha1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>VolumeAttributesClassList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/v1.33/storage.k8s.io/v1beta1/volumeattributesclass/" aria-label="[]VolumeAttributesClass type reference">[]VolumeAttributesClass</a></span>
       </dt>
       <dd>items is the list of VolumeAttributesClass objects.</dd>
+      
       
     </dl>
   </section>

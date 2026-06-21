@@ -110,30 +110,36 @@
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>internal.apiserver.k8s.io/v1alpha1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>StorageVersion</code></dd>
+      
+      
       
       <dt class="req">
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>metadata is the standard object metadata. The name is &lt;group&gt;.&lt;resource&gt;.</dd>
       
+      
+      
       <dt>
         spec<span class="type">StorageVersionSpec</span>
       </dt>
       <dd>spec is an empty spec. It is here to comply with Kubernetes API style.</dd>
       
+      
+      
       <dt>
         status<span class="type">StorageVersionStatus</span>
       </dt>
       <dd>status on the version the API server instance can decode from and encode objects to when persisting objects in the backend.</dd>
+      
       
     </dl>
     
@@ -146,25 +152,29 @@
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>internal.apiserver.k8s.io/v1alpha1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>StorageVersionList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/latest/internal.apiserver.k8s.io/v1alpha1/storageversion/" aria-label="[]StorageVersion type reference">[]StorageVersion</a></span>
       </dt>
       <dd>Items holds a list of StorageVersion</dd>
+      
       
     </dl>
   </section>
