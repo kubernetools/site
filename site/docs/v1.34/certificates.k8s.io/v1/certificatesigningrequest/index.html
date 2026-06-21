@@ -45,7 +45,7 @@
       vertical-align: middle;
     }
     .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::after { content: " *"; }
+    dt.req::before { content: "* "; }
     dl {
       display: grid;
       grid-template-columns: minmax(140px, max-content) 1fr;
@@ -130,7 +130,7 @@ This API can be used to request client certificates to authenticate to kube-apis
   
   
   <dt>
-    metadata<span class="type">ObjectMeta</span>
+    metadata<span class="type"><a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
   </dt>
   <dd>No description available.</dd>
   
@@ -335,7 +335,7 @@ When serialized as JSON or YAML, the data is additionally base64-encoded, so it 
   
   
   <dt>
-    metadata<span class="type">ListMeta</span>
+    metadata<span class="type"><a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
   </dt>
   <dd>No description available.</dd>
   

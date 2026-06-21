@@ -45,7 +45,7 @@
       vertical-align: middle;
     }
     .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::after { content: " *"; }
+    dt.req::before { content: "* "; }
     dl {
       display: grid;
       grid-template-columns: minmax(140px, max-content) 1fr;
@@ -124,7 +124,7 @@
   
   
   <dt>
-    metadata<span class="type">ObjectMeta</span>
+    metadata<span class="type"><a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
   </dt>
   <dd>Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
   
@@ -300,7 +300,7 @@ This field is beta. This field is immutable.</dd>
   
   
   <dt>
-    metadata<span class="type">ListMeta</span>
+    metadata<span class="type"><a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
   </dt>
   <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
   

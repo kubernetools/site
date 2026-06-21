@@ -169,6 +169,38 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/labelselector/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/listmeta/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/localobjectreference/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/objectmeta/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/objectreference/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/quantity/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/typedlocalobjectreference/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.kubernetools.com/docs/latest/coordination.k8s.io/</loc>
     <changefreq>weekly</changefreq>
   </url>

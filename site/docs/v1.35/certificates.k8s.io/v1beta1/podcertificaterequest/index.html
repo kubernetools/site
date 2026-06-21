@@ -47,7 +47,7 @@ Kubelets use this API to implement po">
       vertical-align: middle;
     }
     .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::after { content: " *"; }
+    dt.req::before { content: "* "; }
     dl {
       display: grid;
       grid-template-columns: minmax(140px, max-content) 1fr;
@@ -128,7 +128,7 @@ Kubelets use this API to implement podCertificate projected volumes</p>
   
   
   <dt>
-    metadata<span class="type">ObjectMeta</span>
+    metadata<span class="type"><a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
   </dt>
   <dd>metadata contains the object metadata.</dd>
   
@@ -349,7 +349,7 @@ If the request is denied with `Reason=UnsupportedKeyType`, the signer may sugges
   
   
   <dt>
-    metadata<span class="type">ListMeta</span>
+    metadata<span class="type"><a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
   </dt>
   <dd>metadata contains the list metadata.</dd>
   

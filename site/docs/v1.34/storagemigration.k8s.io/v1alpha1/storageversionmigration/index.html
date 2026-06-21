@@ -45,7 +45,7 @@
       vertical-align: middle;
     }
     .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::after { content: " *"; }
+    dt.req::before { content: "* "; }
     dl {
       display: grid;
       grid-template-columns: minmax(140px, max-content) 1fr;
@@ -124,7 +124,7 @@
   
   
   <dt>
-    metadata<span class="type">ObjectMeta</span>
+    metadata<span class="type"><a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
   </dt>
   <dd>Standard object metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
   
@@ -222,7 +222,7 @@
   
   
   <dt>
-    metadata<span class="type">ListMeta</span>
+    metadata<span class="type"><a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
   </dt>
   <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
   
