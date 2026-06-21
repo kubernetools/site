@@ -1,0 +1,41 @@
+name: create-tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to create (e.g. v0.2.0). Leave empty to use next minor version.'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
+        with:
+          fetch-depth: 0
+
+      - name: Determine tag
+        id: tag
+        run: |
+          if [ -n "${{ inputs.tag }}" ]; then
+            echo "tag=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            LATEST=$(git tag --sort=-v:refname | grep '^v' | head -1)
+            MAJOR=$(echo "$LATEST" | sed 's/^v\([0-9]*\)\..*/\1/')
+            MINOR=$(echo "$LATEST" | sed 's/^v[0-9]*\.\([0-9]*\)\..*/\1/')
+            NEXT_MINOR=$((MINOR + 1))
+            echo "tag=v${MAJOR}.${NEXT_MINOR}.0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create and push tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "${{ steps.tag.outputs.tag }}"
+          git push origin "${{ steps.tag.outputs.tag }}"
