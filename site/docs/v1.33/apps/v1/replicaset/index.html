@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>ReplicaSet <span class="badge">apps/v1</span></h1>
   
@@ -108,75 +109,184 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>apps/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ReplicaSet</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">ReplicaSetSpec</span>
-      </dt>
-      <dd>Spec defines the specification of the desired behavior of the ReplicaSet. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">ReplicaSetStatus</span>
-      </dt>
-      <dd>Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>apps/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ReplicaSet</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#replicasetspec" aria-label="ReplicaSetSpec type reference">ReplicaSetSpec</a></span>
+  </dt>
+  <dd>Spec defines the specification of the desired behavior of the ReplicaSet. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#replicasetstatus" aria-label="ReplicaSetStatus type reference">ReplicaSetStatus</a></span>
+  </dt>
+  <dd>Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="replicasetspec">
+    <h2 id="replicasetspec">ReplicaSetSpec</h2>
+    
+    <p>ReplicaSetSpec is the specification of a ReplicaSet.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    selector<span class="type">LabelSelector</span>
+  </dt>
+  <dd>Selector is a label query over pods that should match the replica count. Label keys and values that must match in order to be controlled by this replica set. It must match the pod template&#x27;s labels. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;overview&#x2f;working-with-objects&#x2f;labels&#x2f;#label-selectors</dd>
+  
+  
+  
+  <dt>
+    minReadySeconds<span class="type">integer</span>
+  </dt>
+  <dd>Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)</dd>
+  
+  
+  
+  <dt>
+    replicas<span class="type">integer</span>
+  </dt>
+  <dd>Replicas is the number of desired pods. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;replicaset</dd>
+  
+  
+  
+  <dt>
+    template<span class="type">PodTemplateSpec</span>
+  </dt>
+  <dd>Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;replicaset&#x2f;#pod-template</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="replicasetstatus">
+    <h2 id="replicasetstatus">ReplicaSetStatus</h2>
+    
+    <p>ReplicaSetStatus represents the current status of a ReplicaSet.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    replicas<span class="type">integer</span>
+  </dt>
+  <dd>Replicas is the most recently observed number of non-terminating pods. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;replicaset</dd>
+  
+  
+  
+  <dt>
+    availableReplicas<span class="type">integer</span>
+  </dt>
+  <dd>The number of available non-terminating pods (ready for at least minReadySeconds) for this replica set.</dd>
+  
+  
+  
+  <dt>
+    conditions<span class="type">[]ReplicaSetCondition</span>
+  </dt>
+  <dd>Represents the latest available observations of a replica set&#x27;s current state.</dd>
+  
+  
+  
+  <dt>
+    fullyLabeledReplicas<span class="type">integer</span>
+  </dt>
+  <dd>The number of non-terminating pods that have labels matching the labels of the pod template of the replicaset.</dd>
+  
+  
+  
+  <dt>
+    observedGeneration<span class="type">integer</span>
+  </dt>
+  <dd>ObservedGeneration reflects the generation of the most recently observed ReplicaSet.</dd>
+  
+  
+  
+  <dt>
+    readyReplicas<span class="type">integer</span>
+  </dt>
+  <dd>The number of non-terminating pods targeted by this ReplicaSet with a Ready Condition.</dd>
+  
+  
+  
+  <dt>
+    terminatingReplicas<span class="type">integer</span>
+  </dt>
+  <dd>The number of terminating pods for this replica set. Terminating pods have a non-null .metadata.deletionTimestamp and have not yet reached the Failed or Succeeded .status.phase.
+
+This is an alpha field. Enable DeploymentReplicaSetTerminatingReplicas to be able to use this field.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">ReplicaSetList</h2>
     
     <p>ReplicaSetList is a collection of ReplicaSets.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>apps/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ReplicaSetList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.33/apps/v1/replicaset/" aria-label="[]ReplicaSet type reference">[]ReplicaSet</a></span>
-      </dt>
-      <dd>List of ReplicaSets. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;replicaset</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>apps/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ReplicaSetList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.33/apps/v1/replicaset/" aria-label="[]ReplicaSet type reference">[]ReplicaSet</a></span>
+  </dt>
+  <dd>List of ReplicaSets. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;replicaset</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

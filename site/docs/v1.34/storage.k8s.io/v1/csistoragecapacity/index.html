@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>CSIStorageCapacity <span class="badge">storage.k8s.io/v1</span></h1>
   
@@ -116,97 +117,103 @@ They are consumed by the kube-scheduler when a CSI driver opts into capacity-awa
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>storage.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>CSIStorageCapacity</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. The name has no particular meaning. It must be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>storage.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>CSIStorageCapacity</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. The name has no particular meaning. It must be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
 
 Objects are namespaced.
 
 More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        storageClassName<span class="type">string</span>
-      </dt>
-      <dd>storageClassName represents the name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.</dd>
-      
-      
-      
-      <dt>
-        capacity<span class="type">Quantity</span>
-      </dt>
-      <dd>capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+  
+  
+  
+  <dt class="req">
+    storageClassName<span class="type">string</span>
+  </dt>
+  <dd>storageClassName represents the name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.</dd>
+  
+  
+  
+  <dt>
+    capacity<span class="type">Quantity</span>
+  </dt>
+  <dd>capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
 
 The semantic is currently (CSI spec 1.2) defined as: The available capacity, in bytes, of the storage that can be used to provision volumes. If not set, that information is currently unavailable.</dd>
-      
-      
-      
-      <dt>
-        maximumVolumeSize<span class="type">Quantity</span>
-      </dt>
-      <dd>maximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+  
+  
+  
+  <dt>
+    maximumVolumeSize<span class="type">Quantity</span>
+  </dt>
+  <dd>maximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
 
 This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.</dd>
-      
-      
-      
-      <dt>
-        nodeTopology<span class="type">LabelSelector</span>
-      </dt>
-      <dd>nodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.</dd>
-      
-      
-    </dl>
+  
+  
+  
+  <dt>
+    nodeTopology<span class="type">LabelSelector</span>
+  </dt>
+  <dd>nodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">CSIStorageCapacityList</h2>
     
     <p>CSIStorageCapacityList is a collection of CSIStorageCapacity objects.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>storage.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>CSIStorageCapacityList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/storage.k8s.io/v1/csistoragecapacity/" aria-label="[]CSIStorageCapacity type reference">[]CSIStorageCapacity</a></span>
-      </dt>
-      <dd>items is the list of CSIStorageCapacity objects.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>storage.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>CSIStorageCapacityList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/storage.k8s.io/v1/csistoragecapacity/" aria-label="[]CSIStorageCapacity type reference">[]CSIStorageCapacity</a></span>
+  </dt>
+  <dd>items is the list of CSIStorageCapacity objects.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

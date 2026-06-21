@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>LeaseCandidate <span class="badge">coordination.k8s.io/v1alpha2</span></h1>
   
@@ -114,68 +115,128 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>coordination.k8s.io/v1alpha2</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>LeaseCandidate</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">LeaseCandidateSpec</span>
-      </dt>
-      <dd>spec contains the specification of the Lease. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>coordination.k8s.io/v1alpha2</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>LeaseCandidate</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#leasecandidatespec" aria-label="LeaseCandidateSpec type reference">LeaseCandidateSpec</a></span>
+  </dt>
+  <dd>spec contains the specification of the Lease. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="leasecandidatespec">
+    <h2 id="leasecandidatespec">LeaseCandidateSpec</h2>
+    
+    <p>LeaseCandidateSpec is a specification of a Lease.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    binaryVersion<span class="type">string</span>
+  </dt>
+  <dd>BinaryVersion is the binary version. It must be in a semver format without leading `v`. This field is required.</dd>
+  
+  
+  
+  <dt class="req">
+    leaseName<span class="type">string</span>
+  </dt>
+  <dd>LeaseName is the name of the lease for which this candidate is contending. This field is immutable.</dd>
+  
+  
+  
+  <dt class="req">
+    strategy<span class="type">string</span>
+  </dt>
+  <dd>Strategy is the strategy that coordinated leader election will use for picking the leader. If multiple candidates for the same Lease return different strategies, the strategy provided by the candidate with the latest BinaryVersion will be used. If there is still conflict, this is a user error and coordinated leader election will not operate the Lease until resolved.</dd>
+  
+  
+  
+  <dt>
+    emulationVersion<span class="type">string</span>
+  </dt>
+  <dd>EmulationVersion is the emulation version. It must be in a semver format without leading `v`. EmulationVersion must be less than or equal to BinaryVersion. This field is required when strategy is &quot;OldestEmulationVersion&quot;</dd>
+  
+  
+  
+  <dt>
+    pingTime<span class="type">MicroTime</span>
+  </dt>
+  <dd>PingTime is the last time that the server has requested the LeaseCandidate to renew. It is only done during leader election to check if any LeaseCandidates have become ineligible. When PingTime is updated, the LeaseCandidate will respond by updating RenewTime.</dd>
+  
+  
+  
+  <dt>
+    renewTime<span class="type">MicroTime</span>
+  </dt>
+  <dd>RenewTime is the time that the LeaseCandidate was last updated. Any time a Lease needs to do leader election, the PingTime field is updated to signal to the LeaseCandidate that they should update the RenewTime. Old LeaseCandidate objects are also garbage collected if it has been hours since the last renew. The PingTime field is updated regularly to prevent garbage collection for still active LeaseCandidates.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">LeaseCandidateList</h2>
     
     <p>LeaseCandidateList is a list of Lease objects.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>coordination.k8s.io/v1alpha2</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>LeaseCandidateList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.33/coordination.k8s.io/v1beta1/leasecandidate/" aria-label="[]LeaseCandidate type reference">[]LeaseCandidate</a></span>
-      </dt>
-      <dd>items is a list of schema objects.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>coordination.k8s.io/v1alpha2</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>LeaseCandidateList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.33/coordination.k8s.io/v1beta1/leasecandidate/" aria-label="[]LeaseCandidate type reference">[]LeaseCandidate</a></span>
+  </dt>
+  <dd>items is a list of schema objects.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

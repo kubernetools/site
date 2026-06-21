@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>SelfSubjectAccessReview <span class="badge">authorization.k8s.io/v1</span></h1>
   
@@ -108,42 +109,112 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>authorization.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>SelfSubjectAccessReview</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">SelfSubjectAccessReviewSpec</span>
-      </dt>
-      <dd>Spec holds information about the request being evaluated.  user and groups must be empty</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">SubjectAccessReviewStatus</span>
-      </dt>
-      <dd>Status is filled in by the server and indicates whether the request is allowed or not</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>authorization.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>SelfSubjectAccessReview</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#selfsubjectaccessreviewspec" aria-label="SelfSubjectAccessReviewSpec type reference">SelfSubjectAccessReviewSpec</a></span>
+  </dt>
+  <dd>Spec holds information about the request being evaluated.  user and groups must be empty</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#selfsubjectaccessreviewstatus" aria-label="SubjectAccessReviewStatus type reference">SubjectAccessReviewStatus</a></span>
+  </dt>
+  <dd>Status is filled in by the server and indicates whether the request is allowed or not</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="selfsubjectaccessreviewspec">
+    <h2 id="selfsubjectaccessreviewspec">SelfSubjectAccessReviewSpec</h2>
+    
+    <p>SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    nonResourceAttributes<span class="type">NonResourceAttributes</span>
+  </dt>
+  <dd>NonResourceAttributes describes information for a non-resource access request</dd>
+  
+  
+  
+  <dt>
+    resourceAttributes<span class="type">ResourceAttributes</span>
+  </dt>
+  <dd>ResourceAuthorizationAttributes describes information for a resource access request</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="selfsubjectaccessreviewstatus">
+    <h2 id="selfsubjectaccessreviewstatus">SelfSubjectAccessReviewStatus</h2>
+    
+    <p>SubjectAccessReviewStatus</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    allowed<span class="type">boolean</span>
+  </dt>
+  <dd>Allowed is required. True if the action would be allowed, false otherwise.</dd>
+  
+  
+  
+  <dt>
+    denied<span class="type">boolean</span>
+  </dt>
+  <dd>Denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.</dd>
+  
+  
+  
+  <dt>
+    evaluationError<span class="type">string</span>
+  </dt>
+  <dd>EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.</dd>
+  
+  
+  
+  <dt>
+    reason<span class="type">string</span>
+  </dt>
+  <dd>Reason is optional.  It indicates why a request was allowed or denied.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
 </article>
 

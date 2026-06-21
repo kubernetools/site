@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>IPAddress <span class="badge">networking.k8s.io/v1</span></h1>
   
@@ -114,68 +115,93 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>networking.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>IPAddress</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">IPAddressSpec</span>
-      </dt>
-      <dd>spec is the desired state of the IPAddress. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>networking.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>IPAddress</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#ipaddressspec" aria-label="IPAddressSpec type reference">IPAddressSpec</a></span>
+  </dt>
+  <dd>spec is the desired state of the IPAddress. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="ipaddressspec">
+    <h2 id="ipaddressspec">IPAddressSpec</h2>
+    
+    <p>IPAddressSpec describe the attributes in an IP Address.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    parentRef<span class="type">ParentReference</span>
+  </dt>
+  <dd>ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">IPAddressList</h2>
     
     <p>IPAddressList contains a list of IPAddress.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>networking.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>IPAddressList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/networking.k8s.io/v1beta1/ipaddress/" aria-label="[]IPAddress type reference">[]IPAddress</a></span>
-      </dt>
-      <dd>items is the list of IPAddresses.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>networking.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>IPAddressList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/networking.k8s.io/v1beta1/ipaddress/" aria-label="[]IPAddress type reference">[]IPAddress</a></span>
+  </dt>
+  <dd>items is the list of IPAddresses.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

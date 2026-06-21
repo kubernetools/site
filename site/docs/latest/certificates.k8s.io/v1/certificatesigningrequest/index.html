@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>CertificateSigningRequest <span class="badge">certificates.k8s.io/v1</span></h1>
   
@@ -114,75 +115,240 @@ This API can be used to request client certificates to authenticate to kube-apis
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>certificates.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>CertificateSigningRequest</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>No description available.</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">CertificateSigningRequestSpec</span>
-      </dt>
-      <dd>spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">CertificateSigningRequestStatus</span>
-      </dt>
-      <dd>status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>certificates.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>CertificateSigningRequest</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>No description available.</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#certificatesigningrequestspec" aria-label="CertificateSigningRequestSpec type reference">CertificateSigningRequestSpec</a></span>
+  </dt>
+  <dd>spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#certificatesigningrequeststatus" aria-label="CertificateSigningRequestStatus type reference">CertificateSigningRequestStatus</a></span>
+  </dt>
+  <dd>status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="certificatesigningrequestspec">
+    <h2 id="certificatesigningrequestspec">CertificateSigningRequestSpec</h2>
+    
+    <p>CertificateSigningRequestSpec contains the certificate request.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    request<span class="type">string</span>
+  </dt>
+  <dd>request contains an x509 certificate signing request encoded in a &quot;CERTIFICATE REQUEST&quot; PEM block. When serialized as JSON or YAML, the data is additionally base64-encoded.</dd>
+  
+  
+  
+  <dt class="req">
+    signerName<span class="type">string</span>
+  </dt>
+  <dd>signerName indicates the requested signer, and is a qualified name.
+
+List&#x2f;watch requests for CertificateSigningRequests can filter on this field using a &quot;spec.signerName=NAME&quot; fieldSelector.
+
+Well-known Kubernetes signers are:
+ 1. &quot;kubernetes.io&#x2f;kube-apiserver-client&quot;: issues client certificates that can be used to authenticate to kube-apiserver.
+  Requests for this signer are never auto-approved by kube-controller-manager, can be issued by the &quot;csrsigning&quot; controller in kube-controller-manager.
+ 2. &quot;kubernetes.io&#x2f;kube-apiserver-client-kubelet&quot;: issues client certificates that kubelets use to authenticate to kube-apiserver.
+  Requests for this signer can be auto-approved by the &quot;csrapproving&quot; controller in kube-controller-manager, and can be issued by the &quot;csrsigning&quot; controller in kube-controller-manager.
+ 3. &quot;kubernetes.io&#x2f;kubelet-serving&quot; issues serving certificates that kubelets use to serve TLS endpoints, which kube-apiserver can connect to securely.
+  Requests for this signer are never auto-approved by kube-controller-manager, and can be issued by the &quot;csrsigning&quot; controller in kube-controller-manager.
+
+More details are available at https:&#x2f;&#x2f;k8s.io&#x2f;docs&#x2f;reference&#x2f;access-authn-authz&#x2f;certificate-signing-requests&#x2f;#kubernetes-signers
+
+Custom signerNames can also be specified. The signer defines:
+ 1. Trust distribution: how trust (CA bundles) are distributed.
+ 2. Permitted subjects: and behavior when a disallowed subject is requested.
+ 3. Required, permitted, or forbidden x509 extensions in the request (including whether subjectAltNames are allowed, which types, restrictions on allowed values) and behavior when a disallowed extension is requested.
+ 4. Required, permitted, or forbidden key usages &#x2f; extended key usages.
+ 5. Expiration&#x2f;certificate lifetime: whether it is fixed by the signer, configurable by the admin.
+ 6. Whether or not requests for CA certificates are allowed.</dd>
+  
+  
+  
+  <dt>
+    expirationSeconds<span class="type">integer</span>
+  </dt>
+  <dd>expirationSeconds is the requested duration of validity of the issued certificate. The certificate signer may issue a certificate with a different validity duration so a client must check the delta between the notBefore and and notAfter fields in the issued certificate to determine the actual duration.
+
+The v1.22+ in-tree implementations of the well-known Kubernetes signers will honor this field as long as the requested duration is not greater than the maximum duration they will honor per the --cluster-signing-duration CLI flag to the Kubernetes controller manager.
+
+Certificate signers may not honor this field for various reasons:
+
+  1. Old signer that is unaware of the field (such as the in-tree
+     implementations prior to v1.22)
+  2. Signer whose configured maximum is shorter than the requested duration
+  3. Signer whose configured minimum is longer than the requested duration
+
+The minimum valid value for expirationSeconds is 600, i.e. 10 minutes.</dd>
+  
+  
+  
+  <dt>
+    extra<span class="type">map[string][]string</span>
+  </dt>
+  <dd>extra contains extra attributes of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</dd>
+  
+  
+  
+  <dt>
+    groups<span class="type">[]string</span>
+  </dt>
+  <dd>groups contains group membership of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</dd>
+  
+  
+  
+  <dt>
+    uid<span class="type">string</span>
+  </dt>
+  <dd>uid contains the uid of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</dd>
+  
+  
+  
+  <dt>
+    usages<span class="type">[]string</span>
+  </dt>
+  <dd>usages specifies a set of key usages requested in the issued certificate.
+
+Requests for TLS client certificates typically request: &quot;digital signature&quot;, &quot;key encipherment&quot;, &quot;client auth&quot;.
+
+Requests for TLS serving certificates typically request: &quot;key encipherment&quot;, &quot;digital signature&quot;, &quot;server auth&quot;.
+
+Valid values are:
+ &quot;signing&quot;, &quot;digital signature&quot;, &quot;content commitment&quot;,
+ &quot;key encipherment&quot;, &quot;key agreement&quot;, &quot;data encipherment&quot;,
+ &quot;cert sign&quot;, &quot;crl sign&quot;, &quot;encipher only&quot;, &quot;decipher only&quot;, &quot;any&quot;,
+ &quot;server auth&quot;, &quot;client auth&quot;,
+ &quot;code signing&quot;, &quot;email protection&quot;, &quot;s&#x2f;mime&quot;,
+ &quot;ipsec end system&quot;, &quot;ipsec tunnel&quot;, &quot;ipsec user&quot;,
+ &quot;timestamping&quot;, &quot;ocsp signing&quot;, &quot;microsoft sgc&quot;, &quot;netscape sgc&quot;</dd>
+  
+  
+  
+  <dt>
+    username<span class="type">string</span>
+  </dt>
+  <dd>username contains the name of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="certificatesigningrequeststatus">
+    <h2 id="certificatesigningrequeststatus">CertificateSigningRequestStatus</h2>
+    
+    <p>CertificateSigningRequestStatus contains conditions used to indicate approved&#x2f;denied&#x2f;failed status of the request, and the issued certificate.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    certificate<span class="type">string</span>
+  </dt>
+  <dd>certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the &#x2f;status subresource. Once populated, this field is immutable.
+
+If the certificate signing request is denied, a condition of type &quot;Denied&quot; is added and this field remains empty. If the signer cannot issue the certificate, a condition of type &quot;Failed&quot; is added and this field remains empty.
+
+Validation requirements:
+ 1. certificate must contain one or more PEM blocks.
+ 2. All PEM blocks must have the &quot;CERTIFICATE&quot; label, contain no headers, and the encoded data
+  must be a BER-encoded ASN.1 Certificate structure as described in section 4 of RFC5280.
+ 3. Non-PEM content may appear before or after the &quot;CERTIFICATE&quot; PEM blocks and is unvalidated,
+  to allow for explanatory text as described in section 5.2 of RFC7468.
+
+If more than one PEM block is present, and the definition of the requested spec.signerName does not indicate otherwise, the first block is the issued certificate, and subsequent blocks should be treated as intermediate certificates and presented in TLS handshakes.
+
+The certificate is encoded in PEM format.
+
+When serialized as JSON or YAML, the data is additionally base64-encoded, so it consists of:
+
+    base64(
+    -----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
+    )</dd>
+  
+  
+  
+  <dt>
+    conditions<span class="type">[]CertificateSigningRequestCondition</span>
+  </dt>
+  <dd>conditions applied to the request. Known conditions are &quot;Approved&quot;, &quot;Denied&quot;, and &quot;Failed&quot;.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">CertificateSigningRequestList</h2>
     
     <p>CertificateSigningRequestList is a collection of CertificateSigningRequest objects</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>certificates.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>CertificateSigningRequestList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>No description available.</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/certificates.k8s.io/v1/certificatesigningrequest/" aria-label="[]CertificateSigningRequest type reference">[]CertificateSigningRequest</a></span>
-      </dt>
-      <dd>items is a collection of CertificateSigningRequest objects</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>certificates.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>CertificateSigningRequestList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>No description available.</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/certificates.k8s.io/v1/certificatesigningrequest/" aria-label="[]CertificateSigningRequest type reference">[]CertificateSigningRequest</a></span>
+  </dt>
+  <dd>items is a collection of CertificateSigningRequest objects</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

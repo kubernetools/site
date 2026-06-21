@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>StorageVersionMigration <span class="badge">storagemigration.k8s.io/v1beta1</span></h1>
   
@@ -108,75 +109,126 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>storagemigration.k8s.io/v1beta1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>StorageVersionMigration</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">StorageVersionMigrationSpec</span>
-      </dt>
-      <dd>Specification of the migration.</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">StorageVersionMigrationStatus</span>
-      </dt>
-      <dd>Status of the migration.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>storagemigration.k8s.io/v1beta1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>StorageVersionMigration</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#storageversionmigrationspec" aria-label="StorageVersionMigrationSpec type reference">StorageVersionMigrationSpec</a></span>
+  </dt>
+  <dd>Specification of the migration.</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#storageversionmigrationstatus" aria-label="StorageVersionMigrationStatus type reference">StorageVersionMigrationStatus</a></span>
+  </dt>
+  <dd>Status of the migration.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="storageversionmigrationspec">
+    <h2 id="storageversionmigrationspec">StorageVersionMigrationSpec</h2>
+    
+    <p>Spec of the storage version migration.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    resource<span class="type">GroupResource</span>
+  </dt>
+  <dd>The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="storageversionmigrationstatus">
+    <h2 id="storageversionmigrationstatus">StorageVersionMigrationStatus</h2>
+    
+    <p>Status of the storage version migration.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    conditions<span class="type">[]Condition</span>
+  </dt>
+  <dd>The latest available observations of the migration&#x27;s current state.</dd>
+  
+  
+  
+  <dt>
+    resourceVersion<span class="type">string</span>
+  </dt>
+  <dd>ResourceVersion to compare with the GC cache for performing the migration. This is the current resource version of given group, version and resource when kube-controller-manager first observes this StorageVersionMigration resource.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">StorageVersionMigrationList</h2>
     
     <p>StorageVersionMigrationList is a collection of storage version migrations.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>storagemigration.k8s.io/v1beta1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>StorageVersionMigrationList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/storagemigration.k8s.io/v1beta1/storageversionmigration/" aria-label="[]StorageVersionMigration type reference">[]StorageVersionMigration</a></span>
-      </dt>
-      <dd>Items is the list of StorageVersionMigration</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>storagemigration.k8s.io/v1beta1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>StorageVersionMigrationList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/storagemigration.k8s.io/v1beta1/storageversionmigration/" aria-label="[]StorageVersionMigration type reference">[]StorageVersionMigration</a></span>
+  </dt>
+  <dd>Items is the list of StorageVersionMigration</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

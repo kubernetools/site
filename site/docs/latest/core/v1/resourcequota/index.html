@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>ResourceQuota <span class="badge">core/v1</span></h1>
   
@@ -108,75 +109,140 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ResourceQuota</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">ResourceQuotaSpec</span>
-      </dt>
-      <dd>Spec defines the desired quota. https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">ResourceQuotaStatus</span>
-      </dt>
-      <dd>Status defines the actual enforced quota and its current usage. https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ResourceQuota</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#resourcequotaspec" aria-label="ResourceQuotaSpec type reference">ResourceQuotaSpec</a></span>
+  </dt>
+  <dd>Spec defines the desired quota. https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#resourcequotastatus" aria-label="ResourceQuotaStatus type reference">ResourceQuotaStatus</a></span>
+  </dt>
+  <dd>Status defines the actual enforced quota and its current usage. https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="resourcequotaspec">
+    <h2 id="resourcequotaspec">ResourceQuotaSpec</h2>
+    
+    <p>ResourceQuotaSpec defines the desired hard limits to enforce for Quota.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    hard<span class="type">map[string]Quantity</span>
+  </dt>
+  <dd>hard is the set of desired hard limits for each named resource. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;policy&#x2f;resource-quotas&#x2f;</dd>
+  
+  
+  
+  <dt>
+    scopeSelector<span class="type">ScopeSelector</span>
+  </dt>
+  <dd>scopeSelector is also a collection of filters like scopes that must match each object tracked by a quota but expressed using ScopeSelectorOperator in combination with possible values. For a resource to match, both scopes AND scopeSelector (if specified in spec), must be matched.</dd>
+  
+  
+  
+  <dt>
+    scopes<span class="type">[]string</span>
+  </dt>
+  <dd>A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="resourcequotastatus">
+    <h2 id="resourcequotastatus">ResourceQuotaStatus</h2>
+    
+    <p>ResourceQuotaStatus defines the enforced hard limits and observed use.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    hard<span class="type">map[string]Quantity</span>
+  </dt>
+  <dd>Hard is the set of enforced hard limits for each named resource. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;policy&#x2f;resource-quotas&#x2f;</dd>
+  
+  
+  
+  <dt>
+    used<span class="type">map[string]Quantity</span>
+  </dt>
+  <dd>Used is the current observed total usage of the resource in the namespace.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">ResourceQuotaList</h2>
     
     <p>ResourceQuotaList is a list of ResourceQuota items.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ResourceQuotaList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/core/v1/resourcequota/" aria-label="[]ResourceQuota type reference">[]ResourceQuota</a></span>
-      </dt>
-      <dd>Items is a list of ResourceQuota objects. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;policy&#x2f;resource-quotas&#x2f;</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ResourceQuotaList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/core/v1/resourcequota/" aria-label="[]ResourceQuota type reference">[]ResourceQuota</a></span>
+  </dt>
+  <dd>Items is a list of ResourceQuota objects. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;policy&#x2f;resource-quotas&#x2f;</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

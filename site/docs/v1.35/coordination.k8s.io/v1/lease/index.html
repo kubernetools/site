@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>Lease <span class="badge">coordination.k8s.io/v1</span></h1>
   
@@ -108,68 +109,135 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>coordination.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>Lease</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">LeaseSpec</span>
-      </dt>
-      <dd>spec contains the specification of the Lease. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>coordination.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>Lease</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#leasespec" aria-label="LeaseSpec type reference">LeaseSpec</a></span>
+  </dt>
+  <dd>spec contains the specification of the Lease. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="leasespec">
+    <h2 id="leasespec">LeaseSpec</h2>
+    
+    <p>LeaseSpec is a specification of a Lease.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    acquireTime<span class="type">MicroTime</span>
+  </dt>
+  <dd>acquireTime is a time when the current lease was acquired.</dd>
+  
+  
+  
+  <dt>
+    holderIdentity<span class="type">string</span>
+  </dt>
+  <dd>holderIdentity contains the identity of the holder of a current lease. If Coordinated Leader Election is used, the holder identity must be equal to the elected LeaseCandidate.metadata.name field.</dd>
+  
+  
+  
+  <dt>
+    leaseDurationSeconds<span class="type">integer</span>
+  </dt>
+  <dd>leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measured against the time of last observed renewTime.</dd>
+  
+  
+  
+  <dt>
+    leaseTransitions<span class="type">integer</span>
+  </dt>
+  <dd>leaseTransitions is the number of transitions of a lease between holders.</dd>
+  
+  
+  
+  <dt>
+    preferredHolder<span class="type">string</span>
+  </dt>
+  <dd>PreferredHolder signals to a lease holder that the lease has a more optimal holder and should be given up. This field can only be set if Strategy is also set.</dd>
+  
+  
+  
+  <dt>
+    renewTime<span class="type">MicroTime</span>
+  </dt>
+  <dd>renewTime is a time when the current holder of a lease has last updated the lease.</dd>
+  
+  
+  
+  <dt>
+    strategy<span class="type">string</span>
+  </dt>
+  <dd>Strategy indicates the strategy for picking the leader for coordinated leader election. If the field is not specified, there is no active coordination for this lease. (Alpha) Using this field requires the CoordinatedLeaderElection feature gate to be enabled.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">LeaseList</h2>
     
     <p>LeaseList is a list of Lease objects.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>coordination.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>LeaseList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.35/coordination.k8s.io/v1/lease/" aria-label="[]Lease type reference">[]Lease</a></span>
-      </dt>
-      <dd>items is a list of schema objects.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>coordination.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>LeaseList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.35/coordination.k8s.io/v1/lease/" aria-label="[]Lease type reference">[]Lease</a></span>
+  </dt>
+  <dd>items is a list of schema objects.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

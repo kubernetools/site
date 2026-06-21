@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>SelfSubjectRulesReview <span class="badge">authorization.k8s.io/v1</span></h1>
   
@@ -108,42 +109,105 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>authorization.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>SelfSubjectRulesReview</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>metadata is the standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">SelfSubjectRulesReviewSpec</span>
-      </dt>
-      <dd>spec holds information about the request being evaluated.</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">SubjectRulesReviewStatus</span>
-      </dt>
-      <dd>status is filled in by the server and indicates the set of actions a user can perform.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>authorization.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>SelfSubjectRulesReview</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>metadata is the standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#selfsubjectrulesreviewspec" aria-label="SelfSubjectRulesReviewSpec type reference">SelfSubjectRulesReviewSpec</a></span>
+  </dt>
+  <dd>spec holds information about the request being evaluated.</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#selfsubjectrulesreviewstatus" aria-label="SubjectRulesReviewStatus type reference">SubjectRulesReviewStatus</a></span>
+  </dt>
+  <dd>status is filled in by the server and indicates the set of actions a user can perform.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="selfsubjectrulesreviewspec">
+    <h2 id="selfsubjectrulesreviewspec">SelfSubjectRulesReviewSpec</h2>
+    
+    <p>SelfSubjectRulesReviewSpec defines the specification for SelfSubjectRulesReview.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    namespace<span class="type">string</span>
+  </dt>
+  <dd>namespace to evaluate rules for. Required.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="selfsubjectrulesreviewstatus">
+    <h2 id="selfsubjectrulesreviewstatus">SelfSubjectRulesReviewStatus</h2>
+    
+    <p>SubjectRulesReviewStatus contains the result of a rules check. This check can be incomplete depending on the set of authorizers the server is configured with and any errors experienced during evaluation. Because authorization rules are additive, if a rule appears in a list it&#x27;s safe to assume the subject has that permission, even if that list is incomplete.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    incomplete<span class="type">boolean</span>
+  </dt>
+  <dd>incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn&#x27;t support rules evaluation.</dd>
+  
+  
+  
+  <dt class="req">
+    nonResourceRules<span class="type">[]NonResourceRule</span>
+  </dt>
+  <dd>nonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn&#x27;t significant, may contain duplicates, and possibly be incomplete.</dd>
+  
+  
+  
+  <dt class="req">
+    resourceRules<span class="type">[]ResourceRule</span>
+  </dt>
+  <dd>resourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn&#x27;t significant, may contain duplicates, and possibly be incomplete.</dd>
+  
+  
+  
+  <dt>
+    evaluationError<span class="type">string</span>
+  </dt>
+  <dd>evaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn&#x27;t support rule evaluation, and that ResourceRules and&#x2f;or NonResourceRules may be incomplete.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
 </article>
 

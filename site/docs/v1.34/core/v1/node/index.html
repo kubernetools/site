@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>Node <span class="badge">core/v1</span></h1>
   
@@ -108,75 +109,245 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>Node</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">NodeSpec</span>
-      </dt>
-      <dd>Spec defines the behavior of a node. https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">NodeStatus</span>
-      </dt>
-      <dd>Most recently observed status of the node. Populated by the system. Read-only. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>Node</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#nodespec" aria-label="NodeSpec type reference">NodeSpec</a></span>
+  </dt>
+  <dd>Spec defines the behavior of a node. https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#nodestatus" aria-label="NodeStatus type reference">NodeStatus</a></span>
+  </dt>
+  <dd>Most recently observed status of the node. Populated by the system. Read-only. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="nodespec">
+    <h2 id="nodespec">NodeSpec</h2>
+    
+    <p>NodeSpec describes the attributes that a node is created with.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    configSource<span class="type">NodeConfigSource</span>
+  </dt>
+  <dd>Deprecated: Previously used to specify the source of the node&#x27;s configuration for the DynamicKubeletConfig feature. This feature is removed.</dd>
+  
+  
+  
+  <dt>
+    externalID<span class="type">string</span>
+  </dt>
+  <dd>Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https:&#x2f;&#x2f;issues.k8s.io&#x2f;61966</dd>
+  
+  
+  
+  <dt>
+    podCIDR<span class="type">string</span>
+  </dt>
+  <dd>PodCIDR represents the pod IP range assigned to the node.</dd>
+  
+  
+  
+  <dt>
+    podCIDRs<span class="type">[]string</span>
+  </dt>
+  <dd>podCIDRs represents the IP ranges assigned to the node for usage by Pods on that node. If this field is specified, the 0th entry must match the podCIDR field. It may contain at most 1 value for each of IPv4 and IPv6.</dd>
+  
+  
+  
+  <dt>
+    providerID<span class="type">string</span>
+  </dt>
+  <dd>ID of the node assigned by the cloud provider in the format: &lt;ProviderName&gt;:&#x2f;&#x2f;&lt;ProviderSpecificNodeID&gt;</dd>
+  
+  
+  
+  <dt>
+    taints<span class="type">[]Taint</span>
+  </dt>
+  <dd>If specified, the node&#x27;s taints.</dd>
+  
+  
+  
+  <dt>
+    unschedulable<span class="type">boolean</span>
+  </dt>
+  <dd>Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;nodes&#x2f;node&#x2f;#manual-node-administration</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="nodestatus">
+    <h2 id="nodestatus">NodeStatus</h2>
+    
+    <p>NodeStatus is information about the current status of a node.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    addresses<span class="type">[]NodeAddress</span>
+  </dt>
+  <dd>List of addresses reachable to the node. Queried from cloud provider, if available. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;reference&#x2f;node&#x2f;node-status&#x2f;#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See https:&#x2f;&#x2f;pr.k8s.io&#x2f;79391 for an example. Consumers should assume that addresses can change during the lifetime of a Node. However, there are some exceptions where this may not be possible, such as Pods that inherit a Node&#x27;s address in its own status or consumers of the downward API (status.hostIP).</dd>
+  
+  
+  
+  <dt>
+    allocatable<span class="type">map[string]Quantity</span>
+  </dt>
+  <dd>Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity.</dd>
+  
+  
+  
+  <dt>
+    capacity<span class="type">map[string]Quantity</span>
+  </dt>
+  <dd>Capacity represents the total resources of a node. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;reference&#x2f;node&#x2f;node-status&#x2f;#capacity</dd>
+  
+  
+  
+  <dt>
+    conditions<span class="type">[]NodeCondition</span>
+  </dt>
+  <dd>Conditions is an array of current observed node conditions. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;reference&#x2f;node&#x2f;node-status&#x2f;#condition</dd>
+  
+  
+  
+  <dt>
+    config<span class="type">NodeConfigStatus</span>
+  </dt>
+  <dd>Status of the config assigned to the node via the dynamic Kubelet config feature.</dd>
+  
+  
+  
+  <dt>
+    daemonEndpoints<span class="type">NodeDaemonEndpoints</span>
+  </dt>
+  <dd>Endpoints of daemons running on the Node.</dd>
+  
+  
+  
+  <dt>
+    features<span class="type">NodeFeatures</span>
+  </dt>
+  <dd>Features describes the set of features implemented by the CRI implementation.</dd>
+  
+  
+  
+  <dt>
+    images<span class="type">[]ContainerImage</span>
+  </dt>
+  <dd>List of container images on this node</dd>
+  
+  
+  
+  <dt>
+    nodeInfo<span class="type">NodeSystemInfo</span>
+  </dt>
+  <dd>Set of ids&#x2f;uuids to uniquely identify the node. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;reference&#x2f;node&#x2f;node-status&#x2f;#info</dd>
+  
+  
+  
+  <dt>
+    phase<span class="type">string</span>
+  </dt>
+  <dd>NodePhase is the recently observed lifecycle phase of the node. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;nodes&#x2f;node&#x2f;#phase The field is never populated, and now is deprecated.</dd>
+  
+  
+  
+  <dt>
+    runtimeHandlers<span class="type">[]NodeRuntimeHandler</span>
+  </dt>
+  <dd>The available runtime handlers.</dd>
+  
+  
+  
+  <dt>
+    volumesAttached<span class="type">[]AttachedVolume</span>
+  </dt>
+  <dd>List of volumes that are attached to the node.</dd>
+  
+  
+  
+  <dt>
+    volumesInUse<span class="type">[]string</span>
+  </dt>
+  <dd>List of attachable volumes in use (mounted) by the node.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">NodeList</h2>
     
     <p>NodeList is the whole list of all Nodes which have been registered with master.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>NodeList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/core/v1/node/" aria-label="[]Node type reference">[]Node</a></span>
-      </dt>
-      <dd>List of nodes</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>NodeList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/core/v1/node/" aria-label="[]Node type reference">[]Node</a></span>
+  </dt>
+  <dd>List of nodes</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

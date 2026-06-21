@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>SelfSubjectReview <span class="badge">authentication.k8s.io/v1</span></h1>
   
@@ -108,35 +109,58 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>authentication.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>SelfSubjectReview</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>metadata is standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">SelfSubjectReviewStatus</span>
-      </dt>
-      <dd>status is filled in by the server with the user attributes.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>authentication.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>SelfSubjectReview</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>metadata is standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#selfsubjectreviewstatus" aria-label="SelfSubjectReviewStatus type reference">SelfSubjectReviewStatus</a></span>
+  </dt>
+  <dd>status is filled in by the server with the user attributes.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  
+  <section aria-labelledby="selfsubjectreviewstatus">
+    <h2 id="selfsubjectreviewstatus">SelfSubjectReviewStatus</h2>
+    
+    <p>SelfSubjectReviewStatus is filled by the kube-apiserver and sent back to a user.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    userInfo<span class="type">UserInfo</span>
+  </dt>
+  <dd>userInfo is a set of attributes belonging to the user making this request.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
 </article>
 
