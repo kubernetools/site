@@ -45,7 +45,7 @@
       vertical-align: middle;
     }
     .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::after { content: " *"; }
+    dt.req::before { content: "* "; }
     dl {
       display: grid;
       grid-template-columns: minmax(140px, max-content) 1fr;
@@ -124,7 +124,7 @@
   
   
   <dt>
-    metadata<span class="type">ObjectMeta</span>
+    metadata<span class="type"><a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
   </dt>
   <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
   
@@ -165,7 +165,7 @@
   
   
   <dt>
-    dataSource<span class="type">TypedLocalObjectReference</span>
+    dataSource<span class="type"><a href="/docs/v1.33/common-definitions/typedlocalobjectreference/" aria-label="TypedLocalObjectReference type reference">TypedLocalObjectReference</a></span>
   </dt>
   <dd>dataSource field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io&#x2f;VolumeSnapshot) * An existing PVC (PersistentVolumeClaim) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef, and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified. If the namespace is specified, then dataSourceRef will not be copied to dataSource.</dd>
   
@@ -193,7 +193,7 @@
   
   
   <dt>
-    selector<span class="type">LabelSelector</span>
+    selector<span class="type"><a href="/docs/v1.33/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a></span>
   </dt>
   <dd>selector is a label query over volumes to consider for binding.</dd>
   
@@ -359,7 +359,7 @@ This is an alpha field and requires enabling RecoverVolumeExpansionFailure featu
   
   
   <dt>
-    metadata<span class="type">ListMeta</span>
+    metadata<span class="type"><a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
   </dt>
   <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
   

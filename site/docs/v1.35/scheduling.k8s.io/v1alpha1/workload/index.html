@@ -45,7 +45,7 @@
       vertical-align: middle;
     }
     .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::after { content: " *"; }
+    dt.req::before { content: "* "; }
     dl {
       display: grid;
       grid-template-columns: minmax(140px, max-content) 1fr;
@@ -124,7 +124,7 @@
   
   
   <dt>
-    metadata<span class="type">ObjectMeta</span>
+    metadata<span class="type"><a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
   </dt>
   <dd>Standard object&#x27;s metadata. Name must be a DNS subdomain.</dd>
   
@@ -158,7 +158,7 @@
   
   
   <dt>
-    controllerRef<span class="type">TypedLocalObjectReference</span>
+    controllerRef<span class="type"><a href="/docs/v1.35/common-definitions/typedlocalobjectreference/" aria-label="TypedLocalObjectReference type reference">TypedLocalObjectReference</a></span>
   </dt>
   <dd>ControllerRef is an optional reference to the controlling object, such as a Deployment or Job. This field is intended for use by tools like CLIs to provide a link back to the original workload definition. When set, it cannot be changed.</dd>
   
@@ -189,7 +189,7 @@
   
   
   <dt>
-    metadata<span class="type">ListMeta</span>
+    metadata<span class="type"><a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
   </dt>
   <dd>Standard list metadata.</dd>
   

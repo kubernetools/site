@@ -45,7 +45,7 @@
       vertical-align: middle;
     }
     .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::after { content: " *"; }
+    dt.req::before { content: "* "; }
     dl {
       display: grid;
       grid-template-columns: minmax(140px, max-content) 1fr;
@@ -132,7 +132,7 @@ They are consumed by the kube-scheduler when a CSI driver opts into capacity-awa
   
   
   <dt>
-    metadata<span class="type">ObjectMeta</span>
+    metadata<span class="type"><a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
   </dt>
   <dd>Standard object&#x27;s metadata. The name has no particular meaning. It must be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
 
@@ -150,7 +150,7 @@ More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;de
   
   
   <dt>
-    capacity<span class="type">Quantity</span>
+    capacity<span class="type"><a href="/docs/latest/common-definitions/quantity/" aria-label="Quantity type reference">Quantity</a></span>
   </dt>
   <dd>capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
 
@@ -159,7 +159,7 @@ The semantic is currently (CSI spec 1.2) defined as: The available capacity, in 
   
   
   <dt>
-    maximumVolumeSize<span class="type">Quantity</span>
+    maximumVolumeSize<span class="type"><a href="/docs/latest/common-definitions/quantity/" aria-label="Quantity type reference">Quantity</a></span>
   </dt>
   <dd>maximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
 
@@ -168,7 +168,7 @@ This is defined since CSI spec 1.4.0 as the largest size that may be used in a C
   
   
   <dt>
-    nodeTopology<span class="type">LabelSelector</span>
+    nodeTopology<span class="type"><a href="/docs/latest/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a></span>
   </dt>
   <dd>nodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.</dd>
   
@@ -200,7 +200,7 @@ This is defined since CSI spec 1.4.0 as the largest size that may be used in a C
   
   
   <dt>
-    metadata<span class="type">ListMeta</span>
+    metadata<span class="type"><a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
   </dt>
   <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
   

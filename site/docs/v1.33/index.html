@@ -45,7 +45,7 @@
       vertical-align: middle;
     }
     .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::after { content: " *"; }
+    dt.req::before { content: "* "; }
     dl {
       display: grid;
       grid-template-columns: minmax(140px, max-content) 1fr;
@@ -88,57 +88,72 @@
   <main>
     
 <h1>Kubernetes v1.33 API Reference</h1>
-<nav aria-label="API groups">
-  <ul>
-    
-    <li><a href="/docs/v1.33/admissionregistration.k8s.io/">admissionregistration.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/apiextensions.k8s.io/">apiextensions.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/apiregistration.k8s.io/">apiregistration.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/apps/">apps</a></li>
-    
-    <li><a href="/docs/v1.33/authentication.k8s.io/">authentication.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/authorization.k8s.io/">authorization.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/autoscaling/">autoscaling</a></li>
-    
-    <li><a href="/docs/v1.33/batch/">batch</a></li>
-    
-    <li><a href="/docs/v1.33/certificates.k8s.io/">certificates.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/coordination.k8s.io/">coordination.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/core/">core</a></li>
-    
-    <li><a href="/docs/v1.33/discovery.k8s.io/">discovery.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/events.k8s.io/">events.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/flowcontrol.apiserver.k8s.io/">flowcontrol.apiserver.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/internal.apiserver.k8s.io/">internal.apiserver.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/networking.k8s.io/">networking.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/node.k8s.io/">node.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/policy/">policy</a></li>
-    
-    <li><a href="/docs/v1.33/rbac.authorization.k8s.io/">rbac.authorization.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/resource.k8s.io/">resource.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/scheduling.k8s.io/">scheduling.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/storage.k8s.io/">storage.k8s.io</a></li>
-    
-    <li><a href="/docs/v1.33/storagemigration.k8s.io/">storagemigration.k8s.io</a></li>
-    
-  </ul>
-</nav>
+<section aria-labelledby="by-group-heading">
+  <h2 id="by-group-heading">API Resources by Group</h2>
+  <nav aria-label="API Groups">
+    <ul>
+      
+      <li><a href="/docs/v1.33/admissionregistration.k8s.io/">admissionregistration.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/apiextensions.k8s.io/">apiextensions.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/apiregistration.k8s.io/">apiregistration.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/apps/">apps</a></li>
+      
+      <li><a href="/docs/v1.33/authentication.k8s.io/">authentication.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/authorization.k8s.io/">authorization.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/autoscaling/">autoscaling</a></li>
+      
+      <li><a href="/docs/v1.33/batch/">batch</a></li>
+      
+      <li><a href="/docs/v1.33/certificates.k8s.io/">certificates.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/coordination.k8s.io/">coordination.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/core/">core</a></li>
+      
+      <li><a href="/docs/v1.33/discovery.k8s.io/">discovery.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/events.k8s.io/">events.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/flowcontrol.apiserver.k8s.io/">flowcontrol.apiserver.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/internal.apiserver.k8s.io/">internal.apiserver.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/networking.k8s.io/">networking.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/node.k8s.io/">node.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/policy/">policy</a></li>
+      
+      <li><a href="/docs/v1.33/rbac.authorization.k8s.io/">rbac.authorization.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/resource.k8s.io/">resource.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/scheduling.k8s.io/">scheduling.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/storage.k8s.io/">storage.k8s.io</a></li>
+      
+      <li><a href="/docs/v1.33/storagemigration.k8s.io/">storagemigration.k8s.io</a></li>
+      
+    </ul>
+  </nav>
+</section>
+
+<section aria-labelledby="definitions-heading">
+  <h2 id="definitions-heading">Definitions</h2>
+  <nav aria-label="Definitions">
+    <ul>
+      
+      <li><a href="/docs/v1.33/common-definitions/">Common Definitions</a></li>
+      
+    </ul>
+  </nav>
+</section>
+
 
   </main>
   <footer>
