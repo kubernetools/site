@@ -114,30 +114,36 @@ Kubelets use this API to implement podCertificate projected volumes</p>
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>certificates.k8s.io/v1alpha1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>PodCertificateRequest</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>metadata contains the object metadata.</dd>
       
+      
+      
       <dt class="req">
         spec<span class="type">PodCertificateRequestSpec</span>
       </dt>
       <dd>spec contains the details about the certificate being requested.</dd>
       
+      
+      
       <dt>
         status<span class="type">PodCertificateRequestStatus</span>
       </dt>
       <dd>status contains the issued certificate, and a standard set of conditions.</dd>
+      
       
     </dl>
     
@@ -150,25 +156,29 @@ Kubelets use this API to implement podCertificate projected volumes</p>
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>certificates.k8s.io/v1alpha1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>PodCertificateRequestList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>metadata contains the list metadata.</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/v1.34/certificates.k8s.io/v1alpha1/podcertificaterequest/" aria-label="[]PodCertificateRequest type reference">[]PodCertificateRequest</a></span>
       </dt>
       <dd>items is a collection of PodCertificateRequest objects</dd>
+      
       
     </dl>
   </section>

@@ -112,55 +112,71 @@ StorageClasses are non-namespaced; the name of the storage class according to et
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>storage.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>StorageClass</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ObjectMeta</span>
       </dt>
       <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt class="req">
         provisioner<span class="type">string</span>
       </dt>
       <dd>provisioner indicates the type of the provisioner.</dd>
+      
+      
       
       <dt>
         allowVolumeExpansion<span class="type">boolean</span>
       </dt>
       <dd>allowVolumeExpansion shows whether the storage class allow volume expand.</dd>
       
+      
+      
       <dt>
         allowedTopologies<span class="type">[]TopologySelectorTerm</span>
       </dt>
       <dd>allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.</dd>
+      
+      
       
       <dt>
         mountOptions<span class="type">[]string</span>
       </dt>
       <dd>mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. [&quot;ro&quot;, &quot;soft&quot;]. Not validated - mount of the PVs will simply fail if one is invalid.</dd>
       
+      
+      
       <dt>
         parameters<span class="type">map[string]string</span>
       </dt>
       <dd>parameters holds the parameters for the provisioner that should create volumes of this storage class.</dd>
+      
+      
       
       <dt>
         reclaimPolicy<span class="type">string</span>
       </dt>
       <dd>reclaimPolicy controls the reclaimPolicy for dynamically provisioned PersistentVolumes of this storage class. Defaults to Delete.</dd>
       
+      
+      
       <dt>
         volumeBindingMode<span class="type">string</span>
       </dt>
       <dd>volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.</dd>
+      
       
     </dl>
     
@@ -173,25 +189,29 @@ StorageClasses are non-namespaced; the name of the storage class according to et
     
     <dl>
       
-      <dt>
-        apiVersion<span class="type">string</span>
-      </dt>
-      <dd>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#resources</dd>
       
-      <dt>
-        kind<span class="type">string</span>
-      </dt>
-      <dd>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      <dt>apiVersion</dt>
+      <dd><code>storage.k8s.io/v1</code></dd>
+      
+      
+      
+      <dt>kind</dt>
+      <dd><code>StorageClassList</code></dd>
+      
+      
       
       <dt>
         metadata<span class="type">ListMeta</span>
       </dt>
       <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
       
+      
+      
       <dt class="req">
         items<span class="type"><a href="/docs/v1.33/storage.k8s.io/v1/storageclass/" aria-label="[]StorageClass type reference">[]StorageClass</a></span>
       </dt>
       <dd>items is the list of StorageClasses</dd>
+      
       
     </dl>
   </section>
