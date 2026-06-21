@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>ResourceClaimTemplate <span class="badge">resource.k8s.io/v1</span></h1>
   
@@ -116,70 +117,102 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ResourceClaimTemplate</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object metadata</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">ResourceClaimTemplateSpec</span>
-      </dt>
-      <dd>Describes the ResourceClaim that is to be generated.
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ResourceClaimTemplate</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object metadata</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#resourceclaimtemplatespec" aria-label="ResourceClaimTemplateSpec type reference">ResourceClaimTemplateSpec</a></span>
+  </dt>
+  <dd>Describes the ResourceClaim that is to be generated.
 
 This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore.</dd>
-      
-      
-    </dl>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="resourceclaimtemplatespec">
+    <h2 id="resourceclaimtemplatespec">ResourceClaimTemplateSpec</h2>
+    
+    <p>ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>ObjectMeta may contain labels and annotations that will be copied into the ResourceClaim when creating it. No other fields are allowed and will be rejected during validation.</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type">ResourceClaimSpec</span>
+  </dt>
+  <dd>Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">ResourceClaimTemplateList</h2>
     
     <p>ResourceClaimTemplateList is a collection of claim templates.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ResourceClaimTemplateList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/resource.k8s.io/v1beta2/resourceclaimtemplate/" aria-label="[]ResourceClaimTemplate type reference">[]ResourceClaimTemplate</a></span>
-      </dt>
-      <dd>Items is the list of resource claim templates.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ResourceClaimTemplateList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/resource.k8s.io/v1beta2/resourceclaimtemplate/" aria-label="[]ResourceClaimTemplate type reference">[]ResourceClaimTemplate</a></span>
+  </dt>
+  <dd>Items is the list of resource claim templates.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

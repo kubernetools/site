@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>RuntimeClass <span class="badge">node.k8s.io/v1</span></h1>
   
@@ -108,83 +109,89 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>node.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>RuntimeClass</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        handler<span class="type">string</span>
-      </dt>
-      <dd>handler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node &amp; CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called &quot;runc&quot; might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The Handler must be lowercase, conform to the DNS Label (RFC 1123) requirements, and is immutable.</dd>
-      
-      
-      
-      <dt>
-        overhead<span class="type">Overhead</span>
-      </dt>
-      <dd>overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>node.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>RuntimeClass</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    handler<span class="type">string</span>
+  </dt>
+  <dd>handler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node &amp; CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called &quot;runc&quot; might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The Handler must be lowercase, conform to the DNS Label (RFC 1123) requirements, and is immutable.</dd>
+  
+  
+  
+  <dt>
+    overhead<span class="type">Overhead</span>
+  </dt>
+  <dd>overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
  https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;scheduling-eviction&#x2f;pod-overhead&#x2f;</dd>
-      
-      
-      
-      <dt>
-        scheduling<span class="type">Scheduling</span>
-      </dt>
-      <dd>scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.</dd>
-      
-      
-    </dl>
+  
+  
+  
+  <dt>
+    scheduling<span class="type">Scheduling</span>
+  </dt>
+  <dd>scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">RuntimeClassList</h2>
     
     <p>RuntimeClassList is a list of RuntimeClass objects.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>node.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>RuntimeClassList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/node.k8s.io/v1/runtimeclass/" aria-label="[]RuntimeClass type reference">[]RuntimeClass</a></span>
-      </dt>
-      <dd>items is a list of schema objects.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>node.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>RuntimeClassList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/node.k8s.io/v1/runtimeclass/" aria-label="[]RuntimeClass type reference">[]RuntimeClass</a></span>
+  </dt>
+  <dd>items is a list of schema objects.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

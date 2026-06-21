@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>StorageVersion <span class="badge">internal.apiserver.k8s.io/v1alpha1</span></h1>
   
@@ -108,75 +109,114 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>internal.apiserver.k8s.io/v1alpha1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>StorageVersion</code></dd>
-      
-      
-      
-      <dt class="req">
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>metadata is the standard object metadata. The name is &lt;group&gt;.&lt;resource&gt;.</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">StorageVersionSpec</span>
-      </dt>
-      <dd>spec is an empty spec. It is here to comply with Kubernetes API style.</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">StorageVersionStatus</span>
-      </dt>
-      <dd>status on the version the API server instance can decode from and encode objects to when persisting objects in the backend.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>internal.apiserver.k8s.io/v1alpha1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>StorageVersion</code></dd>
+  
+  
+  
+  <dt class="req">
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>metadata is the standard object metadata. The name is &lt;group&gt;.&lt;resource&gt;.</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type">StorageVersionSpec</span>
+  </dt>
+  <dd>spec is an empty spec. It is here to comply with Kubernetes API style.</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#storageversionstatus" aria-label="StorageVersionStatus type reference">StorageVersionStatus</a></span>
+  </dt>
+  <dd>status on the version the API server instance can decode from and encode objects to when persisting objects in the backend.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  
+  <section aria-labelledby="storageversionstatus">
+    <h2 id="storageversionstatus">StorageVersionStatus</h2>
+    
+    <p>API server instances report the versions they can decode and the version they encode objects to when persisting objects in the backend.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    commonEncodingVersion<span class="type">string</span>
+  </dt>
+  <dd>commonEncodingVersion is set to an encoding storage version if all API server instances share that same version. If they don&#x27;t share one storage version, this field is left empty. API servers should finish updating its storageVersionStatus entry before serving write operations, so that this field will be in sync with the reality.</dd>
+  
+  
+  
+  <dt>
+    conditions<span class="type">[]StorageVersionCondition</span>
+  </dt>
+  <dd>conditions lists the latest available observations of the storageVersion&#x27;s state.</dd>
+  
+  
+  
+  <dt>
+    storageVersions<span class="type">[]ServerStorageVersion</span>
+  </dt>
+  <dd>storageVersions lists the reported versions per API server instance.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">StorageVersionList</h2>
     
     <p>A list of StorageVersions.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>internal.apiserver.k8s.io/v1alpha1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>StorageVersionList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/internal.apiserver.k8s.io/v1alpha1/storageversion/" aria-label="[]StorageVersion type reference">[]StorageVersion</a></span>
-      </dt>
-      <dd>Items holds a list of StorageVersion</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>internal.apiserver.k8s.io/v1alpha1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>StorageVersionList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/internal.apiserver.k8s.io/v1alpha1/storageversion/" aria-label="[]StorageVersion type reference">[]StorageVersion</a></span>
+  </dt>
+  <dd>Items holds a list of StorageVersion</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>ClusterRole <span class="badge">rbac.authorization.k8s.io/v1</span></h1>
   
@@ -108,75 +109,81 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>rbac.authorization.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ClusterRole</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata.</dd>
-      
-      
-      
-      <dt>
-        aggregationRule<span class="type">AggregationRule</span>
-      </dt>
-      <dd>AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.</dd>
-      
-      
-      
-      <dt>
-        rules<span class="type">[]PolicyRule</span>
-      </dt>
-      <dd>Rules holds all the PolicyRules for this ClusterRole</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>rbac.authorization.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ClusterRole</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata.</dd>
+  
+  
+  
+  <dt>
+    aggregationRule<span class="type">AggregationRule</span>
+  </dt>
+  <dd>AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.</dd>
+  
+  
+  
+  <dt>
+    rules<span class="type">[]PolicyRule</span>
+  </dt>
+  <dd>Rules holds all the PolicyRules for this ClusterRole</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">ClusterRoleList</h2>
     
     <p>ClusterRoleList is a collection of ClusterRoles</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>rbac.authorization.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ClusterRoleList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata.</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/rbac.authorization.k8s.io/v1/clusterrole/" aria-label="[]ClusterRole type reference">[]ClusterRole</a></span>
-      </dt>
-      <dd>Items is a list of ClusterRoles</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>rbac.authorization.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ClusterRoleList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata.</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/rbac.authorization.k8s.io/v1/clusterrole/" aria-label="[]ClusterRole type reference">[]ClusterRole</a></span>
+  </dt>
+  <dd>Items is a list of ClusterRoles</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>Pod <span class="badge">core/v1</span></h1>
   
@@ -108,75 +109,566 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>Pod</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">PodSpec</span>
-      </dt>
-      <dd>Specification of the desired behavior of the pod. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">PodStatus</span>
-      </dt>
-      <dd>Most recently observed status of the pod. This data may not be up to date. Populated by the system. Read-only. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>Pod</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#podspec" aria-label="PodSpec type reference">PodSpec</a></span>
+  </dt>
+  <dd>Specification of the desired behavior of the pod. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#podstatus" aria-label="PodStatus type reference">PodStatus</a></span>
+  </dt>
+  <dd>Most recently observed status of the pod. This data may not be up to date. Populated by the system. Read-only. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="podspec">
+    <h2 id="podspec">PodSpec</h2>
+    
+    <p>PodSpec is a description of a pod.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    containers<span class="type">[]Container</span>
+  </dt>
+  <dd>List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated.</dd>
+  
+  
+  
+  <dt>
+    activeDeadlineSeconds<span class="type">integer</span>
+  </dt>
+  <dd>Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.</dd>
+  
+  
+  
+  <dt>
+    affinity<span class="type">Affinity</span>
+  </dt>
+  <dd>If specified, the pod&#x27;s scheduling constraints</dd>
+  
+  
+  
+  <dt>
+    automountServiceAccountToken<span class="type">boolean</span>
+  </dt>
+  <dd>AutomountServiceAccountToken indicates whether a service account token should be automatically mounted.</dd>
+  
+  
+  
+  <dt>
+    dnsConfig<span class="type">PodDNSConfig</span>
+  </dt>
+  <dd>Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy.</dd>
+  
+  
+  
+  <dt>
+    dnsPolicy<span class="type">string</span>
+  </dt>
+  <dd>Set DNS policy for the pod. Defaults to &quot;ClusterFirst&quot;. Valid values are &#x27;ClusterFirstWithHostNet&#x27;, &#x27;ClusterFirst&#x27;, &#x27;Default&#x27; or &#x27;None&#x27;. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to &#x27;ClusterFirstWithHostNet&#x27;.</dd>
+  
+  
+  
+  <dt>
+    enableServiceLinks<span class="type">boolean</span>
+  </dt>
+  <dd>EnableServiceLinks indicates whether information about services should be injected into pod&#x27;s environment variables, matching the syntax of Docker links. Optional: Defaults to true.</dd>
+  
+  
+  
+  <dt>
+    ephemeralContainers<span class="type">[]EphemeralContainer</span>
+  </dt>
+  <dd>List of ephemeral containers run in this pod. Ephemeral containers may be run in an existing pod to perform user-initiated actions such as debugging. This list cannot be specified when creating a pod, and it cannot be modified by updating the pod spec. In order to add an ephemeral container to an existing pod, use the pod&#x27;s ephemeralcontainers subresource.</dd>
+  
+  
+  
+  <dt>
+    hostAliases<span class="type">[]HostAlias</span>
+  </dt>
+  <dd>HostAliases is an optional list of hosts and IPs that will be injected into the pod&#x27;s hosts file if specified.</dd>
+  
+  
+  
+  <dt>
+    hostIPC<span class="type">boolean</span>
+  </dt>
+  <dd>Use the host&#x27;s ipc namespace. Optional: Default to false.</dd>
+  
+  
+  
+  <dt>
+    hostNetwork<span class="type">boolean</span>
+  </dt>
+  <dd>Host networking requested for this pod. Use the host&#x27;s network namespace. When using HostNetwork you should specify ports so the scheduler is aware. When `hostNetwork` is true, specified `hostPort` fields in port definitions must match `containerPort`, and unspecified `hostPort` fields in port definitions are defaulted to match `containerPort`. Default to false.</dd>
+  
+  
+  
+  <dt>
+    hostPID<span class="type">boolean</span>
+  </dt>
+  <dd>Use the host&#x27;s pid namespace. Optional: Default to false.</dd>
+  
+  
+  
+  <dt>
+    hostUsers<span class="type">boolean</span>
+  </dt>
+  <dd>Use the host&#x27;s user namespace. Optional: Default to true. If set to true or not present, the pod will be run in the host user namespace, useful for when the pod needs a feature only available to the host user namespace, such as loading a kernel module with CAP_SYS_MODULE. When set to false, a new userns is created for the pod. Setting false is useful for mitigating container breakout vulnerabilities even allowing users to run their containers as root without actually having root privileges on the host.</dd>
+  
+  
+  
+  <dt>
+    hostname<span class="type">string</span>
+  </dt>
+  <dd>Specifies the hostname of the Pod If not specified, the pod&#x27;s hostname will be set to a system-defined value.</dd>
+  
+  
+  
+  <dt>
+    hostnameOverride<span class="type">string</span>
+  </dt>
+  <dd>HostnameOverride specifies an explicit override for the pod&#x27;s hostname as perceived by the pod. This field only specifies the pod&#x27;s hostname and does not affect its DNS records. When this field is set to a non-empty string: - It takes precedence over the values set in `hostname` and `subdomain`. - The Pod&#x27;s hostname will be set to this value. - `setHostnameAsFQDN` must be nil or set to false. - `hostNetwork` must be set to false.
+
+This field must be a valid DNS subdomain as defined in RFC 1123 and contain at most 64 characters. Requires the HostnameOverride feature gate to be enabled.</dd>
+  
+  
+  
+  <dt>
+    imagePullSecrets<span class="type">[]LocalObjectReference</span>
+  </dt>
+  <dd>ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;containers&#x2f;images#specifying-imagepullsecrets-on-a-pod</dd>
+  
+  
+  
+  <dt>
+    initContainers<span class="type">[]Container</span>
+  </dt>
+  <dd>List of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, Liveness probes, or Startup probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request&#x2f;limit for each resource type, and then using the max of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;pods&#x2f;init-containers&#x2f;</dd>
+  
+  
+  
+  <dt>
+    nodeName<span class="type">string</span>
+  </dt>
+  <dd>NodeName indicates in which node this pod is scheduled. If empty, this pod is a candidate for scheduling by the scheduler defined in schedulerName. Once this field is set, the kubelet for this node becomes responsible for the lifecycle of this pod. This field should not be used to express a desire for the pod to be scheduled on a specific node. https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;scheduling-eviction&#x2f;assign-pod-node&#x2f;#nodename</dd>
+  
+  
+  
+  <dt>
+    nodeSelector<span class="type">map[string]string</span>
+  </dt>
+  <dd>NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node&#x27;s labels for the pod to be scheduled on that node. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;configuration&#x2f;assign-pod-node&#x2f;</dd>
+  
+  
+  
+  <dt>
+    os<span class="type">PodOS</span>
+  </dt>
+  <dd>Specifies the OS of the containers in the pod. Some pod and container fields are restricted if this is set.
+
+If the OS field is set to linux, the following fields must be unset: -securityContext.windowsOptions
+
+If the OS field is set to windows, following fields must be unset: - spec.hostPID - spec.hostIPC - spec.hostUsers - spec.resources - spec.securityContext.appArmorProfile - spec.securityContext.seLinuxOptions - spec.securityContext.seccompProfile - spec.securityContext.fsGroup - spec.securityContext.fsGroupChangePolicy - spec.securityContext.sysctls - spec.shareProcessNamespace - spec.securityContext.runAsUser - spec.securityContext.runAsGroup - spec.securityContext.supplementalGroups - spec.securityContext.supplementalGroupsPolicy - spec.containers[*].securityContext.appArmorProfile - spec.containers[*].securityContext.seLinuxOptions - spec.containers[*].securityContext.seccompProfile - spec.containers[*].securityContext.capabilities - spec.containers[*].securityContext.readOnlyRootFilesystem - spec.containers[*].securityContext.privileged - spec.containers[*].securityContext.allowPrivilegeEscalation - spec.containers[*].securityContext.procMount - spec.containers[*].securityContext.runAsUser - spec.containers[*].securityContext.runAsGroup</dd>
+  
+  
+  
+  <dt>
+    overhead<span class="type">map[string]Quantity</span>
+  </dt>
+  <dd>Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. This field will be autopopulated at admission time by the RuntimeClass admission controller. If the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests. The RuntimeClass admission controller will reject Pod create requests which have the overhead already set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to the value defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as zero. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;enhancements&#x2f;keps&#x2f;sig-node&#x2f;688-pod-overhead&#x2f;README.md</dd>
+  
+  
+  
+  <dt>
+    preemptionPolicy<span class="type">string</span>
+  </dt>
+  <dd>PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.</dd>
+  
+  
+  
+  <dt>
+    priority<span class="type">integer</span>
+  </dt>
+  <dd>The priority value. Various system components use this field to find the priority of the pod. When Priority Admission Controller is enabled, it prevents users from setting this field. The admission controller populates this field from PriorityClassName. The higher the value, the higher the priority.</dd>
+  
+  
+  
+  <dt>
+    priorityClassName<span class="type">string</span>
+  </dt>
+  <dd>If specified, indicates the pod&#x27;s priority. &quot;system-node-critical&quot; and &quot;system-cluster-critical&quot; are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default.</dd>
+  
+  
+  
+  <dt>
+    readinessGates<span class="type">[]PodReadinessGate</span>
+  </dt>
+  <dd>If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to &quot;True&quot; More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;enhancements&#x2f;keps&#x2f;sig-network&#x2f;580-pod-readiness-gates</dd>
+  
+  
+  
+  <dt>
+    resourceClaims<span class="type">[]PodResourceClaim</span>
+  </dt>
+  <dd>ResourceClaims defines which ResourceClaims must be allocated and reserved before the Pod is allowed to start. The resources will be made available to those containers which consume them by name.
+
+This is a stable field but requires that the DynamicResourceAllocation feature gate is enabled.
+
+This field is immutable.</dd>
+  
+  
+  
+  <dt>
+    resources<span class="type">ResourceRequirements</span>
+  </dt>
+  <dd>Resources is the total amount of CPU and Memory resources required by all containers in the pod. It supports specifying Requests and Limits for &quot;cpu&quot;, &quot;memory&quot; and &quot;hugepages-&quot; resource names only. ResourceClaims are not supported.
+
+This field enables fine-grained control over resource allocation for the entire pod, allowing resource sharing among containers in a pod.
+
+This is an alpha field and requires enabling the PodLevelResources feature gate.</dd>
+  
+  
+  
+  <dt>
+    restartPolicy<span class="type">string</span>
+  </dt>
+  <dd>Restart policy for all containers within the pod. One of Always, OnFailure, Never. In some contexts, only a subset of those values may be permitted. Default to Always. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;pods&#x2f;pod-lifecycle&#x2f;#restart-policy</dd>
+  
+  
+  
+  <dt>
+    runtimeClassName<span class="type">string</span>
+  </dt>
+  <dd>RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which should be used to run this pod.  If no RuntimeClass resource matches the named class, the pod will not be run. If unset or empty, the &quot;legacy&quot; RuntimeClass will be used, which is an implicit class with an empty definition that uses the default runtime handler. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;enhancements&#x2f;keps&#x2f;sig-node&#x2f;585-runtime-class</dd>
+  
+  
+  
+  <dt>
+    schedulerName<span class="type">string</span>
+  </dt>
+  <dd>If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler.</dd>
+  
+  
+  
+  <dt>
+    schedulingGates<span class="type">[]PodSchedulingGate</span>
+  </dt>
+  <dd>SchedulingGates is an opaque list of values that if specified will block scheduling the pod. If schedulingGates is not empty, the pod will stay in the SchedulingGated state and the scheduler will not attempt to schedule the pod.
+
+SchedulingGates can only be set at pod creation time, and be removed only afterwards.</dd>
+  
+  
+  
+  <dt>
+    schedulingGroup<span class="type">PodSchedulingGroup</span>
+  </dt>
+  <dd>SchedulingGroup provides a reference to the immediate scheduling runtime grouping object that this Pod belongs to. This field is used by the scheduler to identify the group and apply the correct group scheduling policies. The association with a group also impacts other lifecycle aspects of a Pod that are relevant in a wider context of scheduling like preemption, resource attachment, etc. If not specified, the Pod is treated as a single unit in all of these aspects. The group object referenced by this field may not exist at the time the Pod is created. This field is immutable, but a group object with the same name may be recreated with different policies. Doing this during pod scheduling may result in the placement not conforming to the expected policies.</dd>
+  
+  
+  
+  <dt>
+    securityContext<span class="type">PodSecurityContext</span>
+  </dt>
+  <dd>SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field.</dd>
+  
+  
+  
+  <dt>
+    serviceAccount<span class="type">string</span>
+  </dt>
+  <dd>DeprecatedServiceAccount is a deprecated alias for ServiceAccountName. Deprecated: Use serviceAccountName instead.</dd>
+  
+  
+  
+  <dt>
+    serviceAccountName<span class="type">string</span>
+  </dt>
+  <dd>ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;tasks&#x2f;configure-pod-container&#x2f;configure-service-account&#x2f;</dd>
+  
+  
+  
+  <dt>
+    setHostnameAsFQDN<span class="type">boolean</span>
+  </dt>
+  <dd>If true the pod&#x27;s hostname will be configured as the pod&#x27;s FQDN, rather than the leaf name (the default). In Linux containers, this means setting the FQDN in the hostname field of the kernel (the nodename field of struct utsname). In Windows containers, this means setting the registry value of hostname for the registry key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters to FQDN. If a pod does not have FQDN, this has no effect. Default to false.</dd>
+  
+  
+  
+  <dt>
+    shareProcessNamespace<span class="type">boolean</span>
+  </dt>
+  <dd>Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Default to false.</dd>
+  
+  
+  
+  <dt>
+    subdomain<span class="type">string</span>
+  </dt>
+  <dd>If specified, the fully qualified Pod hostname will be &quot;&lt;hostname&gt;.&lt;subdomain&gt;.&lt;pod namespace&gt;.svc.&lt;cluster domain&gt;&quot;. If not specified, the pod will not have a domainname at all.</dd>
+  
+  
+  
+  <dt>
+    terminationGracePeriodSeconds<span class="type">integer</span>
+  </dt>
+  <dd>Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.</dd>
+  
+  
+  
+  <dt>
+    tolerations<span class="type">[]Toleration</span>
+  </dt>
+  <dd>If specified, the pod&#x27;s tolerations.</dd>
+  
+  
+  
+  <dt>
+    topologySpreadConstraints<span class="type">[]TopologySpreadConstraint</span>
+  </dt>
+  <dd>TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. All topologySpreadConstraints are ANDed.</dd>
+  
+  
+  
+  <dt>
+    volumes<span class="type">[]Volume</span>
+  </dt>
+  <dd>List of volumes that can be mounted by containers belonging to the pod. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;volumes</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="podstatus">
+    <h2 id="podstatus">PodStatus</h2>
+    
+    <p>PodStatus represents information about the status of a pod. Status may trail the actual state of a system, especially if the node that hosts the pod cannot contact the control plane.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    allocatedResources<span class="type">map[string]Quantity</span>
+  </dt>
+  <dd>AllocatedResources is the total requests allocated for this pod by the node. If pod-level requests are not set, this will be the total requests aggregated across containers in the pod.</dd>
+  
+  
+  
+  <dt>
+    conditions<span class="type">[]PodCondition</span>
+  </dt>
+  <dd>Current service state of pod. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;pods&#x2f;pod-lifecycle#pod-conditions</dd>
+  
+  
+  
+  <dt>
+    containerStatuses<span class="type">[]ContainerStatus</span>
+  </dt>
+  <dd>Statuses of containers in this pod. Each container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;pods&#x2f;pod-lifecycle#pod-and-container-status</dd>
+  
+  
+  
+  <dt>
+    ephemeralContainerStatuses<span class="type">[]ContainerStatus</span>
+  </dt>
+  <dd>Statuses for any ephemeral containers that have run in this pod. Each ephemeral container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;pods&#x2f;pod-lifecycle#pod-and-container-status</dd>
+  
+  
+  
+  <dt>
+    extendedResourceClaimStatus<span class="type">PodExtendedResourceClaimStatus</span>
+  </dt>
+  <dd>Status of extended resource claim backed by DRA.</dd>
+  
+  
+  
+  <dt>
+    hostIP<span class="type">string</span>
+  </dt>
+  <dd>hostIP holds the IP address of the host to which the pod is assigned. Empty if the pod has not started yet. A pod can be assigned to a node that has a problem in kubelet which in turns mean that HostIP will not be updated even if there is a node is assigned to pod</dd>
+  
+  
+  
+  <dt>
+    hostIPs<span class="type">[]HostIP</span>
+  </dt>
+  <dd>hostIPs holds the IP addresses allocated to the host. If this field is specified, the first entry must match the hostIP field. This list is empty if the pod has not started yet. A pod can be assigned to a node that has a problem in kubelet which in turns means that HostIPs will not be updated even if there is a node is assigned to this pod.</dd>
+  
+  
+  
+  <dt>
+    initContainerStatuses<span class="type">[]ContainerStatus</span>
+  </dt>
+  <dd>Statuses of init containers in this pod. The most recent successful non-restartable init container will have ready = true, the most recently started container will have startTime set. Each init container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;pods&#x2f;pod-lifecycle&#x2f;#pod-and-container-status</dd>
+  
+  
+  
+  <dt>
+    message<span class="type">string</span>
+  </dt>
+  <dd>A human readable message indicating details about why the pod is in this condition.</dd>
+  
+  
+  
+  <dt>
+    nodeAllocatableResourceClaimStatuses<span class="type">[]NodeAllocatableResourceClaimStatus</span>
+  </dt>
+  <dd>NodeAllocatableResourceClaimStatuses contains the status of node-allocatable resources that were allocated for this pod through DRA claims. This includes resources currently reported in v1.Node `status.allocatable` that are not extended resources (see https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;configuration&#x2f;manage-resources-containers&#x2f;#extended-resources). Examples include &quot;cpu&quot;, &quot;memory&quot;, &quot;ephemeral-storage&quot;, and hugepages.</dd>
+  
+  
+  
+  <dt>
+    nominatedNodeName<span class="type">string</span>
+  </dt>
+  <dd>nominatedNodeName is set only when this pod preempts other pods on the node, but it cannot be scheduled right away as preemption victims receive their graceful termination periods. This field does not guarantee that the pod will be scheduled on this node. Scheduler may decide to place the pod elsewhere if other nodes become available sooner. Scheduler may also decide to give the resources on this node to a higher priority pod that is created after preemption. As a result, this field may be different than PodSpec.nodeName when the pod is scheduled.</dd>
+  
+  
+  
+  <dt>
+    observedGeneration<span class="type">integer</span>
+  </dt>
+  <dd>If set, this represents the .metadata.generation that the pod status was set based upon. The PodObservedGenerationTracking feature gate must be enabled to use this field.</dd>
+  
+  
+  
+  <dt>
+    phase<span class="type">string</span>
+  </dt>
+  <dd>The phase of a Pod is a simple, high-level summary of where the Pod is in its lifecycle. The conditions array, the reason and message fields, and the individual container status arrays contain more detail about the pod&#x27;s status. There are five possible phase values:
+
+Pending: The pod has been accepted by the Kubernetes system, but one or more of the container images has not been created. This includes time before being scheduled as well as time spent downloading images over the network, which could take a while. Running: The pod has been bound to a node, and all of the containers have been created. At least one container is still running, or is in the process of starting or restarting. Succeeded: All containers in the pod have terminated in success, and will not be restarted. Failed: All containers in the pod have terminated, and at least one container has terminated in failure. The container either exited with non-zero status or was terminated by the system. Unknown: For some reason the state of the pod could not be obtained, typically due to an error in communicating with the host of the pod.
+
+More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;pods&#x2f;pod-lifecycle#pod-phase</dd>
+  
+  
+  
+  <dt>
+    podIP<span class="type">string</span>
+  </dt>
+  <dd>podIP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated.</dd>
+  
+  
+  
+  <dt>
+    podIPs<span class="type">[]PodIP</span>
+  </dt>
+  <dd>podIPs holds the IP addresses allocated to the pod. If this field is specified, the 0th entry must match the podIP field. Pods may be allocated at most 1 value for each of IPv4 and IPv6. This list is empty if no IPs have been allocated yet.</dd>
+  
+  
+  
+  <dt>
+    qosClass<span class="type">string</span>
+  </dt>
+  <dd>The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;pods&#x2f;pod-qos&#x2f;#quality-of-service-classes</dd>
+  
+  
+  
+  <dt>
+    reason<span class="type">string</span>
+  </dt>
+  <dd>A brief CamelCase message indicating details about why the pod is in this state. e.g. &#x27;Evicted&#x27;</dd>
+  
+  
+  
+  <dt>
+    resize<span class="type">string</span>
+  </dt>
+  <dd>Status of resources resize desired for pod&#x27;s containers. It is empty if no resources resize is pending. Any changes to container resources will automatically set this to &quot;Proposed&quot; Deprecated: Resize status is moved to two pod conditions PodResizePending and PodResizeInProgress. PodResizePending will track states where the spec has been resized, but the Kubelet has not yet allocated the resources. PodResizeInProgress will track in-progress resizes, and should be present whenever allocated resources != acknowledged resources.</dd>
+  
+  
+  
+  <dt>
+    resourceClaimStatuses<span class="type">[]PodResourceClaimStatus</span>
+  </dt>
+  <dd>Status of resource claims.</dd>
+  
+  
+  
+  <dt>
+    resources<span class="type">ResourceRequirements</span>
+  </dt>
+  <dd>Resources represents the compute resource requests and limits that have been applied at the pod level if pod-level requests or limits are set in PodSpec.Resources</dd>
+  
+  
+  
+  <dt>
+    startTime<span class="type">Time</span>
+  </dt>
+  <dd>RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">PodList</h2>
     
     <p>PodList is a list of Pods.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>PodList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/core/v1/pod/" aria-label="[]Pod type reference">[]Pod</a></span>
-      </dt>
-      <dd>List of pods. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>PodList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/core/v1/pod/" aria-label="[]Pod type reference">[]Pod</a></span>
+  </dt>
+  <dd>List of pods. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

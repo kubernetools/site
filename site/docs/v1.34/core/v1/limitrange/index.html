@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>LimitRange <span class="badge">core/v1</span></h1>
   
@@ -108,68 +109,93 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>LimitRange</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">LimitRangeSpec</span>
-      </dt>
-      <dd>Spec defines the limits enforced. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>LimitRange</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#limitrangespec" aria-label="LimitRangeSpec type reference">LimitRangeSpec</a></span>
+  </dt>
+  <dd>Spec defines the limits enforced. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="limitrangespec">
+    <h2 id="limitrangespec">LimitRangeSpec</h2>
+    
+    <p>LimitRangeSpec defines a min&#x2f;max usage limit for resources that match on kind.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    limits<span class="type">[]LimitRangeItem</span>
+  </dt>
+  <dd>Limits is the list of LimitRangeItem objects that are enforced.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">LimitRangeList</h2>
     
     <p>LimitRangeList is a list of LimitRange items.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>LimitRangeList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/core/v1/limitrange/" aria-label="[]LimitRange type reference">[]LimitRange</a></span>
-      </dt>
-      <dd>Items is a list of LimitRange objects. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;configuration&#x2f;manage-resources-containers&#x2f;</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>LimitRangeList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/core/v1/limitrange/" aria-label="[]LimitRange type reference">[]LimitRange</a></span>
+  </dt>
+  <dd>Items is a list of LimitRange objects. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;configuration&#x2f;manage-resources-containers&#x2f;</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>MutatingAdmissionPolicyBinding <span class="badge">admissionregistration.k8s.io/v1alpha1</span></h1>
   
@@ -120,68 +121,107 @@ Adding&#x2f;removing policies, bindings, or params can not affect whether a give
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>admissionregistration.k8s.io/v1alpha1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>MutatingAdmissionPolicyBinding</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>metadata is the standard object metadata; More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata.</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">MutatingAdmissionPolicyBindingSpec</span>
-      </dt>
-      <dd>spec defines the desired behavior of the MutatingAdmissionPolicyBinding.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>admissionregistration.k8s.io/v1alpha1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>MutatingAdmissionPolicyBinding</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>metadata is the standard object metadata; More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata.</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#mutatingadmissionpolicybindingspec" aria-label="MutatingAdmissionPolicyBindingSpec type reference">MutatingAdmissionPolicyBindingSpec</a></span>
+  </dt>
+  <dd>spec defines the desired behavior of the MutatingAdmissionPolicyBinding.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="mutatingadmissionpolicybindingspec">
+    <h2 id="mutatingadmissionpolicybindingspec">MutatingAdmissionPolicyBindingSpec</h2>
+    
+    <p>MutatingAdmissionPolicyBindingSpec is the specification of the MutatingAdmissionPolicyBinding.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    matchResources<span class="type">MatchResources</span>
+  </dt>
+  <dd>matchResources limits what resources match this binding and may be mutated by it. Note that if matchResources matches a resource, the resource must also match a policy&#x27;s matchConstraints and matchConditions before the resource may be mutated. When matchResources is unset, it does not constrain resource matching, and only the policy&#x27;s matchConstraints and matchConditions must match for the resource to be mutated. Additionally, matchResources.resourceRules are optional and do not constraint matching when unset. Note that this is differs from MutatingAdmissionPolicy matchConstraints, where resourceRules are required. The CREATE, UPDATE and CONNECT operations are allowed.  The DELETE operation may not be matched. &#x27;*&#x27; matches CREATE, UPDATE and CONNECT.</dd>
+  
+  
+  
+  <dt>
+    paramRef<span class="type">ParamRef</span>
+  </dt>
+  <dd>paramRef specifies the parameter resource used to configure the admission control policy. It should point to a resource of the type specified in spec.ParamKind of the bound MutatingAdmissionPolicy. If the policy specifies a ParamKind and the resource referred to by ParamRef does not exist, this binding is considered mis-configured and the FailurePolicy of the MutatingAdmissionPolicy applied. If the policy does not specify a ParamKind then this field is ignored, and the rules are evaluated without a param.</dd>
+  
+  
+  
+  <dt>
+    policyName<span class="type">string</span>
+  </dt>
+  <dd>policyName references a MutatingAdmissionPolicy name which the MutatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">MutatingAdmissionPolicyBindingList</h2>
     
     <p>MutatingAdmissionPolicyBindingList is a list of MutatingAdmissionPolicyBinding.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>admissionregistration.k8s.io/v1alpha1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>MutatingAdmissionPolicyBindingList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>metadata is the standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybinding/" aria-label="[]MutatingAdmissionPolicyBinding type reference">[]MutatingAdmissionPolicyBinding</a></span>
-      </dt>
-      <dd>List of PolicyBinding.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>admissionregistration.k8s.io/v1alpha1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>MutatingAdmissionPolicyBindingList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>metadata is the standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybinding/" aria-label="[]MutatingAdmissionPolicyBinding type reference">[]MutatingAdmissionPolicyBinding</a></span>
+  </dt>
+  <dd>List of PolicyBinding.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>DeviceClass <span class="badge">resource.k8s.io/v1</span></h1>
   
@@ -118,72 +119,115 @@ This is an alpha type and requires enabling the DynamicResourceAllocation featur
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>DeviceClass</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object metadata</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">DeviceClassSpec</span>
-      </dt>
-      <dd>Spec defines what can be allocated and how to configure it.
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>DeviceClass</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object metadata</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#deviceclassspec" aria-label="DeviceClassSpec type reference">DeviceClassSpec</a></span>
+  </dt>
+  <dd>Spec defines what can be allocated and how to configure it.
 
 This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation.
 
 Changing the spec automatically increments the metadata.generation number.</dd>
-      
-      
-    </dl>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="deviceclassspec">
+    <h2 id="deviceclassspec">DeviceClassSpec</h2>
+    
+    <p>DeviceClassSpec is used in a [DeviceClass] to define what can be allocated and how to configure it.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    config<span class="type">[]DeviceClassConfiguration</span>
+  </dt>
+  <dd>Config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver.
+
+They are passed to the driver, but are not considered while allocating the claim.</dd>
+  
+  
+  
+  <dt>
+    extendedResourceName<span class="type">string</span>
+  </dt>
+  <dd>ExtendedResourceName is the extended resource name for the devices of this class. The devices of this class can be used to satisfy a pod&#x27;s extended resource requests. It has the same format as the name of a pod&#x27;s extended resource. It should be unique among all the device classes in a cluster. If two device classes have the same name, then the class created later is picked to satisfy a pod&#x27;s extended resource requests. If two classes are created at the same time, then the name of the class lexicographically sorted first is picked.
+
+This is an alpha field.</dd>
+  
+  
+  
+  <dt>
+    selectors<span class="type">[]DeviceSelector</span>
+  </dt>
+  <dd>Each selector must be satisfied by a device which is claimed via this class.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">DeviceClassList</h2>
     
     <p>DeviceClassList is a collection of classes.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>DeviceClassList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/resource.k8s.io/v1beta2/deviceclass/" aria-label="[]DeviceClass type reference">[]DeviceClass</a></span>
-      </dt>
-      <dd>Items is the list of resource classes.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>DeviceClassList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/resource.k8s.io/v1beta2/deviceclass/" aria-label="[]DeviceClass type reference">[]DeviceClass</a></span>
+  </dt>
+  <dd>Items is the list of resource classes.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>Namespace <span class="badge">core/v1</span></h1>
   
@@ -108,75 +109,126 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>Namespace</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">NamespaceSpec</span>
-      </dt>
-      <dd>Spec defines the behavior of the Namespace. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">NamespaceStatus</span>
-      </dt>
-      <dd>Status describes the current status of a Namespace. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>Namespace</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#namespacespec" aria-label="NamespaceSpec type reference">NamespaceSpec</a></span>
+  </dt>
+  <dd>Spec defines the behavior of the Namespace. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#namespacestatus" aria-label="NamespaceStatus type reference">NamespaceStatus</a></span>
+  </dt>
+  <dd>Status describes the current status of a Namespace. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="namespacespec">
+    <h2 id="namespacespec">NamespaceSpec</h2>
+    
+    <p>NamespaceSpec describes the attributes on a Namespace.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    finalizers<span class="type">[]string</span>
+  </dt>
+  <dd>Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;tasks&#x2f;administer-cluster&#x2f;namespaces&#x2f;</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="namespacestatus">
+    <h2 id="namespacestatus">NamespaceStatus</h2>
+    
+    <p>NamespaceStatus is information about the current status of a Namespace.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    conditions<span class="type">[]NamespaceCondition</span>
+  </dt>
+  <dd>Represents the latest available observations of a namespace&#x27;s current state.</dd>
+  
+  
+  
+  <dt>
+    phase<span class="type">string</span>
+  </dt>
+  <dd>Phase is the current lifecycle phase of the namespace. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;tasks&#x2f;administer-cluster&#x2f;namespaces&#x2f;</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">NamespaceList</h2>
     
     <p>NamespaceList is a list of Namespaces.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>NamespaceList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/core/v1/namespace/" aria-label="[]Namespace type reference">[]Namespace</a></span>
-      </dt>
-      <dd>Items is the list of Namespace objects in the list. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;overview&#x2f;working-with-objects&#x2f;namespaces&#x2f;</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>NamespaceList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/core/v1/namespace/" aria-label="[]Namespace type reference">[]Namespace</a></span>
+  </dt>
+  <dd>Items is the list of Namespace objects in the list. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;overview&#x2f;working-with-objects&#x2f;namespaces&#x2f;</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

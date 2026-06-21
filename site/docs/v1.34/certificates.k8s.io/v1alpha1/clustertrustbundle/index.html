@@ -101,6 +101,7 @@ ClusterTrustBundle object">
   </header>
   <main>
     
+
 <article>
   <h1>ClusterTrustBundle <span class="badge">certificates.k8s.io/v1alpha1</span></h1>
   
@@ -120,68 +121,112 @@ It can be optionally associated with a particular assigner, in which case it con
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>certificates.k8s.io/v1alpha1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ClusterTrustBundle</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>metadata contains the object metadata.</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">ClusterTrustBundleSpec</span>
-      </dt>
-      <dd>spec contains the signer (if any) and trust anchors.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>certificates.k8s.io/v1alpha1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ClusterTrustBundle</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>metadata contains the object metadata.</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#clustertrustbundlespec" aria-label="ClusterTrustBundleSpec type reference">ClusterTrustBundleSpec</a></span>
+  </dt>
+  <dd>spec contains the signer (if any) and trust anchors.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="clustertrustbundlespec">
+    <h2 id="clustertrustbundlespec">ClusterTrustBundleSpec</h2>
+    
+    <p>ClusterTrustBundleSpec contains the signer and trust anchors.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    trustBundle<span class="type">string</span>
+  </dt>
+  <dd>trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.
+
+The data must consist only of PEM certificate blocks that parse as valid X.509 certificates.  Each certificate must include a basic constraints extension with the CA bit set.  The API server will reject objects that contain duplicate certificates, or that use PEM block headers.
+
+Users of ClusterTrustBundles, including Kubelet, are free to reorder and deduplicate certificate blocks in this file according to their own logic, as well as to drop PEM block headers and inter-block data.</dd>
+  
+  
+  
+  <dt>
+    signerName<span class="type">string</span>
+  </dt>
+  <dd>signerName indicates the associated signer, if any.
+
+In order to create or update a ClusterTrustBundle that sets signerName, you must have the following cluster-scoped permission: group=certificates.k8s.io resource=signers resourceName=&lt;the signer name&gt; verb=attest.
+
+If signerName is not empty, then the ClusterTrustBundle object must be named with the signer name as a prefix (translating slashes to colons). For example, for the signer name `example.com&#x2f;foo`, valid ClusterTrustBundle object names include `example.com:foo:abc` and `example.com:foo:v1`.
+
+If signerName is empty, then the ClusterTrustBundle object&#x27;s name must not have such a prefix.
+
+List&#x2f;watch requests for ClusterTrustBundles can filter on this field using a `spec.signerName=NAME` field selector.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">ClusterTrustBundleList</h2>
     
     <p>ClusterTrustBundleList is a collection of ClusterTrustBundle objects</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>certificates.k8s.io/v1alpha1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ClusterTrustBundleList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>metadata contains the list metadata.</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/certificates.k8s.io/v1beta1/clustertrustbundle/" aria-label="[]ClusterTrustBundle type reference">[]ClusterTrustBundle</a></span>
-      </dt>
-      <dd>items is a collection of ClusterTrustBundle objects</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>certificates.k8s.io/v1alpha1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ClusterTrustBundleList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>metadata contains the list metadata.</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/certificates.k8s.io/v1beta1/clustertrustbundle/" aria-label="[]ClusterTrustBundle type reference">[]ClusterTrustBundle</a></span>
+  </dt>
+  <dd>items is a collection of ClusterTrustBundle objects</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

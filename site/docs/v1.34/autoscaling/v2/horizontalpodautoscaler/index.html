@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>HorizontalPodAutoscaler <span class="badge">autoscaling/v2</span></h1>
   
@@ -114,75 +115,182 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>autoscaling/v2</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>HorizontalPodAutoscaler</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>metadata is the standard object metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">HorizontalPodAutoscalerSpec</span>
-      </dt>
-      <dd>spec is the specification for the behaviour of the autoscaler. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status.</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">HorizontalPodAutoscalerStatus</span>
-      </dt>
-      <dd>status is the current information about the autoscaler.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>autoscaling/v2</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>HorizontalPodAutoscaler</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>metadata is the standard object metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#horizontalpodautoscalerspec" aria-label="HorizontalPodAutoscalerSpec type reference">HorizontalPodAutoscalerSpec</a></span>
+  </dt>
+  <dd>spec is the specification for the behaviour of the autoscaler. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status.</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#horizontalpodautoscalerstatus" aria-label="HorizontalPodAutoscalerStatus type reference">HorizontalPodAutoscalerStatus</a></span>
+  </dt>
+  <dd>status is the current information about the autoscaler.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="horizontalpodautoscalerspec">
+    <h2 id="horizontalpodautoscalerspec">HorizontalPodAutoscalerSpec</h2>
+    
+    <p>HorizontalPodAutoscalerSpec describes the desired functionality of the HorizontalPodAutoscaler.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    maxReplicas<span class="type">integer</span>
+  </dt>
+  <dd>maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.</dd>
+  
+  
+  
+  <dt class="req">
+    scaleTargetRef<span class="type">CrossVersionObjectReference</span>
+  </dt>
+  <dd>scaleTargetRef points to the target resource to scale, and is used to the pods for which metrics should be collected, as well as to actually change the replica count.</dd>
+  
+  
+  
+  <dt>
+    behavior<span class="type">HorizontalPodAutoscalerBehavior</span>
+  </dt>
+  <dd>behavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively). If not set, the default HPAScalingRules for scale up and scale down are used.</dd>
+  
+  
+  
+  <dt>
+    metrics<span class="type">[]MetricSpec</span>
+  </dt>
+  <dd>metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used).  The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods.  Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the individual metric source types for more information about how each type of metric must respond. If not set, the default metric will be set to 80% average CPU utilization.</dd>
+  
+  
+  
+  <dt>
+    minReplicas<span class="type">integer</span>
+  </dt>
+  <dd>minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down.  It defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is enabled and at least one Object or External metric is configured.  Scaling is active as long as at least one metric value is available.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="horizontalpodautoscalerstatus">
+    <h2 id="horizontalpodautoscalerstatus">HorizontalPodAutoscalerStatus</h2>
+    
+    <p>HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    desiredReplicas<span class="type">integer</span>
+  </dt>
+  <dd>desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.</dd>
+  
+  
+  
+  <dt>
+    conditions<span class="type">[]HorizontalPodAutoscalerCondition</span>
+  </dt>
+  <dd>conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.</dd>
+  
+  
+  
+  <dt>
+    currentMetrics<span class="type">[]MetricStatus</span>
+  </dt>
+  <dd>currentMetrics is the last read state of the metrics used by this autoscaler.</dd>
+  
+  
+  
+  <dt>
+    currentReplicas<span class="type">integer</span>
+  </dt>
+  <dd>currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.</dd>
+  
+  
+  
+  <dt>
+    lastScaleTime<span class="type">Time</span>
+  </dt>
+  <dd>lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.</dd>
+  
+  
+  
+  <dt>
+    observedGeneration<span class="type">integer</span>
+  </dt>
+  <dd>observedGeneration is the most recent generation observed by this autoscaler.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">HorizontalPodAutoscalerList</h2>
     
     <p>HorizontalPodAutoscalerList is a list of horizontal pod autoscaler objects.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>autoscaling/v2</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>HorizontalPodAutoscalerList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>metadata is the standard list metadata.</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/autoscaling/v2/horizontalpodautoscaler/" aria-label="[]HorizontalPodAutoscaler type reference">[]HorizontalPodAutoscaler</a></span>
-      </dt>
-      <dd>items is the list of horizontal pod autoscaler objects.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>autoscaling/v2</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>HorizontalPodAutoscalerList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>metadata is the standard list metadata.</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/autoscaling/v2/horizontalpodautoscaler/" aria-label="[]HorizontalPodAutoscaler type reference">[]HorizontalPodAutoscaler</a></span>
+  </dt>
+  <dd>items is the list of horizontal pod autoscaler objects.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

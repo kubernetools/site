@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>RoleBinding <span class="badge">rbac.authorization.k8s.io/v1</span></h1>
   
@@ -108,75 +109,81 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>rbac.authorization.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>RoleBinding</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata.</dd>
-      
-      
-      
-      <dt class="req">
-        roleRef<span class="type">RoleRef</span>
-      </dt>
-      <dd>RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.</dd>
-      
-      
-      
-      <dt>
-        subjects<span class="type">[]Subject</span>
-      </dt>
-      <dd>Subjects holds references to the objects the role applies to.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>rbac.authorization.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>RoleBinding</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata.</dd>
+  
+  
+  
+  <dt class="req">
+    roleRef<span class="type">RoleRef</span>
+  </dt>
+  <dd>RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.</dd>
+  
+  
+  
+  <dt>
+    subjects<span class="type">[]Subject</span>
+  </dt>
+  <dd>Subjects holds references to the objects the role applies to.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">RoleBindingList</h2>
     
     <p>RoleBindingList is a collection of RoleBindings</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>rbac.authorization.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>RoleBindingList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata.</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.35/rbac.authorization.k8s.io/v1/rolebinding/" aria-label="[]RoleBinding type reference">[]RoleBinding</a></span>
-      </dt>
-      <dd>Items is a list of RoleBindings</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>rbac.authorization.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>RoleBindingList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata.</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.35/rbac.authorization.k8s.io/v1/rolebinding/" aria-label="[]RoleBinding type reference">[]RoleBinding</a></span>
+  </dt>
+  <dd>Items is a list of RoleBindings</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

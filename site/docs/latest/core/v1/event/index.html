@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>Event <span class="badge">core/v1</span></h1>
   
@@ -108,159 +109,165 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>Event</code></dd>
-      
-      
-      
-      <dt class="req">
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        involvedObject<span class="type">ObjectReference</span>
-      </dt>
-      <dd>The object that this event is about.</dd>
-      
-      
-      
-      <dt>
-        action<span class="type">string</span>
-      </dt>
-      <dd>What action was taken&#x2f;failed regarding to the Regarding object.</dd>
-      
-      
-      
-      <dt>
-        count<span class="type">integer</span>
-      </dt>
-      <dd>The number of times this event has occurred.</dd>
-      
-      
-      
-      <dt>
-        eventTime<span class="type">MicroTime</span>
-      </dt>
-      <dd>Time when this Event was first observed.</dd>
-      
-      
-      
-      <dt>
-        firstTimestamp<span class="type">Time</span>
-      </dt>
-      <dd>The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)</dd>
-      
-      
-      
-      <dt>
-        lastTimestamp<span class="type">Time</span>
-      </dt>
-      <dd>The time at which the most recent occurrence of this event was recorded.</dd>
-      
-      
-      
-      <dt>
-        message<span class="type">string</span>
-      </dt>
-      <dd>A human-readable description of the status of this operation.</dd>
-      
-      
-      
-      <dt>
-        reason<span class="type">string</span>
-      </dt>
-      <dd>This should be a short, machine understandable string that gives the reason for the transition into the object&#x27;s current status.</dd>
-      
-      
-      
-      <dt>
-        related<span class="type">ObjectReference</span>
-      </dt>
-      <dd>Optional secondary object for more complex actions.</dd>
-      
-      
-      
-      <dt>
-        reportingComponent<span class="type">string</span>
-      </dt>
-      <dd>Name of the controller that emitted this Event, e.g. `kubernetes.io&#x2f;kubelet`.</dd>
-      
-      
-      
-      <dt>
-        reportingInstance<span class="type">string</span>
-      </dt>
-      <dd>ID of the controller instance, e.g. `kubelet-xyzf`.</dd>
-      
-      
-      
-      <dt>
-        series<span class="type">EventSeries</span>
-      </dt>
-      <dd>Data about the Event series this event represents or nil if it&#x27;s a singleton Event.</dd>
-      
-      
-      
-      <dt>
-        source<span class="type">EventSource</span>
-      </dt>
-      <dd>The component reporting this event. Should be a short machine understandable string.</dd>
-      
-      
-      
-      <dt>
-        type<span class="type">string</span>
-      </dt>
-      <dd>Type of this event (Normal, Warning), new types could be added in the future</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>Event</code></dd>
+  
+  
+  
+  <dt class="req">
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    involvedObject<span class="type">ObjectReference</span>
+  </dt>
+  <dd>The object that this event is about.</dd>
+  
+  
+  
+  <dt>
+    action<span class="type">string</span>
+  </dt>
+  <dd>What action was taken&#x2f;failed regarding to the Regarding object.</dd>
+  
+  
+  
+  <dt>
+    count<span class="type">integer</span>
+  </dt>
+  <dd>The number of times this event has occurred.</dd>
+  
+  
+  
+  <dt>
+    eventTime<span class="type">MicroTime</span>
+  </dt>
+  <dd>Time when this Event was first observed.</dd>
+  
+  
+  
+  <dt>
+    firstTimestamp<span class="type">Time</span>
+  </dt>
+  <dd>The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)</dd>
+  
+  
+  
+  <dt>
+    lastTimestamp<span class="type">Time</span>
+  </dt>
+  <dd>The time at which the most recent occurrence of this event was recorded.</dd>
+  
+  
+  
+  <dt>
+    message<span class="type">string</span>
+  </dt>
+  <dd>A human-readable description of the status of this operation.</dd>
+  
+  
+  
+  <dt>
+    reason<span class="type">string</span>
+  </dt>
+  <dd>This should be a short, machine understandable string that gives the reason for the transition into the object&#x27;s current status.</dd>
+  
+  
+  
+  <dt>
+    related<span class="type">ObjectReference</span>
+  </dt>
+  <dd>Optional secondary object for more complex actions.</dd>
+  
+  
+  
+  <dt>
+    reportingComponent<span class="type">string</span>
+  </dt>
+  <dd>Name of the controller that emitted this Event, e.g. `kubernetes.io&#x2f;kubelet`.</dd>
+  
+  
+  
+  <dt>
+    reportingInstance<span class="type">string</span>
+  </dt>
+  <dd>ID of the controller instance, e.g. `kubelet-xyzf`.</dd>
+  
+  
+  
+  <dt>
+    series<span class="type">EventSeries</span>
+  </dt>
+  <dd>Data about the Event series this event represents or nil if it&#x27;s a singleton Event.</dd>
+  
+  
+  
+  <dt>
+    source<span class="type">EventSource</span>
+  </dt>
+  <dd>The component reporting this event. Should be a short machine understandable string.</dd>
+  
+  
+  
+  <dt>
+    type<span class="type">string</span>
+  </dt>
+  <dd>Type of this event (Normal, Warning), new types could be added in the future</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">EventList</h2>
     
     <p>EventList is a list of events.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>EventList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/events.k8s.io/v1/event/" aria-label="[]Event type reference">[]Event</a></span>
-      </dt>
-      <dd>List of events</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>EventList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/events.k8s.io/v1/event/" aria-label="[]Event type reference">[]Event</a></span>
+  </dt>
+  <dd>List of events</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

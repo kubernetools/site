@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>ResourceSlice <span class="badge">resource.k8s.io/v1</span></h1>
   
@@ -126,70 +127,164 @@ This is an alpha type and requires enabling the DynamicResourceAllocation featur
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ResourceSlice</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object metadata</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">ResourceSliceSpec</span>
-      </dt>
-      <dd>Contains the information published by the driver.
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ResourceSlice</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object metadata</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#resourceslicespec" aria-label="ResourceSliceSpec type reference">ResourceSliceSpec</a></span>
+  </dt>
+  <dd>Contains the information published by the driver.
 
 Changing the spec automatically increments the metadata.generation number.</dd>
-      
-      
-    </dl>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="resourceslicespec">
+    <h2 id="resourceslicespec">ResourceSliceSpec</h2>
+    
+    <p>ResourceSliceSpec contains the information published by the driver in one ResourceSlice.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    driver<span class="type">string</span>
+  </dt>
+  <dd>Driver identifies the DRA driver providing the capacity information. A field selector can be used to list only ResourceSlice objects with a certain driver name.
+
+Must be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. This field is immutable.</dd>
+  
+  
+  
+  <dt class="req">
+    pool<span class="type">ResourcePool</span>
+  </dt>
+  <dd>Pool describes the pool that this ResourceSlice belongs to.</dd>
+  
+  
+  
+  <dt>
+    allNodes<span class="type">boolean</span>
+  </dt>
+  <dd>AllNodes indicates that all nodes have access to the resources in the pool.
+
+Exactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set.</dd>
+  
+  
+  
+  <dt>
+    devices<span class="type">[]Device</span>
+  </dt>
+  <dd>Devices lists some or all of the devices in this pool.
+
+Must not have more than 128 entries.</dd>
+  
+  
+  
+  <dt>
+    nodeName<span class="type">string</span>
+  </dt>
+  <dd>NodeName identifies the node which provides the resources in this pool. A field selector can be used to list only ResourceSlice objects belonging to a certain node.
+
+This field can be used to limit access from nodes to ResourceSlices with the same node name. It also indicates to autoscalers that adding new nodes of the same type as some old node might also make new resources available.
+
+Exactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set. This field is immutable.</dd>
+  
+  
+  
+  <dt>
+    nodeSelector<span class="type">NodeSelector</span>
+  </dt>
+  <dd>NodeSelector defines which nodes have access to the resources in the pool, when that pool is not limited to a single node.
+
+Must use exactly one term.
+
+Exactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set.</dd>
+  
+  
+  
+  <dt>
+    perDeviceNodeSelection<span class="type">boolean</span>
+  </dt>
+  <dd>PerDeviceNodeSelection defines whether the access from nodes to resources in the pool is set on the ResourceSlice level or on each device. If it is set to true, every device defined the ResourceSlice must specify this individually.
+
+Exactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set.</dd>
+  
+  
+  
+  <dt>
+    sharedCounters<span class="type">[]CounterSet</span>
+  </dt>
+  <dd>SharedCounters defines a list of counter sets, each of which has a name and a list of counters available.
+
+The names of the SharedCounters must be unique in the ResourceSlice.
+
+The maximum number of counters in all sets is 32.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">ResourceSliceList</h2>
     
     <p>ResourceSliceList is a collection of ResourceSlices.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ResourceSliceList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/resource.k8s.io/v1beta2/resourceslice/" aria-label="[]ResourceSlice type reference">[]ResourceSlice</a></span>
-      </dt>
-      <dd>Items is the list of resource ResourceSlices.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ResourceSliceList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/resource.k8s.io/v1beta2/resourceslice/" aria-label="[]ResourceSlice type reference">[]ResourceSlice</a></span>
+  </dt>
+  <dd>Items is the list of resource ResourceSlices.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

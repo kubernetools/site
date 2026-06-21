@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>DeviceTaintRule <span class="badge">resource.k8s.io/v1alpha3</span></h1>
   
@@ -108,70 +109,102 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1alpha3</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>DeviceTaintRule</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object metadata</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">DeviceTaintRuleSpec</span>
-      </dt>
-      <dd>Spec specifies the selector and one taint.
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1alpha3</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>DeviceTaintRule</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object metadata</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#devicetaintrulespec" aria-label="DeviceTaintRuleSpec type reference">DeviceTaintRuleSpec</a></span>
+  </dt>
+  <dd>Spec specifies the selector and one taint.
 
 Changing the spec automatically increments the metadata.generation number.</dd>
-      
-      
-    </dl>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="devicetaintrulespec">
+    <h2 id="devicetaintrulespec">DeviceTaintRuleSpec</h2>
+    
+    <p>DeviceTaintRuleSpec specifies the selector and one taint.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    taint<span class="type">DeviceTaint</span>
+  </dt>
+  <dd>The taint that gets applied to matching devices.</dd>
+  
+  
+  
+  <dt>
+    deviceSelector<span class="type">DeviceTaintSelector</span>
+  </dt>
+  <dd>DeviceSelector defines which device(s) the taint is applied to. All selector criteria must be satified for a device to match. The empty selector matches all devices. Without a selector, no devices are matches.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">DeviceTaintRuleList</h2>
     
     <p>DeviceTaintRuleList is a collection of DeviceTaintRules.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1alpha3</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>DeviceTaintRuleList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.33/resource.k8s.io/v1alpha3/devicetaintrule/" aria-label="[]DeviceTaintRule type reference">[]DeviceTaintRule</a></span>
-      </dt>
-      <dd>Items is the list of DeviceTaintRules.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1alpha3</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>DeviceTaintRuleList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.33/resource.k8s.io/v1alpha3/devicetaintrule/" aria-label="[]DeviceTaintRule type reference">[]DeviceTaintRule</a></span>
+  </dt>
+  <dd>Items is the list of DeviceTaintRules.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

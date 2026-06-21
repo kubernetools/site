@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>ResourceClaim <span class="badge">resource.k8s.io/v1</span></h1>
   
@@ -118,75 +119,139 @@ This is an alpha type and requires enabling the DynamicResourceAllocation featur
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ResourceClaim</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object metadata</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">ResourceClaimSpec</span>
-      </dt>
-      <dd>Spec describes what is being requested and how to configure it. The spec is immutable.</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">ResourceClaimStatus</span>
-      </dt>
-      <dd>Status describes whether the claim is ready to use and what has been allocated.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ResourceClaim</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object metadata</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#resourceclaimspec" aria-label="ResourceClaimSpec type reference">ResourceClaimSpec</a></span>
+  </dt>
+  <dd>Spec describes what is being requested and how to configure it. The spec is immutable.</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#resourceclaimstatus" aria-label="ResourceClaimStatus type reference">ResourceClaimStatus</a></span>
+  </dt>
+  <dd>Status describes whether the claim is ready to use and what has been allocated.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="resourceclaimspec">
+    <h2 id="resourceclaimspec">ResourceClaimSpec</h2>
+    
+    <p>ResourceClaimSpec defines what is being requested in a ResourceClaim and how to configure it.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    devices<span class="type">DeviceClaim</span>
+  </dt>
+  <dd>Devices defines how to request devices.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="resourceclaimstatus">
+    <h2 id="resourceclaimstatus">ResourceClaimStatus</h2>
+    
+    <p>ResourceClaimStatus tracks whether the resource has been allocated and what the result of that was.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    allocation<span class="type">AllocationResult</span>
+  </dt>
+  <dd>Allocation is set once the claim has been allocated successfully.</dd>
+  
+  
+  
+  <dt>
+    devices<span class="type">[]AllocatedDeviceStatus</span>
+  </dt>
+  <dd>Devices contains the status of each device allocated for this claim, as reported by the driver. This can include driver-specific information. Entries are owned by their respective drivers.</dd>
+  
+  
+  
+  <dt>
+    reservedFor<span class="type">[]ResourceClaimConsumerReference</span>
+  </dt>
+  <dd>ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated.
+
+In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled.
+
+Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again.
+
+There can be at most 256 such reservations. This may get increased in the future, but not reduced.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">ResourceClaimList</h2>
     
     <p>ResourceClaimList is a collection of claims.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>resource.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>ResourceClaimList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.35/resource.k8s.io/v1beta2/resourceclaim/" aria-label="[]ResourceClaim type reference">[]ResourceClaim</a></span>
-      </dt>
-      <dd>Items is the list of resource claims.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>resource.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>ResourceClaimList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.35/resource.k8s.io/v1beta2/resourceclaim/" aria-label="[]ResourceClaim type reference">[]ResourceClaim</a></span>
+  </dt>
+  <dd>Items is the list of resource claims.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

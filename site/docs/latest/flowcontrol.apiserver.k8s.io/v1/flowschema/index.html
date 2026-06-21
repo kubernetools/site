@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>FlowSchema <span class="badge">flowcontrol.apiserver.k8s.io/v1</span></h1>
   
@@ -108,75 +109,140 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>flowcontrol.apiserver.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>FlowSchema</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>`metadata` is the standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        spec<span class="type">FlowSchemaSpec</span>
-      </dt>
-      <dd>`spec` is the specification of the desired behavior of a FlowSchema. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">FlowSchemaStatus</span>
-      </dt>
-      <dd>`status` is the current status of a FlowSchema. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>flowcontrol.apiserver.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>FlowSchema</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>`metadata` is the standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    spec<span class="type"><a href="#flowschemaspec" aria-label="FlowSchemaSpec type reference">FlowSchemaSpec</a></span>
+  </dt>
+  <dd>`spec` is the specification of the desired behavior of a FlowSchema. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#flowschemastatus" aria-label="FlowSchemaStatus type reference">FlowSchemaStatus</a></span>
+  </dt>
+  <dd>`status` is the current status of a FlowSchema. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="flowschemaspec">
+    <h2 id="flowschemaspec">FlowSchemaSpec</h2>
+    
+    <p>FlowSchemaSpec describes how the FlowSchema&#x27;s specification looks like.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    priorityLevelConfiguration<span class="type">PriorityLevelConfigurationReference</span>
+  </dt>
+  <dd>`priorityLevelConfiguration` should reference a PriorityLevelConfiguration in the cluster. If the reference cannot be resolved, the FlowSchema will be ignored and marked as invalid in its status. Required.</dd>
+  
+  
+  
+  <dt>
+    distinguisherMethod<span class="type">FlowDistinguisherMethod</span>
+  </dt>
+  <dd>`distinguisherMethod` defines how to compute the flow distinguisher for requests that match this schema. `nil` specifies that the distinguisher is disabled and thus will always be the empty string.</dd>
+  
+  
+  
+  <dt>
+    matchingPrecedence<span class="type">integer</span>
+  </dt>
+  <dd>`matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The chosen FlowSchema is among those with the numerically lowest (which we take to be logically highest) MatchingPrecedence.  Each MatchingPrecedence value must be ranged in [1,10000]. Note that if the precedence is not specified, it will be set to 1000 as default.</dd>
+  
+  
+  
+  <dt>
+    rules<span class="type">[]PolicyRulesWithSubjects</span>
+  </dt>
+  <dd>`rules` describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="flowschemastatus">
+    <h2 id="flowschemastatus">FlowSchemaStatus</h2>
+    
+    <p>FlowSchemaStatus represents the current state of a FlowSchema.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    conditions<span class="type">[]FlowSchemaCondition</span>
+  </dt>
+  <dd>`conditions` is a list of the current states of FlowSchema.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">FlowSchemaList</h2>
     
     <p>FlowSchemaList is a list of FlowSchema objects.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>flowcontrol.apiserver.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>FlowSchemaList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>`metadata` is the standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/latest/flowcontrol.apiserver.k8s.io/v1/flowschema/" aria-label="[]FlowSchema type reference">[]FlowSchema</a></span>
-      </dt>
-      <dd>`items` is a list of FlowSchemas.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>flowcontrol.apiserver.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>FlowSchemaList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>`metadata` is the standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/latest/flowcontrol.apiserver.k8s.io/v1/flowschema/" aria-label="[]FlowSchema type reference">[]FlowSchema</a></span>
+  </dt>
+  <dd>`items` is a list of FlowSchemas.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

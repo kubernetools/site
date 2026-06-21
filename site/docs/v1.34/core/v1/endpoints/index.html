@@ -104,6 +104,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>Endpoints <span class="badge">core/v1</span></h1>
   
@@ -129,68 +130,74 @@ Deprecated: This API is deprecated in v1.33+. Use discoveryv1.EndpointSlice.</p>
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>Endpoints</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt>
-        subsets<span class="type">[]EndpointSubset</span>
-      </dt>
-      <dd>The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>Endpoints</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt>
+    subsets<span class="type">[]EndpointSubset</span>
+  </dt>
+  <dd>The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">EndpointsList</h2>
     
     <p>EndpointsList is a list of endpoints. Deprecated: This API is deprecated in v1.33+.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>EndpointsList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.34/core/v1/endpoints/" aria-label="[]Endpoints type reference">[]Endpoints</a></span>
-      </dt>
-      <dd>List of endpoints.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>EndpointsList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.34/core/v1/endpoints/" aria-label="[]Endpoints type reference">[]Endpoints</a></span>
+  </dt>
+  <dd>List of endpoints.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>

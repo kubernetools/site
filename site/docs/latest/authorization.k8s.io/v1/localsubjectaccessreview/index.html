@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>LocalSubjectAccessReview <span class="badge">authorization.k8s.io/v1</span></h1>
   
@@ -108,42 +109,140 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>authorization.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>LocalSubjectAccessReview</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>metadata is the standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">SubjectAccessReviewSpec</span>
-      </dt>
-      <dd>spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">SubjectAccessReviewStatus</span>
-      </dt>
-      <dd>status is filled in by the server and indicates whether the request is allowed or not</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>authorization.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>LocalSubjectAccessReview</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>metadata is the standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#localsubjectaccessreviewspec" aria-label="SubjectAccessReviewSpec type reference">SubjectAccessReviewSpec</a></span>
+  </dt>
+  <dd>spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#localsubjectaccessreviewstatus" aria-label="SubjectAccessReviewStatus type reference">SubjectAccessReviewStatus</a></span>
+  </dt>
+  <dd>status is filled in by the server and indicates whether the request is allowed or not</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="localsubjectaccessreviewspec">
+    <h2 id="localsubjectaccessreviewspec">LocalSubjectAccessReviewSpec</h2>
+    
+    <p>SubjectAccessReviewSpec is a description of the access request.  Exactly one of resourceAttributes and nonResourceAttributes must be set</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    extra<span class="type">map[string][]string</span>
+  </dt>
+  <dd>extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.</dd>
+  
+  
+  
+  <dt>
+    groups<span class="type">[]string</span>
+  </dt>
+  <dd>groups is the groups you&#x27;re testing for.</dd>
+  
+  
+  
+  <dt>
+    nonResourceAttributes<span class="type">NonResourceAttributes</span>
+  </dt>
+  <dd>nonResourceAttributes describes information for a non-resource access request</dd>
+  
+  
+  
+  <dt>
+    resourceAttributes<span class="type">ResourceAttributes</span>
+  </dt>
+  <dd>resourceAttributes describes information for a resource access request</dd>
+  
+  
+  
+  <dt>
+    uid<span class="type">string</span>
+  </dt>
+  <dd>uid information about the requesting user.</dd>
+  
+  
+  
+  <dt>
+    user<span class="type">string</span>
+  </dt>
+  <dd>user is the user you&#x27;re testing for. If you specify &quot;User&quot; but not &quot;Groups&quot;, then is it interpreted as &quot;What if User were not a member of any groups</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="localsubjectaccessreviewstatus">
+    <h2 id="localsubjectaccessreviewstatus">LocalSubjectAccessReviewStatus</h2>
+    
+    <p>SubjectAccessReviewStatus</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    allowed<span class="type">boolean</span>
+  </dt>
+  <dd>allowed is required. True if the action would be allowed, false otherwise.</dd>
+  
+  
+  
+  <dt>
+    denied<span class="type">boolean</span>
+  </dt>
+  <dd>denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.</dd>
+  
+  
+  
+  <dt>
+    evaluationError<span class="type">string</span>
+  </dt>
+  <dd>evaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.</dd>
+  
+  
+  
+  <dt>
+    reason<span class="type">string</span>
+  </dt>
+  <dd>reason is optional.  It indicates why a request was allowed or denied.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
 </article>
 

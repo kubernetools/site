@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>TokenReview <span class="badge">authentication.k8s.io/v1</span></h1>
   
@@ -108,42 +109,112 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>authentication.k8s.io/v1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>TokenReview</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">TokenReviewSpec</span>
-      </dt>
-      <dd>Spec holds information about the request being evaluated</dd>
-      
-      
-      
-      <dt>
-        status<span class="type">TokenReviewStatus</span>
-      </dt>
-      <dd>Status is filled in by the server and indicates whether the request can be authenticated.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>authentication.k8s.io/v1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>TokenReview</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#tokenreviewspec" aria-label="TokenReviewSpec type reference">TokenReviewSpec</a></span>
+  </dt>
+  <dd>Spec holds information about the request being evaluated</dd>
+  
+  
+  
+  <dt>
+    status<span class="type"><a href="#tokenreviewstatus" aria-label="TokenReviewStatus type reference">TokenReviewStatus</a></span>
+  </dt>
+  <dd>Status is filled in by the server and indicates whether the request can be authenticated.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="tokenreviewspec">
+    <h2 id="tokenreviewspec">TokenReviewSpec</h2>
+    
+    <p>TokenReviewSpec is a description of the token authentication request.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    audiences<span class="type">[]string</span>
+  </dt>
+  <dd>Audiences is a list of the identifiers that the resource server presented with the token identifies as. Audience-aware token authenticators will verify that the token was intended for at least one of the audiences in this list. If no audiences are provided, the audience will default to the audience of the Kubernetes apiserver.</dd>
+  
+  
+  
+  <dt>
+    token<span class="type">string</span>
+  </dt>
+  <dd>Token is the opaque bearer token.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
+  <section aria-labelledby="tokenreviewstatus">
+    <h2 id="tokenreviewstatus">TokenReviewStatus</h2>
+    
+    <p>TokenReviewStatus is the result of the token authentication request.</p>
+    
+    
+<dl>
+  
+  
+  <dt>
+    audiences<span class="type">[]string</span>
+  </dt>
+  <dd>Audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token&#x27;s audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is &quot;true&quot;, the token is valid against the audience of the Kubernetes API server.</dd>
+  
+  
+  
+  <dt>
+    authenticated<span class="type">boolean</span>
+  </dt>
+  <dd>Authenticated indicates that the token was associated with a known user.</dd>
+  
+  
+  
+  <dt>
+    error<span class="type">string</span>
+  </dt>
+  <dd>Error indicates that the token couldn&#x27;t be checked</dd>
+  
+  
+  
+  <dt>
+    user<span class="type">UserInfo</span>
+  </dt>
+  <dd>User is the UserInfo associated with the provided token.</dd>
+  
+  
+</dl>
+
+  </section>
+  
   
 </article>
 

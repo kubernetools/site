@@ -99,6 +99,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>Workload <span class="badge">scheduling.k8s.io/v1alpha1</span></h1>
   
@@ -108,68 +109,100 @@
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>scheduling.k8s.io/v1alpha1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>Workload</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ObjectMeta</span>
-      </dt>
-      <dd>Standard object&#x27;s metadata. Name must be a DNS subdomain.</dd>
-      
-      
-      
-      <dt class="req">
-        spec<span class="type">WorkloadSpec</span>
-      </dt>
-      <dd>Spec defines the desired behavior of a Workload.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>scheduling.k8s.io/v1alpha1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>Workload</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ObjectMeta</span>
+  </dt>
+  <dd>Standard object&#x27;s metadata. Name must be a DNS subdomain.</dd>
+  
+  
+  
+  <dt class="req">
+    spec<span class="type"><a href="#workloadspec" aria-label="WorkloadSpec type reference">WorkloadSpec</a></span>
+  </dt>
+  <dd>Spec defines the desired behavior of a Workload.</dd>
+  
+  
+</dl>
+
     
   </section>
+  
+  <section aria-labelledby="workloadspec">
+    <h2 id="workloadspec">WorkloadSpec</h2>
+    
+    <p>WorkloadSpec defines the desired state of a Workload.</p>
+    
+    
+<dl>
+  
+  
+  <dt class="req">
+    podGroups<span class="type">[]PodGroup</span>
+  </dt>
+  <dd>PodGroups is the list of pod groups that make up the Workload. The maximum number of pod groups is 8. This field is immutable.</dd>
+  
+  
+  
+  <dt>
+    controllerRef<span class="type">TypedLocalObjectReference</span>
+  </dt>
+  <dd>ControllerRef is an optional reference to the controlling object, such as a Deployment or Job. This field is intended for use by tools like CLIs to provide a link back to the original workload definition. When set, it cannot be changed.</dd>
+  
+  
+</dl>
+
+  </section>
+  
+  
   
   <section aria-labelledby="list-heading">
     <h2 id="list-heading">WorkloadList</h2>
     
     <p>WorkloadList contains a list of Workload resources.</p>
     
-    <dl>
-      
-      
-      <dt>apiVersion</dt>
-      <dd><code>scheduling.k8s.io/v1alpha1</code></dd>
-      
-      
-      
-      <dt>kind</dt>
-      <dd><code>WorkloadList</code></dd>
-      
-      
-      
-      <dt>
-        metadata<span class="type">ListMeta</span>
-      </dt>
-      <dd>Standard list metadata.</dd>
-      
-      
-      
-      <dt class="req">
-        items<span class="type"><a href="/docs/v1.35/scheduling.k8s.io/v1alpha1/workload/" aria-label="[]Workload type reference">[]Workload</a></span>
-      </dt>
-      <dd>Items is the list of Workloads.</dd>
-      
-      
-    </dl>
+    
+<dl>
+  
+  
+  <dt>apiVersion</dt>
+  <dd><code>scheduling.k8s.io/v1alpha1</code></dd>
+  
+  
+  
+  <dt>kind</dt>
+  <dd><code>WorkloadList</code></dd>
+  
+  
+  
+  <dt>
+    metadata<span class="type">ListMeta</span>
+  </dt>
+  <dd>Standard list metadata.</dd>
+  
+  
+  
+  <dt class="req">
+    items<span class="type"><a href="/docs/v1.35/scheduling.k8s.io/v1alpha1/workload/" aria-label="[]Workload type reference">[]Workload</a></span>
+  </dt>
+  <dd>Items is the list of Workloads.</dd>
+  
+  
+</dl>
+
   </section>
   
 </article>
