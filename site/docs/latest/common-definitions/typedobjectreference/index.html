@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Common Definitions &mdash; Kubernetes v1.34 | Kubernetes API Reference</title>
-  <meta name="description" content="Common type definitions shared across Kubernetes v1.34 API resources">
-  <link rel="canonical" href="/docs/latest/common-definitions/">
+  <title>TypedObjectReference &mdash; Kubernetes v1.36 (latest) | Kubernetes API Reference</title>
+  <meta name="description" content="Kubernetes TypedObjectReference common definition for v1.36. TypedObjectReference contains enough information to let you locate the typed referenced object">
+  <link rel="canonical" href="/docs/latest/common-definitions/typedobjectreference/">
   <script type="application/ld+json">{}</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -78,13 +78,19 @@
         
         <li>
           
-            <a href="/docs/v1.34/">v1.34</a>
+            <a href="/docs/latest/">v1.36 (latest)</a>
           
         </li>
         
         <li>
           
-            <span aria-current="page">Common Definitions</span>
+            <a href="/docs/latest/common-definitions/">Common Definitions</a>
+          
+        </li>
+        
+        <li>
+          
+            <span aria-current="page">TypedObjectReference</span>
           
         </li>
         
@@ -93,30 +99,40 @@
   </header>
   <main>
     
-<h1>Common Definitions <span class="badge">v1.34</span></h1>
-<nav aria-label="Common definitions">
-  <ul>
+<article>
+  <h1>TypedObjectReference</h1>
+  
+  <p>TypedObjectReference contains enough information to let you locate the typed referenced object</p>
+  
+  <section aria-labelledby="fields-heading">
+    <h2 id="fields-heading">Fields</h2>
     
-    <li><a href="/docs/v1.34/common-definitions/crossversionobjectreference/">CrossVersionObjectReference</a></li>
+    <dl>
+      
+      <dt class="req">
+        kind<span class="type">string</span>
+      </dt>
+      <dd>Kind is the type of resource being referenced</dd>
+      
+      <dt class="req">
+        name<span class="type">string</span>
+      </dt>
+      <dd>Name is the name of resource being referenced</dd>
+      
+      <dt>
+        apiGroup<span class="type">string</span>
+      </dt>
+      <dd>APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.</dd>
+      
+      <dt>
+        namespace<span class="type">string</span>
+      </dt>
+      <dd>Namespace is the namespace of resource being referenced Note that when a namespace is specified, a gateway.networking.k8s.io&#x2f;ReferenceGrant object is required in the referent namespace to allow that namespace&#x27;s owner to accept the reference. See the ReferenceGrant documentation for details. (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.</dd>
+      
+    </dl>
     
-    <li><a href="/docs/v1.34/common-definitions/labelselector/">LabelSelector</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/listmeta/">ListMeta</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/localobjectreference/">LocalObjectReference</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/objectmeta/">ObjectMeta</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/objectreference/">ObjectReference</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/quantity/">Quantity</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/typedlocalobjectreference/">TypedLocalObjectReference</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/typedobjectreference/">TypedObjectReference</a></li>
-    
-  </ul>
-</nav>
+  </section>
+</article>
 
   </main>
   <footer>

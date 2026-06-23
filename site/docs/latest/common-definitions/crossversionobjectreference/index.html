@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Common Definitions &mdash; Kubernetes v1.34 | Kubernetes API Reference</title>
-  <meta name="description" content="Common type definitions shared across Kubernetes v1.34 API resources">
-  <link rel="canonical" href="/docs/latest/common-definitions/">
+  <title>CrossVersionObjectReference &mdash; Kubernetes v1.36 (latest) | Kubernetes API Reference</title>
+  <meta name="description" content="Kubernetes CrossVersionObjectReference common definition for v1.36. CrossVersionObjectReference contains enough information to let you identify the referred resource.">
+  <link rel="canonical" href="/docs/latest/common-definitions/crossversionobjectreference/">
   <script type="application/ld+json">{}</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -78,13 +78,19 @@
         
         <li>
           
-            <a href="/docs/v1.34/">v1.34</a>
+            <a href="/docs/latest/">v1.36 (latest)</a>
           
         </li>
         
         <li>
           
-            <span aria-current="page">Common Definitions</span>
+            <a href="/docs/latest/common-definitions/">Common Definitions</a>
+          
+        </li>
+        
+        <li>
+          
+            <span aria-current="page">CrossVersionObjectReference</span>
           
         </li>
         
@@ -93,30 +99,35 @@
   </header>
   <main>
     
-<h1>Common Definitions <span class="badge">v1.34</span></h1>
-<nav aria-label="Common definitions">
-  <ul>
+<article>
+  <h1>CrossVersionObjectReference</h1>
+  
+  <p>CrossVersionObjectReference contains enough information to let you identify the referred resource.</p>
+  
+  <section aria-labelledby="fields-heading">
+    <h2 id="fields-heading">Fields</h2>
     
-    <li><a href="/docs/v1.34/common-definitions/crossversionobjectreference/">CrossVersionObjectReference</a></li>
+    <dl>
+      
+      <dt>
+        apiVersion<span class="type">string</span>
+      </dt>
+      <dd>apiVersion is the API version of the referent</dd>
+      
+      <dt class="req">
+        kind<span class="type">string</span>
+      </dt>
+      <dd>kind is the kind of the referent; More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+      
+      <dt class="req">
+        name<span class="type">string</span>
+      </dt>
+      <dd>name is the name of the referent; More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;overview&#x2f;working-with-objects&#x2f;names&#x2f;#names</dd>
+      
+    </dl>
     
-    <li><a href="/docs/v1.34/common-definitions/labelselector/">LabelSelector</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/listmeta/">ListMeta</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/localobjectreference/">LocalObjectReference</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/objectmeta/">ObjectMeta</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/objectreference/">ObjectReference</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/quantity/">Quantity</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/typedlocalobjectreference/">TypedLocalObjectReference</a></li>
-    
-    <li><a href="/docs/v1.34/common-definitions/typedobjectreference/">TypedObjectReference</a></li>
-    
-  </ul>
-</nav>
+  </section>
+</article>
 
   </main>
   <footer>
