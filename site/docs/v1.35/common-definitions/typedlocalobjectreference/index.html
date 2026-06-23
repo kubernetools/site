@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TypedLocalObjectReference &mdash; Kubernetes v1.35 | Kubernetes API Reference</title>
-  <meta name="description" content="Kubernetes TypedLocalObjectReference common definition for v1.35. TypedLocalObjectReference allows to reference typed object inside the same namespace.">
+  <meta name="description" content="Kubernetes TypedLocalObjectReference common definition for v1.35. TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same name">
   <link rel="canonical" href="/docs/latest/common-definitions/typedlocalobjectreference/">
   <script type="application/ld+json">{}</script>
   <style>
@@ -102,7 +102,7 @@
 <article>
   <h1>TypedLocalObjectReference</h1>
   
-  <p>TypedLocalObjectReference allows to reference typed object inside the same namespace.</p>
+  <p>TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same namespace.</p>
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -112,17 +112,17 @@
       <dt class="req">
         kind<span class="type">string</span>
       </dt>
-      <dd>Kind is the type of resource being referenced. It must be a path segment name.</dd>
+      <dd>Kind is the type of resource being referenced</dd>
       
       <dt class="req">
         name<span class="type">string</span>
       </dt>
-      <dd>Name is the name of resource being referenced. It must be a path segment name.</dd>
+      <dd>Name is the name of resource being referenced</dd>
       
       <dt>
         apiGroup<span class="type">string</span>
       </dt>
-      <dd>APIGroup is the group for the resource being referenced. If APIGroup is empty, the specified Kind must be in the core API group. For any other third-party types, setting APIGroup is required. It must be a DNS subdomain.</dd>
+      <dd>APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.</dd>
       
     </dl>
     

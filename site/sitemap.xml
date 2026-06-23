@@ -173,6 +173,10 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/crossversionobjectreference/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.kubernetools.com/docs/latest/common-definitions/labelselector/</loc>
     <changefreq>weekly</changefreq>
   </url>
@@ -198,6 +202,10 @@
   </url>
   <url>
     <loc>https://www.kubernetools.com/docs/latest/common-definitions/typedlocalobjectreference/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/typedobjectreference/</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
