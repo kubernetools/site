@@ -6,64 +6,8 @@
   <title>ReplicationController v1 (core) &mdash; Kubernetes v1.36 (latest) | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes ReplicationController API reference for v1.36. ReplicationController represents the configuration of a replication controller.">
   <link rel="canonical" href="/docs/latest/core/v1/replicationcontroller/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"ReplicationController represents the configuration of a replication controller.","name":"ReplicationController — Kubernetes v1.36 API Reference","url":"https://www.kubernetools.com/docs/latest/core/v1/replicationcontroller/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>ReplicationController represents the configuration of a replication controller.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ReplicationController</code></dd>
+  <dt>kind: <code>ReplicationController</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#replicationcontrollerspec" aria-label="ReplicationControllerSpec type reference">ReplicationControllerSpec</a></span>
-  </dt>
-  <dd>Spec defines the specification of the desired behavior of the replication controller. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>spec <span class="type">(<a href="#replicationcontrollerspec" aria-label="ReplicationControllerSpec type reference">ReplicationControllerSpec</a>)</span></dt>
+  <dd><p>Spec defines the specification of the desired behavior of the replication controller. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#replicationcontrollerstatus" aria-label="ReplicationControllerStatus type reference">ReplicationControllerStatus</a></span>
-  </dt>
-  <dd>Status is the most recently observed status of the replication controller. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>status <span class="type">(<a href="#replicationcontrollerstatus" aria-label="ReplicationControllerStatus type reference">ReplicationControllerStatus</a>)</span></dt>
+  <dd><p>Status is the most recently observed status of the replication controller. This data may be out of date by some window of time. Populated by the system. Read-only. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
 </dl>
@@ -152,36 +92,33 @@
     <h2 id="replicationcontrollerspec">ReplicationControllerSpec</h2>
     
     <p>ReplicationControllerSpec is the specification of a replication controller.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    minReadySeconds<span class="type">integer</span>
-  </dt>
-  <dd>Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)</dd>
+  <dt>minReadySeconds <span class="type">(integer)</span></dt>
+  <dd><p>Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)</p>
+</dd>
   
   
   
-  <dt>
-    replicas<span class="type">integer</span>
-  </dt>
-  <dd>Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;replicationcontroller#what-is-a-replicationcontroller</dd>
+  <dt>replicas <span class="type">(integer)</span></dt>
+  <dd><p>Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller</a></p>
+</dd>
   
   
   
-  <dt>
-    selector<span class="type">map[string]string</span>
-  </dt>
-  <dd>Selector is a label query over pods that should match the Replicas count. If Selector is empty, it is defaulted to the labels present on the Pod template. Label keys and values that must match in order to be controlled by this replication controller, if empty defaulted to labels on Pod template. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;overview&#x2f;working-with-objects&#x2f;labels&#x2f;#label-selectors</dd>
+  <dt>selector <span class="type">(map[string]string)</span></dt>
+  <dd><p>Selector is a label query over pods that should match the Replicas count. If Selector is empty, it is defaulted to the labels present on the Pod template. Label keys and values that must match in order to be controlled by this replication controller, if empty defaulted to labels on Pod template. More info: <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</a></p>
+</dd>
   
   
   
-  <dt>
-    template<span class="type">PodTemplateSpec</span>
-  </dt>
-  <dd>Template is the object that describes the pod that will be created if insufficient replicas are detected. This takes precedence over a TemplateRef. The only allowed template.spec.restartPolicy value is &quot;Always&quot;. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;replicationcontroller#pod-template</dd>
+  <dt>template <span class="type">(PodTemplateSpec)</span></dt>
+  <dd><p>Template is the object that describes the pod that will be created if insufficient replicas are detected. This takes precedence over a TemplateRef. The only allowed template.spec.restartPolicy value is "Always". More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template</a></p>
+</dd>
   
   
 </dl>
@@ -193,50 +130,45 @@
     <h2 id="replicationcontrollerstatus">ReplicationControllerStatus</h2>
     
     <p>ReplicationControllerStatus represents the current status of a replication controller.</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    replicas<span class="type">integer</span>
-  </dt>
-  <dd>Replicas is the most recently observed number of replicas. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;replicationcontroller#what-is-a-replicationcontroller</dd>
+  <dt class="req">replicas <span class="type">(integer)</span></dt>
+  <dd><p>Replicas is the most recently observed number of replicas. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller</a></p>
+</dd>
   
   
   
-  <dt>
-    availableReplicas<span class="type">integer</span>
-  </dt>
-  <dd>The number of available replicas (ready for at least minReadySeconds) for this replication controller.</dd>
+  <dt>availableReplicas <span class="type">(integer)</span></dt>
+  <dd><p>The number of available replicas (ready for at least minReadySeconds) for this replication controller.</p>
+</dd>
   
   
   
-  <dt>
-    conditions<span class="type">[]ReplicationControllerCondition</span>
-  </dt>
-  <dd>Represents the latest available observations of a replication controller&#x27;s current state.</dd>
+  <dt>conditions <span class="type">([]ReplicationControllerCondition)</span></dt>
+  <dd><p>Represents the latest available observations of a replication controller's current state.</p>
+</dd>
   
   
   
-  <dt>
-    fullyLabeledReplicas<span class="type">integer</span>
-  </dt>
-  <dd>The number of pods that have labels matching the labels of the pod template of the replication controller.</dd>
+  <dt>fullyLabeledReplicas <span class="type">(integer)</span></dt>
+  <dd><p>The number of pods that have labels matching the labels of the pod template of the replication controller.</p>
+</dd>
   
   
   
-  <dt>
-    observedGeneration<span class="type">integer</span>
-  </dt>
-  <dd>ObservedGeneration reflects the generation of the most recently observed replication controller.</dd>
+  <dt>observedGeneration <span class="type">(integer)</span></dt>
+  <dd><p>ObservedGeneration reflects the generation of the most recently observed replication controller.</p>
+</dd>
   
   
   
-  <dt>
-    readyReplicas<span class="type">integer</span>
-  </dt>
-  <dd>The number of ready replicas for this replication controller.</dd>
+  <dt>readyReplicas <span class="type">(integer)</span></dt>
+  <dd><p>The number of ready replicas for this replication controller.</p>
+</dd>
   
   
 </dl>
@@ -248,32 +180,29 @@
     <h2 id="list-heading">ReplicationControllerList</h2>
     
     <p>ReplicationControllerList is a collection of replication controllers.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ReplicationControllerList</code></dd>
+  <dt>kind: <code>ReplicationControllerList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/latest/core/v1/replicationcontroller/" aria-label="[]ReplicationController type reference">[]ReplicationController</a></span>
-  </dt>
-  <dd>List of replication controllers. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;replicationcontroller</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/latest/core/v1/replicationcontroller/" aria-label="[]ReplicationController type reference">[]ReplicationController</a>)</span></dt>
+  <dd><p>List of replication controllers. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller</a></p>
+</dd>
   
   
 </dl>

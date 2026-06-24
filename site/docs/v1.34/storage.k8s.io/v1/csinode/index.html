@@ -6,64 +6,8 @@
   <title>CSINode v1 (storage.k8s.io) &mdash; Kubernetes v1.34 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes CSINode API reference for v1.34. CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode objec">
   <link rel="canonical" href="/docs/latest/storage.k8s.io/v1/csinode/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding node object.","name":"CSINode — Kubernetes v1.34 API Reference","url":"https://www.kubernetools.com/docs/latest/storage.k8s.io/v1/csinode/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -104,7 +48,8 @@
   <h1>CSINode <span class="badge">storage.k8s.io/v1</span></h1>
   
   
-  <p>CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn&#x27;t create this object. CSINode has an OwnerReference that points to the corresponding node object.</p>
+  <p>CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding node object.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,27 +58,23 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>storage.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>storage.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>CSINode</code></dd>
+  <dt>kind: <code>CSINode</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata. metadata.name must be the Kubernetes node name.</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata. metadata.name must be the Kubernetes node name.</p>
+</dd>
   
   
   
-  <dt class="req">
-    spec<span class="type"><a href="#csinodespec" aria-label="CSINodeSpec type reference">CSINodeSpec</a></span>
-  </dt>
-  <dd>spec is the specification of CSINode</dd>
+  <dt class="req">spec <span class="type">(<a href="#csinodespec" aria-label="CSINodeSpec type reference">CSINodeSpec</a>)</span></dt>
+  <dd><p>spec is the specification of CSINode</p>
+</dd>
   
   
 </dl>
@@ -145,15 +86,15 @@
     <h2 id="csinodespec">CSINodeSpec</h2>
     
     <p>CSINodeSpec holds information about the specification of all CSI drivers installed on a node</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    drivers<span class="type">[]CSINodeDriver</span>
-  </dt>
-  <dd>drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.</dd>
+  <dt class="req">drivers <span class="type">([]CSINodeDriver)</span></dt>
+  <dd><p>drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.</p>
+</dd>
   
   
 </dl>
@@ -166,32 +107,29 @@
     <h2 id="list-heading">CSINodeList</h2>
     
     <p>CSINodeList is a collection of CSINode objects.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>storage.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>storage.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>CSINodeList</code></dd>
+  <dt>kind: <code>CSINodeList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.34/storage.k8s.io/v1/csinode/" aria-label="[]CSINode type reference">[]CSINode</a></span>
-  </dt>
-  <dd>items is the list of CSINode</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.34/storage.k8s.io/v1/csinode/" aria-label="[]CSINode type reference">[]CSINode</a>)</span></dt>
+  <dd><p>items is the list of CSINode</p>
+</dd>
   
   
 </dl>

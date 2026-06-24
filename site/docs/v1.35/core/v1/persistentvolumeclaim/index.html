@@ -6,64 +6,8 @@
   <title>PersistentVolumeClaim v1 (core) &mdash; Kubernetes v1.35 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes PersistentVolumeClaim API reference for v1.35. PersistentVolumeClaim is a user&#x27;s request for and claim to a persistent volume">
   <link rel="canonical" href="/docs/latest/core/v1/persistentvolumeclaim/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"PersistentVolumeClaim is a user's request for and claim to a persistent volume","name":"PersistentVolumeClaim — Kubernetes v1.35 API Reference","url":"https://www.kubernetools.com/docs/latest/core/v1/persistentvolumeclaim/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -104,7 +48,8 @@
   <h1>PersistentVolumeClaim <span class="badge">core/v1</span></h1>
   
   
-  <p>PersistentVolumeClaim is a user&#x27;s request for and claim to a persistent volume</p>
+  <p>PersistentVolumeClaim is a user's request for and claim to a persistent volume</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>PersistentVolumeClaim</code></dd>
+  <dt>kind: <code>PersistentVolumeClaim</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#persistentvolumeclaimspec" aria-label="PersistentVolumeClaimSpec type reference">PersistentVolumeClaimSpec</a></span>
-  </dt>
-  <dd>spec defines the desired characteristics of a volume requested by a pod author. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#persistentvolumeclaims</dd>
+  <dt>spec <span class="type">(<a href="#persistentvolumeclaimspec" aria-label="PersistentVolumeClaimSpec type reference">PersistentVolumeClaimSpec</a>)</span></dt>
+  <dd><p>spec defines the desired characteristics of a volume requested by a pod author. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims</a></p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#persistentvolumeclaimstatus" aria-label="PersistentVolumeClaimStatus type reference">PersistentVolumeClaimStatus</a></span>
-  </dt>
-  <dd>status represents the current information&#x2f;status of a persistent volume claim. Read-only. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#persistentvolumeclaims</dd>
+  <dt>status <span class="type">(<a href="#persistentvolumeclaimstatus" aria-label="PersistentVolumeClaimStatus type reference">PersistentVolumeClaimStatus</a>)</span></dt>
+  <dd><p>status represents the current information/status of a persistent volume claim. Read-only. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims</a></p>
+</dd>
   
   
 </dl>
@@ -152,78 +92,72 @@
     <h2 id="persistentvolumeclaimspec">PersistentVolumeClaimSpec</h2>
     
     <p>PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes</p>
+
     
     
 <dl>
   
   
-  <dt>
-    accessModes<span class="type">[]string</span>
-  </dt>
-  <dd>accessModes contains the desired access modes the volume should have. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#access-modes-1</dd>
+  <dt>accessModes <span class="type">([]string)</span></dt>
+  <dd><p>accessModes contains the desired access modes the volume should have. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1</a></p>
+</dd>
   
   
   
-  <dt>
-    dataSource<span class="type"><a href="/docs/v1.35/common-definitions/typedlocalobjectreference/" aria-label="TypedLocalObjectReference type reference">TypedLocalObjectReference</a></span>
-  </dt>
-  <dd>dataSource field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io&#x2f;VolumeSnapshot) * An existing PVC (PersistentVolumeClaim) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef, and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified. If the namespace is specified, then dataSourceRef will not be copied to dataSource.</dd>
+  <dt>dataSource <span class="type">(<a href="/docs/v1.35/common-definitions/typedlocalobjectreference/" aria-label="TypedLocalObjectReference type reference">TypedLocalObjectReference</a>)</span></dt>
+  <dd><p>dataSource field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot) * An existing PVC (PersistentVolumeClaim) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef, and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified. If the namespace is specified, then dataSourceRef will not be copied to dataSource.</p>
+</dd>
   
   
   
-  <dt>
-    dataSourceRef<span class="type"><a href="/docs/v1.35/common-definitions/typedobjectreference/" aria-label="TypedObjectReference type reference">TypedObjectReference</a></span>
-  </dt>
-  <dd>dataSourceRef specifies the object from which to populate the volume with data, if a non-empty volume is desired. This may be any object from a non-empty API group (non core object) or a PersistentVolumeClaim object. When this field is specified, volume binding will only succeed if the type of the specified object matches some installed volume populator or dynamic provisioner. This field will replace the functionality of the dataSource field and as such if both fields are non-empty, they must have the same value. For backwards compatibility, when namespace isn&#x27;t specified in dataSourceRef, both fields (dataSource and dataSourceRef) will be set to the same value automatically if one of them is empty and the other is non-empty. When namespace is specified in dataSourceRef, dataSource isn&#x27;t set to the same value and must be empty. There are three important differences between dataSource and dataSourceRef: * While dataSource only allows two specific types of objects, dataSourceRef
-  allows any non-core object, as well as PersistentVolumeClaim objects.
-* While dataSource ignores disallowed values (dropping them), dataSourceRef
-  preserves all values, and generates an error if a disallowed value is
-  specified.
-* While dataSource only allows local objects, dataSourceRef allows objects
-  in any namespaces.
-(Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled. (Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.</dd>
+  <dt>dataSourceRef <span class="type">(<a href="/docs/v1.35/common-definitions/typedobjectreference/" aria-label="TypedObjectReference type reference">TypedObjectReference</a>)</span></dt>
+  <dd><p>dataSourceRef specifies the object from which to populate the volume with data, if a non-empty volume is desired. This may be any object from a non-empty API group (non core object) or a PersistentVolumeClaim object. When this field is specified, volume binding will only succeed if the type of the specified object matches some installed volume populator or dynamic provisioner. This field will replace the functionality of the dataSource field and as such if both fields are non-empty, they must have the same value. For backwards compatibility, when namespace isn't specified in dataSourceRef, both fields (dataSource and dataSourceRef) will be set to the same value automatically if one of them is empty and the other is non-empty. When namespace is specified in dataSourceRef, dataSource isn't set to the same value and must be empty. There are three important differences between dataSource and dataSourceRef: * While dataSource only allows two specific types of objects, dataSourceRef
+allows any non-core object, as well as PersistentVolumeClaim objects.</p>
+<ul>
+<li>While dataSource ignores disallowed values (dropping them), dataSourceRef
+preserves all values, and generates an error if a disallowed value is
+specified.</li>
+<li>While dataSource only allows local objects, dataSourceRef allows objects
+in any namespaces.
+(Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled. (Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.</li>
+</ul>
+</dd>
   
   
   
-  <dt>
-    resources<span class="type">VolumeResourceRequirements</span>
-  </dt>
-  <dd>resources represents the minimum resources the volume should have. Users are allowed to specify resource requirements that are lower than previous value but must still be higher than capacity recorded in the status field of the claim. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#resources</dd>
+  <dt>resources <span class="type">(VolumeResourceRequirements)</span></dt>
+  <dd><p>resources represents the minimum resources the volume should have. Users are allowed to specify resource requirements that are lower than previous value but must still be higher than capacity recorded in the status field of the claim. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources</a></p>
+</dd>
   
   
   
-  <dt>
-    selector<span class="type"><a href="/docs/v1.35/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a></span>
-  </dt>
-  <dd>selector is a label query over volumes to consider for binding.</dd>
+  <dt>selector <span class="type">(<a href="/docs/v1.35/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a>)</span></dt>
+  <dd><p>selector is a label query over volumes to consider for binding.</p>
+</dd>
   
   
   
-  <dt>
-    storageClassName<span class="type">string</span>
-  </dt>
-  <dd>storageClassName is the name of the StorageClass required by the claim. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#class-1</dd>
+  <dt>storageClassName <span class="type">(string)</span></dt>
+  <dd><p>storageClassName is the name of the StorageClass required by the claim. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1</a></p>
+</dd>
   
   
   
-  <dt>
-    volumeAttributesClassName<span class="type">string</span>
-  </dt>
-  <dd>volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim. If specified, the CSI driver will create or update the volume with the attributes defined in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName, it can be changed after the claim is created. An empty string or nil value indicates that no VolumeAttributesClass will be applied to the claim. If the claim enters an Infeasible error state, this field can be reset to its previous value (including nil) to cancel the modification. If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource exists. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;volume-attributes-classes&#x2f;</dd>
+  <dt>volumeAttributesClassName <span class="type">(string)</span></dt>
+  <dd><p>volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim. If specified, the CSI driver will create or update the volume with the attributes defined in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName, it can be changed after the claim is created. An empty string or nil value indicates that no VolumeAttributesClass will be applied to the claim. If the claim enters an Infeasible error state, this field can be reset to its previous value (including nil) to cancel the modification. If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource exists. More info: <a href="https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/</a></p>
+</dd>
   
   
   
-  <dt>
-    volumeMode<span class="type">string</span>
-  </dt>
-  <dd>volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.</dd>
+  <dt>volumeMode <span class="type">(string)</span></dt>
+  <dd><p>volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.</p>
+</dd>
   
   
   
-  <dt>
-    volumeName<span class="type">string</span>
-  </dt>
-  <dd>volumeName is the binding reference to the PersistentVolume backing this claim.</dd>
+  <dt>volumeName <span class="type">(string)</span></dt>
+  <dd><p>volumeName is the binding reference to the PersistentVolume backing this claim.</p>
+</dd>
   
   
 </dl>
@@ -235,99 +169,88 @@
     <h2 id="persistentvolumeclaimstatus">PersistentVolumeClaimStatus</h2>
     
     <p>PersistentVolumeClaimStatus is the current status of a persistent volume claim.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    accessModes<span class="type">[]string</span>
-  </dt>
-  <dd>accessModes contains the actual access modes the volume backing the PVC has. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#access-modes-1</dd>
+  <dt>accessModes <span class="type">([]string)</span></dt>
+  <dd><p>accessModes contains the actual access modes the volume backing the PVC has. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1</a></p>
+</dd>
   
   
   
-  <dt>
-    allocatedResourceStatuses<span class="type">map[string]string</span>
-  </dt>
-  <dd>allocatedResourceStatuses stores status of resource being resized for the given PVC. Key names follow standard Kubernetes label syntax. Valid values are either:
-	* Un-prefixed keys:
-		- storage - the capacity of the volume.
-	* Custom resources must use implementation-defined prefixed names such as &quot;example.com&#x2f;my-custom-resource&quot;
-Apart from above values - keys that are unprefixed or have kubernetes.io prefix are considered reserved and hence may not be used.
-
-ClaimResourceStatus can be in any of following states:
-	- ControllerResizeInProgress:
-		State set when resize controller starts resizing the volume in control-plane.
-	- ControllerResizeFailed:
-		State set when resize has failed in resize controller with a terminal error.
-	- NodeResizePending:
-		State set when resize controller has finished resizing the volume but further resizing of
-		volume is needed on the node.
-	- NodeResizeInProgress:
-		State set when kubelet starts resizing the volume.
-	- NodeResizeFailed:
-		State set when resizing has failed in kubelet with a terminal error. Transient errors don&#x27;t set
-		NodeResizeFailed.
+  <dt>allocatedResourceStatuses <span class="type">(map[string]string)</span></dt>
+  <dd><p>allocatedResourceStatuses stores status of resource being resized for the given PVC. Key names follow standard Kubernetes label syntax. Valid values are either:
+* Un-prefixed keys:
+- storage - the capacity of the volume.
+* Custom resources must use implementation-defined prefixed names such as "example.com/my-custom-resource"
+Apart from above values - keys that are unprefixed or have kubernetes.io prefix are considered reserved and hence may not be used.</p>
+<p>ClaimResourceStatus can be in any of following states:
+- ControllerResizeInProgress:
+State set when resize controller starts resizing the volume in control-plane.
+- ControllerResizeFailed:
+State set when resize has failed in resize controller with a terminal error.
+- NodeResizePending:
+State set when resize controller has finished resizing the volume but further resizing of
+volume is needed on the node.
+- NodeResizeInProgress:
+State set when kubelet starts resizing the volume.
+- NodeResizeFailed:
+State set when resizing has failed in kubelet with a terminal error. Transient errors don't set
+NodeResizeFailed.
 For example: if expanding a PVC for more capacity - this field can be one of the following states:
-	- pvc.status.allocatedResourceStatus[&#x27;storage&#x27;] = &quot;ControllerResizeInProgress&quot;
-     - pvc.status.allocatedResourceStatus[&#x27;storage&#x27;] = &quot;ControllerResizeFailed&quot;
-     - pvc.status.allocatedResourceStatus[&#x27;storage&#x27;] = &quot;NodeResizePending&quot;
-     - pvc.status.allocatedResourceStatus[&#x27;storage&#x27;] = &quot;NodeResizeInProgress&quot;
-     - pvc.status.allocatedResourceStatus[&#x27;storage&#x27;] = &quot;NodeResizeFailed&quot;
-When this field is not set, it means that no resize operation is in progress for the given PVC.
-
-A controller that receives PVC update with previously unknown resourceName or ClaimResourceStatus should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.</dd>
+- pvc.status.allocatedResourceStatus['storage'] = "ControllerResizeInProgress"
+- pvc.status.allocatedResourceStatus['storage'] = "ControllerResizeFailed"
+- pvc.status.allocatedResourceStatus['storage'] = "NodeResizePending"
+- pvc.status.allocatedResourceStatus['storage'] = "NodeResizeInProgress"
+- pvc.status.allocatedResourceStatus['storage'] = "NodeResizeFailed"
+When this field is not set, it means that no resize operation is in progress for the given PVC.</p>
+<p>A controller that receives PVC update with previously unknown resourceName or ClaimResourceStatus should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.</p>
+</dd>
   
   
   
-  <dt>
-    allocatedResources<span class="type">map[string]Quantity</span>
-  </dt>
-  <dd>allocatedResources tracks the resources allocated to a PVC including its capacity. Key names follow standard Kubernetes label syntax. Valid values are either:
-	* Un-prefixed keys:
-		- storage - the capacity of the volume.
-	* Custom resources must use implementation-defined prefixed names such as &quot;example.com&#x2f;my-custom-resource&quot;
-Apart from above values - keys that are unprefixed or have kubernetes.io prefix are considered reserved and hence may not be used.
-
-Capacity reported here may be larger than the actual capacity when a volume expansion operation is requested. For storage quota, the larger value from allocatedResources and PVC.spec.resources is used. If allocatedResources is not set, PVC.spec.resources alone is used for quota calculation. If a volume expansion capacity request is lowered, allocatedResources is only lowered if there are no expansion operations in progress and if the actual volume capacity is equal or lower than the requested capacity.
-
-A controller that receives PVC update with previously unknown resourceName should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.</dd>
+  <dt>allocatedResources <span class="type">(map[string]Quantity)</span></dt>
+  <dd><p>allocatedResources tracks the resources allocated to a PVC including its capacity. Key names follow standard Kubernetes label syntax. Valid values are either:
+* Un-prefixed keys:
+- storage - the capacity of the volume.
+* Custom resources must use implementation-defined prefixed names such as "example.com/my-custom-resource"
+Apart from above values - keys that are unprefixed or have kubernetes.io prefix are considered reserved and hence may not be used.</p>
+<p>Capacity reported here may be larger than the actual capacity when a volume expansion operation is requested. For storage quota, the larger value from allocatedResources and PVC.spec.resources is used. If allocatedResources is not set, PVC.spec.resources alone is used for quota calculation. If a volume expansion capacity request is lowered, allocatedResources is only lowered if there are no expansion operations in progress and if the actual volume capacity is equal or lower than the requested capacity.</p>
+<p>A controller that receives PVC update with previously unknown resourceName should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.</p>
+</dd>
   
   
   
-  <dt>
-    capacity<span class="type">map[string]Quantity</span>
-  </dt>
-  <dd>capacity represents the actual resources of the underlying volume.</dd>
+  <dt>capacity <span class="type">(map[string]Quantity)</span></dt>
+  <dd><p>capacity represents the actual resources of the underlying volume.</p>
+</dd>
   
   
   
-  <dt>
-    conditions<span class="type">[]PersistentVolumeClaimCondition</span>
-  </dt>
-  <dd>conditions is the current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to &#x27;Resizing&#x27;.</dd>
+  <dt>conditions <span class="type">([]PersistentVolumeClaimCondition)</span></dt>
+  <dd><p>conditions is the current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to 'Resizing'.</p>
+</dd>
   
   
   
-  <dt>
-    currentVolumeAttributesClassName<span class="type">string</span>
-  </dt>
-  <dd>currentVolumeAttributesClassName is the current name of the VolumeAttributesClass the PVC is using. When unset, there is no VolumeAttributeClass applied to this PersistentVolumeClaim</dd>
+  <dt>currentVolumeAttributesClassName <span class="type">(string)</span></dt>
+  <dd><p>currentVolumeAttributesClassName is the current name of the VolumeAttributesClass the PVC is using. When unset, there is no VolumeAttributeClass applied to this PersistentVolumeClaim</p>
+</dd>
   
   
   
-  <dt>
-    modifyVolumeStatus<span class="type">ModifyVolumeStatus</span>
-  </dt>
-  <dd>ModifyVolumeStatus represents the status object of ControllerModifyVolume operation. When this is unset, there is no ModifyVolume operation being attempted.</dd>
+  <dt>modifyVolumeStatus <span class="type">(ModifyVolumeStatus)</span></dt>
+  <dd><p>ModifyVolumeStatus represents the status object of ControllerModifyVolume operation. When this is unset, there is no ModifyVolume operation being attempted.</p>
+</dd>
   
   
   
-  <dt>
-    phase<span class="type">string</span>
-  </dt>
-  <dd>phase represents the current phase of PersistentVolumeClaim.</dd>
+  <dt>phase <span class="type">(string)</span></dt>
+  <dd><p>phase represents the current phase of PersistentVolumeClaim.</p>
+</dd>
   
   
 </dl>
@@ -339,32 +262,29 @@ A controller that receives PVC update with previously unknown resourceName shoul
     <h2 id="list-heading">PersistentVolumeClaimList</h2>
     
     <p>PersistentVolumeClaimList is a list of PersistentVolumeClaim items.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>PersistentVolumeClaimList</code></dd>
+  <dt>kind: <code>PersistentVolumeClaimList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.35/core/v1/persistentvolumeclaim/" aria-label="[]PersistentVolumeClaim type reference">[]PersistentVolumeClaim</a></span>
-  </dt>
-  <dd>items is a list of persistent volume claims. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#persistentvolumeclaims</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.35/core/v1/persistentvolumeclaim/" aria-label="[]PersistentVolumeClaim type reference">[]PersistentVolumeClaim</a>)</span></dt>
+  <dd><p>items is a list of persistent volume claims. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims</a></p>
+</dd>
   
   
 </dl>

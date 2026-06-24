@@ -6,64 +6,8 @@
   <title>Quantity &mdash; Kubernetes v1.33 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes Quantity common definition for v1.33. Quantity is a fixed-point representation of a number. It provides convenient marshaling&#x2f;unmarshaling in JSON and YAML, i">
   <link rel="canonical" href="/docs/latest/common-definitions/quantity/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -102,29 +46,26 @@
 <article>
   <h1>Quantity</h1>
   
-  <p>Quantity is a fixed-point representation of a number. It provides convenient marshaling&#x2f;unmarshaling in JSON and YAML, in addition to String() and AsInt64() accessors.
+  <p>Quantity is a fixed-point representation of a number. It provides convenient marshaling/unmarshaling in JSON and YAML, in addition to String() and AsInt64() accessors.</p>
+<p>The serialization format is:</p>
+<pre><code class="language-&lt;quantity&gt;">
+	(Note that &lt;suffix&gt; may be empty, from the "" case in &lt;decimalSI&gt;.)
 
-The serialization format is:
+&lt;digit&gt;           ::= 0 | 1 | ... | 9 &lt;digits&gt;          ::= &lt;digit&gt; | &lt;digit&gt;&lt;digits&gt; &lt;number&gt;          ::= &lt;digits&gt; | &lt;digits&gt;.&lt;digits&gt; | &lt;digits&gt;. | .&lt;digits&gt; &lt;sign&gt;            ::= "+" | "-" &lt;signedNumber&gt;    ::= &lt;number&gt; | &lt;sign&gt;&lt;number&gt; &lt;suffix&gt;          ::= &lt;binarySI&gt; | &lt;decimalExponent&gt; | &lt;decimalSI&gt; &lt;binarySI&gt;        ::= Ki | Mi | Gi | Ti | Pi | Ei
 
-``` &lt;quantity&gt;        ::= &lt;signedNumber&gt;&lt;suffix&gt;
+	(International System of units; See: <a href="http://physics.nist.gov/cuu/Units/binary.html" target="_blank" rel="noopener noreferrer">http://physics.nist.gov/cuu/Units/binary.html</a>)
 
-	(Note that &lt;suffix&gt; may be empty, from the &quot;&quot; case in &lt;decimalSI&gt;.)
+&lt;decimalSI&gt;       ::= m | "" | k | M | G | T | P | E
 
-&lt;digit&gt;           ::= 0 | 1 | ... | 9 &lt;digits&gt;          ::= &lt;digit&gt; | &lt;digit&gt;&lt;digits&gt; &lt;number&gt;          ::= &lt;digits&gt; | &lt;digits&gt;.&lt;digits&gt; | &lt;digits&gt;. | .&lt;digits&gt; &lt;sign&gt;            ::= &quot;+&quot; | &quot;-&quot; &lt;signedNumber&gt;    ::= &lt;number&gt; | &lt;sign&gt;&lt;number&gt; &lt;suffix&gt;          ::= &lt;binarySI&gt; | &lt;decimalExponent&gt; | &lt;decimalSI&gt; &lt;binarySI&gt;        ::= Ki | Mi | Gi | Ti | Pi | Ei
+	(Note that 1024 = 1Ki but 1000 = 1k; I didn't choose the capitalization.)
 
-	(International System of units; See: http:&#x2f;&#x2f;physics.nist.gov&#x2f;cuu&#x2f;Units&#x2f;binary.html)
-
-&lt;decimalSI&gt;       ::= m | &quot;&quot; | k | M | G | T | P | E
-
-	(Note that 1024 = 1Ki but 1000 = 1k; I didn&#x27;t choose the capitalization.)
-
-&lt;decimalExponent&gt; ::= &quot;e&quot; &lt;signedNumber&gt; | &quot;E&quot; &lt;signedNumber&gt; ```
+&lt;decimalExponent&gt; ::= "e" &lt;signedNumber&gt; | "E" &lt;signedNumber&gt; ```
 
 No matter which of the three exponent forms is used, no quantity may represent a number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal places. Numbers larger or more precise will be capped or rounded up. (E.g.: 0.1m will rounded up to 1m.) This may be extended in the future if we require larger or smaller quantities.
 
 When a Quantity is parsed from a string, it will remember the type of suffix it had, and will use the same type again when it is serialized.
 
-Before serializing, Quantity will be put in &quot;canonical form&quot;. This means that Exponent&#x2f;suffix will be adjusted up or down (with a corresponding increase or decrease in Mantissa) such that:
+Before serializing, Quantity will be put in "canonical form". This means that Exponent/suffix will be adjusted up or down (with a corresponding increase or decrease in Mantissa) such that:
 
 - No precision is lost - No fractional digits will be emitted - The exponent (or suffix) is as large as possible.
 
@@ -132,13 +73,14 @@ The sign will be omitted unless the number is negative.
 
 Examples:
 
-- 1.5 will be serialized as &quot;1500m&quot; - 1.5Gi will be serialized as &quot;1536Mi&quot;
+- 1.5 will be serialized as "1500m" - 1.5Gi will be serialized as "1536Mi"
 
 Note that the quantity will NEVER be internally represented by a floating point number. That is the whole point of this exercise.
 
-Non-canonical values will still parse as long as they are well formed, but will be re-emitted in their canonical form. (So always use canonical form, or don&#x27;t diff.)
+Non-canonical values will still parse as long as they are well formed, but will be re-emitted in their canonical form. (So always use canonical form, or don't diff.)
 
-This format is intended to make it difficult to use these numbers without writing some sort of special handling code in the hopes that that will cause implementors to also use a fixed point implementation.</p>
+This format is intended to make it difficult to use these numbers without writing some sort of special handling code in the hopes that that will cause implementors to also use a fixed point implementation.</code></pre>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>

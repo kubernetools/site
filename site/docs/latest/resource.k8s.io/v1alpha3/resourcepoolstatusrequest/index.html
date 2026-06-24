@@ -6,64 +6,8 @@
   <title>ResourcePoolStatusRequest v1alpha3 (resource.k8s.io) &mdash; Kubernetes v1.36 (latest) | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes ResourcePoolStatusRequest API reference for v1.36. ResourcePoolStatusRequest triggers a one-time calculation of resource pool status based on the provided filters. Once st">
   <link rel="canonical" href="/docs/latest/resource.k8s.io/v1alpha3/resourcepoolstatusrequest/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"ResourcePoolStatusRequest triggers a one-time calculation of resource pool status based on the provided filters. Once status is set, the request is considered complete and will not be reprocessed. Users should delete and recreate requests to get updated information.","name":"ResourcePoolStatusRequest — Kubernetes v1.36 API Reference","url":"https://www.kubernetools.com/docs/latest/resource.k8s.io/v1alpha3/resourcepoolstatusrequest/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>ResourcePoolStatusRequest triggers a one-time calculation of resource pool status based on the provided filters. Once status is set, the request is considered complete and will not be reprocessed. Users should delete and recreate requests to get updated information.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>resource.k8s.io/v1alpha3</code></dd>
+  <dt>apiVersion: <code>resource.k8s.io/v1alpha3</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ResourcePoolStatusRequest</code></dd>
+  <dt>kind: <code>ResourcePoolStatusRequest</code></dt>
   
   
   
-  <dt class="req">
-    metadata<span class="type"><a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object metadata</dd>
+  <dt class="req">metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object metadata</p>
+</dd>
   
   
   
-  <dt class="req">
-    spec<span class="type"><a href="#resourcepoolstatusrequestspec" aria-label="ResourcePoolStatusRequestSpec type reference">ResourcePoolStatusRequestSpec</a></span>
-  </dt>
-  <dd>Spec defines the filters for which pools to include in the status. The spec is immutable once created.</dd>
+  <dt class="req">spec <span class="type">(<a href="#resourcepoolstatusrequestspec" aria-label="ResourcePoolStatusRequestSpec type reference">ResourcePoolStatusRequestSpec</a>)</span></dt>
+  <dd><p>Spec defines the filters for which pools to include in the status. The spec is immutable once created.</p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#resourcepoolstatusrequeststatus" aria-label="ResourcePoolStatusRequestStatus type reference">ResourcePoolStatusRequestStatus</a></span>
-  </dt>
-  <dd>Status is populated by the controller with the calculated pool status. When status is non-nil, the request is considered complete and the entire object becomes immutable.</dd>
+  <dt>status <span class="type">(<a href="#resourcepoolstatusrequeststatus" aria-label="ResourcePoolStatusRequestStatus type reference">ResourcePoolStatusRequestStatus</a>)</span></dt>
+  <dd><p>Status is populated by the controller with the calculated pool status. When status is non-nil, the request is considered complete and the entire object becomes immutable.</p>
+</dd>
   
   
 </dl>
@@ -152,31 +92,28 @@
     <h2 id="resourcepoolstatusrequestspec">ResourcePoolStatusRequestSpec</h2>
     
     <p>ResourcePoolStatusRequestSpec defines the filters for the pool status request.</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    driver<span class="type">string</span>
-  </dt>
-  <dd>Driver specifies the DRA driver name to filter pools. Only pools from ResourceSlices with this driver will be included. Must be a DNS subdomain (e.g., &quot;gpu.example.com&quot;).</dd>
+  <dt class="req">driver <span class="type">(string)</span></dt>
+  <dd><p>Driver specifies the DRA driver name to filter pools. Only pools from ResourceSlices with this driver will be included. Must be a DNS subdomain (e.g., "gpu.example.com").</p>
+</dd>
   
   
   
-  <dt>
-    limit<span class="type">integer</span>
-  </dt>
-  <dd>Limit optionally specifies the maximum number of pools to return in the status. If more pools match the filter criteria, the response will be truncated (i.e., len(status.pools) &lt; status.poolCount).
-
-Default: 100 Minimum: 1 Maximum: 1000</dd>
+  <dt>limit <span class="type">(integer)</span></dt>
+  <dd><p>Limit optionally specifies the maximum number of pools to return in the status. If more pools match the filter criteria, the response will be truncated (i.e., len(status.pools) &lt; status.poolCount).</p>
+<p>Default: 100 Minimum: 1 Maximum: 1000</p>
+</dd>
   
   
   
-  <dt>
-    poolName<span class="type">string</span>
-  </dt>
-  <dd>PoolName optionally filters to a specific pool name. If not specified, all pools from the specified driver are included. When specified, must be a non-empty valid resource pool name (DNS subdomains separated by &quot;&#x2f;&quot;).</dd>
+  <dt>poolName <span class="type">(string)</span></dt>
+  <dd><p>PoolName optionally filters to a specific pool name. If not specified, all pools from the specified driver are included. When specified, must be a non-empty valid resource pool name (DNS subdomains separated by "/").</p>
+</dd>
   
   
 </dl>
@@ -188,31 +125,28 @@ Default: 100 Minimum: 1 Maximum: 1000</dd>
     <h2 id="resourcepoolstatusrequeststatus">ResourcePoolStatusRequestStatus</h2>
     
     <p>ResourcePoolStatusRequestStatus contains the calculated pool status information.</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    poolCount<span class="type">integer</span>
-  </dt>
-  <dd>PoolCount is the total number of pools that matched the filter criteria, regardless of truncation. This helps users understand how many pools exist even when the response is truncated. A value of 0 means no pools matched the filter criteria.</dd>
+  <dt class="req">poolCount <span class="type">(integer)</span></dt>
+  <dd><p>PoolCount is the total number of pools that matched the filter criteria, regardless of truncation. This helps users understand how many pools exist even when the response is truncated. A value of 0 means no pools matched the filter criteria.</p>
+</dd>
   
   
   
-  <dt>
-    conditions<span class="type">[]Condition</span>
-  </dt>
-  <dd>Conditions provide information about the state of the request. A condition with type=Complete or type=Failed will always be set when the status is populated.
-
-Known condition types: - &quot;Complete&quot;: True when the request has been processed successfully - &quot;Failed&quot;: True when the request could not be processed</dd>
+  <dt>conditions <span class="type">([]Condition)</span></dt>
+  <dd><p>Conditions provide information about the state of the request. A condition with type=Complete or type=Failed will always be set when the status is populated.</p>
+<p>Known condition types: - "Complete": True when the request has been processed successfully - "Failed": True when the request could not be processed</p>
+</dd>
   
   
   
-  <dt>
-    pools<span class="type">[]PoolStatus</span>
-  </dt>
-  <dd>Pools contains the first `spec.limit` matching pools, sorted by driver then pool name. If `len(pools) &lt; poolCount`, the list was truncated. When omitted, no pools matched the request filters.</dd>
+  <dt>pools <span class="type">([]PoolStatus)</span></dt>
+  <dd><p>Pools contains the first <code>spec.limit</code> matching pools, sorted by driver then pool name. If <code>len(pools) &lt; poolCount</code>, the list was truncated. When omitted, no pools matched the request filters.</p>
+</dd>
   
   
 </dl>
@@ -224,32 +158,29 @@ Known condition types: - &quot;Complete&quot;: True when the request has been pr
     <h2 id="list-heading">ResourcePoolStatusRequestList</h2>
     
     <p>ResourcePoolStatusRequestList is a collection of ResourcePoolStatusRequests.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>resource.k8s.io/v1alpha3</code></dd>
+  <dt>apiVersion: <code>resource.k8s.io/v1alpha3</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ResourcePoolStatusRequestList</code></dd>
+  <dt>kind: <code>ResourcePoolStatusRequestList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata</p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/latest/resource.k8s.io/v1alpha3/resourcepoolstatusrequest/" aria-label="[]ResourcePoolStatusRequest type reference">[]ResourcePoolStatusRequest</a></span>
-  </dt>
-  <dd>Items is the list of ResourcePoolStatusRequests.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/latest/resource.k8s.io/v1alpha3/resourcepoolstatusrequest/" aria-label="[]ResourcePoolStatusRequest type reference">[]ResourcePoolStatusRequest</a>)</span></dt>
+  <dd><p>Items is the list of ResourcePoolStatusRequests.</p>
+</dd>
   
   
 </dl>

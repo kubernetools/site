@@ -8,64 +8,8 @@
 
 ClusterTrustBundle object">
   <link rel="canonical" href="/docs/latest/certificates.k8s.io/v1alpha1/clustertrustbundle/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"ClusterTrustBundle is a cluster-scoped container for X.509 trust anchors (root certificates).\n\nClusterTrustBundle objects are considered to be readable by any authenticated user in the cluster, because they can be mounted by pods using the `clusterTrustBundle` projection.  All service accounts have read access to ClusterTrustBundles by default.  Users who only have namespace-level access to a cluster can read ClusterTrustBundles by impersonating a serviceaccount that they have access to.\n\nIt can be optionally associated with a particular assigner, in which case it contains one valid set of trust anchors for that signer. Signers may have multiple associated ClusterTrustBundles; each is an independent set of trust anchors for that signer. Admission control is used to enforce that only users with permissions on the signer can create or modify the corresponding bundle.","name":"ClusterTrustBundle — Kubernetes v1.35 API Reference","url":"https://www.kubernetools.com/docs/latest/certificates.k8s.io/v1alpha1/clustertrustbundle/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -112,11 +56,10 @@ ClusterTrustBundle object">
   </p>
   
   
-  <p>ClusterTrustBundle is a cluster-scoped container for X.509 trust anchors (root certificates).
+  <p>ClusterTrustBundle is a cluster-scoped container for X.509 trust anchors (root certificates).</p>
+<p>ClusterTrustBundle objects are considered to be readable by any authenticated user in the cluster, because they can be mounted by pods using the <code>clusterTrustBundle</code> projection.  All service accounts have read access to ClusterTrustBundles by default.  Users who only have namespace-level access to a cluster can read ClusterTrustBundles by impersonating a serviceaccount that they have access to.</p>
+<p>It can be optionally associated with a particular assigner, in which case it contains one valid set of trust anchors for that signer. Signers may have multiple associated ClusterTrustBundles; each is an independent set of trust anchors for that signer. Admission control is used to enforce that only users with permissions on the signer can create or modify the corresponding bundle.</p>
 
-ClusterTrustBundle objects are considered to be readable by any authenticated user in the cluster, because they can be mounted by pods using the `clusterTrustBundle` projection.  All service accounts have read access to ClusterTrustBundles by default.  Users who only have namespace-level access to a cluster can read ClusterTrustBundles by impersonating a serviceaccount that they have access to.
-
-It can be optionally associated with a particular assigner, in which case it contains one valid set of trust anchors for that signer. Signers may have multiple associated ClusterTrustBundles; each is an independent set of trust anchors for that signer. Admission control is used to enforce that only users with permissions on the signer can create or modify the corresponding bundle.</p>
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -125,27 +68,23 @@ It can be optionally associated with a particular assigner, in which case it con
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>certificates.k8s.io/v1alpha1</code></dd>
+  <dt>apiVersion: <code>certificates.k8s.io/v1alpha1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ClusterTrustBundle</code></dd>
+  <dt>kind: <code>ClusterTrustBundle</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>metadata contains the object metadata.</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>metadata contains the object metadata.</p>
+</dd>
   
   
   
-  <dt class="req">
-    spec<span class="type"><a href="#clustertrustbundlespec" aria-label="ClusterTrustBundleSpec type reference">ClusterTrustBundleSpec</a></span>
-  </dt>
-  <dd>spec contains the signer (if any) and trust anchors.</dd>
+  <dt class="req">spec <span class="type">(<a href="#clustertrustbundlespec" aria-label="ClusterTrustBundleSpec type reference">ClusterTrustBundleSpec</a>)</span></dt>
+  <dd><p>spec contains the signer (if any) and trust anchors.</p>
+</dd>
   
   
 </dl>
@@ -157,34 +96,27 @@ It can be optionally associated with a particular assigner, in which case it con
     <h2 id="clustertrustbundlespec">ClusterTrustBundleSpec</h2>
     
     <p>ClusterTrustBundleSpec contains the signer and trust anchors.</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    trustBundle<span class="type">string</span>
-  </dt>
-  <dd>trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.
-
-The data must consist only of PEM certificate blocks that parse as valid X.509 certificates.  Each certificate must include a basic constraints extension with the CA bit set.  The API server will reject objects that contain duplicate certificates, or that use PEM block headers.
-
-Users of ClusterTrustBundles, including Kubelet, are free to reorder and deduplicate certificate blocks in this file according to their own logic, as well as to drop PEM block headers and inter-block data.</dd>
+  <dt class="req">trustBundle <span class="type">(string)</span></dt>
+  <dd><p>trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.</p>
+<p>The data must consist only of PEM certificate blocks that parse as valid X.509 certificates.  Each certificate must include a basic constraints extension with the CA bit set.  The API server will reject objects that contain duplicate certificates, or that use PEM block headers.</p>
+<p>Users of ClusterTrustBundles, including Kubelet, are free to reorder and deduplicate certificate blocks in this file according to their own logic, as well as to drop PEM block headers and inter-block data.</p>
+</dd>
   
   
   
-  <dt>
-    signerName<span class="type">string</span>
-  </dt>
-  <dd>signerName indicates the associated signer, if any.
-
-In order to create or update a ClusterTrustBundle that sets signerName, you must have the following cluster-scoped permission: group=certificates.k8s.io resource=signers resourceName=&lt;the signer name&gt; verb=attest.
-
-If signerName is not empty, then the ClusterTrustBundle object must be named with the signer name as a prefix (translating slashes to colons). For example, for the signer name `example.com&#x2f;foo`, valid ClusterTrustBundle object names include `example.com:foo:abc` and `example.com:foo:v1`.
-
-If signerName is empty, then the ClusterTrustBundle object&#x27;s name must not have such a prefix.
-
-List&#x2f;watch requests for ClusterTrustBundles can filter on this field using a `spec.signerName=NAME` field selector.</dd>
+  <dt>signerName <span class="type">(string)</span></dt>
+  <dd><p>signerName indicates the associated signer, if any.</p>
+<p>In order to create or update a ClusterTrustBundle that sets signerName, you must have the following cluster-scoped permission: group=certificates.k8s.io resource=signers resourceName=<the signer name> verb=attest.</p>
+<p>If signerName is not empty, then the ClusterTrustBundle object must be named with the signer name as a prefix (translating slashes to colons). For example, for the signer name <code>example.com/foo</code>, valid ClusterTrustBundle object names include <code>example.com:foo:abc</code> and <code>example.com:foo:v1</code>.</p>
+<p>If signerName is empty, then the ClusterTrustBundle object's name must not have such a prefix.</p>
+<p>List/watch requests for ClusterTrustBundles can filter on this field using a <code>spec.signerName=NAME</code> field selector.</p>
+</dd>
   
   
 </dl>
@@ -197,32 +129,29 @@ List&#x2f;watch requests for ClusterTrustBundles can filter on this field using 
     <h2 id="list-heading">ClusterTrustBundleList</h2>
     
     <p>ClusterTrustBundleList is a collection of ClusterTrustBundle objects</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>certificates.k8s.io/v1alpha1</code></dd>
+  <dt>apiVersion: <code>certificates.k8s.io/v1alpha1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ClusterTrustBundleList</code></dd>
+  <dt>kind: <code>ClusterTrustBundleList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>metadata contains the list metadata.</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>metadata contains the list metadata.</p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.35/certificates.k8s.io/v1beta1/clustertrustbundle/" aria-label="[]ClusterTrustBundle type reference">[]ClusterTrustBundle</a></span>
-  </dt>
-  <dd>items is a collection of ClusterTrustBundle objects</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.35/certificates.k8s.io/v1beta1/clustertrustbundle/" aria-label="[]ClusterTrustBundle type reference">[]ClusterTrustBundle</a>)</span></dt>
+  <dd><p>items is a collection of ClusterTrustBundle objects</p>
+</dd>
   
   
 </dl>

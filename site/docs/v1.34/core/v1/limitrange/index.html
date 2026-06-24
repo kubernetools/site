@@ -6,64 +6,8 @@
   <title>LimitRange v1 (core) &mdash; Kubernetes v1.34 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes LimitRange API reference for v1.34. LimitRange sets resource usage limits for each kind of resource in a Namespace.">
   <link rel="canonical" href="/docs/latest/core/v1/limitrange/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"LimitRange sets resource usage limits for each kind of resource in a Namespace.","name":"LimitRange — Kubernetes v1.34 API Reference","url":"https://www.kubernetools.com/docs/latest/core/v1/limitrange/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>LimitRange sets resource usage limits for each kind of resource in a Namespace.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,27 +58,23 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>LimitRange</code></dd>
+  <dt>kind: <code>LimitRange</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#limitrangespec" aria-label="LimitRangeSpec type reference">LimitRangeSpec</a></span>
-  </dt>
-  <dd>Spec defines the limits enforced. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>spec <span class="type">(<a href="#limitrangespec" aria-label="LimitRangeSpec type reference">LimitRangeSpec</a>)</span></dt>
+  <dd><p>Spec defines the limits enforced. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
 </dl>
@@ -144,16 +85,16 @@
   <section aria-labelledby="limitrangespec">
     <h2 id="limitrangespec">LimitRangeSpec</h2>
     
-    <p>LimitRangeSpec defines a min&#x2f;max usage limit for resources that match on kind.</p>
+    <p>LimitRangeSpec defines a min/max usage limit for resources that match on kind.</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    limits<span class="type">[]LimitRangeItem</span>
-  </dt>
-  <dd>Limits is the list of LimitRangeItem objects that are enforced.</dd>
+  <dt class="req">limits <span class="type">([]LimitRangeItem)</span></dt>
+  <dd><p>Limits is the list of LimitRangeItem objects that are enforced.</p>
+</dd>
   
   
 </dl>
@@ -166,32 +107,29 @@
     <h2 id="list-heading">LimitRangeList</h2>
     
     <p>LimitRangeList is a list of LimitRange items.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>LimitRangeList</code></dd>
+  <dt>kind: <code>LimitRangeList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.34/core/v1/limitrange/" aria-label="[]LimitRange type reference">[]LimitRange</a></span>
-  </dt>
-  <dd>Items is a list of LimitRange objects. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;configuration&#x2f;manage-resources-containers&#x2f;</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.34/core/v1/limitrange/" aria-label="[]LimitRange type reference">[]LimitRange</a>)</span></dt>
+  <dd><p>Items is a list of LimitRange objects. More info: <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></p>
+</dd>
   
   
 </dl>

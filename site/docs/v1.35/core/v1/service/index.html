@@ -6,64 +6,8 @@
   <title>Service v1 (core) &mdash; Kubernetes v1.35 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes Service API reference for v1.35. Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that">
   <link rel="canonical" href="/docs/latest/core/v1/service/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy.","name":"Service — Kubernetes v1.35 API Reference","url":"https://www.kubernetools.com/docs/latest/core/v1/service/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>Service</code></dd>
+  <dt>kind: <code>Service</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#servicespec" aria-label="ServiceSpec type reference">ServiceSpec</a></span>
-  </dt>
-  <dd>Spec defines the behavior of a service. https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>spec <span class="type">(<a href="#servicespec" aria-label="ServiceSpec type reference">ServiceSpec</a>)</span></dt>
+  <dd><p>Spec defines the behavior of a service. <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#servicestatus" aria-label="ServiceStatus type reference">ServiceStatus</a></span>
-  </dt>
-  <dd>Most recently observed status of the service. Populated by the system. Read-only. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>status <span class="type">(<a href="#servicestatus" aria-label="ServiceStatus type reference">ServiceStatus</a>)</span></dt>
+  <dd><p>Most recently observed status of the service. Populated by the system. Read-only. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
 </dl>
@@ -152,152 +92,131 @@
     <h2 id="servicespec">ServiceSpec</h2>
     
     <p>ServiceSpec describes the attributes that a user creates on a service.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    allocateLoadBalancerNodePorts<span class="type">boolean</span>
-  </dt>
-  <dd>allocateLoadBalancerNodePorts defines if NodePorts will be automatically allocated for services with type LoadBalancer.  Default is &quot;true&quot;. It may be set to &quot;false&quot; if the cluster load-balancer does not rely on NodePorts.  If the caller requests specific NodePorts (by specifying a value), those requests will be respected, regardless of this field. This field may only be set for services with type LoadBalancer and will be cleared if the type is changed to any other type.</dd>
+  <dt>allocateLoadBalancerNodePorts <span class="type">(boolean)</span></dt>
+  <dd><p>allocateLoadBalancerNodePorts defines if NodePorts will be automatically allocated for services with type LoadBalancer.  Default is "true". It may be set to "false" if the cluster load-balancer does not rely on NodePorts.  If the caller requests specific NodePorts (by specifying a value), those requests will be respected, regardless of this field. This field may only be set for services with type LoadBalancer and will be cleared if the type is changed to any other type.</p>
+</dd>
   
   
   
-  <dt>
-    clusterIP<span class="type">string</span>
-  </dt>
-  <dd>clusterIP is the IP address of the service and is usually assigned randomly. If an address is specified manually, is in-range (as per system configuration), and is not in use, it will be allocated to the service; otherwise creation of the service will fail. This field may not be changed through updates unless the type field is also being changed to ExternalName (which requires this field to be blank) or the type field is being changed from ExternalName (in which case this field may optionally be specified, as describe above).  Valid values are &quot;None&quot;, empty string (&quot;&quot;), or a valid IP address. Setting this to &quot;None&quot; makes a &quot;headless service&quot; (no virtual IP), which is useful when direct endpoint connections are preferred and proxying is not required.  Only applies to types ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating a Service of type ExternalName, creation will fail. This field will be wiped when updating a Service to type ExternalName. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;services-networking&#x2f;service&#x2f;#virtual-ips-and-service-proxies</dd>
+  <dt>clusterIP <span class="type">(string)</span></dt>
+  <dd><p>clusterIP is the IP address of the service and is usually assigned randomly. If an address is specified manually, is in-range (as per system configuration), and is not in use, it will be allocated to the service; otherwise creation of the service will fail. This field may not be changed through updates unless the type field is also being changed to ExternalName (which requires this field to be blank) or the type field is being changed from ExternalName (in which case this field may optionally be specified, as describe above).  Valid values are "None", empty string (""), or a valid IP address. Setting this to "None" makes a "headless service" (no virtual IP), which is useful when direct endpoint connections are preferred and proxying is not required.  Only applies to types ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating a Service of type ExternalName, creation will fail. This field will be wiped when updating a Service to type ExternalName. More info: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</a></p>
+</dd>
   
   
   
-  <dt>
-    clusterIPs<span class="type">[]string</span>
-  </dt>
-  <dd>ClusterIPs is a list of IP addresses assigned to this service, and are usually assigned randomly.  If an address is specified manually, is in-range (as per system configuration), and is not in use, it will be allocated to the service; otherwise creation of the service will fail. This field may not be changed through updates unless the type field is also being changed to ExternalName (which requires this field to be empty) or the type field is being changed from ExternalName (in which case this field may optionally be specified, as describe above).  Valid values are &quot;None&quot;, empty string (&quot;&quot;), or a valid IP address.  Setting this to &quot;None&quot; makes a &quot;headless service&quot; (no virtual IP), which is useful when direct endpoint connections are preferred and proxying is not required.  Only applies to types ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating a Service of type ExternalName, creation will fail. This field will be wiped when updating a Service to type ExternalName.  If this field is not specified, it will be initialized from the clusterIP field.  If this field is specified, clients must ensure that clusterIPs[0] and clusterIP have the same value.
-
-This field may hold a maximum of two entries (dual-stack IPs, in either order). These IPs must correspond to the values of the ipFamilies field. Both clusterIPs and ipFamilies are governed by the ipFamilyPolicy field. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;services-networking&#x2f;service&#x2f;#virtual-ips-and-service-proxies</dd>
+  <dt>clusterIPs <span class="type">([]string)</span></dt>
+  <dd><p>ClusterIPs is a list of IP addresses assigned to this service, and are usually assigned randomly.  If an address is specified manually, is in-range (as per system configuration), and is not in use, it will be allocated to the service; otherwise creation of the service will fail. This field may not be changed through updates unless the type field is also being changed to ExternalName (which requires this field to be empty) or the type field is being changed from ExternalName (in which case this field may optionally be specified, as describe above).  Valid values are "None", empty string (""), or a valid IP address.  Setting this to "None" makes a "headless service" (no virtual IP), which is useful when direct endpoint connections are preferred and proxying is not required.  Only applies to types ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating a Service of type ExternalName, creation will fail. This field will be wiped when updating a Service to type ExternalName.  If this field is not specified, it will be initialized from the clusterIP field.  If this field is specified, clients must ensure that clusterIPs[0] and clusterIP have the same value.</p>
+<p>This field may hold a maximum of two entries (dual-stack IPs, in either order). These IPs must correspond to the values of the ipFamilies field. Both clusterIPs and ipFamilies are governed by the ipFamilyPolicy field. More info: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</a></p>
+</dd>
   
   
   
-  <dt>
-    externalIPs<span class="type">[]string</span>
-  </dt>
-  <dd>externalIPs is a list of IP addresses for which nodes in the cluster will also accept traffic for this service.  These IPs are not managed by Kubernetes.  The user is responsible for ensuring that traffic arrives at a node with this IP.  A common example is external load-balancers that are not part of the Kubernetes system.</dd>
+  <dt>externalIPs <span class="type">([]string)</span></dt>
+  <dd><p>externalIPs is a list of IP addresses for which nodes in the cluster will also accept traffic for this service.  These IPs are not managed by Kubernetes.  The user is responsible for ensuring that traffic arrives at a node with this IP.  A common example is external load-balancers that are not part of the Kubernetes system.</p>
+</dd>
   
   
   
-  <dt>
-    externalName<span class="type">string</span>
-  </dt>
-  <dd>externalName is the external reference that discovery mechanisms will return as an alias for this service (e.g. a DNS CNAME record). No proxying will be involved.  Must be a lowercase RFC-1123 hostname (https:&#x2f;&#x2f;tools.ietf.org&#x2f;html&#x2f;rfc1123) and requires `type` to be &quot;ExternalName&quot;.</dd>
+  <dt>externalName <span class="type">(string)</span></dt>
+  <dd><p>externalName is the external reference that discovery mechanisms will return as an alias for this service (e.g. a DNS CNAME record). No proxying will be involved.  Must be a lowercase RFC-1123 hostname (<a href="https://tools.ietf.org/html/rfc1123" target="_blank" rel="noopener noreferrer">https://tools.ietf.org/html/rfc1123</a>) and requires <code>type</code> to be "ExternalName".</p>
+</dd>
   
   
   
-  <dt>
-    externalTrafficPolicy<span class="type">string</span>
-  </dt>
-  <dd>externalTrafficPolicy describes how nodes distribute service traffic they receive on one of the Service&#x27;s &quot;externally-facing&quot; addresses (NodePorts, ExternalIPs, and LoadBalancer IPs). If set to &quot;Local&quot;, the proxy will configure the service in a way that assumes that external load balancers will take care of balancing the service traffic between nodes, and so each node will deliver traffic only to the node-local endpoints of the service, without masquerading the client source IP. (Traffic mistakenly sent to a node with no endpoints will be dropped.) The default value, &quot;Cluster&quot;, uses the standard behavior of routing to all endpoints evenly (possibly modified by topology and other features). Note that traffic sent to an External IP or LoadBalancer IP from within the cluster will always get &quot;Cluster&quot; semantics, but clients sending to a NodePort from within the cluster may need to take traffic policy into account when picking a node.</dd>
+  <dt>externalTrafficPolicy <span class="type">(string)</span></dt>
+  <dd><p>externalTrafficPolicy describes how nodes distribute service traffic they receive on one of the Service's "externally-facing" addresses (NodePorts, ExternalIPs, and LoadBalancer IPs). If set to "Local", the proxy will configure the service in a way that assumes that external load balancers will take care of balancing the service traffic between nodes, and so each node will deliver traffic only to the node-local endpoints of the service, without masquerading the client source IP. (Traffic mistakenly sent to a node with no endpoints will be dropped.) The default value, "Cluster", uses the standard behavior of routing to all endpoints evenly (possibly modified by topology and other features). Note that traffic sent to an External IP or LoadBalancer IP from within the cluster will always get "Cluster" semantics, but clients sending to a NodePort from within the cluster may need to take traffic policy into account when picking a node.</p>
+</dd>
   
   
   
-  <dt>
-    healthCheckNodePort<span class="type">integer</span>
-  </dt>
-  <dd>healthCheckNodePort specifies the healthcheck nodePort for the service. This only applies when type is set to LoadBalancer and externalTrafficPolicy is set to Local. If a value is specified, is in-range, and is not in use, it will be used.  If not specified, a value will be automatically allocated.  External systems (e.g. load-balancers) can use this port to determine if a given node holds endpoints for this service or not.  If this field is specified when creating a Service which does not need it, creation will fail. This field will be wiped when updating a Service to no longer need it (e.g. changing type). This field cannot be updated once set.</dd>
+  <dt>healthCheckNodePort <span class="type">(integer)</span></dt>
+  <dd><p>healthCheckNodePort specifies the healthcheck nodePort for the service. This only applies when type is set to LoadBalancer and externalTrafficPolicy is set to Local. If a value is specified, is in-range, and is not in use, it will be used.  If not specified, a value will be automatically allocated.  External systems (e.g. load-balancers) can use this port to determine if a given node holds endpoints for this service or not.  If this field is specified when creating a Service which does not need it, creation will fail. This field will be wiped when updating a Service to no longer need it (e.g. changing type). This field cannot be updated once set.</p>
+</dd>
   
   
   
-  <dt>
-    internalTrafficPolicy<span class="type">string</span>
-  </dt>
-  <dd>InternalTrafficPolicy describes how nodes distribute service traffic they receive on the ClusterIP. If set to &quot;Local&quot;, the proxy will assume that pods only want to talk to endpoints of the service on the same node as the pod, dropping the traffic if there are no local endpoints. The default value, &quot;Cluster&quot;, uses the standard behavior of routing to all endpoints evenly (possibly modified by topology and other features).</dd>
+  <dt>internalTrafficPolicy <span class="type">(string)</span></dt>
+  <dd><p>InternalTrafficPolicy describes how nodes distribute service traffic they receive on the ClusterIP. If set to "Local", the proxy will assume that pods only want to talk to endpoints of the service on the same node as the pod, dropping the traffic if there are no local endpoints. The default value, "Cluster", uses the standard behavior of routing to all endpoints evenly (possibly modified by topology and other features).</p>
+</dd>
   
   
   
-  <dt>
-    ipFamilies<span class="type">[]string</span>
-  </dt>
-  <dd>IPFamilies is a list of IP families (e.g. IPv4, IPv6) assigned to this service. This field is usually assigned automatically based on cluster configuration and the ipFamilyPolicy field. If this field is specified manually, the requested family is available in the cluster, and ipFamilyPolicy allows it, it will be used; otherwise creation of the service will fail. This field is conditionally mutable: it allows for adding or removing a secondary IP family, but it does not allow changing the primary IP family of the Service. Valid values are &quot;IPv4&quot; and &quot;IPv6&quot;.  This field only applies to Services of types ClusterIP, NodePort, and LoadBalancer, and does apply to &quot;headless&quot; services. This field will be wiped when updating a Service to type ExternalName.
-
-This field may hold a maximum of two entries (dual-stack families, in either order).  These families must correspond to the values of the clusterIPs field, if specified. Both clusterIPs and ipFamilies are governed by the ipFamilyPolicy field.</dd>
+  <dt>ipFamilies <span class="type">([]string)</span></dt>
+  <dd><p>IPFamilies is a list of IP families (e.g. IPv4, IPv6) assigned to this service. This field is usually assigned automatically based on cluster configuration and the ipFamilyPolicy field. If this field is specified manually, the requested family is available in the cluster, and ipFamilyPolicy allows it, it will be used; otherwise creation of the service will fail. This field is conditionally mutable: it allows for adding or removing a secondary IP family, but it does not allow changing the primary IP family of the Service. Valid values are "IPv4" and "IPv6".  This field only applies to Services of types ClusterIP, NodePort, and LoadBalancer, and does apply to "headless" services. This field will be wiped when updating a Service to type ExternalName.</p>
+<p>This field may hold a maximum of two entries (dual-stack families, in either order).  These families must correspond to the values of the clusterIPs field, if specified. Both clusterIPs and ipFamilies are governed by the ipFamilyPolicy field.</p>
+</dd>
   
   
   
-  <dt>
-    ipFamilyPolicy<span class="type">string</span>
-  </dt>
-  <dd>IPFamilyPolicy represents the dual-stack-ness requested or required by this Service. If there is no value provided, then this field will be set to SingleStack. Services can be &quot;SingleStack&quot; (a single IP family), &quot;PreferDualStack&quot; (two IP families on dual-stack configured clusters or a single IP family on single-stack clusters), or &quot;RequireDualStack&quot; (two IP families on dual-stack configured clusters, otherwise fail). The ipFamilies and clusterIPs fields depend on the value of this field. This field will be wiped when updating a service to type ExternalName.</dd>
+  <dt>ipFamilyPolicy <span class="type">(string)</span></dt>
+  <dd><p>IPFamilyPolicy represents the dual-stack-ness requested or required by this Service. If there is no value provided, then this field will be set to SingleStack. Services can be "SingleStack" (a single IP family), "PreferDualStack" (two IP families on dual-stack configured clusters or a single IP family on single-stack clusters), or "RequireDualStack" (two IP families on dual-stack configured clusters, otherwise fail). The ipFamilies and clusterIPs fields depend on the value of this field. This field will be wiped when updating a service to type ExternalName.</p>
+</dd>
   
   
   
-  <dt>
-    loadBalancerClass<span class="type">string</span>
-  </dt>
-  <dd>loadBalancerClass is the class of the load balancer implementation this Service belongs to. If specified, the value of this field must be a label-style identifier, with an optional prefix, e.g. &quot;internal-vip&quot; or &quot;example.com&#x2f;internal-vip&quot;. Unprefixed names are reserved for end-users. This field can only be set when the Service type is &#x27;LoadBalancer&#x27;. If not set, the default load balancer implementation is used, today this is typically done through the cloud provider integration, but should apply for any default implementation. If set, it is assumed that a load balancer implementation is watching for Services with a matching class. Any default load balancer implementation (e.g. cloud providers) should ignore Services that set this field. This field can only be set when creating or updating a Service to type &#x27;LoadBalancer&#x27;. Once set, it can not be changed. This field will be wiped when a service is updated to a non &#x27;LoadBalancer&#x27; type.</dd>
+  <dt>loadBalancerClass <span class="type">(string)</span></dt>
+  <dd><p>loadBalancerClass is the class of the load balancer implementation this Service belongs to. If specified, the value of this field must be a label-style identifier, with an optional prefix, e.g. "internal-vip" or "example.com/internal-vip". Unprefixed names are reserved for end-users. This field can only be set when the Service type is 'LoadBalancer'. If not set, the default load balancer implementation is used, today this is typically done through the cloud provider integration, but should apply for any default implementation. If set, it is assumed that a load balancer implementation is watching for Services with a matching class. Any default load balancer implementation (e.g. cloud providers) should ignore Services that set this field. This field can only be set when creating or updating a Service to type 'LoadBalancer'. Once set, it can not be changed. This field will be wiped when a service is updated to a non 'LoadBalancer' type.</p>
+</dd>
   
   
   
-  <dt>
-    loadBalancerIP<span class="type">string</span>
-  </dt>
-  <dd>Only applies to Service Type: LoadBalancer. This feature depends on whether the underlying cloud-provider supports specifying the loadBalancerIP when a load balancer is created. This field will be ignored if the cloud-provider does not support the feature. Deprecated: This field was under-specified and its meaning varies across implementations. Using it is non-portable and it may not support dual-stack. Users are encouraged to use implementation-specific annotations when available.</dd>
+  <dt>loadBalancerIP <span class="type">(string)</span></dt>
+  <dd><p>Only applies to Service Type: LoadBalancer. This feature depends on whether the underlying cloud-provider supports specifying the loadBalancerIP when a load balancer is created. This field will be ignored if the cloud-provider does not support the feature. Deprecated: This field was under-specified and its meaning varies across implementations. Using it is non-portable and it may not support dual-stack. Users are encouraged to use implementation-specific annotations when available.</p>
+</dd>
   
   
   
-  <dt>
-    loadBalancerSourceRanges<span class="type">[]string</span>
-  </dt>
-  <dd>If specified and supported by the platform, this will restrict traffic through the cloud-provider load-balancer will be restricted to the specified client IPs. This field will be ignored if the cloud-provider does not support the feature.&quot; More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;tasks&#x2f;access-application-cluster&#x2f;create-external-load-balancer&#x2f;</dd>
+  <dt>loadBalancerSourceRanges <span class="type">([]string)</span></dt>
+  <dd><p>If specified and supported by the platform, this will restrict traffic through the cloud-provider load-balancer will be restricted to the specified client IPs. This field will be ignored if the cloud-provider does not support the feature." More info: <a href="https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/</a></p>
+</dd>
   
   
   
-  <dt>
-    ports<span class="type">[]ServicePort</span>
-  </dt>
-  <dd>The list of ports that are exposed by this service. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;services-networking&#x2f;service&#x2f;#virtual-ips-and-service-proxies</dd>
+  <dt>ports <span class="type">([]ServicePort)</span></dt>
+  <dd><p>The list of ports that are exposed by this service. More info: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</a></p>
+</dd>
   
   
   
-  <dt>
-    publishNotReadyAddresses<span class="type">boolean</span>
-  </dt>
-  <dd>publishNotReadyAddresses indicates that any agent which deals with endpoints for this Service should disregard any indications of ready&#x2f;not-ready. The primary use case for setting this field is for a StatefulSet&#x27;s Headless Service to propagate SRV DNS records for its Pods for the purpose of peer discovery. The Kubernetes controllers that generate Endpoints and EndpointSlice resources for Services interpret this to mean that all endpoints are considered &quot;ready&quot; even if the Pods themselves are not. Agents which consume only Kubernetes generated endpoints through the Endpoints or EndpointSlice resources can safely assume this behavior.</dd>
+  <dt>publishNotReadyAddresses <span class="type">(boolean)</span></dt>
+  <dd><p>publishNotReadyAddresses indicates that any agent which deals with endpoints for this Service should disregard any indications of ready/not-ready. The primary use case for setting this field is for a StatefulSet's Headless Service to propagate SRV DNS records for its Pods for the purpose of peer discovery. The Kubernetes controllers that generate Endpoints and EndpointSlice resources for Services interpret this to mean that all endpoints are considered "ready" even if the Pods themselves are not. Agents which consume only Kubernetes generated endpoints through the Endpoints or EndpointSlice resources can safely assume this behavior.</p>
+</dd>
   
   
   
-  <dt>
-    selector<span class="type">map[string]string</span>
-  </dt>
-  <dd>Route service traffic to pods with label keys and values matching this selector. If empty or not present, the service is assumed to have an external process managing its endpoints, which Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;services-networking&#x2f;service&#x2f;</dd>
+  <dt>selector <span class="type">(map[string]string)</span></dt>
+  <dd><p>Route service traffic to pods with label keys and values matching this selector. If empty or not present, the service is assumed to have an external process managing its endpoints, which Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More info: <a href="https://kubernetes.io/docs/concepts/services-networking/service/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/services-networking/service/</a></p>
+</dd>
   
   
   
-  <dt>
-    sessionAffinity<span class="type">string</span>
-  </dt>
-  <dd>Supports &quot;ClientIP&quot; and &quot;None&quot;. Used to maintain session affinity. Enable client IP based session affinity. Must be ClientIP or None. Defaults to None. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;services-networking&#x2f;service&#x2f;#virtual-ips-and-service-proxies</dd>
+  <dt>sessionAffinity <span class="type">(string)</span></dt>
+  <dd><p>Supports "ClientIP" and "None". Used to maintain session affinity. Enable client IP based session affinity. Must be ClientIP or None. Defaults to None. More info: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</a></p>
+</dd>
   
   
   
-  <dt>
-    sessionAffinityConfig<span class="type">SessionAffinityConfig</span>
-  </dt>
-  <dd>sessionAffinityConfig contains the configurations of session affinity.</dd>
+  <dt>sessionAffinityConfig <span class="type">(SessionAffinityConfig)</span></dt>
+  <dd><p>sessionAffinityConfig contains the configurations of session affinity.</p>
+</dd>
   
   
   
-  <dt>
-    trafficDistribution<span class="type">string</span>
-  </dt>
-  <dd>TrafficDistribution offers a way to express preferences for how traffic is distributed to Service endpoints. Implementations can use this field as a hint, but are not required to guarantee strict adherence. If the field is not set, the implementation will apply its default routing strategy. If set to &quot;PreferClose&quot;, implementations should prioritize endpoints that are in the same zone.</dd>
+  <dt>trafficDistribution <span class="type">(string)</span></dt>
+  <dd><p>TrafficDistribution offers a way to express preferences for how traffic is distributed to Service endpoints. Implementations can use this field as a hint, but are not required to guarantee strict adherence. If the field is not set, the implementation will apply its default routing strategy. If set to "PreferClose", implementations should prioritize endpoints that are in the same zone.</p>
+</dd>
   
   
   
-  <dt>
-    type<span class="type">string</span>
-  </dt>
-  <dd>type determines how the Service is exposed. Defaults to ClusterIP. Valid options are ExternalName, ClusterIP, NodePort, and LoadBalancer. &quot;ClusterIP&quot; allocates a cluster-internal IP address for load-balancing to endpoints. Endpoints are determined by the selector or if that is not specified, by manual construction of an Endpoints object or EndpointSlice objects. If clusterIP is &quot;None&quot;, no virtual IP is allocated and the endpoints are published as a set of endpoints rather than a virtual IP. &quot;NodePort&quot; builds on ClusterIP and allocates a port on every node which routes to the same endpoints as the clusterIP. &quot;LoadBalancer&quot; builds on NodePort and creates an external load-balancer (if supported in the current cloud) which routes to the same endpoints as the clusterIP. &quot;ExternalName&quot; aliases this service to the specified externalName. Several other fields do not apply to ExternalName services. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;services-networking&#x2f;service&#x2f;#publishing-services-service-types</dd>
+  <dt>type <span class="type">(string)</span></dt>
+  <dd><p>type determines how the Service is exposed. Defaults to ClusterIP. Valid options are ExternalName, ClusterIP, NodePort, and LoadBalancer. "ClusterIP" allocates a cluster-internal IP address for load-balancing to endpoints. Endpoints are determined by the selector or if that is not specified, by manual construction of an Endpoints object or EndpointSlice objects. If clusterIP is "None", no virtual IP is allocated and the endpoints are published as a set of endpoints rather than a virtual IP. "NodePort" builds on ClusterIP and allocates a port on every node which routes to the same endpoints as the clusterIP. "LoadBalancer" builds on NodePort and creates an external load-balancer (if supported in the current cloud) which routes to the same endpoints as the clusterIP. "ExternalName" aliases this service to the specified externalName. Several other fields do not apply to ExternalName services. More info: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types</a></p>
+</dd>
   
   
 </dl>
@@ -309,22 +228,21 @@ This field may hold a maximum of two entries (dual-stack families, in either ord
     <h2 id="servicestatus">ServiceStatus</h2>
     
     <p>ServiceStatus represents the current status of a service.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    conditions<span class="type">[]Condition</span>
-  </dt>
-  <dd>Current service state</dd>
+  <dt>conditions <span class="type">([]Condition)</span></dt>
+  <dd><p>Current service state</p>
+</dd>
   
   
   
-  <dt>
-    loadBalancer<span class="type">LoadBalancerStatus</span>
-  </dt>
-  <dd>LoadBalancer contains the current status of the load-balancer, if one is present.</dd>
+  <dt>loadBalancer <span class="type">(LoadBalancerStatus)</span></dt>
+  <dd><p>LoadBalancer contains the current status of the load-balancer, if one is present.</p>
+</dd>
   
   
 </dl>
@@ -336,32 +254,29 @@ This field may hold a maximum of two entries (dual-stack families, in either ord
     <h2 id="list-heading">ServiceList</h2>
     
     <p>ServiceList holds a list of services.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ServiceList</code></dd>
+  <dt>kind: <code>ServiceList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.35/core/v1/service/" aria-label="[]Service type reference">[]Service</a></span>
-  </dt>
-  <dd>List of services</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.35/core/v1/service/" aria-label="[]Service type reference">[]Service</a>)</span></dt>
+  <dd><p>List of services</p>
+</dd>
   
   
 </dl>

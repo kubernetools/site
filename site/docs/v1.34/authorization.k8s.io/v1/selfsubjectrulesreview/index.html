@@ -6,64 +6,8 @@
   <title>SelfSubjectRulesReview v1 (authorization.k8s.io) &mdash; Kubernetes v1.34 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes SelfSubjectRulesReview API reference for v1.34. SelfSubjectRulesReview enumerates the set of actions the current user can perform within a namespace. The returned list ">
   <link rel="canonical" href="/docs/latest/authorization.k8s.io/v1/selfsubjectrulesreview/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"SelfSubjectRulesReview enumerates the set of actions the current user can perform within a namespace. The returned list of actions may be incomplete depending on the server's authorization mode, and any errors experienced during the evaluation. SelfSubjectRulesReview should be used by UIs to show/hide actions, or to quickly let an end user reason about their permissions. It should NOT Be used by external systems to drive authorization decisions as this raises confused deputy, cache lifetime/revocation, and correctness concerns. SubjectAccessReview, and LocalAccessReview are the correct way to defer authorization decisions to the API server.","name":"SelfSubjectRulesReview — Kubernetes v1.34 API Reference","url":"https://www.kubernetools.com/docs/latest/authorization.k8s.io/v1/selfsubjectrulesreview/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -104,7 +48,8 @@
   <h1>SelfSubjectRulesReview <span class="badge">authorization.k8s.io/v1</span></h1>
   
   
-  <p>SelfSubjectRulesReview enumerates the set of actions the current user can perform within a namespace. The returned list of actions may be incomplete depending on the server&#x27;s authorization mode, and any errors experienced during the evaluation. SelfSubjectRulesReview should be used by UIs to show&#x2f;hide actions, or to quickly let an end user reason about their permissions. It should NOT Be used by external systems to drive authorization decisions as this raises confused deputy, cache lifetime&#x2f;revocation, and correctness concerns. SubjectAccessReview, and LocalAccessReview are the correct way to defer authorization decisions to the API server.</p>
+  <p>SelfSubjectRulesReview enumerates the set of actions the current user can perform within a namespace. The returned list of actions may be incomplete depending on the server's authorization mode, and any errors experienced during the evaluation. SelfSubjectRulesReview should be used by UIs to show/hide actions, or to quickly let an end user reason about their permissions. It should NOT Be used by external systems to drive authorization decisions as this raises confused deputy, cache lifetime/revocation, and correctness concerns. SubjectAccessReview, and LocalAccessReview are the correct way to defer authorization decisions to the API server.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>authorization.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>authorization.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>SelfSubjectRulesReview</code></dd>
+  <dt>kind: <code>SelfSubjectRulesReview</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    spec<span class="type"><a href="#selfsubjectrulesreviewspec" aria-label="SelfSubjectRulesReviewSpec type reference">SelfSubjectRulesReviewSpec</a></span>
-  </dt>
-  <dd>Spec holds information about the request being evaluated.</dd>
+  <dt class="req">spec <span class="type">(<a href="#selfsubjectrulesreviewspec" aria-label="SelfSubjectRulesReviewSpec type reference">SelfSubjectRulesReviewSpec</a>)</span></dt>
+  <dd><p>Spec holds information about the request being evaluated.</p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#selfsubjectrulesreviewstatus" aria-label="SubjectRulesReviewStatus type reference">SubjectRulesReviewStatus</a></span>
-  </dt>
-  <dd>Status is filled in by the server and indicates the set of actions a user can perform.</dd>
+  <dt>status <span class="type">(<a href="#selfsubjectrulesreviewstatus" aria-label="SubjectRulesReviewStatus type reference">SubjectRulesReviewStatus</a>)</span></dt>
+  <dd><p>Status is filled in by the server and indicates the set of actions a user can perform.</p>
+</dd>
   
   
 </dl>
@@ -152,15 +92,15 @@
     <h2 id="selfsubjectrulesreviewspec">SelfSubjectRulesReviewSpec</h2>
     
     <p>SelfSubjectRulesReviewSpec defines the specification for SelfSubjectRulesReview.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    namespace<span class="type">string</span>
-  </dt>
-  <dd>Namespace to evaluate rules for. Required.</dd>
+  <dt>namespace <span class="type">(string)</span></dt>
+  <dd><p>Namespace to evaluate rules for. Required.</p>
+</dd>
   
   
 </dl>
@@ -171,37 +111,34 @@
   <section aria-labelledby="selfsubjectrulesreviewstatus">
     <h2 id="selfsubjectrulesreviewstatus">SelfSubjectRulesReviewStatus</h2>
     
-    <p>SubjectRulesReviewStatus contains the result of a rules check. This check can be incomplete depending on the set of authorizers the server is configured with and any errors experienced during evaluation. Because authorization rules are additive, if a rule appears in a list it&#x27;s safe to assume the subject has that permission, even if that list is incomplete.</p>
+    <p>SubjectRulesReviewStatus contains the result of a rules check. This check can be incomplete depending on the set of authorizers the server is configured with and any errors experienced during evaluation. Because authorization rules are additive, if a rule appears in a list it's safe to assume the subject has that permission, even if that list is incomplete.</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    incomplete<span class="type">boolean</span>
-  </dt>
-  <dd>Incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn&#x27;t support rules evaluation.</dd>
+  <dt class="req">incomplete <span class="type">(boolean)</span></dt>
+  <dd><p>Incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn't support rules evaluation.</p>
+</dd>
   
   
   
-  <dt class="req">
-    nonResourceRules<span class="type">[]NonResourceRule</span>
-  </dt>
-  <dd>NonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn&#x27;t significant, may contain duplicates, and possibly be incomplete.</dd>
+  <dt class="req">nonResourceRules <span class="type">([]NonResourceRule)</span></dt>
+  <dd><p>NonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.</p>
+</dd>
   
   
   
-  <dt class="req">
-    resourceRules<span class="type">[]ResourceRule</span>
-  </dt>
-  <dd>ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn&#x27;t significant, may contain duplicates, and possibly be incomplete.</dd>
+  <dt class="req">resourceRules <span class="type">([]ResourceRule)</span></dt>
+  <dd><p>ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.</p>
+</dd>
   
   
   
-  <dt>
-    evaluationError<span class="type">string</span>
-  </dt>
-  <dd>EvaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn&#x27;t support rule evaluation, and that ResourceRules and&#x2f;or NonResourceRules may be incomplete.</dd>
+  <dt>evaluationError <span class="type">(string)</span></dt>
+  <dd><p>EvaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn't support rule evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.</p>
+</dd>
   
   
 </dl>

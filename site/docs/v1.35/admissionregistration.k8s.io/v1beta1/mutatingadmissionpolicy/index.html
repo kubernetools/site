@@ -6,64 +6,8 @@
   <title>MutatingAdmissionPolicy v1beta1 (admissionregistration.k8s.io) &mdash; Kubernetes v1.35 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes MutatingAdmissionPolicy API reference for v1.35. MutatingAdmissionPolicy describes the definition of an admission mutation policy that mutates the object coming into adm">
   <link rel="canonical" href="/docs/latest/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicy/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"MutatingAdmissionPolicy describes the definition of an admission mutation policy that mutates the object coming into admission chain.","name":"MutatingAdmissionPolicy — Kubernetes v1.35 API Reference","url":"https://www.kubernetools.com/docs/latest/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicy/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -111,6 +55,7 @@
   
   
   <p>MutatingAdmissionPolicy describes the definition of an admission mutation policy that mutates the object coming into admission chain.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -119,27 +64,23 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>admissionregistration.k8s.io/v1beta1</code></dd>
+  <dt>apiVersion: <code>admissionregistration.k8s.io/v1beta1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>MutatingAdmissionPolicy</code></dd>
+  <dt>kind: <code>MutatingAdmissionPolicy</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object metadata; More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata.</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object metadata; More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a>.</p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#mutatingadmissionpolicyspec" aria-label="MutatingAdmissionPolicySpec type reference">MutatingAdmissionPolicySpec</a></span>
-  </dt>
-  <dd>Specification of the desired behavior of the MutatingAdmissionPolicy.</dd>
+  <dt>spec <span class="type">(<a href="#mutatingadmissionpolicyspec" aria-label="MutatingAdmissionPolicySpec type reference">MutatingAdmissionPolicySpec</a>)</span></dt>
+  <dd><p>Specification of the desired behavior of the MutatingAdmissionPolicy.</p>
+</dd>
   
   
 </dl>
@@ -151,78 +92,69 @@
     <h2 id="mutatingadmissionpolicyspec">MutatingAdmissionPolicySpec</h2>
     
     <p>MutatingAdmissionPolicySpec is the specification of the desired behavior of the admission policy.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    failurePolicy<span class="type">string</span>
-  </dt>
-  <dd>failurePolicy defines how to handle failures for the admission policy. Failures can occur from CEL expression parse errors, type check errors, runtime errors and invalid or mis-configured policy definitions or bindings.
-
-A policy is invalid if paramKind refers to a non-existent Kind. A binding is invalid if paramRef.name refers to a non-existent resource.
-
-failurePolicy does not define how validations that evaluate to false are handled.
-
-Allowed values are Ignore or Fail. Defaults to Fail.</dd>
+  <dt>failurePolicy <span class="type">(string)</span></dt>
+  <dd><p>failurePolicy defines how to handle failures for the admission policy. Failures can occur from CEL expression parse errors, type check errors, runtime errors and invalid or mis-configured policy definitions or bindings.</p>
+<p>A policy is invalid if paramKind refers to a non-existent Kind. A binding is invalid if paramRef.name refers to a non-existent resource.</p>
+<p>failurePolicy does not define how validations that evaluate to false are handled.</p>
+<p>Allowed values are Ignore or Fail. Defaults to Fail.</p>
+</dd>
   
   
   
-  <dt>
-    matchConditions<span class="type">[]MatchCondition</span>
-  </dt>
-  <dd>matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the matchConstraints. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed.
-
-If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions.
-
-The exact matching logic is (in order):
-  1. If ANY matchCondition evaluates to FALSE, the policy is skipped.
-  2. If ALL matchConditions evaluate to TRUE, the policy is evaluated.
-  3. If any matchCondition evaluates to an error (but none are FALSE):
-     - If failurePolicy=Fail, reject the request
-     - If failurePolicy=Ignore, the policy is skipped</dd>
+  <dt>matchConditions <span class="type">([]MatchCondition)</span></dt>
+  <dd><p>matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the matchConstraints. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed.</p>
+<p>If a parameter object is provided, it can be accessed via the <code>params</code> handle in the same manner as validation expressions.</p>
+<p>The exact matching logic is (in order):</p>
+<ol>
+<li>If ANY matchCondition evaluates to FALSE, the policy is skipped.</li>
+<li>If ALL matchConditions evaluate to TRUE, the policy is evaluated.</li>
+<li>If any matchCondition evaluates to an error (but none are FALSE):
+<ul>
+<li>If failurePolicy=Fail, reject the request</li>
+<li>If failurePolicy=Ignore, the policy is skipped</li>
+</ul>
+</li>
+</ol>
+</dd>
   
   
   
-  <dt>
-    matchConstraints<span class="type">MatchResources</span>
-  </dt>
-  <dd>matchConstraints specifies what resources this policy is designed to validate. The MutatingAdmissionPolicy cares about a request if it matches _all_ Constraints. However, in order to prevent clusters from being put into an unstable state that cannot be recovered from via the API MutatingAdmissionPolicy cannot match MutatingAdmissionPolicy and MutatingAdmissionPolicyBinding. The CREATE, UPDATE and CONNECT operations are allowed.  The DELETE operation may not be matched. &#x27;*&#x27; matches CREATE, UPDATE and CONNECT. Required.</dd>
+  <dt>matchConstraints <span class="type">(MatchResources)</span></dt>
+  <dd><p>matchConstraints specifies what resources this policy is designed to validate. The MutatingAdmissionPolicy cares about a request if it matches <em>all</em> Constraints. However, in order to prevent clusters from being put into an unstable state that cannot be recovered from via the API MutatingAdmissionPolicy cannot match MutatingAdmissionPolicy and MutatingAdmissionPolicyBinding. The CREATE, UPDATE and CONNECT operations are allowed.  The DELETE operation may not be matched. '*' matches CREATE, UPDATE and CONNECT. Required.</p>
+</dd>
   
   
   
-  <dt>
-    mutations<span class="type">[]Mutation</span>
-  </dt>
-  <dd>mutations contain operations to perform on matching objects. mutations may not be empty; a minimum of one mutation is required. mutations are evaluated in order, and are reinvoked according to the reinvocationPolicy. The mutations of a policy are invoked for each binding of this policy and reinvocation of mutations occurs on a per binding basis.</dd>
+  <dt>mutations <span class="type">([]Mutation)</span></dt>
+  <dd><p>mutations contain operations to perform on matching objects. mutations may not be empty; a minimum of one mutation is required. mutations are evaluated in order, and are reinvoked according to the reinvocationPolicy. The mutations of a policy are invoked for each binding of this policy and reinvocation of mutations occurs on a per binding basis.</p>
+</dd>
   
   
   
-  <dt>
-    paramKind<span class="type">ParamKind</span>
-  </dt>
-  <dd>paramKind specifies the kind of resources used to parameterize this policy. If absent, there are no parameters for this policy and the param CEL variable will not be provided to validation expressions. If paramKind refers to a non-existent kind, this policy definition is mis-configured and the FailurePolicy is applied. If paramKind is specified but paramRef is unset in MutatingAdmissionPolicyBinding, the params variable will be null.</dd>
+  <dt>paramKind <span class="type">(ParamKind)</span></dt>
+  <dd><p>paramKind specifies the kind of resources used to parameterize this policy. If absent, there are no parameters for this policy and the param CEL variable will not be provided to validation expressions. If paramKind refers to a non-existent kind, this policy definition is mis-configured and the FailurePolicy is applied. If paramKind is specified but paramRef is unset in MutatingAdmissionPolicyBinding, the params variable will be null.</p>
+</dd>
   
   
   
-  <dt>
-    reinvocationPolicy<span class="type">string</span>
-  </dt>
-  <dd>reinvocationPolicy indicates whether mutations may be called multiple times per MutatingAdmissionPolicyBinding as part of a single admission evaluation. Allowed values are &quot;Never&quot; and &quot;IfNeeded&quot;.
-
-Never: These mutations will not be called more than once per binding in a single admission evaluation.
-
-IfNeeded: These mutations may be invoked more than once per binding for a single admission request and there is no guarantee of order with respect to other admission plugins, admission webhooks, bindings of this policy and admission policies.  Mutations are only reinvoked when mutations change the object after this mutation is invoked. Required.</dd>
+  <dt>reinvocationPolicy <span class="type">(string)</span></dt>
+  <dd><p>reinvocationPolicy indicates whether mutations may be called multiple times per MutatingAdmissionPolicyBinding as part of a single admission evaluation. Allowed values are "Never" and "IfNeeded".</p>
+<p>Never: These mutations will not be called more than once per binding in a single admission evaluation.</p>
+<p>IfNeeded: These mutations may be invoked more than once per binding for a single admission request and there is no guarantee of order with respect to other admission plugins, admission webhooks, bindings of this policy and admission policies.  Mutations are only reinvoked when mutations change the object after this mutation is invoked. Required.</p>
+</dd>
   
   
   
-  <dt>
-    variables<span class="type">[]Variable</span>
-  </dt>
-  <dd>variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy.
-
-The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic.</dd>
+  <dt>variables <span class="type">([]Variable)</span></dt>
+  <dd><p>variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under <code>variables</code> in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy.</p>
+<p>The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic.</p>
+</dd>
   
   
 </dl>
@@ -235,32 +167,29 @@ The expression of a variable can refer to other variables defined earlier in the
     <h2 id="list-heading">MutatingAdmissionPolicyList</h2>
     
     <p>MutatingAdmissionPolicyList is a list of MutatingAdmissionPolicy.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>admissionregistration.k8s.io/v1beta1</code></dd>
+  <dt>apiVersion: <code>admissionregistration.k8s.io/v1beta1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>MutatingAdmissionPolicyList</code></dd>
+  <dt>kind: <code>MutatingAdmissionPolicyList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.35/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicy/" aria-label="[]MutatingAdmissionPolicy type reference">[]MutatingAdmissionPolicy</a></span>
-  </dt>
-  <dd>List of ValidatingAdmissionPolicy.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.35/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicy/" aria-label="[]MutatingAdmissionPolicy type reference">[]MutatingAdmissionPolicy</a>)</span></dt>
+  <dd><p>List of ValidatingAdmissionPolicy.</p>
+</dd>
   
   
 </dl>
