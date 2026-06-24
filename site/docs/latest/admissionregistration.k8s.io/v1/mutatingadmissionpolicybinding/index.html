@@ -6,64 +6,8 @@
   <title>MutatingAdmissionPolicyBinding v1 (admissionregistration.k8s.io) &mdash; Kubernetes v1.36 (latest) | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes MutatingAdmissionPolicyBinding API reference for v1.36. MutatingAdmissionPolicyBinding binds the MutatingAdmissionPolicy with parametrized resources. MutatingAdmissionPolicyBin">
   <link rel="canonical" href="/docs/latest/admissionregistration.k8s.io/v1/mutatingadmissionpolicybinding/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"MutatingAdmissionPolicyBinding binds the MutatingAdmissionPolicy with parametrized resources. MutatingAdmissionPolicyBinding and the optional parameter resource together define how cluster administrators configure policies for clusters.\n\nFor a given admission request, each binding will cause its policy to be evaluated N times, where N is 1 for policies/bindings that don't use params, otherwise N is the number of parameters selected by the binding. Each evaluation is constrained by a [runtime cost budget](https://kubernetes.io/docs/reference/using-api/cel/#runtime-cost-budget).\n\nAdding/removing policies, bindings, or params can not affect whether a given (policy, binding, param) combination is within its own CEL budget.","name":"MutatingAdmissionPolicyBinding — Kubernetes v1.36 API Reference","url":"https://www.kubernetools.com/docs/latest/admissionregistration.k8s.io/v1/mutatingadmissionpolicybinding/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -112,11 +56,10 @@
   </p>
   
   
-  <p>MutatingAdmissionPolicyBinding binds the MutatingAdmissionPolicy with parametrized resources. MutatingAdmissionPolicyBinding and the optional parameter resource together define how cluster administrators configure policies for clusters.
+  <p>MutatingAdmissionPolicyBinding binds the MutatingAdmissionPolicy with parametrized resources. MutatingAdmissionPolicyBinding and the optional parameter resource together define how cluster administrators configure policies for clusters.</p>
+<p>For a given admission request, each binding will cause its policy to be evaluated N times, where N is 1 for policies/bindings that don't use params, otherwise N is the number of parameters selected by the binding. Each evaluation is constrained by a <a target="_blank" rel="noopener noreferrer" href="https://kubernetes.io/docs/reference/using-api/cel/#runtime-cost-budget">runtime cost budget</a>.</p>
+<p>Adding/removing policies, bindings, or params can not affect whether a given (policy, binding, param) combination is within its own CEL budget.</p>
 
-For a given admission request, each binding will cause its policy to be evaluated N times, where N is 1 for policies&#x2f;bindings that don&#x27;t use params, otherwise N is the number of parameters selected by the binding. Each evaluation is constrained by a [runtime cost budget](https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;reference&#x2f;using-api&#x2f;cel&#x2f;#runtime-cost-budget).
-
-Adding&#x2f;removing policies, bindings, or params can not affect whether a given (policy, binding, param) combination is within its own CEL budget.</p>
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -125,27 +68,23 @@ Adding&#x2f;removing policies, bindings, or params can not affect whether a give
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>admissionregistration.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>admissionregistration.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>MutatingAdmissionPolicyBinding</code></dd>
+  <dt>kind: <code>MutatingAdmissionPolicyBinding</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>metadata is the standard object metadata; More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata.</dd>
+  <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>metadata is the standard object metadata; More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a>.</p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#mutatingadmissionpolicybindingspec" aria-label="MutatingAdmissionPolicyBindingSpec type reference">MutatingAdmissionPolicyBindingSpec</a></span>
-  </dt>
-  <dd>spec defines the desired behavior of the MutatingAdmissionPolicyBinding.</dd>
+  <dt>spec <span class="type">(<a href="#mutatingadmissionpolicybindingspec" aria-label="MutatingAdmissionPolicyBindingSpec type reference">MutatingAdmissionPolicyBindingSpec</a>)</span></dt>
+  <dd><p>spec defines the desired behavior of the MutatingAdmissionPolicyBinding.</p>
+</dd>
   
   
 </dl>
@@ -157,29 +96,27 @@ Adding&#x2f;removing policies, bindings, or params can not affect whether a give
     <h2 id="mutatingadmissionpolicybindingspec">MutatingAdmissionPolicyBindingSpec</h2>
     
     <p>MutatingAdmissionPolicyBindingSpec defines the specification of the MutatingAdmissionPolicyBinding.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    matchResources<span class="type">MatchResources</span>
-  </dt>
-  <dd>matchResources limits what resources match this binding and may be mutated by it. Note that if matchResources matches a resource, the resource must also match a policy&#x27;s matchConstraints and matchConditions before the resource may be mutated. When matchResources is unset, it does not constrain resource matching, and only the policy&#x27;s matchConstraints and matchConditions must match for the resource to be mutated. Additionally, matchResources.resourceRules are optional and do not constraint matching when unset. Note that this is differs from MutatingAdmissionPolicy matchConstraints, where resourceRules are required. The CREATE, UPDATE and CONNECT operations are allowed.  The DELETE operation may not be matched. &#x27;*&#x27; matches CREATE, UPDATE and CONNECT.</dd>
+  <dt>matchResources <span class="type">(MatchResources)</span></dt>
+  <dd><p>matchResources limits what resources match this binding and may be mutated by it. Note that if matchResources matches a resource, the resource must also match a policy's matchConstraints and matchConditions before the resource may be mutated. When matchResources is unset, it does not constrain resource matching, and only the policy's matchConstraints and matchConditions must match for the resource to be mutated. Additionally, matchResources.resourceRules are optional and do not constraint matching when unset. Note that this is differs from MutatingAdmissionPolicy matchConstraints, where resourceRules are required. The CREATE, UPDATE and CONNECT operations are allowed.  The DELETE operation may not be matched. '*' matches CREATE, UPDATE and CONNECT.</p>
+</dd>
   
   
   
-  <dt>
-    paramRef<span class="type">ParamRef</span>
-  </dt>
-  <dd>paramRef specifies the parameter resource used to configure the admission control policy. It should point to a resource of the type specified in spec.ParamKind of the bound MutatingAdmissionPolicy. If the policy specifies a ParamKind and the resource referred to by ParamRef does not exist, this binding is considered mis-configured and the FailurePolicy of the MutatingAdmissionPolicy applied. If the policy does not specify a ParamKind then this field is ignored, and the rules are evaluated without a param.</dd>
+  <dt>paramRef <span class="type">(ParamRef)</span></dt>
+  <dd><p>paramRef specifies the parameter resource used to configure the admission control policy. It should point to a resource of the type specified in spec.ParamKind of the bound MutatingAdmissionPolicy. If the policy specifies a ParamKind and the resource referred to by ParamRef does not exist, this binding is considered mis-configured and the FailurePolicy of the MutatingAdmissionPolicy applied. If the policy does not specify a ParamKind then this field is ignored, and the rules are evaluated without a param.</p>
+</dd>
   
   
   
-  <dt>
-    policyName<span class="type">string</span>
-  </dt>
-  <dd>policyName references a MutatingAdmissionPolicy name which the MutatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required.</dd>
+  <dt>policyName <span class="type">(string)</span></dt>
+  <dd><p>policyName references a MutatingAdmissionPolicy name which the MutatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required.</p>
+</dd>
   
   
 </dl>
@@ -192,32 +129,29 @@ Adding&#x2f;removing policies, bindings, or params can not affect whether a give
     <h2 id="list-heading">MutatingAdmissionPolicyBindingList</h2>
     
     <p>MutatingAdmissionPolicyBindingList is a list of MutatingAdmissionPolicyBinding.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>admissionregistration.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>admissionregistration.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>MutatingAdmissionPolicyBindingList</code></dd>
+  <dt>kind: <code>MutatingAdmissionPolicyBindingList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>metadata is the standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>metadata is the standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/latest/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybinding/" aria-label="[]MutatingAdmissionPolicyBinding type reference">[]MutatingAdmissionPolicyBinding</a></span>
-  </dt>
-  <dd>List of PolicyBinding.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/latest/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybinding/" aria-label="[]MutatingAdmissionPolicyBinding type reference">[]MutatingAdmissionPolicyBinding</a>)</span></dt>
+  <dd><p>List of PolicyBinding.</p>
+</dd>
   
   
 </dl>

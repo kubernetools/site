@@ -6,64 +6,8 @@
   <title>IngressClass v1 (networking.k8s.io) &mdash; Kubernetes v1.33 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes IngressClass API reference for v1.33. IngressClass represents the class of the Ingress, referenced by the Ingress Spec. The `ingressclass.kubernetes.io&#x2f;is-def">
   <link rel="canonical" href="/docs/latest/networking.k8s.io/v1/ingressclass/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"IngressClass represents the class of the Ingress, referenced by the Ingress Spec. The `ingressclass.kubernetes.io/is-default-class` annotation can be used to indicate that an IngressClass should be considered default. When a single IngressClass resource has this annotation set to true, new Ingress resources without a class specified will be assigned this default class.","name":"IngressClass — Kubernetes v1.33 API Reference","url":"https://www.kubernetools.com/docs/latest/networking.k8s.io/v1/ingressclass/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -104,7 +48,8 @@
   <h1>IngressClass <span class="badge">networking.k8s.io/v1</span></h1>
   
   
-  <p>IngressClass represents the class of the Ingress, referenced by the Ingress Spec. The `ingressclass.kubernetes.io&#x2f;is-default-class` annotation can be used to indicate that an IngressClass should be considered default. When a single IngressClass resource has this annotation set to true, new Ingress resources without a class specified will be assigned this default class.</p>
+  <p>IngressClass represents the class of the Ingress, referenced by the Ingress Spec. The <code>ingressclass.kubernetes.io/is-default-class</code> annotation can be used to indicate that an IngressClass should be considered default. When a single IngressClass resource has this annotation set to true, new Ingress resources without a class specified will be assigned this default class.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,27 +58,23 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>networking.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>networking.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>IngressClass</code></dd>
+  <dt>kind: <code>IngressClass</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#ingressclassspec" aria-label="IngressClassSpec type reference">IngressClassSpec</a></span>
-  </dt>
-  <dd>spec is the desired state of the IngressClass. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>spec <span class="type">(<a href="#ingressclassspec" aria-label="IngressClassSpec type reference">IngressClassSpec</a>)</span></dt>
+  <dd><p>spec is the desired state of the IngressClass. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
 </dl>
@@ -145,22 +86,21 @@
     <h2 id="ingressclassspec">IngressClassSpec</h2>
     
     <p>IngressClassSpec provides information about the class of an Ingress.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    controller<span class="type">string</span>
-  </dt>
-  <dd>controller refers to the name of the controller that should handle this class. This allows for different &quot;flavors&quot; that are controlled by the same controller. For example, you may have different parameters for the same implementing controller. This should be specified as a domain-prefixed path no more than 250 characters in length, e.g. &quot;acme.io&#x2f;ingress-controller&quot;. This field is immutable.</dd>
+  <dt>controller <span class="type">(string)</span></dt>
+  <dd><p>controller refers to the name of the controller that should handle this class. This allows for different "flavors" that are controlled by the same controller. For example, you may have different parameters for the same implementing controller. This should be specified as a domain-prefixed path no more than 250 characters in length, e.g. "acme.io/ingress-controller". This field is immutable.</p>
+</dd>
   
   
   
-  <dt>
-    parameters<span class="type">IngressClassParametersReference</span>
-  </dt>
-  <dd>parameters is a link to a custom resource containing additional configuration for the controller. This is optional if the controller does not require extra parameters.</dd>
+  <dt>parameters <span class="type">(IngressClassParametersReference)</span></dt>
+  <dd><p>parameters is a link to a custom resource containing additional configuration for the controller. This is optional if the controller does not require extra parameters.</p>
+</dd>
   
   
 </dl>
@@ -173,32 +113,29 @@
     <h2 id="list-heading">IngressClassList</h2>
     
     <p>IngressClassList is a collection of IngressClasses.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>networking.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>networking.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>IngressClassList</code></dd>
+  <dt>kind: <code>IngressClassList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata.</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata.</p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.33/networking.k8s.io/v1/ingressclass/" aria-label="[]IngressClass type reference">[]IngressClass</a></span>
-  </dt>
-  <dd>items is the list of IngressClasses.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.33/networking.k8s.io/v1/ingressclass/" aria-label="[]IngressClass type reference">[]IngressClass</a>)</span></dt>
+  <dd><p>items is the list of IngressClasses.</p>
+</dd>
   
   
 </dl>

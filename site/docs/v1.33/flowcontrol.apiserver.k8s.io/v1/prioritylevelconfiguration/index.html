@@ -6,64 +6,8 @@
   <title>PriorityLevelConfiguration v1 (flowcontrol.apiserver.k8s.io) &mdash; Kubernetes v1.33 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes PriorityLevelConfiguration API reference for v1.33. PriorityLevelConfiguration represents the configuration of a priority level.">
   <link rel="canonical" href="/docs/latest/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfiguration/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"PriorityLevelConfiguration represents the configuration of a priority level.","name":"PriorityLevelConfiguration — Kubernetes v1.33 API Reference","url":"https://www.kubernetools.com/docs/latest/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfiguration/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>PriorityLevelConfiguration represents the configuration of a priority level.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>flowcontrol.apiserver.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>flowcontrol.apiserver.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>PriorityLevelConfiguration</code></dd>
+  <dt>kind: <code>PriorityLevelConfiguration</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>`metadata` is the standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p><code>metadata</code> is the standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#prioritylevelconfigurationspec" aria-label="PriorityLevelConfigurationSpec type reference">PriorityLevelConfigurationSpec</a></span>
-  </dt>
-  <dd>`spec` is the specification of the desired behavior of a &quot;request-priority&quot;. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>spec <span class="type">(<a href="#prioritylevelconfigurationspec" aria-label="PriorityLevelConfigurationSpec type reference">PriorityLevelConfigurationSpec</a>)</span></dt>
+  <dd><p><code>spec</code> is the specification of the desired behavior of a "request-priority". More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#prioritylevelconfigurationstatus" aria-label="PriorityLevelConfigurationStatus type reference">PriorityLevelConfigurationStatus</a></span>
-  </dt>
-  <dd>`status` is the current status of a &quot;request-priority&quot;. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>status <span class="type">(<a href="#prioritylevelconfigurationstatus" aria-label="PriorityLevelConfigurationStatus type reference">PriorityLevelConfigurationStatus</a>)</span></dt>
+  <dd><p><code>status</code> is the current status of a "request-priority". More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
 </dl>
@@ -152,29 +92,27 @@
     <h2 id="prioritylevelconfigurationspec">PriorityLevelConfigurationSpec</h2>
     
     <p>PriorityLevelConfigurationSpec specifies the configuration of a priority level.</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    type<span class="type">string</span>
-  </dt>
-  <dd>`type` indicates whether this priority level is subject to limitation on request execution.  A value of `&quot;Exempt&quot;` means that requests of this priority level are not subject to a limit (and thus are never queued) and do not detract from the capacity made available to other priority levels.  A value of `&quot;Limited&quot;` means that (a) requests of this priority level _are_ subject to limits and (b) some of the server&#x27;s limited capacity is made available exclusively to this priority level. Required.</dd>
+  <dt class="req">type <span class="type">(string)</span></dt>
+  <dd><p><code>type</code> indicates whether this priority level is subject to limitation on request execution.  A value of <code>"Exempt"</code> means that requests of this priority level are not subject to a limit (and thus are never queued) and do not detract from the capacity made available to other priority levels.  A value of <code>"Limited"</code> means that (a) requests of this priority level <em>are</em> subject to limits and (b) some of the server's limited capacity is made available exclusively to this priority level. Required.</p>
+</dd>
   
   
   
-  <dt>
-    exempt<span class="type">ExemptPriorityLevelConfiguration</span>
-  </dt>
-  <dd>`exempt` specifies how requests are handled for an exempt priority level. This field MUST be empty if `type` is `&quot;Limited&quot;`. This field MAY be non-empty if `type` is `&quot;Exempt&quot;`. If empty and `type` is `&quot;Exempt&quot;` then the default values for `ExemptPriorityLevelConfiguration` apply.</dd>
+  <dt>exempt <span class="type">(ExemptPriorityLevelConfiguration)</span></dt>
+  <dd><p><code>exempt</code> specifies how requests are handled for an exempt priority level. This field MUST be empty if <code>type</code> is <code>"Limited"</code>. This field MAY be non-empty if <code>type</code> is <code>"Exempt"</code>. If empty and <code>type</code> is <code>"Exempt"</code> then the default values for <code>ExemptPriorityLevelConfiguration</code> apply.</p>
+</dd>
   
   
   
-  <dt>
-    limited<span class="type">LimitedPriorityLevelConfiguration</span>
-  </dt>
-  <dd>`limited` specifies how requests are handled for a Limited priority level. This field must be non-empty if and only if `type` is `&quot;Limited&quot;`.</dd>
+  <dt>limited <span class="type">(LimitedPriorityLevelConfiguration)</span></dt>
+  <dd><p><code>limited</code> specifies how requests are handled for a Limited priority level. This field must be non-empty if and only if <code>type</code> is <code>"Limited"</code>.</p>
+</dd>
   
   
 </dl>
@@ -185,16 +123,16 @@
   <section aria-labelledby="prioritylevelconfigurationstatus">
     <h2 id="prioritylevelconfigurationstatus">PriorityLevelConfigurationStatus</h2>
     
-    <p>PriorityLevelConfigurationStatus represents the current state of a &quot;request-priority&quot;.</p>
+    <p>PriorityLevelConfigurationStatus represents the current state of a "request-priority".</p>
+
     
     
 <dl>
   
   
-  <dt>
-    conditions<span class="type">[]PriorityLevelConfigurationCondition</span>
-  </dt>
-  <dd>`conditions` is the current state of &quot;request-priority&quot;.</dd>
+  <dt>conditions <span class="type">([]PriorityLevelConfigurationCondition)</span></dt>
+  <dd><p><code>conditions</code> is the current state of "request-priority".</p>
+</dd>
   
   
 </dl>
@@ -206,32 +144,29 @@
     <h2 id="list-heading">PriorityLevelConfigurationList</h2>
     
     <p>PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>flowcontrol.apiserver.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>flowcontrol.apiserver.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>PriorityLevelConfigurationList</code></dd>
+  <dt>kind: <code>PriorityLevelConfigurationList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>`metadata` is the standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p><code>metadata</code> is the standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.33/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfiguration/" aria-label="[]PriorityLevelConfiguration type reference">[]PriorityLevelConfiguration</a></span>
-  </dt>
-  <dd>`items` is a list of request-priorities.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.33/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfiguration/" aria-label="[]PriorityLevelConfiguration type reference">[]PriorityLevelConfiguration</a>)</span></dt>
+  <dd><p><code>items</code> is a list of request-priorities.</p>
+</dd>
   
   
 </dl>

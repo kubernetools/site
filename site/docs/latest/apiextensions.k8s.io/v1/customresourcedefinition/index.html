@@ -6,64 +6,8 @@
   <title>CustomResourceDefinition v1 (apiextensions.k8s.io) &mdash; Kubernetes v1.36 (latest) | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes CustomResourceDefinition API reference for v1.36. CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name MUST be in the format">
   <link rel="canonical" href="/docs/latest/apiextensions.k8s.io/v1/customresourcedefinition/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name MUST be in the format <.spec.name>.<.spec.group>.","name":"CustomResourceDefinition — Kubernetes v1.36 API Reference","url":"https://www.kubernetools.com/docs/latest/apiextensions.k8s.io/v1/customresourcedefinition/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name MUST be in the format &lt;.spec.name&gt;.&lt;.spec.group&gt;.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>apiextensions.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>apiextensions.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>CustomResourceDefinition</code></dd>
+  <dt>kind: <code>CustomResourceDefinition</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    spec<span class="type"><a href="#customresourcedefinitionspec" aria-label="CustomResourceDefinitionSpec type reference">CustomResourceDefinitionSpec</a></span>
-  </dt>
-  <dd>spec describes how the user wants the resources to appear</dd>
+  <dt class="req">spec <span class="type">(<a href="#customresourcedefinitionspec" aria-label="CustomResourceDefinitionSpec type reference">CustomResourceDefinitionSpec</a>)</span></dt>
+  <dd><p>spec describes how the user wants the resources to appear</p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#customresourcedefinitionstatus" aria-label="CustomResourceDefinitionStatus type reference">CustomResourceDefinitionStatus</a></span>
-  </dt>
-  <dd>status indicates the actual state of the CustomResourceDefinition</dd>
+  <dt>status <span class="type">(<a href="#customresourcedefinitionstatus" aria-label="CustomResourceDefinitionStatus type reference">CustomResourceDefinitionStatus</a>)</span></dt>
+  <dd><p>status indicates the actual state of the CustomResourceDefinition</p>
+</dd>
   
   
 </dl>
@@ -152,50 +92,45 @@
     <h2 id="customresourcedefinitionspec">CustomResourceDefinitionSpec</h2>
     
     <p>CustomResourceDefinitionSpec describes how a user wants their resource to appear</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    group<span class="type">string</span>
-  </dt>
-  <dd>group is the API group of the defined custom resource. The custom resources are served under `&#x2f;apis&#x2f;&lt;group&gt;&#x2f;...`. Must match the name of the CustomResourceDefinition (in the form `&lt;names.plural&gt;.&lt;group&gt;`).</dd>
+  <dt class="req">group <span class="type">(string)</span></dt>
+  <dd><p>group is the API group of the defined custom resource. The custom resources are served under <code>/apis/&lt;group&gt;/...</code>. Must match the name of the CustomResourceDefinition (in the form <code>&lt;names.plural&gt;.&lt;group&gt;</code>).</p>
+</dd>
   
   
   
-  <dt class="req">
-    names<span class="type">CustomResourceDefinitionNames</span>
-  </dt>
-  <dd>names specify the resource and kind names for the custom resource.</dd>
+  <dt class="req">names <span class="type">(CustomResourceDefinitionNames)</span></dt>
+  <dd><p>names specify the resource and kind names for the custom resource.</p>
+</dd>
   
   
   
-  <dt class="req">
-    scope<span class="type">string</span>
-  </dt>
-  <dd>scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values are `Cluster` and `Namespaced`.</dd>
+  <dt class="req">scope <span class="type">(string)</span></dt>
+  <dd><p>scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values are <code>Cluster</code> and <code>Namespaced</code>.</p>
+</dd>
   
   
   
-  <dt class="req">
-    versions<span class="type">[]CustomResourceDefinitionVersion</span>
-  </dt>
-  <dd>versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is &quot;kube-like&quot;, it will sort above non &quot;kube-like&quot; version strings, which are ordered lexicographically. &quot;Kube-like&quot; versions start with a &quot;v&quot;, then are followed by a number (the major version), then optionally the string &quot;alpha&quot; or &quot;beta&quot; and another number (the minor version). These are sorted first by GA &gt; beta &gt; alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.</dd>
+  <dt class="req">versions <span class="type">([]CustomResourceDefinitionVersion)</span></dt>
+  <dd><p>versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA &gt; beta &gt; alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.</p>
+</dd>
   
   
   
-  <dt>
-    conversion<span class="type">CustomResourceConversion</span>
-  </dt>
-  <dd>conversion defines conversion settings for the CRD.</dd>
+  <dt>conversion <span class="type">(CustomResourceConversion)</span></dt>
+  <dd><p>conversion defines conversion settings for the CRD.</p>
+</dd>
   
   
   
-  <dt>
-    preserveUnknownFields<span class="type">boolean</span>
-  </dt>
-  <dd>preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;tasks&#x2f;extend-kubernetes&#x2f;custom-resources&#x2f;custom-resource-definitions&#x2f;#field-pruning for details.</dd>
+  <dt>preserveUnknownFields <span class="type">(boolean)</span></dt>
+  <dd><p>preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting <code>x-preserve-unknown-fields</code> to true in <code>spec.versions[*].schema.openAPIV3Schema</code>. See <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#field-pruning" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#field-pruning</a> for details.</p>
+</dd>
   
   
 </dl>
@@ -207,36 +142,33 @@
     <h2 id="customresourcedefinitionstatus">CustomResourceDefinitionStatus</h2>
     
     <p>CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition</p>
+
     
     
 <dl>
   
   
-  <dt>
-    acceptedNames<span class="type">CustomResourceDefinitionNames</span>
-  </dt>
-  <dd>acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.</dd>
+  <dt>acceptedNames <span class="type">(CustomResourceDefinitionNames)</span></dt>
+  <dd><p>acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.</p>
+</dd>
   
   
   
-  <dt>
-    conditions<span class="type">[]CustomResourceDefinitionCondition</span>
-  </dt>
-  <dd>conditions indicate state for particular aspects of a CustomResourceDefinition</dd>
+  <dt>conditions <span class="type">([]CustomResourceDefinitionCondition)</span></dt>
+  <dd><p>conditions indicate state for particular aspects of a CustomResourceDefinition</p>
+</dd>
   
   
   
-  <dt>
-    observedGeneration<span class="type">integer</span>
-  </dt>
-  <dd>The generation observed by the CRD controller.</dd>
+  <dt>observedGeneration <span class="type">(integer)</span></dt>
+  <dd><p>The generation observed by the CRD controller.</p>
+</dd>
   
   
   
-  <dt>
-    storedVersions<span class="type">[]string</span>
-  </dt>
-  <dd>storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.</dd>
+  <dt>storedVersions <span class="type">([]string)</span></dt>
+  <dd><p>storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from <code>spec.versions</code> while they exist in this list.</p>
+</dd>
   
   
 </dl>
@@ -248,32 +180,29 @@
     <h2 id="list-heading">CustomResourceDefinitionList</h2>
     
     <p>CustomResourceDefinitionList is a list of CustomResourceDefinition objects.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>apiextensions.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>apiextensions.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>CustomResourceDefinitionList</code></dd>
+  <dt>kind: <code>CustomResourceDefinitionList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/latest/apiextensions.k8s.io/v1/customresourcedefinition/" aria-label="[]CustomResourceDefinition type reference">[]CustomResourceDefinition</a></span>
-  </dt>
-  <dd>items list individual CustomResourceDefinition objects</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/latest/apiextensions.k8s.io/v1/customresourcedefinition/" aria-label="[]CustomResourceDefinition type reference">[]CustomResourceDefinition</a>)</span></dt>
+  <dd><p>items list individual CustomResourceDefinition objects</p>
+</dd>
   
   
 </dl>

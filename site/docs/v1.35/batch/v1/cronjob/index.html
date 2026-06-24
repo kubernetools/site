@@ -6,64 +6,8 @@
   <title>CronJob v1 (batch) &mdash; Kubernetes v1.35 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes CronJob API reference for v1.35. CronJob represents the configuration of a single cron job.">
   <link rel="canonical" href="/docs/latest/batch/v1/cronjob/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"CronJob represents the configuration of a single cron job.","name":"CronJob — Kubernetes v1.35 API Reference","url":"https://www.kubernetools.com/docs/latest/batch/v1/cronjob/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>CronJob represents the configuration of a single cron job.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>batch/v1</code></dd>
+  <dt>apiVersion: <code>batch/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>CronJob</code></dd>
+  <dt>kind: <code>CronJob</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#cronjobspec" aria-label="CronJobSpec type reference">CronJobSpec</a></span>
-  </dt>
-  <dd>Specification of the desired behavior of a cron job, including the schedule. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>spec <span class="type">(<a href="#cronjobspec" aria-label="CronJobSpec type reference">CronJobSpec</a>)</span></dt>
+  <dd><p>Specification of the desired behavior of a cron job, including the schedule. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#cronjobstatus" aria-label="CronJobStatus type reference">CronJobStatus</a></span>
-  </dt>
-  <dd>Current status of a cron job. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#spec-and-status</dd>
+  <dt>status <span class="type">(<a href="#cronjobstatus" aria-label="CronJobStatus type reference">CronJobStatus</a>)</span></dt>
+  <dd><p>Current status of a cron job. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</dd>
   
   
 </dl>
@@ -152,66 +92,60 @@
     <h2 id="cronjobspec">CronJobSpec</h2>
     
     <p>CronJobSpec describes how the job execution will look like and when it will actually run.</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    jobTemplate<span class="type">JobTemplateSpec</span>
-  </dt>
-  <dd>Specifies the job that will be created when executing a CronJob.</dd>
+  <dt class="req">jobTemplate <span class="type">(JobTemplateSpec)</span></dt>
+  <dd><p>Specifies the job that will be created when executing a CronJob.</p>
+</dd>
   
   
   
-  <dt class="req">
-    schedule<span class="type">string</span>
-  </dt>
-  <dd>The schedule in Cron format, see https:&#x2f;&#x2f;en.wikipedia.org&#x2f;wiki&#x2f;Cron.</dd>
+  <dt class="req">schedule <span class="type">(string)</span></dt>
+  <dd><p>The schedule in Cron format, see <a href="https://en.wikipedia.org/wiki/Cron" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Cron</a>.</p>
+</dd>
   
   
   
-  <dt>
-    concurrencyPolicy<span class="type">string</span>
-  </dt>
-  <dd>Specifies how to treat concurrent executions of a Job. Valid values are:
-
-- &quot;Allow&quot; (default): allows CronJobs to run concurrently; - &quot;Forbid&quot;: forbids concurrent runs, skipping next run if previous run hasn&#x27;t finished yet; - &quot;Replace&quot;: cancels currently running job and replaces it with a new one</dd>
+  <dt>concurrencyPolicy <span class="type">(string)</span></dt>
+  <dd><p>Specifies how to treat concurrent executions of a Job. Valid values are:</p>
+<ul>
+<li>"Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one</li>
+</ul>
+</dd>
   
   
   
-  <dt>
-    failedJobsHistoryLimit<span class="type">integer</span>
-  </dt>
-  <dd>The number of failed finished jobs to retain. Value must be non-negative integer. Defaults to 1.</dd>
+  <dt>failedJobsHistoryLimit <span class="type">(integer)</span></dt>
+  <dd><p>The number of failed finished jobs to retain. Value must be non-negative integer. Defaults to 1.</p>
+</dd>
   
   
   
-  <dt>
-    startingDeadlineSeconds<span class="type">integer</span>
-  </dt>
-  <dd>Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.</dd>
+  <dt>startingDeadlineSeconds <span class="type">(integer)</span></dt>
+  <dd><p>Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.</p>
+</dd>
   
   
   
-  <dt>
-    successfulJobsHistoryLimit<span class="type">integer</span>
-  </dt>
-  <dd>The number of successful finished jobs to retain. Value must be non-negative integer. Defaults to 3.</dd>
+  <dt>successfulJobsHistoryLimit <span class="type">(integer)</span></dt>
+  <dd><p>The number of successful finished jobs to retain. Value must be non-negative integer. Defaults to 3.</p>
+</dd>
   
   
   
-  <dt>
-    suspend<span class="type">boolean</span>
-  </dt>
-  <dd>This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.</dd>
+  <dt>suspend <span class="type">(boolean)</span></dt>
+  <dd><p>This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.</p>
+</dd>
   
   
   
-  <dt>
-    timeZone<span class="type">string</span>
-  </dt>
-  <dd>The time zone name for the given schedule, see https:&#x2f;&#x2f;en.wikipedia.org&#x2f;wiki&#x2f;List_of_tz_database_time_zones. If not specified, this will default to the time zone of the kube-controller-manager process. The set of valid time zone names and the time zone offset is loaded from the system-wide time zone database by the API server during CronJob validation and the controller manager during execution. If no system-wide time zone database can be found a bundled version of the database is used instead. If the time zone name becomes invalid during the lifetime of a CronJob or due to a change in host configuration, the controller will stop creating new new Jobs and will create a system event with the reason UnknownTimeZone. More information can be found in https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;workloads&#x2f;controllers&#x2f;cron-jobs&#x2f;#time-zones</dd>
+  <dt>timeZone <span class="type">(string)</span></dt>
+  <dd><p>The time zone name for the given schedule, see <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</a>. If not specified, this will default to the time zone of the kube-controller-manager process. The set of valid time zone names and the time zone offset is loaded from the system-wide time zone database by the API server during CronJob validation and the controller manager during execution. If no system-wide time zone database can be found a bundled version of the database is used instead. If the time zone name becomes invalid during the lifetime of a CronJob or due to a change in host configuration, the controller will stop creating new new Jobs and will create a system event with the reason UnknownTimeZone. More information can be found in <a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones</a></p>
+</dd>
   
   
 </dl>
@@ -223,29 +157,27 @@
     <h2 id="cronjobstatus">CronJobStatus</h2>
     
     <p>CronJobStatus represents the current state of a cron job.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    active<span class="type"><a href="/docs/v1.35/common-definitions/objectreference/" aria-label="[]ObjectReference type reference">[]ObjectReference</a></span>
-  </dt>
-  <dd>A list of pointers to currently running jobs.</dd>
+  <dt>active <span class="type">(<a href="/docs/v1.35/common-definitions/objectreference/" aria-label="[]ObjectReference type reference">[]ObjectReference</a>)</span></dt>
+  <dd><p>A list of pointers to currently running jobs.</p>
+</dd>
   
   
   
-  <dt>
-    lastScheduleTime<span class="type">Time</span>
-  </dt>
-  <dd>Information when was the last time the job was successfully scheduled.</dd>
+  <dt>lastScheduleTime <span class="type">(Time)</span></dt>
+  <dd><p>Information when was the last time the job was successfully scheduled.</p>
+</dd>
   
   
   
-  <dt>
-    lastSuccessfulTime<span class="type">Time</span>
-  </dt>
-  <dd>Information when was the last time the job successfully completed.</dd>
+  <dt>lastSuccessfulTime <span class="type">(Time)</span></dt>
+  <dd><p>Information when was the last time the job successfully completed.</p>
+</dd>
   
   
 </dl>
@@ -257,32 +189,29 @@
     <h2 id="list-heading">CronJobList</h2>
     
     <p>CronJobList is a collection of cron jobs.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>batch/v1</code></dd>
+  <dt>apiVersion: <code>batch/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>CronJobList</code></dd>
+  <dt>kind: <code>CronJobList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.35/batch/v1/cronjob/" aria-label="[]CronJob type reference">[]CronJob</a></span>
-  </dt>
-  <dd>items is the list of CronJobs.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.35/batch/v1/cronjob/" aria-label="[]CronJob type reference">[]CronJob</a>)</span></dt>
+  <dd><p>items is the list of CronJobs.</p>
+</dd>
   
   
 </dl>

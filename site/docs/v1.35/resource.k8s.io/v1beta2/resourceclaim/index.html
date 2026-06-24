@@ -6,64 +6,8 @@
   <title>ResourceClaim v1beta2 (resource.k8s.io) &mdash; Kubernetes v1.35 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes ResourceClaim API reference for v1.35. ResourceClaim describes a request for access to resources in the cluster, for use by workloads. For example, if a worklo">
   <link rel="canonical" href="/docs/latest/resource.k8s.io/v1beta2/resourceclaim/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"ResourceClaim describes a request for access to resources in the cluster, for use by workloads. For example, if a workload needs an accelerator device with specific properties, this is how that request is expressed. The status stanza tracks whether this claim has been satisfied and what specific resources have been allocated.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.","name":"ResourceClaim — Kubernetes v1.35 API Reference","url":"https://www.kubernetools.com/docs/latest/resource.k8s.io/v1beta2/resourceclaim/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -112,9 +56,9 @@
   </p>
   
   
-  <p>ResourceClaim describes a request for access to resources in the cluster, for use by workloads. For example, if a workload needs an accelerator device with specific properties, this is how that request is expressed. The status stanza tracks whether this claim has been satisfied and what specific resources have been allocated.
+  <p>ResourceClaim describes a request for access to resources in the cluster, for use by workloads. For example, if a workload needs an accelerator device with specific properties, this is how that request is expressed. The status stanza tracks whether this claim has been satisfied and what specific resources have been allocated.</p>
+<p>This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.</p>
 
-This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.</p>
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -123,34 +67,29 @@ This is an alpha type and requires enabling the DynamicResourceAllocation featur
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>resource.k8s.io/v1beta2</code></dd>
+  <dt>apiVersion: <code>resource.k8s.io/v1beta2</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ResourceClaim</code></dd>
+  <dt>kind: <code>ResourceClaim</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object metadata</p>
+</dd>
   
   
   
-  <dt class="req">
-    spec<span class="type"><a href="#resourceclaimspec" aria-label="ResourceClaimSpec type reference">ResourceClaimSpec</a></span>
-  </dt>
-  <dd>Spec describes what is being requested and how to configure it. The spec is immutable.</dd>
+  <dt class="req">spec <span class="type">(<a href="#resourceclaimspec" aria-label="ResourceClaimSpec type reference">ResourceClaimSpec</a>)</span></dt>
+  <dd><p>Spec describes what is being requested and how to configure it. The spec is immutable.</p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#resourceclaimstatus" aria-label="ResourceClaimStatus type reference">ResourceClaimStatus</a></span>
-  </dt>
-  <dd>Status describes whether the claim is ready to use and what has been allocated.</dd>
+  <dt>status <span class="type">(<a href="#resourceclaimstatus" aria-label="ResourceClaimStatus type reference">ResourceClaimStatus</a>)</span></dt>
+  <dd><p>Status describes whether the claim is ready to use and what has been allocated.</p>
+</dd>
   
   
 </dl>
@@ -162,15 +101,15 @@ This is an alpha type and requires enabling the DynamicResourceAllocation featur
     <h2 id="resourceclaimspec">ResourceClaimSpec</h2>
     
     <p>ResourceClaimSpec defines what is being requested in a ResourceClaim and how to configure it.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    devices<span class="type">DeviceClaim</span>
-  </dt>
-  <dd>Devices defines how to request devices.</dd>
+  <dt>devices <span class="type">(DeviceClaim)</span></dt>
+  <dd><p>Devices defines how to request devices.</p>
+</dd>
   
   
 </dl>
@@ -182,35 +121,30 @@ This is an alpha type and requires enabling the DynamicResourceAllocation featur
     <h2 id="resourceclaimstatus">ResourceClaimStatus</h2>
     
     <p>ResourceClaimStatus tracks whether the resource has been allocated and what the result of that was.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    allocation<span class="type">AllocationResult</span>
-  </dt>
-  <dd>Allocation is set once the claim has been allocated successfully.</dd>
+  <dt>allocation <span class="type">(AllocationResult)</span></dt>
+  <dd><p>Allocation is set once the claim has been allocated successfully.</p>
+</dd>
   
   
   
-  <dt>
-    devices<span class="type">[]AllocatedDeviceStatus</span>
-  </dt>
-  <dd>Devices contains the status of each device allocated for this claim, as reported by the driver. This can include driver-specific information. Entries are owned by their respective drivers.</dd>
+  <dt>devices <span class="type">([]AllocatedDeviceStatus)</span></dt>
+  <dd><p>Devices contains the status of each device allocated for this claim, as reported by the driver. This can include driver-specific information. Entries are owned by their respective drivers.</p>
+</dd>
   
   
   
-  <dt>
-    reservedFor<span class="type">[]ResourceClaimConsumerReference</span>
-  </dt>
-  <dd>ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated.
-
-In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled.
-
-Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again.
-
-There can be at most 256 such reservations. This may get increased in the future, but not reduced.</dd>
+  <dt>reservedFor <span class="type">([]ResourceClaimConsumerReference)</span></dt>
+  <dd><p>ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated.</p>
+<p>In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled.</p>
+<p>Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again.</p>
+<p>There can be at most 256 such reservations. This may get increased in the future, but not reduced.</p>
+</dd>
   
   
 </dl>
@@ -222,32 +156,29 @@ There can be at most 256 such reservations. This may get increased in the future
     <h2 id="list-heading">ResourceClaimList</h2>
     
     <p>ResourceClaimList is a collection of claims.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>resource.k8s.io/v1beta2</code></dd>
+  <dt>apiVersion: <code>resource.k8s.io/v1beta2</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ResourceClaimList</code></dd>
+  <dt>kind: <code>ResourceClaimList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata</p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.35/resource.k8s.io/v1beta2/resourceclaim/" aria-label="[]ResourceClaim type reference">[]ResourceClaim</a></span>
-  </dt>
-  <dd>Items is the list of resource claims.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.35/resource.k8s.io/v1beta2/resourceclaim/" aria-label="[]ResourceClaim type reference">[]ResourceClaim</a>)</span></dt>
+  <dd><p>Items is the list of resource claims.</p>
+</dd>
   
   
 </dl>

@@ -6,64 +6,8 @@
   <title>ValidatingAdmissionPolicyBinding v1beta1 (admissionregistration.k8s.io) &mdash; Kubernetes v1.33 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes ValidatingAdmissionPolicyBinding API reference for v1.33. ValidatingAdmissionPolicyBinding binds the ValidatingAdmissionPolicy with paramerized resources. ValidatingAdmissionPoli">
   <link rel="canonical" href="/docs/latest/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybinding/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"ValidatingAdmissionPolicyBinding binds the ValidatingAdmissionPolicy with paramerized resources. ValidatingAdmissionPolicyBinding and parameter CRDs together define how cluster administrators configure policies for clusters.\n\nFor a given admission request, each binding will cause its policy to be evaluated N times, where N is 1 for policies/bindings that don't use params, otherwise N is the number of parameters selected by the binding.\n\nThe CEL expressions of a policy must have a computed CEL cost below the maximum CEL budget. Each evaluation of the policy is given an independent CEL cost budget. Adding/removing policies, bindings, or params can not affect whether a given (policy, binding, param) combination is within its own CEL budget.","name":"ValidatingAdmissionPolicyBinding — Kubernetes v1.33 API Reference","url":"https://www.kubernetools.com/docs/latest/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybinding/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -110,11 +54,10 @@
   </p>
   
   
-  <p>ValidatingAdmissionPolicyBinding binds the ValidatingAdmissionPolicy with paramerized resources. ValidatingAdmissionPolicyBinding and parameter CRDs together define how cluster administrators configure policies for clusters.
+  <p>ValidatingAdmissionPolicyBinding binds the ValidatingAdmissionPolicy with paramerized resources. ValidatingAdmissionPolicyBinding and parameter CRDs together define how cluster administrators configure policies for clusters.</p>
+<p>For a given admission request, each binding will cause its policy to be evaluated N times, where N is 1 for policies/bindings that don't use params, otherwise N is the number of parameters selected by the binding.</p>
+<p>The CEL expressions of a policy must have a computed CEL cost below the maximum CEL budget. Each evaluation of the policy is given an independent CEL cost budget. Adding/removing policies, bindings, or params can not affect whether a given (policy, binding, param) combination is within its own CEL budget.</p>
 
-For a given admission request, each binding will cause its policy to be evaluated N times, where N is 1 for policies&#x2f;bindings that don&#x27;t use params, otherwise N is the number of parameters selected by the binding.
-
-The CEL expressions of a policy must have a computed CEL cost below the maximum CEL budget. Each evaluation of the policy is given an independent CEL cost budget. Adding&#x2f;removing policies, bindings, or params can not affect whether a given (policy, binding, param) combination is within its own CEL budget.</p>
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -123,27 +66,23 @@ The CEL expressions of a policy must have a computed CEL cost below the maximum 
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>admissionregistration.k8s.io/v1beta1</code></dd>
+  <dt>apiVersion: <code>admissionregistration.k8s.io/v1beta1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ValidatingAdmissionPolicyBinding</code></dd>
+  <dt>kind: <code>ValidatingAdmissionPolicyBinding</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object metadata; More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata.</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object metadata; More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a>.</p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#validatingadmissionpolicybindingspec" aria-label="ValidatingAdmissionPolicyBindingSpec type reference">ValidatingAdmissionPolicyBindingSpec</a></span>
-  </dt>
-  <dd>Specification of the desired behavior of the ValidatingAdmissionPolicyBinding.</dd>
+  <dt>spec <span class="type">(<a href="#validatingadmissionpolicybindingspec" aria-label="ValidatingAdmissionPolicyBindingSpec type reference">ValidatingAdmissionPolicyBindingSpec</a>)</span></dt>
+  <dd><p>Specification of the desired behavior of the ValidatingAdmissionPolicyBinding.</p>
+</dd>
   
   
 </dl>
@@ -155,54 +94,42 @@ The CEL expressions of a policy must have a computed CEL cost below the maximum 
     <h2 id="validatingadmissionpolicybindingspec">ValidatingAdmissionPolicyBindingSpec</h2>
     
     <p>ValidatingAdmissionPolicyBindingSpec is the specification of the ValidatingAdmissionPolicyBinding.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    matchResources<span class="type">MatchResources</span>
-  </dt>
-  <dd>MatchResources declares what resources match this binding and will be validated by it. Note that this is intersected with the policy&#x27;s matchConstraints, so only requests that are matched by the policy can be selected by this. If this is unset, all resources matched by the policy are validated by this binding When resourceRules is unset, it does not constrain resource matching. If a resource is matched by the other fields of this object, it will be validated. Note that this is differs from ValidatingAdmissionPolicy matchConstraints, where resourceRules are required.</dd>
+  <dt>matchResources <span class="type">(MatchResources)</span></dt>
+  <dd><p>MatchResources declares what resources match this binding and will be validated by it. Note that this is intersected with the policy's matchConstraints, so only requests that are matched by the policy can be selected by this. If this is unset, all resources matched by the policy are validated by this binding When resourceRules is unset, it does not constrain resource matching. If a resource is matched by the other fields of this object, it will be validated. Note that this is differs from ValidatingAdmissionPolicy matchConstraints, where resourceRules are required.</p>
+</dd>
   
   
   
-  <dt>
-    paramRef<span class="type">ParamRef</span>
-  </dt>
-  <dd>paramRef specifies the parameter resource used to configure the admission control policy. It should point to a resource of the type specified in ParamKind of the bound ValidatingAdmissionPolicy. If the policy specifies a ParamKind and the resource referred to by ParamRef does not exist, this binding is considered mis-configured and the FailurePolicy of the ValidatingAdmissionPolicy applied. If the policy does not specify a ParamKind then this field is ignored, and the rules are evaluated without a param.</dd>
+  <dt>paramRef <span class="type">(ParamRef)</span></dt>
+  <dd><p>paramRef specifies the parameter resource used to configure the admission control policy. It should point to a resource of the type specified in ParamKind of the bound ValidatingAdmissionPolicy. If the policy specifies a ParamKind and the resource referred to by ParamRef does not exist, this binding is considered mis-configured and the FailurePolicy of the ValidatingAdmissionPolicy applied. If the policy does not specify a ParamKind then this field is ignored, and the rules are evaluated without a param.</p>
+</dd>
   
   
   
-  <dt>
-    policyName<span class="type">string</span>
-  </dt>
-  <dd>PolicyName references a ValidatingAdmissionPolicy name which the ValidatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required.</dd>
+  <dt>policyName <span class="type">(string)</span></dt>
+  <dd><p>PolicyName references a ValidatingAdmissionPolicy name which the ValidatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required.</p>
+</dd>
   
   
   
-  <dt>
-    validationActions<span class="type">[]string</span>
-  </dt>
-  <dd>validationActions declares how Validations of the referenced ValidatingAdmissionPolicy are enforced. If a validation evaluates to false it is always enforced according to these actions.
-
-Failures defined by the ValidatingAdmissionPolicy&#x27;s FailurePolicy are enforced according to these actions only if the FailurePolicy is set to Fail, otherwise the failures are ignored. This includes compilation errors, runtime errors and misconfigurations of the policy.
-
-validationActions is declared as a set of action values. Order does not matter. validationActions may not contain duplicates of the same action.
-
-The supported actions values are:
-
-&quot;Deny&quot; specifies that a validation failure results in a denied request.
-
-&quot;Warn&quot; specifies that a validation failure is reported to the request client in HTTP Warning headers, with a warning code of 299. Warnings can be sent both for allowed or denied admission responses.
-
-&quot;Audit&quot; specifies that a validation failure is included in the published audit event for the request. The audit event will contain a `validation.policy.admission.k8s.io&#x2f;validation_failure` audit annotation with a value containing the details of the validation failures, formatted as a JSON list of objects, each with the following fields: - message: The validation failure message string - policy: The resource name of the ValidatingAdmissionPolicy - binding: The resource name of the ValidatingAdmissionPolicyBinding - expressionIndex: The index of the failed validations in the ValidatingAdmissionPolicy - validationActions: The enforcement actions enacted for the validation failure Example audit annotation: `&quot;validation.policy.admission.k8s.io&#x2f;validation_failure&quot;: &quot;[{\&quot;message\&quot;: \&quot;Invalid value\&quot;, {\&quot;policy\&quot;: \&quot;policy.example.com\&quot;, {\&quot;binding\&quot;: \&quot;policybinding.example.com\&quot;, {\&quot;expressionIndex\&quot;: \&quot;1\&quot;, {\&quot;validationActions\&quot;: [\&quot;Audit\&quot;]}]&quot;`
-
-Clients should expect to handle additional values by ignoring any values not recognized.
-
-&quot;Deny&quot; and &quot;Warn&quot; may not be used together since this combination needlessly duplicates the validation failure both in the API response body and the HTTP warning headers.
-
-Required.</dd>
+  <dt>validationActions <span class="type">([]string)</span></dt>
+  <dd><p>validationActions declares how Validations of the referenced ValidatingAdmissionPolicy are enforced. If a validation evaluates to false it is always enforced according to these actions.</p>
+<p>Failures defined by the ValidatingAdmissionPolicy's FailurePolicy are enforced according to these actions only if the FailurePolicy is set to Fail, otherwise the failures are ignored. This includes compilation errors, runtime errors and misconfigurations of the policy.</p>
+<p>validationActions is declared as a set of action values. Order does not matter. validationActions may not contain duplicates of the same action.</p>
+<p>The supported actions values are:</p>
+<p>"Deny" specifies that a validation failure results in a denied request.</p>
+<p>"Warn" specifies that a validation failure is reported to the request client in HTTP Warning headers, with a warning code of 299. Warnings can be sent both for allowed or denied admission responses.</p>
+<p>"Audit" specifies that a validation failure is included in the published audit event for the request. The audit event will contain a <code>validation.policy.admission.k8s.io/validation_failure</code> audit annotation with a value containing the details of the validation failures, formatted as a JSON list of objects, each with the following fields: - message: The validation failure message string - policy: The resource name of the ValidatingAdmissionPolicy - binding: The resource name of the ValidatingAdmissionPolicyBinding - expressionIndex: The index of the failed validations in the ValidatingAdmissionPolicy - validationActions: The enforcement actions enacted for the validation failure Example audit annotation: <code>"validation.policy.admission.k8s.io/validation_failure": "[{\"message\": \"Invalid value\", {\"policy\": \"policy.example.com\", {\"binding\": \"policybinding.example.com\", {\"expressionIndex\": \"1\", {\"validationActions\": [\"Audit\"]}]"</code></p>
+<p>Clients should expect to handle additional values by ignoring any values not recognized.</p>
+<p>"Deny" and "Warn" may not be used together since this combination needlessly duplicates the validation failure both in the API response body and the HTTP warning headers.</p>
+<p>Required.</p>
+</dd>
   
   
 </dl>
@@ -215,32 +142,29 @@ Required.</dd>
     <h2 id="list-heading">ValidatingAdmissionPolicyBindingList</h2>
     
     <p>ValidatingAdmissionPolicyBindingList is a list of ValidatingAdmissionPolicyBinding.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>admissionregistration.k8s.io/v1beta1</code></dd>
+  <dt>apiVersion: <code>admissionregistration.k8s.io/v1beta1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ValidatingAdmissionPolicyBindingList</code></dd>
+  <dt>kind: <code>ValidatingAdmissionPolicyBindingList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.33/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybinding/" aria-label="[]ValidatingAdmissionPolicyBinding type reference">[]ValidatingAdmissionPolicyBinding</a></span>
-  </dt>
-  <dd>List of PolicyBinding.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.33/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybinding/" aria-label="[]ValidatingAdmissionPolicyBinding type reference">[]ValidatingAdmissionPolicyBinding</a>)</span></dt>
+  <dd><p>List of PolicyBinding.</p>
+</dd>
   
   
 </dl>

@@ -6,64 +6,8 @@
   <title>LocalSubjectAccessReview v1 (authorization.k8s.io) &mdash; Kubernetes v1.33 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes LocalSubjectAccessReview API reference for v1.33. LocalSubjectAccessReview checks whether or not a user or group can perform an action in a given namespace. Having a name">
   <link rel="canonical" href="/docs/latest/authorization.k8s.io/v1/localsubjectaccessreview/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"LocalSubjectAccessReview checks whether or not a user or group can perform an action in a given namespace. Having a namespace scoped resource makes it much easier to grant namespace scoped policy that includes permissions checking.","name":"LocalSubjectAccessReview — Kubernetes v1.33 API Reference","url":"https://www.kubernetools.com/docs/latest/authorization.k8s.io/v1/localsubjectaccessreview/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>LocalSubjectAccessReview checks whether or not a user or group can perform an action in a given namespace. Having a namespace scoped resource makes it much easier to grant namespace scoped policy that includes permissions checking.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>authorization.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>authorization.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>LocalSubjectAccessReview</code></dd>
+  <dt>kind: <code>LocalSubjectAccessReview</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    spec<span class="type"><a href="#localsubjectaccessreviewspec" aria-label="SubjectAccessReviewSpec type reference">SubjectAccessReviewSpec</a></span>
-  </dt>
-  <dd>Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.</dd>
+  <dt class="req">spec <span class="type">(<a href="#localsubjectaccessreviewspec" aria-label="SubjectAccessReviewSpec type reference">SubjectAccessReviewSpec</a>)</span></dt>
+  <dd><p>Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.</p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#localsubjectaccessreviewstatus" aria-label="SubjectAccessReviewStatus type reference">SubjectAccessReviewStatus</a></span>
-  </dt>
-  <dd>Status is filled in by the server and indicates whether the request is allowed or not</dd>
+  <dt>status <span class="type">(<a href="#localsubjectaccessreviewstatus" aria-label="SubjectAccessReviewStatus type reference">SubjectAccessReviewStatus</a>)</span></dt>
+  <dd><p>Status is filled in by the server and indicates whether the request is allowed or not</p>
+</dd>
   
   
 </dl>
@@ -152,50 +92,45 @@
     <h2 id="localsubjectaccessreviewspec">LocalSubjectAccessReviewSpec</h2>
     
     <p>SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set</p>
+
     
     
 <dl>
   
   
-  <dt>
-    extra<span class="type">map[string][]string</span>
-  </dt>
-  <dd>Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.</dd>
+  <dt>extra <span class="type">(map[string][]string)</span></dt>
+  <dd><p>Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.</p>
+</dd>
   
   
   
-  <dt>
-    groups<span class="type">[]string</span>
-  </dt>
-  <dd>Groups is the groups you&#x27;re testing for.</dd>
+  <dt>groups <span class="type">([]string)</span></dt>
+  <dd><p>Groups is the groups you're testing for.</p>
+</dd>
   
   
   
-  <dt>
-    nonResourceAttributes<span class="type">NonResourceAttributes</span>
-  </dt>
-  <dd>NonResourceAttributes describes information for a non-resource access request</dd>
+  <dt>nonResourceAttributes <span class="type">(NonResourceAttributes)</span></dt>
+  <dd><p>NonResourceAttributes describes information for a non-resource access request</p>
+</dd>
   
   
   
-  <dt>
-    resourceAttributes<span class="type">ResourceAttributes</span>
-  </dt>
-  <dd>ResourceAuthorizationAttributes describes information for a resource access request</dd>
+  <dt>resourceAttributes <span class="type">(ResourceAttributes)</span></dt>
+  <dd><p>ResourceAuthorizationAttributes describes information for a resource access request</p>
+</dd>
   
   
   
-  <dt>
-    uid<span class="type">string</span>
-  </dt>
-  <dd>UID information about the requesting user.</dd>
+  <dt>uid <span class="type">(string)</span></dt>
+  <dd><p>UID information about the requesting user.</p>
+</dd>
   
   
   
-  <dt>
-    user<span class="type">string</span>
-  </dt>
-  <dd>User is the user you&#x27;re testing for. If you specify &quot;User&quot; but not &quot;Groups&quot;, then is it interpreted as &quot;What if User were not a member of any groups</dd>
+  <dt>user <span class="type">(string)</span></dt>
+  <dd><p>User is the user you're testing for. If you specify "User" but not "Groups", then is it interpreted as "What if User were not a member of any groups</p>
+</dd>
   
   
 </dl>
@@ -207,36 +142,33 @@
     <h2 id="localsubjectaccessreviewstatus">LocalSubjectAccessReviewStatus</h2>
     
     <p>SubjectAccessReviewStatus</p>
+
     
     
 <dl>
   
   
-  <dt class="req">
-    allowed<span class="type">boolean</span>
-  </dt>
-  <dd>Allowed is required. True if the action would be allowed, false otherwise.</dd>
+  <dt class="req">allowed <span class="type">(boolean)</span></dt>
+  <dd><p>Allowed is required. True if the action would be allowed, false otherwise.</p>
+</dd>
   
   
   
-  <dt>
-    denied<span class="type">boolean</span>
-  </dt>
-  <dd>Denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.</dd>
+  <dt>denied <span class="type">(boolean)</span></dt>
+  <dd><p>Denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.</p>
+</dd>
   
   
   
-  <dt>
-    evaluationError<span class="type">string</span>
-  </dt>
-  <dd>EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.</dd>
+  <dt>evaluationError <span class="type">(string)</span></dt>
+  <dd><p>EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.</p>
+</dd>
   
   
   
-  <dt>
-    reason<span class="type">string</span>
-  </dt>
-  <dd>Reason is optional.  It indicates why a request was allowed or denied.</dd>
+  <dt>reason <span class="type">(string)</span></dt>
+  <dd><p>Reason is optional.  It indicates why a request was allowed or denied.</p>
+</dd>
   
   
 </dl>

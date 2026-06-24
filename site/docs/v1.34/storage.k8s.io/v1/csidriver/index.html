@@ -6,64 +6,8 @@
   <title>CSIDriver v1 (storage.k8s.io) &mdash; Kubernetes v1.34 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes CSIDriver API reference for v1.34. CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernet">
   <link rel="canonical" href="/docs/latest/storage.k8s.io/v1/csidriver/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernetes attach detach controller uses this object to determine whether attach is required. Kubelet uses this object to determine whether pod information needs to be passed on mount. CSIDriver objects are non-namespaced.","name":"CSIDriver — Kubernetes v1.34 API Reference","url":"https://www.kubernetools.com/docs/latest/storage.k8s.io/v1/csidriver/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernetes attach detach controller uses this object to determine whether attach is required. Kubelet uses this object to determine whether pod information needs to be passed on mount. CSIDriver objects are non-namespaced.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,27 +58,23 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>storage.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>storage.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>CSIDriver</code></dd>
+  <dt>kind: <code>CSIDriver</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    spec<span class="type"><a href="#csidriverspec" aria-label="CSIDriverSpec type reference">CSIDriverSpec</a></span>
-  </dt>
-  <dd>spec represents the specification of the CSI Driver.</dd>
+  <dt class="req">spec <span class="type">(<a href="#csidriverspec" aria-label="CSIDriverSpec type reference">CSIDriverSpec</a>)</span></dt>
+  <dd><p>spec represents the specification of the CSI Driver.</p>
+</dd>
   
   
 </dl>
@@ -145,118 +86,90 @@
     <h2 id="csidriverspec">CSIDriverSpec</h2>
     
     <p>CSIDriverSpec is the specification of a CSIDriver.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    attachRequired<span class="type">boolean</span>
-  </dt>
-  <dd>attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.
-
-This field is immutable.</dd>
+  <dt>attachRequired <span class="type">(boolean)</span></dt>
+  <dd><p>attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.</p>
+<p>This field is immutable.</p>
+</dd>
   
   
   
-  <dt>
-    fsGroupPolicy<span class="type">string</span>
-  </dt>
-  <dd>fsGroupPolicy defines if the underlying volume supports changing ownership and permission of the volume before being mounted. Refer to the specific FSGroupPolicy values for additional details.
-
-This field was immutable in Kubernetes &lt; 1.29 and now is mutable.
-
-Defaults to ReadWriteOnceWithFSType, which will examine each volume to determine if Kubernetes should modify ownership and permissions of the volume. With the default policy the defined fsGroup will only be applied if a fstype is defined and the volume&#x27;s access mode contains ReadWriteOnce.</dd>
+  <dt>fsGroupPolicy <span class="type">(string)</span></dt>
+  <dd><p>fsGroupPolicy defines if the underlying volume supports changing ownership and permission of the volume before being mounted. Refer to the specific FSGroupPolicy values for additional details.</p>
+<p>This field was immutable in Kubernetes &lt; 1.29 and now is mutable.</p>
+<p>Defaults to ReadWriteOnceWithFSType, which will examine each volume to determine if Kubernetes should modify ownership and permissions of the volume. With the default policy the defined fsGroup will only be applied if a fstype is defined and the volume's access mode contains ReadWriteOnce.</p>
+</dd>
   
   
   
-  <dt>
-    nodeAllocatableUpdatePeriodSeconds<span class="type">integer</span>
-  </dt>
-  <dd>nodeAllocatableUpdatePeriodSeconds specifies the interval between periodic updates of the CSINode allocatable capacity for this driver. When set, both periodic updates and updates triggered by capacity-related failures are enabled. If not set, no updates occur (neither periodic nor upon detecting capacity-related failures), and the allocatable.count remains static. The minimum allowed value for this field is 10 seconds.
-
-This is a beta feature and requires the MutableCSINodeAllocatableCount feature gate to be enabled.
-
-This field is mutable.</dd>
+  <dt>nodeAllocatableUpdatePeriodSeconds <span class="type">(integer)</span></dt>
+  <dd><p>nodeAllocatableUpdatePeriodSeconds specifies the interval between periodic updates of the CSINode allocatable capacity for this driver. When set, both periodic updates and updates triggered by capacity-related failures are enabled. If not set, no updates occur (neither periodic nor upon detecting capacity-related failures), and the allocatable.count remains static. The minimum allowed value for this field is 10 seconds.</p>
+<p>This is a beta feature and requires the MutableCSINodeAllocatableCount feature gate to be enabled.</p>
+<p>This field is mutable.</p>
+</dd>
   
   
   
-  <dt>
-    podInfoOnMount<span class="type">boolean</span>
-  </dt>
-  <dd>podInfoOnMount indicates this CSI volume driver requires additional pod information (like podName, podUID, etc.) during mount operations, if set to true. If set to false, pod information will not be passed on mount. Default is false.
-
-The CSI driver specifies podInfoOnMount as part of driver deployment. If true, Kubelet will pass pod information as VolumeContext in the CSI NodePublishVolume() calls. The CSI driver is responsible for parsing and validating the information passed in as VolumeContext.
-
-The following VolumeContext will be passed if podInfoOnMount is set to true. This list might grow, but the prefix will be used. &quot;csi.storage.k8s.io&#x2f;pod.name&quot;: pod.Name &quot;csi.storage.k8s.io&#x2f;pod.namespace&quot;: pod.Namespace &quot;csi.storage.k8s.io&#x2f;pod.uid&quot;: string(pod.UID) &quot;csi.storage.k8s.io&#x2f;ephemeral&quot;: &quot;true&quot; if the volume is an ephemeral inline volume
-                                defined by a CSIVolumeSource, otherwise &quot;false&quot;
-
-&quot;csi.storage.k8s.io&#x2f;ephemeral&quot; is a new feature in Kubernetes 1.16. It is only required for drivers which support both the &quot;Persistent&quot; and &quot;Ephemeral&quot; VolumeLifecycleMode. Other drivers can leave pod info disabled and&#x2f;or ignore this field. As Kubernetes 1.15 doesn&#x27;t support this field, drivers can only support one mode when deployed on such a cluster and the deployment determines which mode that is, for example via a command line parameter of the driver.
-
-This field was immutable in Kubernetes &lt; 1.29 and now is mutable.</dd>
+  <dt>podInfoOnMount <span class="type">(boolean)</span></dt>
+  <dd><p>podInfoOnMount indicates this CSI volume driver requires additional pod information (like podName, podUID, etc.) during mount operations, if set to true. If set to false, pod information will not be passed on mount. Default is false.</p>
+<p>The CSI driver specifies podInfoOnMount as part of driver deployment. If true, Kubelet will pass pod information as VolumeContext in the CSI NodePublishVolume() calls. The CSI driver is responsible for parsing and validating the information passed in as VolumeContext.</p>
+<p>The following VolumeContext will be passed if podInfoOnMount is set to true. This list might grow, but the prefix will be used. "csi.storage.k8s.io/pod.name": pod.Name "csi.storage.k8s.io/pod.namespace": pod.Namespace "csi.storage.k8s.io/pod.uid": string(pod.UID) "csi.storage.k8s.io/ephemeral": "true" if the volume is an ephemeral inline volume
+defined by a CSIVolumeSource, otherwise "false"</p>
+<p>"csi.storage.k8s.io/ephemeral" is a new feature in Kubernetes 1.16. It is only required for drivers which support both the "Persistent" and "Ephemeral" VolumeLifecycleMode. Other drivers can leave pod info disabled and/or ignore this field. As Kubernetes 1.15 doesn't support this field, drivers can only support one mode when deployed on such a cluster and the deployment determines which mode that is, for example via a command line parameter of the driver.</p>
+<p>This field was immutable in Kubernetes &lt; 1.29 and now is mutable.</p>
+</dd>
   
   
   
-  <dt>
-    requiresRepublish<span class="type">boolean</span>
-  </dt>
-  <dd>requiresRepublish indicates the CSI driver wants `NodePublishVolume` being periodically called to reflect any possible change in the mounted volume. This field defaults to false.
-
-Note: After a successful initial NodePublishVolume call, subsequent calls to NodePublishVolume should only update the contents of the volume. New mount points will not be seen by a running container.</dd>
+  <dt>requiresRepublish <span class="type">(boolean)</span></dt>
+  <dd><p>requiresRepublish indicates the CSI driver wants <code>NodePublishVolume</code> being periodically called to reflect any possible change in the mounted volume. This field defaults to false.</p>
+<p>Note: After a successful initial NodePublishVolume call, subsequent calls to NodePublishVolume should only update the contents of the volume. New mount points will not be seen by a running container.</p>
+</dd>
   
   
   
-  <dt>
-    seLinuxMount<span class="type">boolean</span>
-  </dt>
-  <dd>seLinuxMount specifies if the CSI driver supports &quot;-o context&quot; mount option.
-
-When &quot;true&quot;, the CSI driver must ensure that all volumes provided by this CSI driver can be mounted separately with different `-o context` options. This is typical for storage backends that provide volumes as filesystems on block devices or as independent shared volumes. Kubernetes will call NodeStage &#x2f; NodePublish with &quot;-o context=xyz&quot; mount option when mounting a ReadWriteOncePod volume used in Pod that has explicitly set SELinux context. In the future, it may be expanded to other volume AccessModes. In any case, Kubernetes will ensure that the volume is mounted only with a single SELinux context.
-
-When &quot;false&quot;, Kubernetes won&#x27;t pass any special SELinux mount options to the driver. This is typical for volumes that represent subdirectories of a bigger shared filesystem.
-
-Default is &quot;false&quot;.</dd>
+  <dt>seLinuxMount <span class="type">(boolean)</span></dt>
+  <dd><p>seLinuxMount specifies if the CSI driver supports "-o context" mount option.</p>
+<p>When "true", the CSI driver must ensure that all volumes provided by this CSI driver can be mounted separately with different <code>-o context</code> options. This is typical for storage backends that provide volumes as filesystems on block devices or as independent shared volumes. Kubernetes will call NodeStage / NodePublish with "-o context=xyz" mount option when mounting a ReadWriteOncePod volume used in Pod that has explicitly set SELinux context. In the future, it may be expanded to other volume AccessModes. In any case, Kubernetes will ensure that the volume is mounted only with a single SELinux context.</p>
+<p>When "false", Kubernetes won't pass any special SELinux mount options to the driver. This is typical for volumes that represent subdirectories of a bigger shared filesystem.</p>
+<p>Default is "false".</p>
+</dd>
   
   
   
-  <dt>
-    storageCapacity<span class="type">boolean</span>
-  </dt>
-  <dd>storageCapacity indicates that the CSI volume driver wants pod scheduling to consider the storage capacity that the driver deployment will report by creating CSIStorageCapacity objects with capacity information, if set to true.
-
-The check can be enabled immediately when deploying a driver. In that case, provisioning new volumes with late binding will pause until the driver deployment has published some suitable CSIStorageCapacity object.
-
-Alternatively, the driver can be deployed with the field unset or false and it can be flipped later when storage capacity information has been published.
-
-This field was immutable in Kubernetes &lt;= 1.22 and now is mutable.</dd>
+  <dt>storageCapacity <span class="type">(boolean)</span></dt>
+  <dd><p>storageCapacity indicates that the CSI volume driver wants pod scheduling to consider the storage capacity that the driver deployment will report by creating CSIStorageCapacity objects with capacity information, if set to true.</p>
+<p>The check can be enabled immediately when deploying a driver. In that case, provisioning new volumes with late binding will pause until the driver deployment has published some suitable CSIStorageCapacity object.</p>
+<p>Alternatively, the driver can be deployed with the field unset or false and it can be flipped later when storage capacity information has been published.</p>
+<p>This field was immutable in Kubernetes &lt;= 1.22 and now is mutable.</p>
+</dd>
   
   
   
-  <dt>
-    tokenRequests<span class="type">[]TokenRequest</span>
-  </dt>
-  <dd>tokenRequests indicates the CSI driver needs pods&#x27; service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: &quot;csi.storage.k8s.io&#x2f;serviceAccount.tokens&quot;: {
-  &quot;&lt;audience&gt;&quot;: {
-    &quot;token&quot;: &lt;token&gt;,
-    &quot;expirationTimestamp&quot;: &lt;expiration timestamp in RFC3339&gt;,
-  },
-  ...
-}
-
-Note: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically.</dd>
+  <dt>tokenRequests <span class="type">([]TokenRequest)</span></dt>
+  <dd><p>tokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: "csi.storage.k8s.io/serviceAccount.tokens": {
+"<audience>": {
+"token": <token>,
+"expirationTimestamp": <expiration timestamp in RFC3339>,
+},
+...
+}</p>
+<p>Note: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically.</p>
+</dd>
   
   
   
-  <dt>
-    volumeLifecycleModes<span class="type">[]string</span>
-  </dt>
-  <dd>volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is &quot;Persistent&quot;, which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV&#x2f;PVC mechanism.
-
-The other mode is &quot;Ephemeral&quot;. In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume.
-
-For more information about implementing this mode, see https:&#x2f;&#x2f;kubernetes-csi.github.io&#x2f;docs&#x2f;ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future.
-
-This field is beta. This field is immutable.</dd>
+  <dt>volumeLifecycleModes <span class="type">([]string)</span></dt>
+  <dd><p>volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism.</p>
+<p>The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume.</p>
+<p>For more information about implementing this mode, see <a href="https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html" target="_blank" rel="noopener noreferrer">https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html</a> A driver can support one or more of these modes and more modes may be added in the future.</p>
+<p>This field is beta. This field is immutable.</p>
+</dd>
   
   
 </dl>
@@ -269,32 +182,29 @@ This field is beta. This field is immutable.</dd>
     <h2 id="list-heading">CSIDriverList</h2>
     
     <p>CSIDriverList is a collection of CSIDriver objects.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>storage.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>storage.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>CSIDriverList</code></dd>
+  <dt>kind: <code>CSIDriverList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.34/storage.k8s.io/v1/csidriver/" aria-label="[]CSIDriver type reference">[]CSIDriver</a></span>
-  </dt>
-  <dd>items is the list of CSIDriver</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.34/storage.k8s.io/v1/csidriver/" aria-label="[]CSIDriver type reference">[]CSIDriver</a>)</span></dt>
+  <dd><p>items is the list of CSIDriver</p>
+</dd>
   
   
 </dl>

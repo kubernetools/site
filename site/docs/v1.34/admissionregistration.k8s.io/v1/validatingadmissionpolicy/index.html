@@ -6,64 +6,8 @@
   <title>ValidatingAdmissionPolicy v1 (admissionregistration.k8s.io) &mdash; Kubernetes v1.34 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes ValidatingAdmissionPolicy API reference for v1.34. ValidatingAdmissionPolicy describes the definition of an admission validation policy that accepts or rejects an object w">
   <link rel="canonical" href="/docs/latest/admissionregistration.k8s.io/v1/validatingadmissionpolicy/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"ValidatingAdmissionPolicy describes the definition of an admission validation policy that accepts or rejects an object without changing it.","name":"ValidatingAdmissionPolicy — Kubernetes v1.34 API Reference","url":"https://www.kubernetools.com/docs/latest/admissionregistration.k8s.io/v1/validatingadmissionpolicy/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -105,6 +49,7 @@
   
   
   <p>ValidatingAdmissionPolicy describes the definition of an admission validation policy that accepts or rejects an object without changing it.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>admissionregistration.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>admissionregistration.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ValidatingAdmissionPolicy</code></dd>
+  <dt>kind: <code>ValidatingAdmissionPolicy</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object metadata; More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata.</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object metadata; More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a>.</p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#validatingadmissionpolicyspec" aria-label="ValidatingAdmissionPolicySpec type reference">ValidatingAdmissionPolicySpec</a></span>
-  </dt>
-  <dd>Specification of the desired behavior of the ValidatingAdmissionPolicy.</dd>
+  <dt>spec <span class="type">(<a href="#validatingadmissionpolicyspec" aria-label="ValidatingAdmissionPolicySpec type reference">ValidatingAdmissionPolicySpec</a>)</span></dt>
+  <dd><p>Specification of the desired behavior of the ValidatingAdmissionPolicy.</p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#validatingadmissionpolicystatus" aria-label="ValidatingAdmissionPolicyStatus type reference">ValidatingAdmissionPolicyStatus</a></span>
-  </dt>
-  <dd>The status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only.</dd>
+  <dt>status <span class="type">(<a href="#validatingadmissionpolicystatus" aria-label="ValidatingAdmissionPolicyStatus type reference">ValidatingAdmissionPolicyStatus</a>)</span></dt>
+  <dd><p>The status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only.</p>
+</dd>
   
   
 </dl>
@@ -152,76 +92,68 @@
     <h2 id="validatingadmissionpolicyspec">ValidatingAdmissionPolicySpec</h2>
     
     <p>ValidatingAdmissionPolicySpec is the specification of the desired behavior of the AdmissionPolicy.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    auditAnnotations<span class="type">[]AuditAnnotation</span>
-  </dt>
-  <dd>auditAnnotations contains CEL expressions which are used to produce audit annotations for the audit event of the API request. validations and auditAnnotations may not both be empty; a least one of validations or auditAnnotations is required.</dd>
+  <dt>auditAnnotations <span class="type">([]AuditAnnotation)</span></dt>
+  <dd><p>auditAnnotations contains CEL expressions which are used to produce audit annotations for the audit event of the API request. validations and auditAnnotations may not both be empty; a least one of validations or auditAnnotations is required.</p>
+</dd>
   
   
   
-  <dt>
-    failurePolicy<span class="type">string</span>
-  </dt>
-  <dd>failurePolicy defines how to handle failures for the admission policy. Failures can occur from CEL expression parse errors, type check errors, runtime errors and invalid or mis-configured policy definitions or bindings.
-
-A policy is invalid if spec.paramKind refers to a non-existent Kind. A binding is invalid if spec.paramRef.name refers to a non-existent resource.
-
-failurePolicy does not define how validations that evaluate to false are handled.
-
-When failurePolicy is set to Fail, ValidatingAdmissionPolicyBinding validationActions define how failures are enforced.
-
-Allowed values are Ignore or Fail. Defaults to Fail.</dd>
+  <dt>failurePolicy <span class="type">(string)</span></dt>
+  <dd><p>failurePolicy defines how to handle failures for the admission policy. Failures can occur from CEL expression parse errors, type check errors, runtime errors and invalid or mis-configured policy definitions or bindings.</p>
+<p>A policy is invalid if spec.paramKind refers to a non-existent Kind. A binding is invalid if spec.paramRef.name refers to a non-existent resource.</p>
+<p>failurePolicy does not define how validations that evaluate to false are handled.</p>
+<p>When failurePolicy is set to Fail, ValidatingAdmissionPolicyBinding validationActions define how failures are enforced.</p>
+<p>Allowed values are Ignore or Fail. Defaults to Fail.</p>
+</dd>
   
   
   
-  <dt>
-    matchConditions<span class="type">[]MatchCondition</span>
-  </dt>
-  <dd>MatchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the rules, namespaceSelector, and objectSelector. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed.
-
-If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions.
-
-The exact matching logic is (in order):
-  1. If ANY matchCondition evaluates to FALSE, the policy is skipped.
-  2. If ALL matchConditions evaluate to TRUE, the policy is evaluated.
-  3. If any matchCondition evaluates to an error (but none are FALSE):
-     - If failurePolicy=Fail, reject the request
-     - If failurePolicy=Ignore, the policy is skipped</dd>
+  <dt>matchConditions <span class="type">([]MatchCondition)</span></dt>
+  <dd><p>MatchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the rules, namespaceSelector, and objectSelector. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed.</p>
+<p>If a parameter object is provided, it can be accessed via the <code>params</code> handle in the same manner as validation expressions.</p>
+<p>The exact matching logic is (in order):</p>
+<ol>
+<li>If ANY matchCondition evaluates to FALSE, the policy is skipped.</li>
+<li>If ALL matchConditions evaluate to TRUE, the policy is evaluated.</li>
+<li>If any matchCondition evaluates to an error (but none are FALSE):
+<ul>
+<li>If failurePolicy=Fail, reject the request</li>
+<li>If failurePolicy=Ignore, the policy is skipped</li>
+</ul>
+</li>
+</ol>
+</dd>
   
   
   
-  <dt>
-    matchConstraints<span class="type">MatchResources</span>
-  </dt>
-  <dd>MatchConstraints specifies what resources this policy is designed to validate. The AdmissionPolicy cares about a request if it matches _all_ Constraints. However, in order to prevent clusters from being put into an unstable state that cannot be recovered from via the API ValidatingAdmissionPolicy cannot match ValidatingAdmissionPolicy and ValidatingAdmissionPolicyBinding. Required.</dd>
+  <dt>matchConstraints <span class="type">(MatchResources)</span></dt>
+  <dd><p>MatchConstraints specifies what resources this policy is designed to validate. The AdmissionPolicy cares about a request if it matches <em>all</em> Constraints. However, in order to prevent clusters from being put into an unstable state that cannot be recovered from via the API ValidatingAdmissionPolicy cannot match ValidatingAdmissionPolicy and ValidatingAdmissionPolicyBinding. Required.</p>
+</dd>
   
   
   
-  <dt>
-    paramKind<span class="type">ParamKind</span>
-  </dt>
-  <dd>ParamKind specifies the kind of resources used to parameterize this policy. If absent, there are no parameters for this policy and the param CEL variable will not be provided to validation expressions. If ParamKind refers to a non-existent kind, this policy definition is mis-configured and the FailurePolicy is applied. If paramKind is specified but paramRef is unset in ValidatingAdmissionPolicyBinding, the params variable will be null.</dd>
+  <dt>paramKind <span class="type">(ParamKind)</span></dt>
+  <dd><p>ParamKind specifies the kind of resources used to parameterize this policy. If absent, there are no parameters for this policy and the param CEL variable will not be provided to validation expressions. If ParamKind refers to a non-existent kind, this policy definition is mis-configured and the FailurePolicy is applied. If paramKind is specified but paramRef is unset in ValidatingAdmissionPolicyBinding, the params variable will be null.</p>
+</dd>
   
   
   
-  <dt>
-    validations<span class="type">[]Validation</span>
-  </dt>
-  <dd>Validations contain CEL expressions which is used to apply the validation. Validations and AuditAnnotations may not both be empty; a minimum of one Validations or AuditAnnotations is required.</dd>
+  <dt>validations <span class="type">([]Validation)</span></dt>
+  <dd><p>Validations contain CEL expressions which is used to apply the validation. Validations and AuditAnnotations may not both be empty; a minimum of one Validations or AuditAnnotations is required.</p>
+</dd>
   
   
   
-  <dt>
-    variables<span class="type">[]Variable</span>
-  </dt>
-  <dd>Variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except MatchConditions because MatchConditions are evaluated before the rest of the policy.
-
-The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, Variables must be sorted by the order of first appearance and acyclic.</dd>
+  <dt>variables <span class="type">([]Variable)</span></dt>
+  <dd><p>Variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under <code>variables</code> in other expressions of the policy except MatchConditions because MatchConditions are evaluated before the rest of the policy.</p>
+<p>The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, Variables must be sorted by the order of first appearance and acyclic.</p>
+</dd>
   
   
 </dl>
@@ -233,29 +165,27 @@ The expression of a variable can refer to other variables defined earlier in the
     <h2 id="validatingadmissionpolicystatus">ValidatingAdmissionPolicyStatus</h2>
     
     <p>ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    conditions<span class="type">[]Condition</span>
-  </dt>
-  <dd>The conditions represent the latest available observations of a policy&#x27;s current state.</dd>
+  <dt>conditions <span class="type">([]Condition)</span></dt>
+  <dd><p>The conditions represent the latest available observations of a policy's current state.</p>
+</dd>
   
   
   
-  <dt>
-    observedGeneration<span class="type">integer</span>
-  </dt>
-  <dd>The generation observed by the controller.</dd>
+  <dt>observedGeneration <span class="type">(integer)</span></dt>
+  <dd><p>The generation observed by the controller.</p>
+</dd>
   
   
   
-  <dt>
-    typeChecking<span class="type">TypeChecking</span>
-  </dt>
-  <dd>The results of type checking for each expression. Presence of this field indicates the completion of the type checking.</dd>
+  <dt>typeChecking <span class="type">(TypeChecking)</span></dt>
+  <dd><p>The results of type checking for each expression. Presence of this field indicates the completion of the type checking.</p>
+</dd>
   
   
 </dl>
@@ -267,32 +197,29 @@ The expression of a variable can refer to other variables defined earlier in the
     <h2 id="list-heading">ValidatingAdmissionPolicyList</h2>
     
     <p>ValidatingAdmissionPolicyList is a list of ValidatingAdmissionPolicy.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>admissionregistration.k8s.io/v1</code></dd>
+  <dt>apiVersion: <code>admissionregistration.k8s.io/v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>ValidatingAdmissionPolicyList</code></dd>
+  <dt>kind: <code>ValidatingAdmissionPolicyList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.34/admissionregistration.k8s.io/v1/validatingadmissionpolicy/" aria-label="[]ValidatingAdmissionPolicy type reference">[]ValidatingAdmissionPolicy</a></span>
-  </dt>
-  <dd>List of ValidatingAdmissionPolicy.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.34/admissionregistration.k8s.io/v1/validatingadmissionpolicy/" aria-label="[]ValidatingAdmissionPolicy type reference">[]ValidatingAdmissionPolicy</a>)</span></dt>
+  <dd><p>List of ValidatingAdmissionPolicy.</p>
+</dd>
   
   
 </dl>

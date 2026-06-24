@@ -6,64 +6,8 @@
   <title>VolumeAttributesClass v1alpha1 (storage.k8s.io) &mdash; Kubernetes v1.34 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes VolumeAttributesClass API reference for v1.34. VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can b">
   <link rel="canonical" href="/docs/latest/storage.k8s.io/v1alpha1/volumeattributesclass/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning.","name":"VolumeAttributesClass — Kubernetes v1.34 API Reference","url":"https://www.kubernetools.com/docs/latest/storage.k8s.io/v1alpha1/volumeattributesclass/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -113,6 +57,7 @@
   
   
   <p>VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning.</p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -121,36 +66,30 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>storage.k8s.io/v1alpha1</code></dd>
+  <dt>apiVersion: <code>storage.k8s.io/v1alpha1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>VolumeAttributesClass</code></dd>
+  <dt>kind: <code>VolumeAttributesClass</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    driverName<span class="type">string</span>
-  </dt>
-  <dd>Name of the CSI driver This field is immutable.</dd>
+  <dt class="req">driverName <span class="type">(string)</span></dt>
+  <dd><p>Name of the CSI driver This field is immutable.</p>
+</dd>
   
   
   
-  <dt>
-    parameters<span class="type">map[string]string</span>
-  </dt>
-  <dd>parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.
-
-This field is required and must contain at least one key&#x2f;value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an &quot;Infeasible&quot; state in the modifyVolumeStatus field.</dd>
+  <dt>parameters <span class="type">(map[string]string)</span></dt>
+  <dd><p>parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.</p>
+<p>This field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an "Infeasible" state in the modifyVolumeStatus field.</p>
+</dd>
   
   
 </dl>
@@ -164,32 +103,29 @@ This field is required and must contain at least one key&#x2f;value pair. The ke
     <h2 id="list-heading">VolumeAttributesClassList</h2>
     
     <p>VolumeAttributesClassList is a collection of VolumeAttributesClass objects.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>storage.k8s.io/v1alpha1</code></dd>
+  <dt>apiVersion: <code>storage.k8s.io/v1alpha1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>VolumeAttributesClassList</code></dd>
+  <dt>kind: <code>VolumeAttributesClassList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.34/storage.k8s.io/v1beta1/volumeattributesclass/" aria-label="[]VolumeAttributesClass type reference">[]VolumeAttributesClass</a></span>
-  </dt>
-  <dd>items is the list of VolumeAttributesClass objects.</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.34/storage.k8s.io/v1beta1/volumeattributesclass/" aria-label="[]VolumeAttributesClass type reference">[]VolumeAttributesClass</a>)</span></dt>
+  <dd><p>items is the list of VolumeAttributesClass objects.</p>
+</dd>
   
   
 </dl>

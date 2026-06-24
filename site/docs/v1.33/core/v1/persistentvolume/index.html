@@ -6,64 +6,8 @@
   <title>PersistentVolume v1 (core) &mdash; Kubernetes v1.33 | Kubernetes API Reference</title>
   <meta name="description" content="Kubernetes PersistentVolume API reference for v1.33. PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: https">
   <link rel="canonical" href="/docs/latest/core/v1/persistentvolume/">
+  <link rel="stylesheet" href="/docs/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","description":"PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes","name":"PersistentVolume — Kubernetes v1.33 API Reference","url":"https://www.kubernetools.com/docs/latest/core/v1/persistentvolume/"}</script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      color: #111;
-      background: #fff;
-    }
-    a { color: #0066cc; }
-    a:hover { color: #004499; }
-    nav[aria-label="Breadcrumb"] ol {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.5rem;
-      gap: 0.25rem 0.5rem;
-      font-size: 0.9em;
-    }
-    nav[aria-label="Breadcrumb"] li + li::before {
-      content: "/";
-      color: #777;
-      margin-right: 0.5rem;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 0.75em;
-      background: #f0f0f0;
-      color: #444;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      font-family: monospace;
-      vertical-align: middle;
-    }
-    .type { display: block; font-family: monospace; font-size: 0.85em; color: #555; }
-    dt.req::before { content: "* "; }
-    dl {
-      display: grid;
-      grid-template-columns: minmax(140px, max-content) 1fr;
-      gap: 0.75rem 1.5rem;
-      margin: 0;
-    }
-    dt { font-family: monospace; font-weight: 600; align-self: start; }
-    dd { margin: 0; color: #333; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.85em;
-      color: #777;
-    }
-    nav ul { list-style: none; padding: 0; }
-    nav ul li { margin: 0.4rem 0; }
-  </style>
 </head>
 <body>
   <header>
@@ -104,7 +48,8 @@
   <h1>PersistentVolume <span class="badge">core/v1</span></h1>
   
   
-  <p>PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes</p>
+  <p>PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes</a></p>
+
   
   <section aria-labelledby="fields-heading">
     <h2 id="fields-heading">Fields</h2>
@@ -113,34 +58,29 @@
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>PersistentVolume</code></dd>
+  <dt>kind: <code>PersistentVolume</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a></span>
-  </dt>
-  <dd>Standard object&#x27;s metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#metadata</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
+  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+</dd>
   
   
   
-  <dt>
-    spec<span class="type"><a href="#persistentvolumespec" aria-label="PersistentVolumeSpec type reference">PersistentVolumeSpec</a></span>
-  </dt>
-  <dd>spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#persistent-volumes</dd>
+  <dt>spec <span class="type">(<a href="#persistentvolumespec" aria-label="PersistentVolumeSpec type reference">PersistentVolumeSpec</a>)</span></dt>
+  <dd><p>spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes</a></p>
+</dd>
   
   
   
-  <dt>
-    status<span class="type"><a href="#persistentvolumestatus" aria-label="PersistentVolumeStatus type reference">PersistentVolumeStatus</a></span>
-  </dt>
-  <dd>status represents the current information&#x2f;status for the persistent volume. Populated by the system. Read-only. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#persistent-volumes</dd>
+  <dt>status <span class="type">(<a href="#persistentvolumestatus" aria-label="PersistentVolumeStatus type reference">PersistentVolumeStatus</a>)</span></dt>
+  <dd><p>status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes</a></p>
+</dd>
   
   
 </dl>
@@ -152,225 +92,195 @@
     <h2 id="persistentvolumespec">PersistentVolumeSpec</h2>
     
     <p>PersistentVolumeSpec is the specification of a persistent volume.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    accessModes<span class="type">[]string</span>
-  </dt>
-  <dd>accessModes contains all ways the volume can be mounted. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#access-modes</dd>
+  <dt>accessModes <span class="type">([]string)</span></dt>
+  <dd><p>accessModes contains all ways the volume can be mounted. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes</a></p>
+</dd>
   
   
   
-  <dt>
-    awsElasticBlockStore<span class="type">AWSElasticBlockStoreVolumeSource</span>
-  </dt>
-  <dd>awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet&#x27;s host machine and then exposed to the pod. Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;volumes#awselasticblockstore</dd>
+  <dt>awsElasticBlockStore <span class="type">(AWSElasticBlockStoreVolumeSource)</span></dt>
+  <dd><p>awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</a></p>
+</dd>
   
   
   
-  <dt>
-    azureDisk<span class="type">AzureDiskVolumeSource</span>
-  </dt>
-  <dd>azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod. Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type are redirected to the disk.csi.azure.com CSI driver.</dd>
+  <dt>azureDisk <span class="type">(AzureDiskVolumeSource)</span></dt>
+  <dd><p>azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod. Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type are redirected to the disk.csi.azure.com CSI driver.</p>
+</dd>
   
   
   
-  <dt>
-    azureFile<span class="type">AzureFilePersistentVolumeSource</span>
-  </dt>
-  <dd>azureFile represents an Azure File Service mount on the host and bind mount to the pod. Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type are redirected to the file.csi.azure.com CSI driver.</dd>
+  <dt>azureFile <span class="type">(AzureFilePersistentVolumeSource)</span></dt>
+  <dd><p>azureFile represents an Azure File Service mount on the host and bind mount to the pod. Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type are redirected to the file.csi.azure.com CSI driver.</p>
+</dd>
   
   
   
-  <dt>
-    capacity<span class="type">map[string]Quantity</span>
-  </dt>
-  <dd>capacity is the description of the persistent volume&#x27;s resources and capacity. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#capacity</dd>
+  <dt>capacity <span class="type">(map[string]Quantity)</span></dt>
+  <dd><p>capacity is the description of the persistent volume's resources and capacity. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity</a></p>
+</dd>
   
   
   
-  <dt>
-    cephfs<span class="type">CephFSPersistentVolumeSource</span>
-  </dt>
-  <dd>cephFS represents a Ceph FS mount on the host that shares a pod&#x27;s lifetime. Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.</dd>
+  <dt>cephfs <span class="type">(CephFSPersistentVolumeSource)</span></dt>
+  <dd><p>cephFS represents a Ceph FS mount on the host that shares a pod's lifetime. Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.</p>
+</dd>
   
   
   
-  <dt>
-    cinder<span class="type">CinderPersistentVolumeSource</span>
-  </dt>
-  <dd>cinder represents a cinder volume attached and mounted on kubelets host machine. Deprecated: Cinder is deprecated. All operations for the in-tree cinder type are redirected to the cinder.csi.openstack.org CSI driver. More info: https:&#x2f;&#x2f;examples.k8s.io&#x2f;mysql-cinder-pd&#x2f;README.md</dd>
+  <dt>cinder <span class="type">(CinderPersistentVolumeSource)</span></dt>
+  <dd><p>cinder represents a cinder volume attached and mounted on kubelets host machine. Deprecated: Cinder is deprecated. All operations for the in-tree cinder type are redirected to the cinder.csi.openstack.org CSI driver. More info: <a href="https://examples.k8s.io/mysql-cinder-pd/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/mysql-cinder-pd/README.md</a></p>
+</dd>
   
   
   
-  <dt>
-    claimRef<span class="type"><a href="/docs/v1.33/common-definitions/objectreference/" aria-label="ObjectReference type reference">ObjectReference</a></span>
-  </dt>
-  <dd>claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#binding</dd>
+  <dt>claimRef <span class="type">(<a href="/docs/v1.33/common-definitions/objectreference/" aria-label="ObjectReference type reference">ObjectReference</a>)</span></dt>
+  <dd><p>claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding</a></p>
+</dd>
   
   
   
-  <dt>
-    csi<span class="type">CSIPersistentVolumeSource</span>
-  </dt>
-  <dd>csi represents storage that is handled by an external CSI driver.</dd>
+  <dt>csi <span class="type">(CSIPersistentVolumeSource)</span></dt>
+  <dd><p>csi represents storage that is handled by an external CSI driver.</p>
+</dd>
   
   
   
-  <dt>
-    fc<span class="type">FCVolumeSource</span>
-  </dt>
-  <dd>fc represents a Fibre Channel resource that is attached to a kubelet&#x27;s host machine and then exposed to the pod.</dd>
+  <dt>fc <span class="type">(FCVolumeSource)</span></dt>
+  <dd><p>fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.</p>
+</dd>
   
   
   
-  <dt>
-    flexVolume<span class="type">FlexPersistentVolumeSource</span>
-  </dt>
-  <dd>flexVolume represents a generic volume resource that is provisioned&#x2f;attached using an exec based plugin. Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.</dd>
+  <dt>flexVolume <span class="type">(FlexPersistentVolumeSource)</span></dt>
+  <dd><p>flexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.</p>
+</dd>
   
   
   
-  <dt>
-    flocker<span class="type">FlockerVolumeSource</span>
-  </dt>
-  <dd>flocker represents a Flocker volume attached to a kubelet&#x27;s host machine and exposed to the pod for its usage. This depends on the Flocker control service being running. Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.</dd>
+  <dt>flocker <span class="type">(FlockerVolumeSource)</span></dt>
+  <dd><p>flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running. Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.</p>
+</dd>
   
   
   
-  <dt>
-    gcePersistentDisk<span class="type">GCEPersistentDiskVolumeSource</span>
-  </dt>
-  <dd>gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet&#x27;s host machine and then exposed to the pod. Provisioned by an admin. Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;volumes#gcepersistentdisk</dd>
+  <dt>gcePersistentDisk <span class="type">(GCEPersistentDiskVolumeSource)</span></dt>
+  <dd><p>gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</a></p>
+</dd>
   
   
   
-  <dt>
-    glusterfs<span class="type">GlusterfsPersistentVolumeSource</span>
-  </dt>
-  <dd>glusterfs represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported. More info: https:&#x2f;&#x2f;examples.k8s.io&#x2f;volumes&#x2f;glusterfs&#x2f;README.md</dd>
+  <dt>glusterfs <span class="type">(GlusterfsPersistentVolumeSource)</span></dt>
+  <dd><p>glusterfs represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported. More info: <a href="https://examples.k8s.io/volumes/glusterfs/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/glusterfs/README.md</a></p>
+</dd>
   
   
   
-  <dt>
-    hostPath<span class="type">HostPathVolumeSource</span>
-  </dt>
-  <dd>hostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;volumes#hostpath</dd>
+  <dt>hostPath <span class="type">(HostPathVolumeSource)</span></dt>
+  <dd><p>hostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#hostpath" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#hostpath</a></p>
+</dd>
   
   
   
-  <dt>
-    iscsi<span class="type">ISCSIPersistentVolumeSource</span>
-  </dt>
-  <dd>iscsi represents an ISCSI Disk resource that is attached to a kubelet&#x27;s host machine and then exposed to the pod. Provisioned by an admin.</dd>
+  <dt>iscsi <span class="type">(ISCSIPersistentVolumeSource)</span></dt>
+  <dd><p>iscsi represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.</p>
+</dd>
   
   
   
-  <dt>
-    local<span class="type">LocalVolumeSource</span>
-  </dt>
-  <dd>local represents directly-attached storage with node affinity</dd>
+  <dt>local <span class="type">(LocalVolumeSource)</span></dt>
+  <dd><p>local represents directly-attached storage with node affinity</p>
+</dd>
   
   
   
-  <dt>
-    mountOptions<span class="type">[]string</span>
-  </dt>
-  <dd>mountOptions is the list of mount options, e.g. [&quot;ro&quot;, &quot;soft&quot;]. Not validated - mount will simply fail if one is invalid. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes&#x2f;#mount-options</dd>
+  <dt>mountOptions <span class="type">([]string)</span></dt>
+  <dd><p>mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options</a></p>
+</dd>
   
   
   
-  <dt>
-    nfs<span class="type">NFSVolumeSource</span>
-  </dt>
-  <dd>nfs represents an NFS mount on the host. Provisioned by an admin. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;volumes#nfs</dd>
+  <dt>nfs <span class="type">(NFSVolumeSource)</span></dt>
+  <dd><p>nfs represents an NFS mount on the host. Provisioned by an admin. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#nfs" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#nfs</a></p>
+</dd>
   
   
   
-  <dt>
-    nodeAffinity<span class="type">VolumeNodeAffinity</span>
-  </dt>
-  <dd>nodeAffinity defines constraints that limit what nodes this volume can be accessed from. This field influences the scheduling of pods that use this volume.</dd>
+  <dt>nodeAffinity <span class="type">(VolumeNodeAffinity)</span></dt>
+  <dd><p>nodeAffinity defines constraints that limit what nodes this volume can be accessed from. This field influences the scheduling of pods that use this volume.</p>
+</dd>
   
   
   
-  <dt>
-    persistentVolumeReclaimPolicy<span class="type">string</span>
-  </dt>
-  <dd>persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#reclaiming</dd>
+  <dt>persistentVolumeReclaimPolicy <span class="type">(string)</span></dt>
+  <dd><p>persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming</a></p>
+</dd>
   
   
   
-  <dt>
-    photonPersistentDisk<span class="type">PhotonPersistentDiskVolumeSource</span>
-  </dt>
-  <dd>photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine. Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.</dd>
+  <dt>photonPersistentDisk <span class="type">(PhotonPersistentDiskVolumeSource)</span></dt>
+  <dd><p>photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine. Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.</p>
+</dd>
   
   
   
-  <dt>
-    portworxVolume<span class="type">PortworxVolumeSource</span>
-  </dt>
-  <dd>portworxVolume represents a portworx volume attached and mounted on kubelets host machine. Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate is on.</dd>
+  <dt>portworxVolume <span class="type">(PortworxVolumeSource)</span></dt>
+  <dd><p>portworxVolume represents a portworx volume attached and mounted on kubelets host machine. Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate is on.</p>
+</dd>
   
   
   
-  <dt>
-    quobyte<span class="type">QuobyteVolumeSource</span>
-  </dt>
-  <dd>quobyte represents a Quobyte mount on the host that shares a pod&#x27;s lifetime. Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.</dd>
+  <dt>quobyte <span class="type">(QuobyteVolumeSource)</span></dt>
+  <dd><p>quobyte represents a Quobyte mount on the host that shares a pod's lifetime. Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.</p>
+</dd>
   
   
   
-  <dt>
-    rbd<span class="type">RBDPersistentVolumeSource</span>
-  </dt>
-  <dd>rbd represents a Rados Block Device mount on the host that shares a pod&#x27;s lifetime. Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported. More info: https:&#x2f;&#x2f;examples.k8s.io&#x2f;volumes&#x2f;rbd&#x2f;README.md</dd>
+  <dt>rbd <span class="type">(RBDPersistentVolumeSource)</span></dt>
+  <dd><p>rbd represents a Rados Block Device mount on the host that shares a pod's lifetime. Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md</a></p>
+</dd>
   
   
   
-  <dt>
-    scaleIO<span class="type">ScaleIOPersistentVolumeSource</span>
-  </dt>
-  <dd>scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes. Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.</dd>
+  <dt>scaleIO <span class="type">(ScaleIOPersistentVolumeSource)</span></dt>
+  <dd><p>scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes. Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.</p>
+</dd>
   
   
   
-  <dt>
-    storageClassName<span class="type">string</span>
-  </dt>
-  <dd>storageClassName is the name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.</dd>
+  <dt>storageClassName <span class="type">(string)</span></dt>
+  <dd><p>storageClassName is the name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.</p>
+</dd>
   
   
   
-  <dt>
-    storageos<span class="type">StorageOSPersistentVolumeSource</span>
-  </dt>
-  <dd>storageOS represents a StorageOS volume that is attached to the kubelet&#x27;s host machine and mounted into the pod. Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported. More info: https:&#x2f;&#x2f;examples.k8s.io&#x2f;volumes&#x2f;storageos&#x2f;README.md</dd>
+  <dt>storageos <span class="type">(StorageOSPersistentVolumeSource)</span></dt>
+  <dd><p>storageOS represents a StorageOS volume that is attached to the kubelet's host machine and mounted into the pod. Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported. More info: <a href="https://examples.k8s.io/volumes/storageos/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/storageos/README.md</a></p>
+</dd>
   
   
   
-  <dt>
-    volumeAttributesClassName<span class="type">string</span>
-  </dt>
-  <dd>Name of VolumeAttributesClass to which this persistent volume belongs. Empty value is not allowed. When this field is not set, it indicates that this volume does not belong to any VolumeAttributesClass. This field is mutable and can be changed by the CSI driver after a volume has been updated successfully to a new class. For an unbound PersistentVolume, the volumeAttributesClassName will be matched with unbound PersistentVolumeClaims during the binding process. This is a beta field and requires enabling VolumeAttributesClass feature (off by default).</dd>
+  <dt>volumeAttributesClassName <span class="type">(string)</span></dt>
+  <dd><p>Name of VolumeAttributesClass to which this persistent volume belongs. Empty value is not allowed. When this field is not set, it indicates that this volume does not belong to any VolumeAttributesClass. This field is mutable and can be changed by the CSI driver after a volume has been updated successfully to a new class. For an unbound PersistentVolume, the volumeAttributesClassName will be matched with unbound PersistentVolumeClaims during the binding process. This is a beta field and requires enabling VolumeAttributesClass feature (off by default).</p>
+</dd>
   
   
   
-  <dt>
-    volumeMode<span class="type">string</span>
-  </dt>
-  <dd>volumeMode defines if a volume is intended to be used with a formatted filesystem or to remain in raw block state. Value of Filesystem is implied when not included in spec.</dd>
+  <dt>volumeMode <span class="type">(string)</span></dt>
+  <dd><p>volumeMode defines if a volume is intended to be used with a formatted filesystem or to remain in raw block state. Value of Filesystem is implied when not included in spec.</p>
+</dd>
   
   
   
-  <dt>
-    vsphereVolume<span class="type">VsphereVirtualDiskVolumeSource</span>
-  </dt>
-  <dd>vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine. Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type are redirected to the csi.vsphere.vmware.com CSI driver.</dd>
+  <dt>vsphereVolume <span class="type">(VsphereVirtualDiskVolumeSource)</span></dt>
+  <dd><p>vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine. Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type are redirected to the csi.vsphere.vmware.com CSI driver.</p>
+</dd>
   
   
 </dl>
@@ -382,36 +292,33 @@
     <h2 id="persistentvolumestatus">PersistentVolumeStatus</h2>
     
     <p>PersistentVolumeStatus is the current status of a persistent volume.</p>
+
     
     
 <dl>
   
   
-  <dt>
-    lastPhaseTransitionTime<span class="type">Time</span>
-  </dt>
-  <dd>lastPhaseTransitionTime is the time the phase transitioned from one to another and automatically resets to current time everytime a volume phase transitions.</dd>
+  <dt>lastPhaseTransitionTime <span class="type">(Time)</span></dt>
+  <dd><p>lastPhaseTransitionTime is the time the phase transitioned from one to another and automatically resets to current time everytime a volume phase transitions.</p>
+</dd>
   
   
   
-  <dt>
-    message<span class="type">string</span>
-  </dt>
-  <dd>message is a human-readable message indicating details about why the volume is in this state.</dd>
+  <dt>message <span class="type">(string)</span></dt>
+  <dd><p>message is a human-readable message indicating details about why the volume is in this state.</p>
+</dd>
   
   
   
-  <dt>
-    phase<span class="type">string</span>
-  </dt>
-  <dd>phase indicates if a volume is available, bound to a claim, or released by a claim. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes#phase</dd>
+  <dt>phase <span class="type">(string)</span></dt>
+  <dd><p>phase indicates if a volume is available, bound to a claim, or released by a claim. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase</a></p>
+</dd>
   
   
   
-  <dt>
-    reason<span class="type">string</span>
-  </dt>
-  <dd>reason is a brief CamelCase string that describes any failure and is meant for machine parsing and tidy display in the CLI.</dd>
+  <dt>reason <span class="type">(string)</span></dt>
+  <dd><p>reason is a brief CamelCase string that describes any failure and is meant for machine parsing and tidy display in the CLI.</p>
+</dd>
   
   
 </dl>
@@ -423,32 +330,29 @@
     <h2 id="list-heading">PersistentVolumeList</h2>
     
     <p>PersistentVolumeList is a list of PersistentVolume items.</p>
+
     
     
 <dl>
   
   
-  <dt>apiVersion</dt>
-  <dd><code>v1</code></dd>
+  <dt>apiVersion: <code>v1</code></dt>
   
   
   
-  <dt>kind</dt>
-  <dd><code>PersistentVolumeList</code></dd>
+  <dt>kind: <code>PersistentVolumeList</code></dt>
   
   
   
-  <dt>
-    metadata<span class="type"><a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a></span>
-  </dt>
-  <dd>Standard list metadata. More info: https:&#x2f;&#x2f;git.k8s.io&#x2f;community&#x2f;contributors&#x2f;devel&#x2f;sig-architecture&#x2f;api-conventions.md#types-kinds</dd>
+  <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
+  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+</dd>
   
   
   
-  <dt class="req">
-    items<span class="type"><a href="/docs/v1.33/core/v1/persistentvolume/" aria-label="[]PersistentVolume type reference">[]PersistentVolume</a></span>
-  </dt>
-  <dd>items is a list of persistent volumes. More info: https:&#x2f;&#x2f;kubernetes.io&#x2f;docs&#x2f;concepts&#x2f;storage&#x2f;persistent-volumes</dd>
+  <dt class="req">items <span class="type">(<a href="/docs/v1.33/core/v1/persistentvolume/" aria-label="[]PersistentVolume type reference">[]PersistentVolume</a>)</span></dt>
+  <dd><p>items is a list of persistent volumes. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes</a></p>
+</dd>
   
   
 </dl>
