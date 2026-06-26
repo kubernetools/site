@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>WatchEvent <span class="badge">core/v1</span></h1>
   
@@ -59,25 +60,69 @@
   
   
   <dt class="req">object <span class="type">(RawExtension)</span></dt>
-  <dd><p>Object is:</p>
+  <dd>
+    <p>Object is:</p>
 <ul>
 <li>If Type is Added or Modified: the new state of the object.</li>
 <li>If Type is Deleted: the state of the object immediately before deletion.</li>
 <li>If Type is Error: *Status is recommended; other types may make sense
 depending on context.</li>
 </ul>
-</dd>
+
+    
+    <p class="type-desc"><em><p>RawExtension is used to hold extensions in external versions.</p>
+<p>To use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.</p>
+<p>// Internal package:</p>
+<pre><code>type MyAPIObject struct {
+	runtime.TypeMeta `json:",inline"`
+	MyPlugin runtime.Object `json:"myPlugin"`
+}
+
+type PluginA struct {
+	AOption string `json:"aOption"`
+}
+</code></pre>
+<p>// External package:</p>
+<pre><code>type MyAPIObject struct {
+	runtime.TypeMeta `json:",inline"`
+	MyPlugin runtime.RawExtension `json:"myPlugin"`
+}
+
+type PluginA struct {
+	AOption string `json:"aOption"`
+}
+</code></pre>
+<p>// On the wire, the JSON will look something like this:</p>
+<pre><code>{
+	"kind":"MyAPIObject",
+	"apiVersion":"v1",
+	"myPlugin": {
+		"kind":"PluginA",
+		"aOption":"foo",
+	},
+}
+</code></pre>
+<p>So what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)</p>
+</em></p>
+    
+    
+  </dd>
   
   
   
   <dt class="req">type <span class="type">(string)</span></dt>
-  <dd>No description available.</dd>
+  <dd>
+    No description available.
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   
   

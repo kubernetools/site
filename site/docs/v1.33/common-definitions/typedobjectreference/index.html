@@ -43,6 +43,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>TypedObjectReference</h1>
   
@@ -55,23 +56,40 @@
     <dl>
       
       <dt class="req">kind <span class="type">(string)</span></dt>
-      <dd><p>Kind is the type of resource being referenced</p>
-</dd>
+      <dd>
+        <p>Kind is the type of resource being referenced</p>
+
+        
+        
+      </dd>
       
       <dt class="req">name <span class="type">(string)</span></dt>
-      <dd><p>Name is the name of resource being referenced</p>
-</dd>
+      <dd>
+        <p>Name is the name of resource being referenced</p>
+
+        
+        
+      </dd>
       
       <dt>apiGroup <span class="type">(string)</span></dt>
-      <dd><p>APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.</p>
-</dd>
+      <dd>
+        <p>APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.</p>
+
+        
+        
+      </dd>
       
       <dt>namespace <span class="type">(string)</span></dt>
-      <dd><p>Namespace is the namespace of resource being referenced Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details. (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.</p>
-</dd>
+      <dd>
+        <p>Namespace is the namespace of resource being referenced Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details. (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.</p>
+
+        
+        
+      </dd>
       
     </dl>
   </section>
+  
   
 </article>
 

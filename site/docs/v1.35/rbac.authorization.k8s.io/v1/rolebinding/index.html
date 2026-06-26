@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>RoleBinding <span class="badge">rbac.authorization.k8s.io/v1</span></h1>
   
@@ -67,26 +68,150 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata.</p>
-</dd>
+  <dd>
+    <p>Standard object's metadata.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">roleRef <span class="type">(RoleRef)</span></dt>
-  <dd><p>RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.</p>
+  <dd>
+    <p>RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.</p>
+
+    
+    <p class="type-desc"><em><p>RoleRef contains information that points to the role being used</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">roleRef.apiGroup <span class="type">(string)</span></dt>
+      <dd><p>APIGroup is the group for the resource being referenced</p>
 </dd>
-  
-  
-  
-  <dt>subjects <span class="type">([]Subject)</span></dt>
-  <dd><p>Subjects holds references to the objects the role applies to.</p>
+      
+      <dt class="req">roleRef.kind <span class="type">(string)</span></dt>
+      <dd><p>Kind is the type of resource being referenced</p>
 </dd>
+      
+      <dt class="req">roleRef.name <span class="type">(string)</span></dt>
+      <dd><p>Name is the name of resource being referenced</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>subjects <span class="type">(<a href="#type-subject" aria-label="[]Subject type reference">[]Subject</a>)</span></dt>
+  <dd>
+    <p>Subjects holds references to the objects the role applies to.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
+  
+<section class="type-section" id="type-subject">
+  <h3>Subject</h3>
+  
+  <div class="type-section-desc"><p>Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">kind <span class="type">(string)</span></dt>
+  <dd>
+    <p><code>kind</code> indicates which one of the other fields is non-empty. Required</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>group <span class="type">(GroupSubject)</span></dt>
+  <dd>
+    <p><code>group</code> matches based on user group name.</p>
+
+    
+    <p class="type-desc"><em><p>GroupSubject holds detailed information for group-kind subject.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">group.name <span class="type">(string)</span></dt>
+      <dd><p>name is the user group that matches, or "*" to match all user groups. See <a href="https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go" target="_blank" rel="noopener noreferrer">https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go</a> for some well-known group names. Required.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>serviceAccount <span class="type">(ServiceAccountSubject)</span></dt>
+  <dd>
+    <p><code>serviceAccount</code> matches ServiceAccounts.</p>
+
+    
+    <p class="type-desc"><em><p>ServiceAccountSubject holds detailed information for service-account-kind subject.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">serviceAccount.name <span class="type">(string)</span></dt>
+      <dd><p><code>name</code> is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.</p>
+</dd>
+      
+      <dt class="req">serviceAccount.namespace <span class="type">(string)</span></dt>
+      <dd><p><code>namespace</code> is the namespace of matching ServiceAccount objects. Required.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>user <span class="type">(UserSubject)</span></dt>
+  <dd>
+    <p><code>user</code> matches based on username.</p>
+
+    
+    <p class="type-desc"><em><p>UserSubject holds detailed information for user-kind subject.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">user.name <span class="type">(string)</span></dt>
+      <dd><p><code>name</code> is the username that matches, or "*" to match all usernames. Required.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -109,19 +234,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata.</p>
-</dd>
+  <dd>
+    <p>Standard object's metadata.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.35/rbac.authorization.k8s.io/v1/rolebinding/" aria-label="[]RoleBinding type reference">RoleBinding</a>)</span></dt>
-  <dd><p>Items is a list of RoleBindings</p>
-</dd>
+  <dd>
+    <p>Items is a list of RoleBindings</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>PodDisruptionBudget <span class="badge">policy/v1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#poddisruptionbudgetspec" aria-label="PodDisruptionBudgetSpec type reference">PodDisruptionBudgetSpec</a>)</span></dt>
-  <dd><p>Specification of the desired behavior of the PodDisruptionBudget.</p>
-</dd>
+  <dd>
+    <p>Specification of the desired behavior of the PodDisruptionBudget.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#poddisruptionbudgetstatus" aria-label="PodDisruptionBudgetStatus type reference">PodDisruptionBudgetStatus</a>)</span></dt>
-  <dd><p>Most recently observed status of the PodDisruptionBudget.</p>
-</dd>
+  <dd>
+    <p>Most recently observed status of the PodDisruptionBudget.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="poddisruptionbudgetspec">
     <h2 id="poddisruptionbudgetspec">PodDisruptionBudgetSpec</h2>
@@ -99,35 +113,52 @@
   
   
   <dt>maxUnavailable <span class="type">(<a href="/docs/v1.33/common-definitions/intorstring/" aria-label="IntOrString type reference">IntOrString</a>)</span></dt>
-  <dd><p>An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".</p>
-</dd>
+  <dd>
+    <p>An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>minAvailable <span class="type">(<a href="/docs/v1.33/common-definitions/intorstring/" aria-label="IntOrString type reference">IntOrString</a>)</span></dt>
-  <dd><p>An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".</p>
-</dd>
+  <dd>
+    <p>An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>selector <span class="type">(<a href="/docs/v1.33/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a>)</span></dt>
-  <dd><p>Label query over pods whose evictions are managed by the disruption budget. A null selector will match no pods, while an empty ({}) selector will select all pods within the namespace.</p>
-</dd>
+  <dd>
+    <p>Label query over pods whose evictions are managed by the disruption budget. A null selector will match no pods, while an empty ({}) selector will select all pods within the namespace.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>unhealthyPodEvictionPolicy <span class="type">(string)</span></dt>
-  <dd><p>UnhealthyPodEvictionPolicy defines the criteria for when unhealthy pods should be considered for eviction. Current implementation considers healthy pods, as pods that have status.conditions item with type="Ready",status="True".</p>
+  <dd>
+    <p>UnhealthyPodEvictionPolicy defines the criteria for when unhealthy pods should be considered for eviction. Current implementation considers healthy pods, as pods that have status.conditions item with type="Ready",status="True".</p>
 <p>Valid policies are IfHealthyBudget and AlwaysAllow. If no policy is specified, the default behavior will be used, which corresponds to the IfHealthyBudget policy.</p>
 <p>IfHealthyBudget policy means that running pods (status.phase="Running"), but not yet healthy can be evicted only if the guarded application is not disrupted (status.currentHealthy is at least equal to status.desiredHealthy). Healthy pods will be subject to the PDB for eviction.</p>
 <p>AlwaysAllow policy means that all running pods (status.phase="Running"), but not yet healthy are considered disrupted and can be evicted regardless of whether the criteria in a PDB is met. This means perspective running pods of a disrupted application might not get a chance to become healthy. Healthy pods will be subject to the PDB for eviction.</p>
 <p>Additional policies may be added in the future. Clients making eviction decisions should disallow eviction of unhealthy pods if they encounter an unrecognized policy in this field.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="poddisruptionbudgetstatus">
@@ -141,31 +172,48 @@
   
   
   <dt class="req">currentHealthy <span class="type">(integer)</span></dt>
-  <dd><p>current number of healthy pods</p>
-</dd>
+  <dd>
+    <p>current number of healthy pods</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">desiredHealthy <span class="type">(integer)</span></dt>
-  <dd><p>minimum desired number of healthy pods</p>
-</dd>
+  <dd>
+    <p>minimum desired number of healthy pods</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">disruptionsAllowed <span class="type">(integer)</span></dt>
-  <dd><p>Number of pod disruptions that are currently allowed.</p>
-</dd>
+  <dd>
+    <p>Number of pod disruptions that are currently allowed.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">expectedPods <span class="type">(integer)</span></dt>
-  <dd><p>total number of pods counted by this disruption budget</p>
-</dd>
+  <dd>
+    <p>total number of pods counted by this disruption budget</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>conditions <span class="type">([]<a href="/docs/v1.33/common-definitions/condition/" aria-label="[]Condition type reference">Condition</a>)</span></dt>
-  <dd><p>Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed condition. The following are known values for the reason field (additional reasons could be added in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
+  <dd>
+    <p>Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed condition. The following are known values for the reason field (additional reasons could be added in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
 the number of allowed disruptions. Therefore no disruptions are
 allowed and the status of the condition will be False.</p>
 <ul>
@@ -176,24 +224,36 @@ allowed and the status of the condition will be False.</li>
 The condition will be True, and the number of allowed
 disruptions are provided by the disruptionsAllowed property.</li>
 </ul>
-</dd>
+
+    
+    
+  </dd>
   
   
   
-  <dt>disruptedPods <span class="type">(map[string]Time)</span></dt>
-  <dd><p>DisruptedPods contains information about pods whose eviction was processed by the API server eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller. A pod will be in this map from the time when the API server processed the eviction request to the time when the pod is seen by PDB controller as having been marked for deletion (or after a timeout). The key in the map is the name of the pod and the value is the time when the API server processed the eviction request. If the deletion didn't occur and a pod is still there it will be removed from the list automatically by PodDisruptionBudget controller after some time. If everything goes smooth this map should be empty for the most of the time. Large number of entries in the map may indicate problems with pod deletions.</p>
-</dd>
+  <dt>disruptedPods <span class="type">(map[string]<a href="/docs/v1.33/common-definitions/time/" aria-label="map[string]Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>DisruptedPods contains information about pods whose eviction was processed by the API server eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller. A pod will be in this map from the time when the API server processed the eviction request to the time when the pod is seen by PDB controller as having been marked for deletion (or after a timeout). The key in the map is the name of the pod and the value is the time when the API server processed the eviction request. If the deletion didn't occur and a pod is still there it will be removed from the list automatically by PodDisruptionBudget controller after some time. If everything goes smooth this map should be empty for the most of the time. Large number of entries in the map may indicate problems with pod deletions.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>observedGeneration <span class="type">(integer)</span></dt>
-  <dd><p>Most recent generation observed when updating this PDB status. DisruptionsAllowed and other status information is valid only if observedGeneration equals to PDB's object generation.</p>
-</dd>
+  <dd>
+    <p>Most recent generation observed when updating this PDB status. DisruptionsAllowed and other status information is valid only if observedGeneration equals to PDB's object generation.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="list-heading">
@@ -215,19 +275,28 @@ disruptions are provided by the disruptionsAllowed property.</li>
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/policy/v1/poddisruptionbudget/" aria-label="[]PodDisruptionBudget type reference">PodDisruptionBudget</a>)</span></dt>
-  <dd><p>Items is a list of PodDisruptionBudgets</p>
-</dd>
+  <dd>
+    <p>Items is a list of PodDisruptionBudgets</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>CertificateSigningRequest <span class="badge">certificates.k8s.io/v1</span></h1>
   
@@ -73,25 +74,38 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd>No description available.</dd>
+  <dd>
+    No description available.
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#certificatesigningrequestspec" aria-label="CertificateSigningRequestSpec type reference">CertificateSigningRequestSpec</a>)</span></dt>
-  <dd><p>spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.</p>
-</dd>
+  <dd>
+    <p>spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#certificatesigningrequeststatus" aria-label="CertificateSigningRequestStatus type reference">CertificateSigningRequestStatus</a>)</span></dt>
-  <dd><p>status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.</p>
-</dd>
+  <dd>
+    <p>status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="certificatesigningrequestspec">
     <h2 id="certificatesigningrequestspec">CertificateSigningRequestSpec</h2>
@@ -104,13 +118,18 @@
   
   
   <dt class="req">request <span class="type">(string)</span></dt>
-  <dd><p>request contains an x509 certificate signing request encoded in a "CERTIFICATE REQUEST" PEM block. When serialized as JSON or YAML, the data is additionally base64-encoded.</p>
-</dd>
+  <dd>
+    <p>request contains an x509 certificate signing request encoded in a "CERTIFICATE REQUEST" PEM block. When serialized as JSON or YAML, the data is additionally base64-encoded.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">signerName <span class="type">(string)</span></dt>
-  <dd><p>signerName indicates the requested signer, and is a qualified name.</p>
+  <dd>
+    <p>signerName indicates the requested signer, and is a qualified name.</p>
 <p>List/watch requests for CertificateSigningRequests can filter on this field using a "spec.signerName=NAME" fieldSelector.</p>
 <p>Well-known Kubernetes signers are:</p>
 <ol>
@@ -131,12 +150,16 @@ Requests for this signer are never auto-approved by kube-controller-manager, and
 <li>Expiration/certificate lifetime: whether it is fixed by the signer, configurable by the admin.</li>
 <li>Whether or not requests for CA certificates are allowed.</li>
 </ol>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>expirationSeconds <span class="type">(integer)</span></dt>
-  <dd><p>expirationSeconds is the requested duration of validity of the issued certificate. The certificate signer may issue a certificate with a different validity duration so a client must check the delta between the notBefore and and notAfter fields in the issued certificate to determine the actual duration.</p>
+  <dd>
+    <p>expirationSeconds is the requested duration of validity of the issued certificate. The certificate signer may issue a certificate with a different validity duration so a client must check the delta between the notBefore and and notAfter fields in the issued certificate to determine the actual duration.</p>
 <p>The v1.22+ in-tree implementations of the well-known Kubernetes signers will honor this field as long as the requested duration is not greater than the maximum duration they will honor per the --cluster-signing-duration CLI flag to the Kubernetes controller manager.</p>
 <p>Certificate signers may not honor this field for various reasons:</p>
 <ol>
@@ -146,30 +169,46 @@ implementations prior to v1.22)</li>
 <li>Signer whose configured minimum is longer than the requested duration</li>
 </ol>
 <p>The minimum valid value for expirationSeconds is 600, i.e. 10 minutes.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>extra <span class="type">(map[string][]string)</span></dt>
-  <dd><p>extra contains extra attributes of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</p>
-</dd>
+  <dd>
+    <p>extra contains extra attributes of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>groups <span class="type">([]string)</span></dt>
-  <dd><p>groups contains group membership of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</p>
-</dd>
+  <dd>
+    <p>groups contains group membership of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>uid <span class="type">(string)</span></dt>
-  <dd><p>uid contains the uid of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</p>
-</dd>
+  <dd>
+    <p>uid contains the uid of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>usages <span class="type">([]string)</span></dt>
-  <dd><p>usages specifies a set of key usages requested in the issued certificate.</p>
+  <dd>
+    <p>usages specifies a set of key usages requested in the issued certificate.</p>
 <p>Requests for TLS client certificates typically request: "digital signature", "key encipherment", "client auth".</p>
 <p>Requests for TLS serving certificates typically request: "key encipherment", "digital signature", "server auth".</p>
 <p>Valid values are:
@@ -180,18 +219,26 @@ implementations prior to v1.22)</li>
 "code signing", "email protection", "s/mime",
 "ipsec end system", "ipsec tunnel", "ipsec user",
 "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc"</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>username <span class="type">(string)</span></dt>
-  <dd><p>username contains the name of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</p>
-</dd>
+  <dd>
+    <p>username contains the name of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="certificatesigningrequeststatus">
@@ -205,7 +252,8 @@ implementations prior to v1.22)</li>
   
   
   <dt>certificate <span class="type">(string)</span></dt>
-  <dd><p>certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.</p>
+  <dd>
+    <p>certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.</p>
 <p>If the certificate signing request is denied, a condition of type "Denied" is added and this field remains empty. If the signer cannot issue the certificate, a condition of type "Failed" is added and this field remains empty.</p>
 <p>Validation requirements:</p>
 <ol>
@@ -223,18 +271,106 @@ to allow for explanatory text as described in section 5.2 of RFC7468.</li>
 ...
 -----END CERTIFICATE-----
 )</code></pre>
-</dd>
+
+    
+    
+  </dd>
   
   
   
-  <dt>conditions <span class="type">([]CertificateSigningRequestCondition)</span></dt>
-  <dd><p>conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".</p>
-</dd>
+  <dt>conditions <span class="type">(<a href="#type-certificatesigningrequestcondition" aria-label="[]CertificateSigningRequestCondition type reference">[]CertificateSigningRequestCondition</a>)</span></dt>
+  <dd>
+    <p>conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-certificatesigningrequestcondition">
+  <h3>CertificateSigningRequestCondition</h3>
+  
+  <div class="type-section-desc"><p>CertificateSigningRequestCondition describes a condition of a CertificateSigningRequest object</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">status <span class="type">(string)</span></dt>
+  <dd>
+    <p>status of the condition, one of True, False, Unknown. Approved, Denied, and Failed conditions may not be "False" or "Unknown".</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">type <span class="type">(string)</span></dt>
+  <dd>
+    <p>type of the condition. Known conditions are "Approved", "Denied", and "Failed".</p>
+<p>An "Approved" condition is added via the /approval subresource, indicating the request was approved and should be issued by the signer.</p>
+<p>A "Denied" condition is added via the /approval subresource, indicating the request was denied and should not be issued by the signer.</p>
+<p>A "Failed" condition is added via the /status subresource, indicating the signer failed to issue the certificate.</p>
+<p>Approved and Denied conditions are mutually exclusive. Approved, Denied, and Failed conditions cannot be removed once added.</p>
+<p>Only one condition of a given type is allowed.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastTransitionTime <span class="type">(<a href="/docs/v1.33/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>lastTransitionTime is the time the condition last transitioned from one status to another. If unset, when a new condition type is added or an existing condition's status is changed, the server defaults this to the current time.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastUpdateTime <span class="type">(<a href="/docs/v1.33/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>lastUpdateTime is the time of the last update to this condition</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>message <span class="type">(string)</span></dt>
+  <dd>
+    <p>message contains a human readable message with details about the request state</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>reason <span class="type">(string)</span></dt>
+  <dd>
+    <p>reason indicates a brief reason for the request state</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="list-heading">
@@ -256,18 +392,27 @@ to allow for explanatory text as described in section 5.2 of RFC7468.</li>
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd>No description available.</dd>
+  <dd>
+    No description available.
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/certificates.k8s.io/v1/certificatesigningrequest/" aria-label="[]CertificateSigningRequest type reference">CertificateSigningRequest</a>)</span></dt>
-  <dd><p>items is a collection of CertificateSigningRequest objects</p>
-</dd>
+  <dd>
+    <p>items is a collection of CertificateSigningRequest objects</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

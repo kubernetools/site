@@ -213,11 +213,23 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/podspec/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/podtemplatespec/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.kubernetools.com/docs/latest/common-definitions/quantity/</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://www.kubernetools.com/docs/latest/common-definitions/resourcerequirements/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/time/</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>

@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>ResourcePoolStatusRequest <span class="badge">resource.k8s.io/v1alpha3</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt class="req">metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object metadata</p>
-</dd>
+  <dd>
+    <p>Standard object metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#resourcepoolstatusrequestspec" aria-label="ResourcePoolStatusRequestSpec type reference">ResourcePoolStatusRequestSpec</a>)</span></dt>
-  <dd><p>Spec defines the filters for which pools to include in the status. The spec is immutable once created.</p>
-</dd>
+  <dd>
+    <p>Spec defines the filters for which pools to include in the status. The spec is immutable once created.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#resourcepoolstatusrequeststatus" aria-label="ResourcePoolStatusRequestStatus type reference">ResourcePoolStatusRequestStatus</a>)</span></dt>
-  <dd><p>Status is populated by the controller with the calculated pool status. When status is non-nil, the request is considered complete and the entire object becomes immutable.</p>
-</dd>
+  <dd>
+    <p>Status is populated by the controller with the calculated pool status. When status is non-nil, the request is considered complete and the entire object becomes immutable.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="resourcepoolstatusrequestspec">
     <h2 id="resourcepoolstatusrequestspec">ResourcePoolStatusRequestSpec</h2>
@@ -99,26 +113,39 @@
   
   
   <dt class="req">driver <span class="type">(string)</span></dt>
-  <dd><p>Driver specifies the DRA driver name to filter pools. Only pools from ResourceSlices with this driver will be included. Must be a DNS subdomain (e.g., "gpu.example.com").</p>
-</dd>
+  <dd>
+    <p>Driver specifies the DRA driver name to filter pools. Only pools from ResourceSlices with this driver will be included. Must be a DNS subdomain (e.g., "gpu.example.com").</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>limit <span class="type">(integer)</span></dt>
-  <dd><p>Limit optionally specifies the maximum number of pools to return in the status. If more pools match the filter criteria, the response will be truncated (i.e., len(status.pools) &lt; status.poolCount).</p>
+  <dd>
+    <p>Limit optionally specifies the maximum number of pools to return in the status. If more pools match the filter criteria, the response will be truncated (i.e., len(status.pools) &lt; status.poolCount).</p>
 <p>Default: 100 Minimum: 1 Maximum: 1000</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>poolName <span class="type">(string)</span></dt>
-  <dd><p>PoolName optionally filters to a specific pool name. If not specified, all pools from the specified driver are included. When specified, must be a non-empty valid resource pool name (DNS subdomains separated by "/").</p>
-</dd>
+  <dd>
+    <p>PoolName optionally filters to a specific pool name. If not specified, all pools from the specified driver are included. When specified, must be a non-empty valid resource pool name (DNS subdomains separated by "/").</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="resourcepoolstatusrequeststatus">
@@ -132,26 +159,86 @@
   
   
   <dt class="req">poolCount <span class="type">(integer)</span></dt>
-  <dd><p>PoolCount is the total number of pools that matched the filter criteria, regardless of truncation. This helps users understand how many pools exist even when the response is truncated. A value of 0 means no pools matched the filter criteria.</p>
-</dd>
+  <dd>
+    <p>PoolCount is the total number of pools that matched the filter criteria, regardless of truncation. This helps users understand how many pools exist even when the response is truncated. A value of 0 means no pools matched the filter criteria.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>conditions <span class="type">([]<a href="/docs/latest/common-definitions/condition/" aria-label="[]Condition type reference">Condition</a>)</span></dt>
-  <dd><p>Conditions provide information about the state of the request. A condition with type=Complete or type=Failed will always be set when the status is populated.</p>
+  <dd>
+    <p>Conditions provide information about the state of the request. A condition with type=Complete or type=Failed will always be set when the status is populated.</p>
 <p>Known condition types: - "Complete": True when the request has been processed successfully - "Failed": True when the request could not be processed</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>pools <span class="type">([]PoolStatus)</span></dt>
-  <dd><p>Pools contains the first <code>spec.limit</code> matching pools, sorted by driver then pool name. If <code>len(pools) &lt; poolCount</code>, the list was truncated. When omitted, no pools matched the request filters.</p>
+  <dd>
+    <p>Pools contains the first <code>spec.limit</code> matching pools, sorted by driver then pool name. If <code>len(pools) &lt; poolCount</code>, the list was truncated. When omitted, no pools matched the request filters.</p>
+
+    
+    <p class="type-desc"><em><p>PoolStatus contains status information for a single resource pool.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">pools.driver <span class="type">(string)</span></dt>
+      <dd><p>Driver is the DRA driver name for this pool. Must be a DNS subdomain (e.g., "gpu.example.com").</p>
 </dd>
+      
+      <dt class="req">pools.generation <span class="type">(integer)</span></dt>
+      <dd><p>Generation is the pool generation observed across all ResourceSlices in this pool. Only the latest generation is reported. During a generation rollout, if not all slices at the latest generation have been published, the pool is included with a validationError and device counts unset.</p>
+</dd>
+      
+      <dt class="req">pools.poolName <span class="type">(string)</span></dt>
+      <dd><p>PoolName is the name of the pool. Must be a valid resource pool name (DNS subdomains separated by "/").</p>
+</dd>
+      
+      <dt>pools.allocatedDevices <span class="type">(integer)</span></dt>
+      <dd><p>AllocatedDevices is the number of devices currently allocated to claims. A value of 0 means no devices are allocated. May be unset when validationError is set.</p>
+</dd>
+      
+      <dt>pools.availableDevices <span class="type">(integer)</span></dt>
+      <dd><p>AvailableDevices is the number of devices available for allocation. This equals TotalDevices - AllocatedDevices - UnavailableDevices. A value of 0 means no devices are currently available. May be unset when validationError is set.</p>
+</dd>
+      
+      <dt>pools.nodeName <span class="type">(string)</span></dt>
+      <dd><p>NodeName is the node this pool is associated with. When omitted, the pool is not associated with a specific node. Must be a valid DNS subdomain name (RFC1123).</p>
+</dd>
+      
+      <dt>pools.resourceSliceCount <span class="type">(integer)</span></dt>
+      <dd><p>ResourceSliceCount is the number of ResourceSlices that make up this pool. May be unset when validationError is set.</p>
+</dd>
+      
+      <dt>pools.totalDevices <span class="type">(integer)</span></dt>
+      <dd><p>TotalDevices is the total number of devices in the pool across all slices. A value of 0 means the pool has no devices. May be unset when validationError is set.</p>
+</dd>
+      
+      <dt>pools.unavailableDevices <span class="type">(integer)</span></dt>
+      <dd><p>UnavailableDevices is the number of devices that are not available due to taints or other conditions, but are not allocated. A value of 0 means all unallocated devices are available. May be unset when validationError is set.</p>
+</dd>
+      
+      <dt>pools.validationError <span class="type">(string)</span></dt>
+      <dd><p>ValidationError is set when the pool's data could not be fully validated (e.g., incomplete slice publication). When set, device count fields and ResourceSliceCount may be unset.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="list-heading">
@@ -173,19 +260,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata</p>
-</dd>
+  <dd>
+    <p>Standard list metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/latest/resource.k8s.io/v1alpha3/resourcepoolstatusrequest/" aria-label="[]ResourcePoolStatusRequest type reference">ResourcePoolStatusRequest</a>)</span></dt>
-  <dd><p>Items is the list of ResourcePoolStatusRequests.</p>
-</dd>
+  <dd>
+    <p>Items is the list of ResourcePoolStatusRequests.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

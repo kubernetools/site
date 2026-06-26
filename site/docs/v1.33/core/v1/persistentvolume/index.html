@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>PersistentVolume <span class="badge">core/v1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#persistentvolumespec" aria-label="PersistentVolumeSpec type reference">PersistentVolumeSpec</a>)</span></dt>
-  <dd><p>spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes</a></p>
-</dd>
+  <dd>
+    <p>spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#persistentvolumestatus" aria-label="PersistentVolumeStatus type reference">PersistentVolumeStatus</a>)</span></dt>
-  <dd><p>status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes</a></p>
-</dd>
+  <dd>
+    <p>status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="persistentvolumespec">
     <h2 id="persistentvolumespec">PersistentVolumeSpec</h2>
@@ -99,193 +113,1522 @@
   
   
   <dt>accessModes <span class="type">([]string)</span></dt>
-  <dd><p>accessModes contains all ways the volume can be mounted. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes</a></p>
-</dd>
+  <dd>
+    <p>accessModes contains all ways the volume can be mounted. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>awsElasticBlockStore <span class="type">(AWSElasticBlockStoreVolumeSource)</span></dt>
-  <dd><p>awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</a></p>
+  <dd>
+    <p>awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</a></p>
+
+    
+    <p class="type-desc"><em><p>Represents a Persistent Disk resource in AWS.</p>
+<p>An AWS EBS disk must exist before mounting to a container. The disk must also be in the same AWS zone as the kubelet. An AWS EBS disk can only be mounted as read/write once. AWS EBS volumes support ownership management and SELinux relabeling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">awsElasticBlockStore.volumeID <span class="type">(string)</span></dt>
+      <dd><p>volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</a></p>
 </dd>
+      
+      <dt>awsElasticBlockStore.fsType <span class="type">(string)</span></dt>
+      <dd><p>fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</a></p>
+</dd>
+      
+      <dt>awsElasticBlockStore.partition <span class="type">(integer)</span></dt>
+      <dd><p>partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty).</p>
+</dd>
+      
+      <dt>awsElasticBlockStore.readOnly <span class="type">(boolean)</span></dt>
+      <dd><p>readOnly value true will force the readOnly setting in VolumeMounts. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</a></p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>azureDisk <span class="type">(AzureDiskVolumeSource)</span></dt>
-  <dd><p>azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod. Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type are redirected to the disk.csi.azure.com CSI driver.</p>
+  <dd>
+    <p>azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod. Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type are redirected to the disk.csi.azure.com CSI driver.</p>
+
+    
+    <p class="type-desc"><em><p>AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">azureDisk.diskName <span class="type">(string)</span></dt>
+      <dd><p>diskName is the Name of the data disk in the blob storage</p>
 </dd>
+      
+      <dt class="req">azureDisk.diskURI <span class="type">(string)</span></dt>
+      <dd><p>diskURI is the URI of data disk in the blob storage</p>
+</dd>
+      
+      <dt>azureDisk.cachingMode <span class="type">(string)</span></dt>
+      <dd><p>cachingMode is the Host Caching mode: None, Read Only, Read Write.</p>
+</dd>
+      
+      <dt>azureDisk.fsType <span class="type">(string)</span></dt>
+      <dd><p>fsType is Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.</p>
+</dd>
+      
+      <dt>azureDisk.kind <span class="type">(string)</span></dt>
+      <dd><p>kind expected values are Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared</p>
+</dd>
+      
+      <dt>azureDisk.readOnly <span class="type">(boolean)</span></dt>
+      <dd><p>readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>azureFile <span class="type">(AzureFilePersistentVolumeSource)</span></dt>
-  <dd><p>azureFile represents an Azure File Service mount on the host and bind mount to the pod. Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type are redirected to the file.csi.azure.com CSI driver.</p>
+  <dd>
+    <p>azureFile represents an Azure File Service mount on the host and bind mount to the pod. Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type are redirected to the file.csi.azure.com CSI driver.</p>
+
+    
+    <p class="type-desc"><em><p>AzureFile represents an Azure File Service mount on the host and bind mount to the pod.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">azureFile.secretName <span class="type">(string)</span></dt>
+      <dd><p>secretName is the name of secret that contains Azure Storage Account Name and Key</p>
 </dd>
+      
+      <dt class="req">azureFile.shareName <span class="type">(string)</span></dt>
+      <dd><p>shareName is the azure Share Name</p>
+</dd>
+      
+      <dt>azureFile.readOnly <span class="type">(boolean)</span></dt>
+      <dd><p>readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+</dd>
+      
+      <dt>azureFile.secretNamespace <span class="type">(string)</span></dt>
+      <dd><p>secretNamespace is the namespace of the secret that contains Azure Storage Account Name and Key default is the same as the Pod</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>capacity <span class="type">(map[string]<a href="/docs/v1.33/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
-  <dd><p>capacity is the description of the persistent volume's resources and capacity. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity</a></p>
-</dd>
+  <dd>
+    <p>capacity is the description of the persistent volume's resources and capacity. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity</a></p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>cephfs <span class="type">(CephFSPersistentVolumeSource)</span></dt>
-  <dd><p>cephFS represents a Ceph FS mount on the host that shares a pod's lifetime. Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.</p>
-</dd>
+  <dt>cephfs <span class="type">(<a href="#type-cephfspersistentvolumesource" aria-label="CephFSPersistentVolumeSource type reference">CephFSPersistentVolumeSource</a>)</span></dt>
+  <dd>
+    <p>cephFS represents a Ceph FS mount on the host that shares a pod's lifetime. Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>cinder <span class="type">(CinderPersistentVolumeSource)</span></dt>
-  <dd><p>cinder represents a cinder volume attached and mounted on kubelets host machine. Deprecated: Cinder is deprecated. All operations for the in-tree cinder type are redirected to the cinder.csi.openstack.org CSI driver. More info: <a href="https://examples.k8s.io/mysql-cinder-pd/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/mysql-cinder-pd/README.md</a></p>
-</dd>
+  <dt>cinder <span class="type">(<a href="#type-cinderpersistentvolumesource" aria-label="CinderPersistentVolumeSource type reference">CinderPersistentVolumeSource</a>)</span></dt>
+  <dd>
+    <p>cinder represents a cinder volume attached and mounted on kubelets host machine. Deprecated: Cinder is deprecated. All operations for the in-tree cinder type are redirected to the cinder.csi.openstack.org CSI driver. More info: <a href="https://examples.k8s.io/mysql-cinder-pd/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/mysql-cinder-pd/README.md</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>claimRef <span class="type">(<a href="/docs/v1.33/common-definitions/objectreference/" aria-label="ObjectReference type reference">ObjectReference</a>)</span></dt>
-  <dd><p>claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding</a></p>
-</dd>
+  <dd>
+    <p>claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding</a></p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>csi <span class="type">(CSIPersistentVolumeSource)</span></dt>
-  <dd><p>csi represents storage that is handled by an external CSI driver.</p>
-</dd>
+  <dt>csi <span class="type">(<a href="#type-csipersistentvolumesource" aria-label="CSIPersistentVolumeSource type reference">CSIPersistentVolumeSource</a>)</span></dt>
+  <dd>
+    <p>csi represents storage that is handled by an external CSI driver.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>fc <span class="type">(FCVolumeSource)</span></dt>
-  <dd><p>fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.</p>
+  <dd>
+    <p>fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.</p>
+
+    
+    <p class="type-desc"><em><p>Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>fc.fsType <span class="type">(string)</span></dt>
+      <dd><p>fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.</p>
 </dd>
-  
-  
-  
-  <dt>flexVolume <span class="type">(FlexPersistentVolumeSource)</span></dt>
-  <dd><p>flexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.</p>
+      
+      <dt>fc.lun <span class="type">(integer)</span></dt>
+      <dd><p>lun is Optional: FC target lun number</p>
 </dd>
+      
+      <dt>fc.readOnly <span class="type">(boolean)</span></dt>
+      <dd><p>readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+</dd>
+      
+      <dt>fc.targetWWNs <span class="type">([]string)</span></dt>
+      <dd><p>targetWWNs is Optional: FC target worldwide names (WWNs)</p>
+</dd>
+      
+      <dt>fc.wwids <span class="type">([]string)</span></dt>
+      <dd><p>wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>flexVolume <span class="type">(<a href="#type-flexpersistentvolumesource" aria-label="FlexPersistentVolumeSource type reference">FlexPersistentVolumeSource</a>)</span></dt>
+  <dd>
+    <p>flexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>flocker <span class="type">(FlockerVolumeSource)</span></dt>
-  <dd><p>flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running. Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.</p>
+  <dd>
+    <p>flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running. Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.</p>
+
+    
+    <p class="type-desc"><em><p>Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>flocker.datasetName <span class="type">(string)</span></dt>
+      <dd><p>datasetName is Name of the dataset stored as metadata -&gt; name on the dataset for Flocker should be considered as deprecated</p>
 </dd>
+      
+      <dt>flocker.datasetUUID <span class="type">(string)</span></dt>
+      <dd><p>datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>gcePersistentDisk <span class="type">(GCEPersistentDiskVolumeSource)</span></dt>
-  <dd><p>gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</a></p>
+  <dd>
+    <p>gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</a></p>
+
+    
+    <p class="type-desc"><em><p>Represents a Persistent Disk resource in Google Compute Engine.</p>
+<p>A GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">gcePersistentDisk.pdName <span class="type">(string)</span></dt>
+      <dd><p>pdName is unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</a></p>
 </dd>
+      
+      <dt>gcePersistentDisk.fsType <span class="type">(string)</span></dt>
+      <dd><p>fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</a></p>
+</dd>
+      
+      <dt>gcePersistentDisk.partition <span class="type">(integer)</span></dt>
+      <dd><p>partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1". Similarly, the volume partition for /dev/sda is "0" (or you can leave the property empty). More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</a></p>
+</dd>
+      
+      <dt>gcePersistentDisk.readOnly <span class="type">(boolean)</span></dt>
+      <dd><p>readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</a></p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>glusterfs <span class="type">(GlusterfsPersistentVolumeSource)</span></dt>
-  <dd><p>glusterfs represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported. More info: <a href="https://examples.k8s.io/volumes/glusterfs/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/glusterfs/README.md</a></p>
+  <dd>
+    <p>glusterfs represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported. More info: <a href="https://examples.k8s.io/volumes/glusterfs/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/glusterfs/README.md</a></p>
+
+    
+    <p class="type-desc"><em><p>Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">glusterfs.endpoints <span class="type">(string)</span></dt>
+      <dd><p>endpoints is the endpoint name that details Glusterfs topology. More info: <a href="https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</a></p>
 </dd>
+      
+      <dt class="req">glusterfs.path <span class="type">(string)</span></dt>
+      <dd><p>path is the Glusterfs volume path. More info: <a href="https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</a></p>
+</dd>
+      
+      <dt>glusterfs.endpointsNamespace <span class="type">(string)</span></dt>
+      <dd><p>endpointsNamespace is the namespace that contains Glusterfs endpoint. If this field is empty, the EndpointNamespace defaults to the same namespace as the bound PVC. More info: <a href="https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</a></p>
+</dd>
+      
+      <dt>glusterfs.readOnly <span class="type">(boolean)</span></dt>
+      <dd><p>readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: <a href="https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</a></p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>hostPath <span class="type">(HostPathVolumeSource)</span></dt>
-  <dd><p>hostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#hostpath" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#hostpath</a></p>
+  <dd>
+    <p>hostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#hostpath" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#hostpath</a></p>
+
+    
+    <p class="type-desc"><em><p>Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">hostPath.path <span class="type">(string)</span></dt>
+      <dd><p>path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#hostpath" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#hostpath</a></p>
 </dd>
-  
-  
-  
-  <dt>iscsi <span class="type">(ISCSIPersistentVolumeSource)</span></dt>
-  <dd><p>iscsi represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.</p>
+      
+      <dt>hostPath.type <span class="type">(string)</span></dt>
+      <dd><p>type for HostPath Volume Defaults to "" More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#hostpath" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#hostpath</a></p>
 </dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>iscsi <span class="type">(<a href="#type-iscsipersistentvolumesource" aria-label="ISCSIPersistentVolumeSource type reference">ISCSIPersistentVolumeSource</a>)</span></dt>
+  <dd>
+    <p>iscsi represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>local <span class="type">(LocalVolumeSource)</span></dt>
-  <dd><p>local represents directly-attached storage with node affinity</p>
+  <dd>
+    <p>local represents directly-attached storage with node affinity</p>
+
+    
+    <p class="type-desc"><em><p>Local represents directly-attached storage with node affinity</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">local.path <span class="type">(string)</span></dt>
+      <dd><p>path of the full path to the volume on the node. It can be either a directory or block device (disk, partition, ...).</p>
 </dd>
+      
+      <dt>local.fsType <span class="type">(string)</span></dt>
+      <dd><p>fsType is the filesystem type to mount. It applies only when the Path is a block device. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default value is to auto-select a filesystem if unspecified.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>mountOptions <span class="type">([]string)</span></dt>
-  <dd><p>mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options</a></p>
-</dd>
+  <dd>
+    <p>mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>nfs <span class="type">(NFSVolumeSource)</span></dt>
-  <dd><p>nfs represents an NFS mount on the host. Provisioned by an admin. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#nfs" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#nfs</a></p>
+  <dd>
+    <p>nfs represents an NFS mount on the host. Provisioned by an admin. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#nfs" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#nfs</a></p>
+
+    
+    <p class="type-desc"><em><p>Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">nfs.path <span class="type">(string)</span></dt>
+      <dd><p>path that is exported by the NFS server. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#nfs" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#nfs</a></p>
 </dd>
-  
-  
-  
-  <dt>nodeAffinity <span class="type">(VolumeNodeAffinity)</span></dt>
-  <dd><p>nodeAffinity defines constraints that limit what nodes this volume can be accessed from. This field influences the scheduling of pods that use this volume.</p>
+      
+      <dt class="req">nfs.server <span class="type">(string)</span></dt>
+      <dd><p>server is the hostname or IP address of the NFS server. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#nfs" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#nfs</a></p>
 </dd>
+      
+      <dt>nfs.readOnly <span class="type">(boolean)</span></dt>
+      <dd><p>readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#nfs" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#nfs</a></p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>nodeAffinity <span class="type">(<a href="#type-volumenodeaffinity" aria-label="VolumeNodeAffinity type reference">VolumeNodeAffinity</a>)</span></dt>
+  <dd>
+    <p>nodeAffinity defines constraints that limit what nodes this volume can be accessed from. This field influences the scheduling of pods that use this volume.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>persistentVolumeReclaimPolicy <span class="type">(string)</span></dt>
-  <dd><p>persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming</a></p>
-</dd>
+  <dd>
+    <p>persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>photonPersistentDisk <span class="type">(PhotonPersistentDiskVolumeSource)</span></dt>
-  <dd><p>photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine. Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.</p>
+  <dd>
+    <p>photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine. Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.</p>
+
+    
+    <p class="type-desc"><em><p>Represents a Photon Controller persistent disk resource.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">photonPersistentDisk.pdID <span class="type">(string)</span></dt>
+      <dd><p>pdID is the ID that identifies Photon Controller persistent disk</p>
 </dd>
+      
+      <dt>photonPersistentDisk.fsType <span class="type">(string)</span></dt>
+      <dd><p>fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>portworxVolume <span class="type">(PortworxVolumeSource)</span></dt>
-  <dd><p>portworxVolume represents a portworx volume attached and mounted on kubelets host machine. Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate is on.</p>
+  <dd>
+    <p>portworxVolume represents a portworx volume attached and mounted on kubelets host machine. Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate is on.</p>
+
+    
+    <p class="type-desc"><em><p>PortworxVolumeSource represents a Portworx volume resource.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">portworxVolume.volumeID <span class="type">(string)</span></dt>
+      <dd><p>volumeID uniquely identifies a Portworx volume</p>
 </dd>
+      
+      <dt>portworxVolume.fsType <span class="type">(string)</span></dt>
+      <dd><p>fSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs". Implicitly inferred to be "ext4" if unspecified.</p>
+</dd>
+      
+      <dt>portworxVolume.readOnly <span class="type">(boolean)</span></dt>
+      <dd><p>readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>quobyte <span class="type">(QuobyteVolumeSource)</span></dt>
-  <dd><p>quobyte represents a Quobyte mount on the host that shares a pod's lifetime. Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.</p>
+  <dd>
+    <p>quobyte represents a Quobyte mount on the host that shares a pod's lifetime. Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.</p>
+
+    
+    <p class="type-desc"><em><p>Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">quobyte.registry <span class="type">(string)</span></dt>
+      <dd><p>registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes</p>
 </dd>
-  
-  
-  
-  <dt>rbd <span class="type">(RBDPersistentVolumeSource)</span></dt>
-  <dd><p>rbd represents a Rados Block Device mount on the host that shares a pod's lifetime. Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md</a></p>
+      
+      <dt class="req">quobyte.volume <span class="type">(string)</span></dt>
+      <dd><p>volume is a string that references an already created Quobyte volume by name.</p>
 </dd>
-  
-  
-  
-  <dt>scaleIO <span class="type">(ScaleIOPersistentVolumeSource)</span></dt>
-  <dd><p>scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes. Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.</p>
+      
+      <dt>quobyte.group <span class="type">(string)</span></dt>
+      <dd><p>group to map volume access to Default is no group</p>
 </dd>
+      
+      <dt>quobyte.readOnly <span class="type">(boolean)</span></dt>
+      <dd><p>readOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.</p>
+</dd>
+      
+      <dt>quobyte.tenant <span class="type">(string)</span></dt>
+      <dd><p>tenant owning the given Quobyte volume in the Backend Used with dynamically provisioned Quobyte volumes, value is set by the plugin</p>
+</dd>
+      
+      <dt>quobyte.user <span class="type">(string)</span></dt>
+      <dd><p>user to map volume access to Defaults to serivceaccount user</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>rbd <span class="type">(<a href="#type-rbdpersistentvolumesource" aria-label="RBDPersistentVolumeSource type reference">RBDPersistentVolumeSource</a>)</span></dt>
+  <dd>
+    <p>rbd represents a Rados Block Device mount on the host that shares a pod's lifetime. Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>scaleIO <span class="type">(<a href="#type-scaleiopersistentvolumesource" aria-label="ScaleIOPersistentVolumeSource type reference">ScaleIOPersistentVolumeSource</a>)</span></dt>
+  <dd>
+    <p>scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes. Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>storageClassName <span class="type">(string)</span></dt>
-  <dd><p>storageClassName is the name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.</p>
-</dd>
+  <dd>
+    <p>storageClassName is the name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>storageos <span class="type">(StorageOSPersistentVolumeSource)</span></dt>
-  <dd><p>storageOS represents a StorageOS volume that is attached to the kubelet's host machine and mounted into the pod. Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported. More info: <a href="https://examples.k8s.io/volumes/storageos/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/storageos/README.md</a></p>
-</dd>
+  <dt>storageos <span class="type">(<a href="#type-storageospersistentvolumesource" aria-label="StorageOSPersistentVolumeSource type reference">StorageOSPersistentVolumeSource</a>)</span></dt>
+  <dd>
+    <p>storageOS represents a StorageOS volume that is attached to the kubelet's host machine and mounted into the pod. Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported. More info: <a href="https://examples.k8s.io/volumes/storageos/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/storageos/README.md</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>volumeAttributesClassName <span class="type">(string)</span></dt>
-  <dd><p>Name of VolumeAttributesClass to which this persistent volume belongs. Empty value is not allowed. When this field is not set, it indicates that this volume does not belong to any VolumeAttributesClass. This field is mutable and can be changed by the CSI driver after a volume has been updated successfully to a new class. For an unbound PersistentVolume, the volumeAttributesClassName will be matched with unbound PersistentVolumeClaims during the binding process. This is a beta field and requires enabling VolumeAttributesClass feature (off by default).</p>
-</dd>
+  <dd>
+    <p>Name of VolumeAttributesClass to which this persistent volume belongs. Empty value is not allowed. When this field is not set, it indicates that this volume does not belong to any VolumeAttributesClass. This field is mutable and can be changed by the CSI driver after a volume has been updated successfully to a new class. For an unbound PersistentVolume, the volumeAttributesClassName will be matched with unbound PersistentVolumeClaims during the binding process. This is a beta field and requires enabling VolumeAttributesClass feature (off by default).</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>volumeMode <span class="type">(string)</span></dt>
-  <dd><p>volumeMode defines if a volume is intended to be used with a formatted filesystem or to remain in raw block state. Value of Filesystem is implied when not included in spec.</p>
-</dd>
+  <dd>
+    <p>volumeMode defines if a volume is intended to be used with a formatted filesystem or to remain in raw block state. Value of Filesystem is implied when not included in spec.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>vsphereVolume <span class="type">(VsphereVirtualDiskVolumeSource)</span></dt>
-  <dd><p>vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine. Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type are redirected to the csi.vsphere.vmware.com CSI driver.</p>
+  <dd>
+    <p>vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine. Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type are redirected to the csi.vsphere.vmware.com CSI driver.</p>
+
+    
+    <p class="type-desc"><em><p>Represents a vSphere volume resource.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">vsphereVolume.volumePath <span class="type">(string)</span></dt>
+      <dd><p>volumePath is the path that identifies vSphere volume vmdk</p>
 </dd>
+      
+      <dt>vsphereVolume.fsType <span class="type">(string)</span></dt>
+      <dd><p>fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.</p>
+</dd>
+      
+      <dt>vsphereVolume.storagePolicyID <span class="type">(string)</span></dt>
+      <dd><p>storagePolicyID is the storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName.</p>
+</dd>
+      
+      <dt>vsphereVolume.storagePolicyName <span class="type">(string)</span></dt>
+      <dd><p>storagePolicyName is the storage Policy Based Management (SPBM) profile name.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-cephfspersistentvolumesource">
+  <h3>CephFSPersistentVolumeSource</h3>
+  
+  <div class="type-section-desc"><p>Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">monitors <span class="type">([]string)</span></dt>
+  <dd>
+    <p>monitors is Required: Monitors is a collection of Ceph monitors More info: <a href="https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>path <span class="type">(string)</span></dt>
+  <dd>
+    <p>path is Optional: Used as the mounted root, rather than the full Ceph tree, default is /</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>readOnly <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: <a href="https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>secretFile <span class="type">(string)</span></dt>
+  <dd>
+    <p>secretFile is Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: <a href="https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>secretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>secretRef is Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: <a href="https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</a></p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>secretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>secretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>user <span class="type">(string)</span></dt>
+  <dd>
+    <p>user is Optional: User is the rados user name, default is admin More info: <a href="https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-cinderpersistentvolumesource">
+  <h3>CinderPersistentVolumeSource</h3>
+  
+  <div class="type-section-desc"><p>Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a container. The volume must also be in the same region as the kubelet. Cinder volumes support ownership management and SELinux relabeling.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">volumeID <span class="type">(string)</span></dt>
+  <dd>
+    <p>volumeID used to identify the volume in cinder. More info: <a href="https://examples.k8s.io/mysql-cinder-pd/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/mysql-cinder-pd/README.md</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>fsType <span class="type">(string)</span></dt>
+  <dd>
+    <p>fsType Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: <a href="https://examples.k8s.io/mysql-cinder-pd/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/mysql-cinder-pd/README.md</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>readOnly <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: <a href="https://examples.k8s.io/mysql-cinder-pd/README.md" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/mysql-cinder-pd/README.md</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>secretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>secretRef is Optional: points to a secret object containing parameters used to connect to OpenStack.</p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>secretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>secretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-csipersistentvolumesource">
+  <h3>CSIPersistentVolumeSource</h3>
+  
+  <div class="type-section-desc"><p>Represents storage that is managed by an external CSI volume driver</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">driver <span class="type">(string)</span></dt>
+  <dd>
+    <p>driver is the name of the driver to use for this volume. Required.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">volumeHandle <span class="type">(string)</span></dt>
+  <dd>
+    <p>volumeHandle is the unique volume name returned by the CSI volume plugin’s CreateVolume to refer to the volume on all subsequent calls. Required.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>controllerExpandSecretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>controllerExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerExpandVolume call. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>controllerExpandSecretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>controllerExpandSecretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>controllerPublishSecretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>controllerPublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerPublishVolume and ControllerUnpublishVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>controllerPublishSecretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>controllerPublishSecretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>fsType <span class="type">(string)</span></dt>
+  <dd>
+    <p>fsType to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs".</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>nodeExpandSecretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>nodeExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodeExpandVolume call. This field is optional, may be omitted if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>nodeExpandSecretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>nodeExpandSecretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>nodePublishSecretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>nodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>nodePublishSecretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>nodePublishSecretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>nodeStageSecretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>nodeStageSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodeStageVolume and NodeStageVolume and NodeUnstageVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>nodeStageSecretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>nodeStageSecretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>readOnly <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>readOnly value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>volumeAttributes <span class="type">(map[string]string)</span></dt>
+  <dd>
+    <p>volumeAttributes of the volume to publish.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-flexpersistentvolumesource">
+  <h3>FlexPersistentVolumeSource</h3>
+  
+  <div class="type-section-desc"><p>FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">driver <span class="type">(string)</span></dt>
+  <dd>
+    <p>driver is the name of the driver to use for this volume.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>fsType <span class="type">(string)</span></dt>
+  <dd>
+    <p>fsType is the Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>options <span class="type">(map[string]string)</span></dt>
+  <dd>
+    <p>options is Optional: this field holds extra command options if any.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>readOnly <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>readOnly is Optional: defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>secretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>secretRef is Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.</p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>secretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>secretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-iscsipersistentvolumesource">
+  <h3>ISCSIPersistentVolumeSource</h3>
+  
+  <div class="type-section-desc"><p>ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">iqn <span class="type">(string)</span></dt>
+  <dd>
+    <p>iqn is Target iSCSI Qualified Name.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">lun <span class="type">(integer)</span></dt>
+  <dd>
+    <p>lun is iSCSI Target Lun number.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">targetPortal <span class="type">(string)</span></dt>
+  <dd>
+    <p>targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>chapAuthDiscovery <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>chapAuthSession <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>chapAuthSession defines whether support iSCSI Session CHAP authentication</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>fsType <span class="type">(string)</span></dt>
+  <dd>
+    <p>fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#iscsi" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#iscsi</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>initiatorName <span class="type">(string)</span></dt>
+  <dd>
+    <p>initiatorName is the custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>iscsiInterface <span class="type">(string)</span></dt>
+  <dd>
+    <p>iscsiInterface is the interface Name that uses an iSCSI transport. Defaults to 'default' (tcp).</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>portals <span class="type">([]string)</span></dt>
+  <dd>
+    <p>portals is the iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>readOnly <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>secretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>secretRef is the CHAP Secret for iSCSI target and initiator authentication</p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>secretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>secretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-volumenodeaffinity">
+  <h3>VolumeNodeAffinity</h3>
+  
+  <div class="type-section-desc"><p>VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>required <span class="type">(<a href="/docs/v1.33/common-definitions/nodeselector/" aria-label="NodeSelector type reference">NodeSelector</a>)</span></dt>
+  <dd>
+    <p>required specifies hard node constraints that must be met.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-rbdpersistentvolumesource">
+  <h3>RBDPersistentVolumeSource</h3>
+  
+  <div class="type-section-desc"><p>Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">image <span class="type">(string)</span></dt>
+  <dd>
+    <p>image is the rados image name. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">monitors <span class="type">([]string)</span></dt>
+  <dd>
+    <p>monitors is a collection of Ceph monitors. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>fsType <span class="type">(string)</span></dt>
+  <dd>
+    <p>fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: <a href="https://kubernetes.io/docs/concepts/storage/volumes#rbd" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/volumes#rbd</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>keyring <span class="type">(string)</span></dt>
+  <dd>
+    <p>keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>pool <span class="type">(string)</span></dt>
+  <dd>
+    <p>pool is the rados pool name. Default is rbd. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>readOnly <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>secretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>secretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</a></p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>secretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>secretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>user <span class="type">(string)</span></dt>
+  <dd>
+    <p>user is the rados user name. Default is admin. More info: <a href="https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it" target="_blank" rel="noopener noreferrer">https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</a></p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-scaleiopersistentvolumesource">
+  <h3>ScaleIOPersistentVolumeSource</h3>
+  
+  <div class="type-section-desc"><p>ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">gateway <span class="type">(string)</span></dt>
+  <dd>
+    <p>gateway is the host address of the ScaleIO API Gateway.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">secretRef <span class="type">(SecretReference)</span></dt>
+  <dd>
+    <p>secretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.</p>
+
+    
+    <p class="type-desc"><em><p>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>secretRef.name <span class="type">(string)</span></dt>
+      <dd><p>name is unique within a namespace to reference a secret resource.</p>
+</dd>
+      
+      <dt>secretRef.namespace <span class="type">(string)</span></dt>
+      <dd><p>namespace defines the space within which the secret name must be unique.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt class="req">system <span class="type">(string)</span></dt>
+  <dd>
+    <p>system is the name of the storage system as configured in ScaleIO.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>fsType <span class="type">(string)</span></dt>
+  <dd>
+    <p>fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Default is "xfs"</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>protectionDomain <span class="type">(string)</span></dt>
+  <dd>
+    <p>protectionDomain is the name of the ScaleIO Protection Domain for the configured storage.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>readOnly <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>sslEnabled <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>sslEnabled is the flag to enable/disable SSL communication with Gateway, default false</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>storageMode <span class="type">(string)</span></dt>
+  <dd>
+    <p>storageMode indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>storagePool <span class="type">(string)</span></dt>
+  <dd>
+    <p>storagePool is the ScaleIO Storage Pool associated with the protection domain.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>volumeName <span class="type">(string)</span></dt>
+  <dd>
+    <p>volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-storageospersistentvolumesource">
+  <h3>StorageOSPersistentVolumeSource</h3>
+  
+  <div class="type-section-desc"><p>Represents a StorageOS persistent volume resource.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>fsType <span class="type">(string)</span></dt>
+  <dd>
+    <p>fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>readOnly <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>secretRef <span class="type">(<a href="/docs/v1.33/common-definitions/objectreference/" aria-label="ObjectReference type reference">ObjectReference</a>)</span></dt>
+  <dd>
+    <p>secretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>volumeName <span class="type">(string)</span></dt>
+  <dd>
+    <p>volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>volumeNamespace <span class="type">(string)</span></dt>
+  <dd>
+    <p>volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="persistentvolumestatus">
@@ -298,32 +1641,49 @@
 <dl>
   
   
-  <dt>lastPhaseTransitionTime <span class="type">(Time)</span></dt>
-  <dd><p>lastPhaseTransitionTime is the time the phase transitioned from one to another and automatically resets to current time everytime a volume phase transitions.</p>
-</dd>
+  <dt>lastPhaseTransitionTime <span class="type">(<a href="/docs/v1.33/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>lastPhaseTransitionTime is the time the phase transitioned from one to another and automatically resets to current time everytime a volume phase transitions.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>message <span class="type">(string)</span></dt>
-  <dd><p>message is a human-readable message indicating details about why the volume is in this state.</p>
-</dd>
+  <dd>
+    <p>message is a human-readable message indicating details about why the volume is in this state.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>phase <span class="type">(string)</span></dt>
-  <dd><p>phase indicates if a volume is available, bound to a claim, or released by a claim. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase</a></p>
-</dd>
+  <dd>
+    <p>phase indicates if a volume is available, bound to a claim, or released by a claim. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>reason <span class="type">(string)</span></dt>
-  <dd><p>reason is a brief CamelCase string that describes any failure and is meant for machine parsing and tidy display in the CLI.</p>
-</dd>
+  <dd>
+    <p>reason is a brief CamelCase string that describes any failure and is meant for machine parsing and tidy display in the CLI.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="list-heading">
@@ -345,19 +1705,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/core/v1/persistentvolume/" aria-label="[]PersistentVolume type reference">PersistentVolume</a>)</span></dt>
-  <dd><p>items is a list of persistent volumes. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes</a></p>
-</dd>
+  <dd>
+    <p>items is a list of persistent volumes. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

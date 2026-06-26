@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>DeviceClass <span class="badge">resource.k8s.io/v1beta2</span></h1>
   
@@ -76,22 +77,31 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object metadata</p>
-</dd>
+  <dd>
+    <p>Standard object metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#deviceclassspec" aria-label="DeviceClassSpec type reference">DeviceClassSpec</a>)</span></dt>
-  <dd><p>Spec defines what can be allocated and how to configure it.</p>
+  <dd>
+    <p>Spec defines what can be allocated and how to configure it.</p>
 <p>This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation.</p>
 <p>Changing the spec automatically increments the metadata.generation number.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="deviceclassspec">
     <h2 id="deviceclassspec">DeviceClassSpec</h2>
@@ -103,28 +113,199 @@
 <dl>
   
   
-  <dt>config <span class="type">([]DeviceClassConfiguration)</span></dt>
-  <dd><p>Config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver.</p>
+  <dt>config <span class="type">(<a href="#type-deviceclassconfiguration" aria-label="[]DeviceClassConfiguration type reference">[]DeviceClassConfiguration</a>)</span></dt>
+  <dd>
+    <p>Config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver.</p>
 <p>They are passed to the driver, but are not considered while allocating the claim.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>extendedResourceName <span class="type">(string)</span></dt>
-  <dd><p>ExtendedResourceName is the extended resource name for the devices of this class. The devices of this class can be used to satisfy a pod's extended resource requests. It has the same format as the name of a pod's extended resource. It should be unique among all the device classes in a cluster. If two device classes have the same name, then the class created later is picked to satisfy a pod's extended resource requests. If two classes are created at the same time, then the name of the class lexicographically sorted first is picked.</p>
+  <dd>
+    <p>ExtendedResourceName is the extended resource name for the devices of this class. The devices of this class can be used to satisfy a pod's extended resource requests. It has the same format as the name of a pod's extended resource. It should be unique among all the device classes in a cluster. If two device classes have the same name, then the class created later is picked to satisfy a pod's extended resource requests. If two classes are created at the same time, then the name of the class lexicographically sorted first is picked.</p>
 <p>This is an alpha field.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
-  <dt>selectors <span class="type">([]DeviceSelector)</span></dt>
-  <dd><p>Each selector must be satisfied by a device which is claimed via this class.</p>
-</dd>
+  <dt>selectors <span class="type">(<a href="#type-deviceselector" aria-label="[]DeviceSelector type reference">[]DeviceSelector</a>)</span></dt>
+  <dd>
+    <p>Each selector must be satisfied by a device which is claimed via this class.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-deviceclassconfiguration">
+  <h3>DeviceClassConfiguration</h3>
+  
+  <div class="type-section-desc"><p>DeviceClassConfiguration is used in DeviceClass.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>opaque <span class="type">(<a href="#type-opaquedeviceconfiguration" aria-label="OpaqueDeviceConfiguration type reference">OpaqueDeviceConfiguration</a>)</span></dt>
+  <dd>
+    <p>Opaque provides driver-specific configuration parameters.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-opaquedeviceconfiguration">
+  <h3>OpaqueDeviceConfiguration</h3>
+  
+  <div class="type-section-desc"><p>OpaqueDeviceConfiguration contains configuration parameters for a driver in a format defined by the driver vendor.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">driver <span class="type">(string)</span></dt>
+  <dd>
+    <p>Driver is used to determine which kubelet plugin needs to be passed these configuration parameters.</p>
+<p>An admission policy provided by the driver developer could use this to decide whether it needs to validate them.</p>
+<p>Must be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">parameters <span class="type">(RawExtension)</span></dt>
+  <dd>
+    <p>Parameters can contain arbitrary data. It is the responsibility of the driver developer to handle validation and versioning. Typically this includes self-identification and a version ("kind" + "apiVersion" for Kubernetes types), with conversion between different versions.</p>
+<p>The length of the raw data must be smaller or equal to 10 Ki.</p>
+
+    
+    <p class="type-desc"><em><p>RawExtension is used to hold extensions in external versions.</p>
+<p>To use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.</p>
+<p>// Internal package:</p>
+<pre><code>type MyAPIObject struct {
+	runtime.TypeMeta `json:",inline"`
+	MyPlugin runtime.Object `json:"myPlugin"`
+}
+
+type PluginA struct {
+	AOption string `json:"aOption"`
+}
+</code></pre>
+<p>// External package:</p>
+<pre><code>type MyAPIObject struct {
+	runtime.TypeMeta `json:",inline"`
+	MyPlugin runtime.RawExtension `json:"myPlugin"`
+}
+
+type PluginA struct {
+	AOption string `json:"aOption"`
+}
+</code></pre>
+<p>// On the wire, the JSON will look something like this:</p>
+<pre><code>{
+	"kind":"MyAPIObject",
+	"apiVersion":"v1",
+	"myPlugin": {
+		"kind":"PluginA",
+		"aOption":"foo",
+	},
+}
+</code></pre>
+<p>So what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)</p>
+</em></p>
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-deviceselector">
+  <h3>DeviceSelector</h3>
+  
+  <div class="type-section-desc"><p>DeviceSelector must have exactly one field set.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>cel <span class="type">(CELDeviceSelector)</span></dt>
+  <dd>
+    <p>CEL contains a CEL expression for selecting a device.</p>
+
+    
+    <p class="type-desc"><em><p>CELDeviceSelector contains a CEL expression for selecting a device.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">cel.expression <span class="type">(string)</span></dt>
+      <dd><p>Expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort.</p>
+<p>The expression's input is an object named "device", which carries the following properties:</p>
+<ul>
+<li>driver (string): the name of the driver which defines this device.</li>
+<li>attributes (map[string]object): the device's attributes, grouped by prefix
+(e.g. device.attributes["dra.example.com"] evaluates to an object with all
+of the attributes which were prefixed by "dra.example.com".</li>
+<li>capacity (map[string]object): the device's capacities, grouped by prefix.</li>
+<li>allowMultipleAllocations (bool): the allowMultipleAllocations property of the device
+(v1.34+ with the DRAConsumableCapacity feature enabled).</li>
+</ul>
+<p>Example: Consider a device with driver="dra.example.com", which exposes two attributes named "model" and "ext.example.com/family" and which exposes one capacity named "modules". This input to this expression would have the following fields:</p>
+<pre><code>device.driver
+device.attributes["dra.example.com"].model
+device.attributes["ext.example.com"].family
+device.capacity["dra.example.com"].modules
+</code></pre>
+<p>The device.driver field can be used to check for a specific driver, either as a high-level precondition (i.e. you only want to consider devices from this driver) or as part of a multi-clause expression that is meant to consider devices from different drivers.</p>
+<p>The value type of each attribute is defined by the device definition, and users who write these expressions must consult the documentation for their specific drivers. The value type of each capacity is Quantity.</p>
+<p>If an unknown prefix is used as a lookup in either device.attributes or device.capacity, an empty map will be returned. Any reference to an unknown field will cause an evaluation error and allocation to abort.</p>
+<p>A robust expression should check for the existence of attributes before referencing them.</p>
+<p>For ease of use, the cel.bind() function is enabled, and can be used to simplify expressions that access multiple attributes with the same domain. For example:</p>
+<pre><code>cel.bind(dra, device.attributes["dra.example.com"], dra.someBool &amp;&amp; dra.anotherBool)
+</code></pre>
+<p>The length of the expression must be smaller or equal to 10 Ki. The cost of evaluating it is also limited based on the estimated number of logical steps.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -147,19 +328,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata</p>
-</dd>
+  <dd>
+    <p>Standard list metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.34/resource.k8s.io/v1beta2/deviceclass/" aria-label="[]DeviceClass type reference">DeviceClass</a>)</span></dt>
-  <dd><p>Items is the list of resource classes.</p>
-</dd>
+  <dd>
+    <p>Items is the list of resource classes.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

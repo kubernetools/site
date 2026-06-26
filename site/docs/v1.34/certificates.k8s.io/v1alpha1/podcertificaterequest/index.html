@@ -46,6 +46,7 @@ Kubelets use this API to implement po">
   <main>
     
 
+
 <article>
   <h1>PodCertificateRequest <span class="badge">certificates.k8s.io/v1alpha1</span></h1>
   
@@ -70,26 +71,39 @@ Kubelets use this API to implement po">
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>metadata contains the object metadata.</p>
-</dd>
+  <dd>
+    <p>metadata contains the object metadata.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#podcertificaterequestspec" aria-label="PodCertificateRequestSpec type reference">PodCertificateRequestSpec</a>)</span></dt>
-  <dd><p>spec contains the details about the certificate being requested.</p>
-</dd>
+  <dd>
+    <p>spec contains the details about the certificate being requested.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#podcertificaterequeststatus" aria-label="PodCertificateRequestStatus type reference">PodCertificateRequestStatus</a>)</span></dt>
-  <dd><p>status contains the issued certificate, and a standard set of conditions.</p>
-</dd>
+  <dd>
+    <p>status contains the issued certificate, and a standard set of conditions.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="podcertificaterequestspec">
     <h2 id="podcertificaterequestspec">PodCertificateRequestSpec</h2>
@@ -102,77 +116,118 @@ Kubelets use this API to implement po">
   
   
   <dt class="req">nodeName <span class="type">(string)</span></dt>
-  <dd><p>nodeName is the name of the node the pod is assigned to.</p>
-</dd>
+  <dd>
+    <p>nodeName is the name of the node the pod is assigned to.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">nodeUID <span class="type">(string)</span></dt>
-  <dd><p>nodeUID is the UID of the node the pod is assigned to.</p>
-</dd>
+  <dd>
+    <p>nodeUID is the UID of the node the pod is assigned to.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">pkixPublicKey <span class="type">(string)</span></dt>
-  <dd><p>pkixPublicKey is the PKIX-serialized public key the signer will issue the certificate to.</p>
+  <dd>
+    <p>pkixPublicKey is the PKIX-serialized public key the signer will issue the certificate to.</p>
 <p>The key must be one of RSA3072, RSA4096, ECDSAP256, ECDSAP384, ECDSAP521, or ED25519. Note that this list may be expanded in the future.</p>
 <p>Signer implementations do not need to support all key types supported by kube-apiserver and kubelet.  If a signer does not support the key type used for a given PodCertificateRequest, it must deny the request by setting a status.conditions entry with a type of "Denied" and a reason of "UnsupportedKeyType". It may also suggest a key type that it does support in the message field.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">podName <span class="type">(string)</span></dt>
-  <dd><p>podName is the name of the pod into which the certificate will be mounted.</p>
-</dd>
+  <dd>
+    <p>podName is the name of the pod into which the certificate will be mounted.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">podUID <span class="type">(string)</span></dt>
-  <dd><p>podUID is the UID of the pod into which the certificate will be mounted.</p>
-</dd>
+  <dd>
+    <p>podUID is the UID of the pod into which the certificate will be mounted.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">proofOfPossession <span class="type">(string)</span></dt>
-  <dd><p>proofOfPossession proves that the requesting kubelet holds the private key corresponding to pkixPublicKey.</p>
+  <dd>
+    <p>proofOfPossession proves that the requesting kubelet holds the private key corresponding to pkixPublicKey.</p>
 <p>It is contructed by signing the ASCII bytes of the pod's UID using <code>pkixPublicKey</code>.</p>
 <p>kube-apiserver validates the proof of possession during creation of the PodCertificateRequest.</p>
 <p>If the key is an RSA key, then the signature is over the ASCII bytes of the pod UID, using RSASSA-PSS from RFC 8017 (as implemented by the golang function crypto/rsa.SignPSS with nil options).</p>
 <p>If the key is an ECDSA key, then the signature is as described by <a target="_blank" rel="noopener noreferrer" href="https://www.secg.org/sec1-v2.pdf">SEC 1, Version 2.0</a> (as implemented by the golang library function crypto/ecdsa.SignASN1)</p>
 <p>If the key is an ED25519 key, the the signature is as described by the <a target="_blank" rel="noopener noreferrer" href="https://ed25519.cr.yp.to/">ED25519 Specification</a> (as implemented by the golang library crypto/ed25519.Sign).</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">serviceAccountName <span class="type">(string)</span></dt>
-  <dd><p>serviceAccountName is the name of the service account the pod is running as.</p>
-</dd>
+  <dd>
+    <p>serviceAccountName is the name of the service account the pod is running as.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">serviceAccountUID <span class="type">(string)</span></dt>
-  <dd><p>serviceAccountUID is the UID of the service account the pod is running as.</p>
-</dd>
+  <dd>
+    <p>serviceAccountUID is the UID of the service account the pod is running as.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">signerName <span class="type">(string)</span></dt>
-  <dd><p>signerName indicates the requested signer.</p>
+  <dd>
+    <p>signerName indicates the requested signer.</p>
 <p>All signer names beginning with <code>kubernetes.io</code> are reserved for use by the Kubernetes project.  There is currently one well-known signer documented by the Kubernetes project, <code>kubernetes.io/kube-apiserver-client-pod</code>, which will issue client certificates understood by kube-apiserver.  It is currently unimplemented.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>maxExpirationSeconds <span class="type">(integer)</span></dt>
-  <dd><p>maxExpirationSeconds is the maximum lifetime permitted for the certificate.</p>
+  <dd>
+    <p>maxExpirationSeconds is the maximum lifetime permitted for the certificate.</p>
 <p>If omitted, kube-apiserver will set it to 86400(24 hours). kube-apiserver will reject values shorter than 3600 (1 hour).  The maximum allowable value is 7862400 (91 days).</p>
 <p>The signer implementation is then free to issue a certificate with any lifetime <em>shorter</em> than MaxExpirationSeconds, but no shorter than 3600 seconds (1 hour).  This constraint is enforced by kube-apiserver. <code>kubernetes.io</code> signers will never issue certificates with a lifetime longer than 24 hours.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="podcertificaterequeststatus">
@@ -185,15 +240,20 @@ Kubelets use this API to implement po">
 <dl>
   
   
-  <dt>beginRefreshAt <span class="type">(Time)</span></dt>
-  <dd><p>beginRefreshAt is the time at which the kubelet should begin trying to refresh the certificate.  This field is set via the /status subresource, and must be set at the same time as certificateChain.  Once populated, this field is immutable.</p>
+  <dt>beginRefreshAt <span class="type">(<a href="/docs/v1.34/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>beginRefreshAt is the time at which the kubelet should begin trying to refresh the certificate.  This field is set via the /status subresource, and must be set at the same time as certificateChain.  Once populated, this field is immutable.</p>
 <p>This field is only a hint.  Kubelet may start refreshing before or after this time if necessary.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>certificateChain <span class="type">(string)</span></dt>
-  <dd><p>certificateChain is populated with an issued certificate by the signer. This field is set via the /status subresource. Once populated, this field is immutable.</p>
+  <dd>
+    <p>certificateChain is populated with an issued certificate by the signer. This field is set via the /status subresource. Once populated, this field is immutable.</p>
 <p>If the certificate signing request is denied, a condition of type "Denied" is added and this field remains empty. If the signer cannot issue the certificate, a condition of type "Failed" is added and this field remains empty.</p>
 <p>Validation requirements:</p>
 <ol>
@@ -202,32 +262,48 @@ Kubelets use this API to implement po">
 described in section 4 of RFC5280.</li>
 </ol>
 <p>If more than one block is present, and the definition of the requested spec.signerName does not indicate otherwise, the first block is the issued certificate, and subsequent blocks should be treated as intermediate certificates and presented in TLS handshakes.  When projecting the chain into a pod volume, kubelet will drop any data in-between the PEM blocks, as well as any PEM block headers.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>conditions <span class="type">([]<a href="/docs/v1.34/common-definitions/condition/" aria-label="[]Condition type reference">Condition</a>)</span></dt>
-  <dd><p>conditions applied to the request.</p>
+  <dd>
+    <p>conditions applied to the request.</p>
 <p>The types "Issued", "Denied", and "Failed" have special handling.  At most one of these conditions may be present, and they must have status "True".</p>
 <p>If the request is denied with <code>Reason=UnsupportedKeyType</code>, the signer may suggest a key type that will work in the message field.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
-  <dt>notAfter <span class="type">(Time)</span></dt>
-  <dd><p>notAfter is the time at which the certificate expires.  The value must be the same as the notAfter value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable.  The signer must set this field at the same time it sets certificateChain.</p>
-</dd>
+  <dt>notAfter <span class="type">(<a href="/docs/v1.34/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>notAfter is the time at which the certificate expires.  The value must be the same as the notAfter value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable.  The signer must set this field at the same time it sets certificateChain.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>notBefore <span class="type">(Time)</span></dt>
-  <dd><p>notBefore is the time at which the certificate becomes valid.  The value must be the same as the notBefore value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable. The signer must set this field at the same time it sets certificateChain.</p>
-</dd>
+  <dt>notBefore <span class="type">(<a href="/docs/v1.34/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>notBefore is the time at which the certificate becomes valid.  The value must be the same as the notBefore value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable. The signer must set this field at the same time it sets certificateChain.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="list-heading">
@@ -249,19 +325,28 @@ described in section 4 of RFC5280.</li>
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>metadata contains the list metadata.</p>
-</dd>
+  <dd>
+    <p>metadata contains the list metadata.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.34/certificates.k8s.io/v1alpha1/podcertificaterequest/" aria-label="[]PodCertificateRequest type reference">PodCertificateRequest</a>)</span></dt>
-  <dd><p>items is a collection of PodCertificateRequest objects</p>
-</dd>
+  <dd>
+    <p>items is a collection of PodCertificateRequest objects</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

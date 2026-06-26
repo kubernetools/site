@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>TokenReview <span class="badge">authentication.k8s.io/v1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#tokenreviewspec" aria-label="TokenReviewSpec type reference">TokenReviewSpec</a>)</span></dt>
-  <dd><p>Spec holds information about the request being evaluated</p>
-</dd>
+  <dd>
+    <p>Spec holds information about the request being evaluated</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#tokenreviewstatus" aria-label="TokenReviewStatus type reference">TokenReviewStatus</a>)</span></dt>
-  <dd><p>Status is filled in by the server and indicates whether the request can be authenticated.</p>
-</dd>
+  <dd>
+    <p>Status is filled in by the server and indicates whether the request can be authenticated.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="tokenreviewspec">
     <h2 id="tokenreviewspec">TokenReviewSpec</h2>
@@ -99,19 +113,28 @@
   
   
   <dt>audiences <span class="type">([]string)</span></dt>
-  <dd><p>Audiences is a list of the identifiers that the resource server presented with the token identifies as. Audience-aware token authenticators will verify that the token was intended for at least one of the audiences in this list. If no audiences are provided, the audience will default to the audience of the Kubernetes apiserver.</p>
-</dd>
+  <dd>
+    <p>Audiences is a list of the identifiers that the resource server presented with the token identifies as. Audience-aware token authenticators will verify that the token was intended for at least one of the audiences in this list. If no audiences are provided, the audience will default to the audience of the Kubernetes apiserver.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>token <span class="type">(string)</span></dt>
-  <dd><p>Token is the opaque bearer token.</p>
-</dd>
+  <dd>
+    <p>Token is the opaque bearer token.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="tokenreviewstatus">
@@ -125,31 +148,71 @@
   
   
   <dt>audiences <span class="type">([]string)</span></dt>
-  <dd><p>Audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token's audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is "true", the token is valid against the audience of the Kubernetes API server.</p>
-</dd>
+  <dd>
+    <p>Audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token's audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is "true", the token is valid against the audience of the Kubernetes API server.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>authenticated <span class="type">(boolean)</span></dt>
-  <dd><p>Authenticated indicates that the token was associated with a known user.</p>
-</dd>
+  <dd>
+    <p>Authenticated indicates that the token was associated with a known user.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>error <span class="type">(string)</span></dt>
-  <dd><p>Error indicates that the token couldn't be checked</p>
-</dd>
+  <dd>
+    <p>Error indicates that the token couldn't be checked</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>user <span class="type">(UserInfo)</span></dt>
-  <dd><p>User is the UserInfo associated with the provided token.</p>
+  <dd>
+    <p>User is the UserInfo associated with the provided token.</p>
+
+    
+    <p class="type-desc"><em><p>UserInfo holds the information about the user needed to implement the user.Info interface.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>user.extra <span class="type">(map[string]string)</span></dt>
+      <dd><p>Any additional information provided by the authenticator.</p>
 </dd>
+      
+      <dt>user.groups <span class="type">([]string)</span></dt>
+      <dd><p>The names of groups this user is a part of.</p>
+</dd>
+      
+      <dt>user.uid <span class="type">(string)</span></dt>
+      <dd><p>A unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.</p>
+</dd>
+      
+      <dt>user.username <span class="type">(string)</span></dt>
+      <dd><p>The name that uniquely identifies this user among all active users.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
 </article>

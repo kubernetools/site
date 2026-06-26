@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>NetworkPolicy <span class="badge">networking.k8s.io/v1</span></h1>
   
@@ -67,20 +68,29 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#networkpolicyspec" aria-label="NetworkPolicySpec type reference">NetworkPolicySpec</a>)</span></dt>
-  <dd><p>spec represents the specification of the desired behavior for this NetworkPolicy.</p>
-</dd>
+  <dd>
+    <p>spec represents the specification of the desired behavior for this NetworkPolicy.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="networkpolicyspec">
     <h2 id="networkpolicyspec">NetworkPolicySpec</h2>
@@ -92,32 +102,226 @@
 <dl>
   
   
-  <dt>egress <span class="type">([]NetworkPolicyEgressRule)</span></dt>
-  <dd><p>egress is a list of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8</p>
-</dd>
+  <dt>egress <span class="type">(<a href="#type-networkpolicyegressrule" aria-label="[]NetworkPolicyEgressRule type reference">[]NetworkPolicyEgressRule</a>)</span></dt>
+  <dd>
+    <p>egress is a list of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>ingress <span class="type">([]NetworkPolicyIngressRule)</span></dt>
-  <dd><p>ingress is a list of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default)</p>
-</dd>
+  <dt>ingress <span class="type">(<a href="#type-networkpolicyingressrule" aria-label="[]NetworkPolicyIngressRule type reference">[]NetworkPolicyIngressRule</a>)</span></dt>
+  <dd>
+    <p>ingress is a list of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default)</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>podSelector <span class="type">(<a href="/docs/v1.34/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a>)</span></dt>
-  <dd><p>podSelector selects the pods to which this NetworkPolicy object applies. The array of rules is applied to any pods selected by this field. An empty selector matches all pods in the policy's namespace. Multiple network policies can select the same set of pods. In this case, the ingress rules for each are combined additively. This field is optional. If it is not specified, it defaults to an empty selector.</p>
-</dd>
+  <dd>
+    <p>podSelector selects the pods to which this NetworkPolicy object applies. The array of rules is applied to any pods selected by this field. An empty selector matches all pods in the policy's namespace. Multiple network policies can select the same set of pods. In this case, the ingress rules for each are combined additively. This field is optional. If it is not specified, it defaults to an empty selector.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>policyTypes <span class="type">([]string)</span></dt>
-  <dd><p>policyTypes is a list of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"], or ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence of ingress or egress rules; policies that contain an egress section are assumed to affect egress, and all policies (whether or not they contain an ingress section) are assumed to affect ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8</p>
-</dd>
+  <dd>
+    <p>policyTypes is a list of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"], or ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence of ingress or egress rules; policies that contain an egress section are assumed to affect egress, and all policies (whether or not they contain an ingress section) are assumed to affect ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-networkpolicyegressrule">
+  <h3>NetworkPolicyEgressRule</h3>
+  
+  <div class="type-section-desc"><p>NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is beta-level in 1.8</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>ports <span class="type">(<a href="#type-networkpolicyport" aria-label="[]NetworkPolicyPort type reference">[]NetworkPolicyPort</a>)</span></dt>
+  <dd>
+    <p>ports is a list of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>to <span class="type">(<a href="#type-networkpolicypeer" aria-label="[]NetworkPolicyPeer type reference">[]NetworkPolicyPeer</a>)</span></dt>
+  <dd>
+    <p>to is a list of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-networkpolicyport">
+  <h3>NetworkPolicyPort</h3>
+  
+  <div class="type-section-desc"><p>NetworkPolicyPort describes a port to allow traffic on</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>endPort <span class="type">(integer)</span></dt>
+  <dd>
+    <p>endPort indicates that the range of ports from port to endPort if set, inclusive, should be allowed by the policy. This field cannot be defined if the port field is not defined or if the port field is defined as a named (string) port. The endPort must be equal or greater than port.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>port <span class="type">(<a href="/docs/v1.34/common-definitions/intorstring/" aria-label="IntOrString type reference">IntOrString</a>)</span></dt>
+  <dd>
+    <p>port represents the port on the given protocol. This can either be a numerical or named port on a pod. If this field is not provided, this matches all port names and numbers. If present, only traffic on the specified protocol AND port will be matched.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>protocol <span class="type">(string)</span></dt>
+  <dd>
+    <p>protocol represents the protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-networkpolicypeer">
+  <h3>NetworkPolicyPeer</h3>
+  
+  <div class="type-section-desc"><p>NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain combinations of fields are allowed</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>ipBlock <span class="type">(IPBlock)</span></dt>
+  <dd>
+    <p>ipBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.</p>
+
+    
+    <p class="type-desc"><em><p>IPBlock describes a particular CIDR (Ex. "192.168.1.0/24","2001:db8::/64") that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not be included within this rule.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">ipBlock.cidr <span class="type">(string)</span></dt>
+      <dd><p>cidr is a string representing the IPBlock Valid examples are "192.168.1.0/24" or "2001:db8::/64"</p>
+</dd>
+      
+      <dt>ipBlock.except <span class="type">([]string)</span></dt>
+      <dd><p>except is a slice of CIDRs that should not be included within an IPBlock Valid examples are "192.168.1.0/24" or "2001:db8::/64" Except values will be rejected if they are outside the cidr range</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>namespaceSelector <span class="type">(<a href="/docs/v1.34/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a>)</span></dt>
+  <dd>
+    <p>namespaceSelector selects namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.</p>
+<p>If podSelector is also set, then the NetworkPolicyPeer as a whole selects the pods matching podSelector in the namespaces selected by namespaceSelector. Otherwise it selects all pods in the namespaces selected by namespaceSelector.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>podSelector <span class="type">(<a href="/docs/v1.34/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a>)</span></dt>
+  <dd>
+    <p>podSelector is a label selector which selects pods. This field follows standard label selector semantics; if present but empty, it selects all pods.</p>
+<p>If namespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the pods matching podSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the pods matching podSelector in the policy's own namespace.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-networkpolicyingressrule">
+  <h3>NetworkPolicyIngressRule</h3>
+  
+  <div class="type-section-desc"><p>NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and from.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>from <span class="type">(<a href="#type-networkpolicypeer" aria-label="[]NetworkPolicyPeer type reference">[]NetworkPolicyPeer</a>)</span></dt>
+  <dd>
+    <p>from is a list of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>ports <span class="type">(<a href="#type-networkpolicyport" aria-label="[]NetworkPolicyPort type reference">[]NetworkPolicyPort</a>)</span></dt>
+  <dd>
+    <p>ports is a list of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -140,19 +344,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.34/networking.k8s.io/v1/networkpolicy/" aria-label="[]NetworkPolicy type reference">NetworkPolicy</a>)</span></dt>
-  <dd><p>items is a list of schema objects.</p>
-</dd>
+  <dd>
+    <p>items is a list of schema objects.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

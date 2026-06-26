@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>ComponentStatus <span class="badge">core/v1</span></h1>
   
@@ -67,20 +68,52 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>conditions <span class="type">([]ComponentCondition)</span></dt>
-  <dd><p>List of component conditions observed</p>
+  <dd>
+    <p>List of component conditions observed</p>
+
+    
+    <p class="type-desc"><em><p>Information about the condition of a component.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">conditions.status <span class="type">(string)</span></dt>
+      <dd><p>Status of the condition for a component. Valid values for "Healthy": "True", "False", or "Unknown".</p>
 </dd>
+      
+      <dt class="req">conditions.type <span class="type">(string)</span></dt>
+      <dd><p>Type of condition for a component. Valid value: "Healthy"</p>
+</dd>
+      
+      <dt>conditions.error <span class="type">(string)</span></dt>
+      <dd><p>Condition error code for a component. For example, a health check error code.</p>
+</dd>
+      
+      <dt>conditions.message <span class="type">(string)</span></dt>
+      <dd><p>Message about the condition for a component. For example, information about a health check.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   
   
@@ -103,19 +136,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.35/core/v1/componentstatus/" aria-label="[]ComponentStatus type reference">ComponentStatus</a>)</span></dt>
-  <dd><p>List of ComponentStatus objects.</p>
-</dd>
+  <dd>
+    <p>List of ComponentStatus objects.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

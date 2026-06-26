@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>ResourceQuota <span class="badge">core/v1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#resourcequotaspec" aria-label="ResourceQuotaSpec type reference">ResourceQuotaSpec</a>)</span></dt>
-  <dd><p>Spec defines the desired quota. <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>Spec defines the desired quota. <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#resourcequotastatus" aria-label="ResourceQuotaStatus type reference">ResourceQuotaStatus</a>)</span></dt>
-  <dd><p>Status defines the actual enforced quota and its current usage. <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>Status defines the actual enforced quota and its current usage. <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="resourcequotaspec">
     <h2 id="resourcequotaspec">ResourceQuotaSpec</h2>
@@ -99,25 +113,82 @@
   
   
   <dt>hard <span class="type">(map[string]<a href="/docs/v1.35/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
-  <dd><p>hard is the set of desired hard limits for each named resource. More info: <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/policy/resource-quotas/</a></p>
-</dd>
+  <dd>
+    <p>hard is the set of desired hard limits for each named resource. More info: <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/policy/resource-quotas/</a></p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>scopeSelector <span class="type">(ScopeSelector)</span></dt>
-  <dd><p>scopeSelector is also a collection of filters like scopes that must match each object tracked by a quota but expressed using ScopeSelectorOperator in combination with possible values. For a resource to match, both scopes AND scopeSelector (if specified in spec), must be matched.</p>
-</dd>
+  <dt>scopeSelector <span class="type">(<a href="#type-scopeselector" aria-label="ScopeSelector type reference">ScopeSelector</a>)</span></dt>
+  <dd>
+    <p>scopeSelector is also a collection of filters like scopes that must match each object tracked by a quota but expressed using ScopeSelectorOperator in combination with possible values. For a resource to match, both scopes AND scopeSelector (if specified in spec), must be matched.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>scopes <span class="type">([]string)</span></dt>
-  <dd><p>A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects.</p>
-</dd>
+  <dd>
+    <p>A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-scopeselector">
+  <h3>ScopeSelector</h3>
+  
+  <div class="type-section-desc"><p>A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>matchExpressions <span class="type">([]ScopedResourceSelectorRequirement)</span></dt>
+  <dd>
+    <p>A list of scope selector requirements by scope of the resources.</p>
+
+    
+    <p class="type-desc"><em><p>A scoped-resource selector requirement is a selector that contains values, a scope name, and an operator that relates the scope name and values.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">matchExpressions.operator <span class="type">(string)</span></dt>
+      <dd><p>Represents a scope's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist.</p>
+</dd>
+      
+      <dt class="req">matchExpressions.scopeName <span class="type">(string)</span></dt>
+      <dd><p>The name of the scope that the selector applies to.</p>
+</dd>
+      
+      <dt>matchExpressions.values <span class="type">([]string)</span></dt>
+      <dd><p>An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="resourcequotastatus">
@@ -131,19 +202,28 @@
   
   
   <dt>hard <span class="type">(map[string]<a href="/docs/v1.35/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
-  <dd><p>Hard is the set of enforced hard limits for each named resource. More info: <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/policy/resource-quotas/</a></p>
-</dd>
+  <dd>
+    <p>Hard is the set of enforced hard limits for each named resource. More info: <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/policy/resource-quotas/</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>used <span class="type">(map[string]<a href="/docs/v1.35/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
-  <dd><p>Used is the current observed total usage of the resource in the namespace.</p>
-</dd>
+  <dd>
+    <p>Used is the current observed total usage of the resource in the namespace.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="list-heading">
@@ -165,19 +245,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.35/core/v1/resourcequota/" aria-label="[]ResourceQuota type reference">ResourceQuota</a>)</span></dt>
-  <dd><p>Items is a list of ResourceQuota objects. More info: <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/policy/resource-quotas/</a></p>
-</dd>
+  <dd>
+    <p>Items is a list of ResourceQuota objects. More info: <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/policy/resource-quotas/</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

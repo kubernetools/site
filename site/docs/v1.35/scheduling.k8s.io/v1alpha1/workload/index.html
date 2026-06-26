@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>Workload <span class="badge">scheduling.k8s.io/v1alpha1</span></h1>
   
@@ -67,20 +68,29 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. Name must be a DNS subdomain.</p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. Name must be a DNS subdomain.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#workloadspec" aria-label="WorkloadSpec type reference">WorkloadSpec</a>)</span></dt>
-  <dd><p>Spec defines the desired behavior of a Workload.</p>
-</dd>
+  <dd>
+    <p>Spec defines the desired behavior of a Workload.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="workloadspec">
     <h2 id="workloadspec">WorkloadSpec</h2>
@@ -92,20 +102,113 @@
 <dl>
   
   
-  <dt class="req">podGroups <span class="type">([]PodGroup)</span></dt>
-  <dd><p>PodGroups is the list of pod groups that make up the Workload. The maximum number of pod groups is 8. This field is immutable.</p>
-</dd>
+  <dt class="req">podGroups <span class="type">(<a href="#type-podgroup" aria-label="[]PodGroup type reference">[]PodGroup</a>)</span></dt>
+  <dd>
+    <p>PodGroups is the list of pod groups that make up the Workload. The maximum number of pod groups is 8. This field is immutable.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>controllerRef <span class="type">(<a href="/docs/v1.35/common-definitions/typedlocalobjectreference/" aria-label="TypedLocalObjectReference type reference">TypedLocalObjectReference</a>)</span></dt>
-  <dd><p>ControllerRef is an optional reference to the controlling object, such as a Deployment or Job. This field is intended for use by tools like CLIs to provide a link back to the original workload definition. When set, it cannot be changed.</p>
-</dd>
+  <dd>
+    <p>ControllerRef is an optional reference to the controlling object, such as a Deployment or Job. This field is intended for use by tools like CLIs to provide a link back to the original workload definition. When set, it cannot be changed.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-podgroup">
+  <h3>PodGroup</h3>
+  
+  <div class="type-section-desc"><p>PodGroup represents a set of pods with a common scheduling policy.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">name <span class="type">(string)</span></dt>
+  <dd>
+    <p>Name is a unique identifier for the PodGroup within the Workload. It must be a DNS label. This field is immutable.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">policy <span class="type">(<a href="#type-podgrouppolicy" aria-label="PodGroupPolicy type reference">PodGroupPolicy</a>)</span></dt>
+  <dd>
+    <p>Policy defines the scheduling policy for this PodGroup.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-podgrouppolicy">
+  <h3>PodGroupPolicy</h3>
+  
+  <div class="type-section-desc"><p>PodGroupPolicy defines the scheduling configuration for a PodGroup.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>basic <span class="type">(BasicSchedulingPolicy)</span></dt>
+  <dd>
+    <p>Basic specifies that the pods in this group should be scheduled using standard Kubernetes scheduling behavior.</p>
+
+    
+    <p class="type-desc"><em><p>BasicSchedulingPolicy indicates that standard Kubernetes scheduling behavior should be used.</p>
+</em></p>
+    
+    
+  </dd>
+  
+  
+  
+  <dt>gang <span class="type">(GangSchedulingPolicy)</span></dt>
+  <dd>
+    <p>Gang specifies that the pods in this group should be scheduled using all-or-nothing semantics.</p>
+
+    
+    <p class="type-desc"><em><p>GangSchedulingPolicy defines the parameters for gang scheduling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">gang.minCount <span class="type">(integer)</span></dt>
+      <dd><p>MinCount is the minimum number of pods that must be schedulable or scheduled at the same time for the scheduler to admit the entire group. It must be a positive integer.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -128,19 +231,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata.</p>
-</dd>
+  <dd>
+    <p>Standard list metadata.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.35/scheduling.k8s.io/v1alpha1/workload/" aria-label="[]Workload type reference">Workload</a>)</span></dt>
-  <dd><p>Items is the list of Workloads.</p>
-</dd>
+  <dd>
+    <p>Items is the list of Workloads.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

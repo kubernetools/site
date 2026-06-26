@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>PriorityClass <span class="badge">scheduling.k8s.io/v1</span></h1>
   
@@ -67,38 +68,59 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">value <span class="type">(integer)</span></dt>
-  <dd><p>value represents the integer value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.</p>
-</dd>
+  <dd>
+    <p>value represents the integer value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>description <span class="type">(string)</span></dt>
-  <dd><p>description is an arbitrary string that usually provides guidelines on when this priority class should be used.</p>
-</dd>
+  <dd>
+    <p>description is an arbitrary string that usually provides guidelines on when this priority class should be used.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>globalDefault <span class="type">(boolean)</span></dt>
-  <dd><p>globalDefault specifies whether this PriorityClass should be considered as the default priority for pods that do not have any priority class. Only one PriorityClass can be marked as <code>globalDefault</code>. However, if more than one PriorityClasses exists with their <code>globalDefault</code> field set to true, the smallest value of such global default PriorityClasses will be used as the default priority.</p>
-</dd>
+  <dd>
+    <p>globalDefault specifies whether this PriorityClass should be considered as the default priority for pods that do not have any priority class. Only one PriorityClass can be marked as <code>globalDefault</code>. However, if more than one PriorityClasses exists with their <code>globalDefault</code> field set to true, the smallest value of such global default PriorityClasses will be used as the default priority.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>preemptionPolicy <span class="type">(string)</span></dt>
-  <dd><p>preemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.</p>
-</dd>
+  <dd>
+    <p>preemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   
   
@@ -121,19 +143,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/scheduling.k8s.io/v1/priorityclass/" aria-label="[]PriorityClass type reference">PriorityClass</a>)</span></dt>
-  <dd><p>items is the list of PriorityClasses</p>
-</dd>
+  <dd>
+    <p>items is the list of PriorityClasses</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

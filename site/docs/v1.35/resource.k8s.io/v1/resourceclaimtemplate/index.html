@@ -46,6 +46,7 @@ This is an alpha type and requires enabling the Dynamic">
   <main>
     
 
+
 <article>
   <h1>ResourceClaimTemplate <span class="badge">resource.k8s.io/v1</span></h1>
   
@@ -78,21 +79,30 @@ This is an alpha type and requires enabling the Dynamic">
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object metadata</p>
-</dd>
+  <dd>
+    <p>Standard object metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#resourceclaimtemplatespec" aria-label="ResourceClaimTemplateSpec type reference">ResourceClaimTemplateSpec</a>)</span></dt>
-  <dd><p>Describes the ResourceClaim that is to be generated.</p>
+  <dd>
+    <p>Describes the ResourceClaim that is to be generated.</p>
 <p>This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="resourceclaimtemplatespec">
     <h2 id="resourceclaimtemplatespec">ResourceClaimTemplateSpec</h2>
@@ -105,19 +115,646 @@ This is an alpha type and requires enabling the Dynamic">
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>ObjectMeta may contain labels and annotations that will be copied into the ResourceClaim when creating it. No other fields are allowed and will be rejected during validation.</p>
-</dd>
+  <dd>
+    <p>ObjectMeta may contain labels and annotations that will be copied into the ResourceClaim when creating it. No other fields are allowed and will be rejected during validation.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt class="req">spec <span class="type">(ResourceClaimSpec)</span></dt>
-  <dd><p>Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.</p>
-</dd>
+  <dt class="req">spec <span class="type">(<a href="#type-resourceclaimspec" aria-label="ResourceClaimSpec type reference">ResourceClaimSpec</a>)</span></dt>
+  <dd>
+    <p>Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-resourceclaimspec">
+  <h3>ResourceClaimSpec</h3>
+  
+  <div class="type-section-desc"><p>ResourceClaimSpec defines what is being requested in a ResourceClaim and how to configure it.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>devices <span class="type">(<a href="#type-deviceclaim" aria-label="DeviceClaim type reference">DeviceClaim</a>)</span></dt>
+  <dd>
+    <p>Devices defines how to request devices.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-deviceclaim">
+  <h3>DeviceClaim</h3>
+  
+  <div class="type-section-desc"><p>DeviceClaim defines how to request devices with a ResourceClaim.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>config <span class="type">(<a href="#type-deviceclaimconfiguration" aria-label="[]DeviceClaimConfiguration type reference">[]DeviceClaimConfiguration</a>)</span></dt>
+  <dd>
+    <p>This field holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>constraints <span class="type">([]DeviceConstraint)</span></dt>
+  <dd>
+    <p>These constraints must be satisfied by the set of devices that get allocated for the claim.</p>
+
+    
+    <p class="type-desc"><em><p>DeviceConstraint must have exactly one field set besides Requests.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>constraints.distinctAttribute <span class="type">(string)</span></dt>
+      <dd><p>DistinctAttribute requires that all devices in question have this attribute and that its type and value are unique across those devices.</p>
+<p>This acts as the inverse of MatchAttribute.</p>
+<p>This constraint is used to avoid allocating multiple requests to the same device by ensuring attribute-level differentiation.</p>
+<p>This is useful for scenarios where resource requests must be fulfilled by separate physical devices. For example, a container requests two network interfaces that must be allocated from two different physical NICs.</p>
+</dd>
+      
+      <dt>constraints.matchAttribute <span class="type">(string)</span></dt>
+      <dd><p>MatchAttribute requires that all devices in question have this attribute and that its type and value are the same across those devices.</p>
+<p>For example, if you specified "dra.example.com/numa" (a hypothetical example!), then only devices in the same NUMA node will be chosen. A device which does not have that attribute will not be chosen. All devices should use a value of the same type for this attribute because that is part of its specification, but if one device doesn't, then it also will not be chosen.</p>
+<p>Must include the domain qualifier.</p>
+</dd>
+      
+      <dt>constraints.requests <span class="type">([]string)</span></dt>
+      <dd><p>Requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim.</p>
+<p>References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>requests <span class="type">(<a href="#type-devicerequest" aria-label="[]DeviceRequest type reference">[]DeviceRequest</a>)</span></dt>
+  <dd>
+    <p>Requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-deviceclaimconfiguration">
+  <h3>DeviceClaimConfiguration</h3>
+  
+  <div class="type-section-desc"><p>DeviceClaimConfiguration is used for configuration parameters in DeviceClaim.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>opaque <span class="type">(<a href="#type-opaquedeviceconfiguration" aria-label="OpaqueDeviceConfiguration type reference">OpaqueDeviceConfiguration</a>)</span></dt>
+  <dd>
+    <p>Opaque provides driver-specific configuration parameters.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>requests <span class="type">([]string)</span></dt>
+  <dd>
+    <p>Requests lists the names of requests where the configuration applies. If empty, it applies to all requests.</p>
+<p>References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-opaquedeviceconfiguration">
+  <h3>OpaqueDeviceConfiguration</h3>
+  
+  <div class="type-section-desc"><p>OpaqueDeviceConfiguration contains configuration parameters for a driver in a format defined by the driver vendor.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">driver <span class="type">(string)</span></dt>
+  <dd>
+    <p>Driver is used to determine which kubelet plugin needs to be passed these configuration parameters.</p>
+<p>An admission policy provided by the driver developer could use this to decide whether it needs to validate them.</p>
+<p>Must be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. It should use only lower case characters.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">parameters <span class="type">(RawExtension)</span></dt>
+  <dd>
+    <p>Parameters can contain arbitrary data. It is the responsibility of the driver developer to handle validation and versioning. Typically this includes self-identification and a version ("kind" + "apiVersion" for Kubernetes types), with conversion between different versions.</p>
+<p>The length of the raw data must be smaller or equal to 10 Ki.</p>
+
+    
+    <p class="type-desc"><em><p>RawExtension is used to hold extensions in external versions.</p>
+<p>To use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.</p>
+<p>// Internal package:</p>
+<pre><code>type MyAPIObject struct {
+	runtime.TypeMeta `json:",inline"`
+	MyPlugin runtime.Object `json:"myPlugin"`
+}
+
+type PluginA struct {
+	AOption string `json:"aOption"`
+}
+</code></pre>
+<p>// External package:</p>
+<pre><code>type MyAPIObject struct {
+	runtime.TypeMeta `json:",inline"`
+	MyPlugin runtime.RawExtension `json:"myPlugin"`
+}
+
+type PluginA struct {
+	AOption string `json:"aOption"`
+}
+</code></pre>
+<p>// On the wire, the JSON will look something like this:</p>
+<pre><code>{
+	"kind":"MyAPIObject",
+	"apiVersion":"v1",
+	"myPlugin": {
+		"kind":"PluginA",
+		"aOption":"foo",
+	},
+}
+</code></pre>
+<p>So what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)</p>
+</em></p>
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-devicerequest">
+  <h3>DeviceRequest</h3>
+  
+  <div class="type-section-desc"><p>DeviceRequest is a request for devices required for a claim. This is typically a request for a single resource like a device, but can also ask for several identical devices. With FirstAvailable it is also possible to provide a prioritized list of requests.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">name <span class="type">(string)</span></dt>
+  <dd>
+    <p>Name can be used to reference this request in a pod.spec.containers[].resources.claims entry and in a constraint of the claim.</p>
+<p>References using the name in the DeviceRequest will uniquely identify a request when the Exactly field is set. When the FirstAvailable field is set, a reference to the name of the DeviceRequest will match whatever subrequest is chosen by the scheduler.</p>
+<p>Must be a DNS label.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>exactly <span class="type">(<a href="#type-exactdevicerequest" aria-label="ExactDeviceRequest type reference">ExactDeviceRequest</a>)</span></dt>
+  <dd>
+    <p>Exactly specifies the details for a single request that must be met exactly for the request to be satisfied.</p>
+<p>One of Exactly or FirstAvailable must be set.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>firstAvailable <span class="type">(<a href="#type-devicesubrequest" aria-label="[]DeviceSubRequest type reference">[]DeviceSubRequest</a>)</span></dt>
+  <dd>
+    <p>FirstAvailable contains subrequests, of which exactly one will be selected by the scheduler. It tries to satisfy them in the order in which they are listed here. So if there are two entries in the list, the scheduler will only check the second one if it determines that the first one can not be used.</p>
+<p>DRA does not yet implement scoring, so the scheduler will select the first set of devices that satisfies all the requests in the claim. And if the requirements can be satisfied on more than one node, other scheduling features will determine which node is chosen. This means that the set of devices allocated to a claim might not be the optimal set available to the cluster. Scoring will be implemented later.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-exactdevicerequest">
+  <h3>ExactDeviceRequest</h3>
+  
+  <div class="type-section-desc"><p>ExactDeviceRequest is a request for one or more identical devices.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">deviceClassName <span class="type">(string)</span></dt>
+  <dd>
+    <p>DeviceClassName references a specific DeviceClass, which can define additional configuration and selectors to be inherited by this request.</p>
+<p>A DeviceClassName is required.</p>
+<p>Administrators may use this to restrict which devices may get requested by only installing classes with selectors for permitted devices. If users are free to request anything without restrictions, then administrators can create an empty DeviceClass for users to reference.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>adminAccess <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>AdminAccess indicates that this is a claim for administrative access to the device(s). Claims with AdminAccess are expected to be used for monitoring or other management services for a device.  They ignore all ordinary claims to the device with respect to access modes and any resource allocations.</p>
+<p>This is an alpha field and requires enabling the DRAAdminAccess feature gate. Admin access is disabled if this field is unset or set to false, otherwise it is enabled.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>allocationMode <span class="type">(string)</span></dt>
+  <dd>
+    <p>AllocationMode and its related fields define how devices are allocated to satisfy this request. Supported values are:</p>
+<ul>
+<li>
+<p>ExactCount: This request is for a specific number of devices.
+This is the default. The exact number is provided in the
+count field.</p>
+</li>
+<li>
+<p>All: This request is for all of the matching devices in a pool.
+At least one device must exist on the node for the allocation to succeed.
+Allocation will fail if some devices are already allocated,
+unless adminAccess is requested.</p>
+</li>
+</ul>
+<p>If AllocationMode is not specified, the default mode is ExactCount. If the mode is ExactCount and count is not specified, the default count is one. Any other requests must specify this field.</p>
+<p>More modes may get added in the future. Clients must refuse to handle requests with unknown modes.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>capacity <span class="type">(<a href="#type-capacityrequirements" aria-label="CapacityRequirements type reference">CapacityRequirements</a>)</span></dt>
+  <dd>
+    <p>Capacity define resource requirements against each capacity.</p>
+<p>If this field is unset and the device supports multiple allocations, the default value will be applied to each capacity according to requestPolicy. For the capacity that has no requestPolicy, default is the full capacity value.</p>
+<p>Applies to each device allocation. If Count &gt; 1, the request fails if there aren't enough devices that meet the requirements. If AllocationMode is set to All, the request fails if there are devices that otherwise match the request, and have this capacity, with a value &gt;= the requested amount, but which cannot be allocated to this request.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>count <span class="type">(integer)</span></dt>
+  <dd>
+    <p>Count is used only when the count mode is "ExactCount". Must be greater than zero. If AllocationMode is ExactCount and this field is not specified, the default is one.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>selectors <span class="type">(<a href="#type-deviceselector" aria-label="[]DeviceSelector type reference">[]DeviceSelector</a>)</span></dt>
+  <dd>
+    <p>Selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>tolerations <span class="type">([]DeviceToleration)</span></dt>
+  <dd>
+    <p>If specified, the request's tolerations.</p>
+<p>Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute.</p>
+<p>In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated.</p>
+<p>The maximum number of tolerations is 16.</p>
+<p>This is an alpha field and requires enabling the DRADeviceTaints feature gate.</p>
+
+    
+    <p class="type-desc"><em><p>The ResourceClaim this DeviceToleration is attached to tolerates any taint that matches the triple &lt;key,value,effect&gt; using the matching operator <operator>.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>tolerations.effect <span class="type">(string)</span></dt>
+      <dd><p>Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule and NoExecute.</p>
+</dd>
+      
+      <dt>tolerations.key <span class="type">(string)</span></dt>
+      <dd><p>Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys. Must be a label name.</p>
+</dd>
+      
+      <dt>tolerations.operator <span class="type">(string)</span></dt>
+      <dd><p>Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ResourceClaim can tolerate all taints of a particular category.</p>
+</dd>
+      
+      <dt>tolerations.tolerationSeconds <span class="type">(integer)</span></dt>
+      <dd><p>TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system. If larger than zero, the time when the pod needs to be evicted is calculated as <time when taint was adedd> + <toleration seconds>.</p>
+</dd>
+      
+      <dt>tolerations.value <span class="type">(string)</span></dt>
+      <dd><p>Value is the taint value the toleration matches to. If the operator is Exists, the value must be empty, otherwise just a regular string. Must be a label value.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-capacityrequirements">
+  <h3>CapacityRequirements</h3>
+  
+  <div class="type-section-desc"><p>CapacityRequirements defines the capacity requirements for a specific device request.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>requests <span class="type">(map[string]<a href="/docs/v1.35/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.</p>
+<p>This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with <code>device.capacity[&lt;domain&gt;].&lt;name&gt;.compareTo(quantity(&lt;request quantity&gt;)) &gt;= 0</code>. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) &gt;= 0.</p>
+<p>When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value—because it exceeds what the requestPolicy allows— the device is considered ineligible for allocation.</p>
+<p>For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity
+(i.e., the whole device is claimed).</p>
+<ul>
+<li>If a requestPolicy is set, the default consumed capacity is determined according to that policy.</li>
+</ul>
+<p>If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim’s status.devices[*].consumedCapacity field.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-deviceselector">
+  <h3>DeviceSelector</h3>
+  
+  <div class="type-section-desc"><p>DeviceSelector must have exactly one field set.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>cel <span class="type">(CELDeviceSelector)</span></dt>
+  <dd>
+    <p>CEL contains a CEL expression for selecting a device.</p>
+
+    
+    <p class="type-desc"><em><p>CELDeviceSelector contains a CEL expression for selecting a device.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">cel.expression <span class="type">(string)</span></dt>
+      <dd><p>Expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort.</p>
+<p>The expression's input is an object named "device", which carries the following properties:</p>
+<ul>
+<li>driver (string): the name of the driver which defines this device.</li>
+<li>attributes (map[string]object): the device's attributes, grouped by prefix
+(e.g. device.attributes["dra.example.com"] evaluates to an object with all
+of the attributes which were prefixed by "dra.example.com".</li>
+<li>capacity (map[string]object): the device's capacities, grouped by prefix.</li>
+<li>allowMultipleAllocations (bool): the allowMultipleAllocations property of the device
+(v1.34+ with the DRAConsumableCapacity feature enabled).</li>
+</ul>
+<p>Example: Consider a device with driver="dra.example.com", which exposes two attributes named "model" and "ext.example.com/family" and which exposes one capacity named "modules". This input to this expression would have the following fields:</p>
+<pre><code>device.driver
+device.attributes["dra.example.com"].model
+device.attributes["ext.example.com"].family
+device.capacity["dra.example.com"].modules
+</code></pre>
+<p>The device.driver field can be used to check for a specific driver, either as a high-level precondition (i.e. you only want to consider devices from this driver) or as part of a multi-clause expression that is meant to consider devices from different drivers.</p>
+<p>The value type of each attribute is defined by the device definition, and users who write these expressions must consult the documentation for their specific drivers. The value type of each capacity is Quantity.</p>
+<p>If an unknown prefix is used as a lookup in either device.attributes or device.capacity, an empty map will be returned. Any reference to an unknown field will cause an evaluation error and allocation to abort.</p>
+<p>A robust expression should check for the existence of attributes before referencing them.</p>
+<p>For ease of use, the cel.bind() function is enabled, and can be used to simplify expressions that access multiple attributes with the same domain. For example:</p>
+<pre><code>cel.bind(dra, device.attributes["dra.example.com"], dra.someBool &amp;&amp; dra.anotherBool)
+</code></pre>
+<p>The length of the expression must be smaller or equal to 10 Ki. The cost of evaluating it is also limited based on the estimated number of logical steps.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-devicesubrequest">
+  <h3>DeviceSubRequest</h3>
+  
+  <div class="type-section-desc"><p>DeviceSubRequest describes a request for device provided in the claim.spec.devices.requests[].firstAvailable array. Each is typically a request for a single resource like a device, but can also ask for several identical devices.</p>
+<p>DeviceSubRequest is similar to ExactDeviceRequest, but doesn't expose the AdminAccess field as that one is only supported when requesting a specific device.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">deviceClassName <span class="type">(string)</span></dt>
+  <dd>
+    <p>DeviceClassName references a specific DeviceClass, which can define additional configuration and selectors to be inherited by this subrequest.</p>
+<p>A class is required. Which classes are available depends on the cluster.</p>
+<p>Administrators may use this to restrict which devices may get requested by only installing classes with selectors for permitted devices. If users are free to request anything without restrictions, then administrators can create an empty DeviceClass for users to reference.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">name <span class="type">(string)</span></dt>
+  <dd>
+    <p>Name can be used to reference this subrequest in the list of constraints or the list of configurations for the claim. References must use the format <main request>/<subrequest>.</p>
+<p>Must be a DNS label.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>allocationMode <span class="type">(string)</span></dt>
+  <dd>
+    <p>AllocationMode and its related fields define how devices are allocated to satisfy this subrequest. Supported values are:</p>
+<ul>
+<li>
+<p>ExactCount: This request is for a specific number of devices.
+This is the default. The exact number is provided in the
+count field.</p>
+</li>
+<li>
+<p>All: This subrequest is for all of the matching devices in a pool.
+Allocation will fail if some devices are already allocated,
+unless adminAccess is requested.</p>
+</li>
+</ul>
+<p>If AllocationMode is not specified, the default mode is ExactCount. If the mode is ExactCount and count is not specified, the default count is one. Any other subrequests must specify this field.</p>
+<p>More modes may get added in the future. Clients must refuse to handle requests with unknown modes.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>capacity <span class="type">(<a href="#type-capacityrequirements" aria-label="CapacityRequirements type reference">CapacityRequirements</a>)</span></dt>
+  <dd>
+    <p>Capacity define resource requirements against each capacity.</p>
+<p>If this field is unset and the device supports multiple allocations, the default value will be applied to each capacity according to requestPolicy. For the capacity that has no requestPolicy, default is the full capacity value.</p>
+<p>Applies to each device allocation. If Count &gt; 1, the request fails if there aren't enough devices that meet the requirements. If AllocationMode is set to All, the request fails if there are devices that otherwise match the request, and have this capacity, with a value &gt;= the requested amount, but which cannot be allocated to this request.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>count <span class="type">(integer)</span></dt>
+  <dd>
+    <p>Count is used only when the count mode is "ExactCount". Must be greater than zero. If AllocationMode is ExactCount and this field is not specified, the default is one.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>selectors <span class="type">(<a href="#type-deviceselector" aria-label="[]DeviceSelector type reference">[]DeviceSelector</a>)</span></dt>
+  <dd>
+    <p>Selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this subrequest. All selectors must be satisfied for a device to be considered.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>tolerations <span class="type">([]DeviceToleration)</span></dt>
+  <dd>
+    <p>If specified, the request's tolerations.</p>
+<p>Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute.</p>
+<p>In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated.</p>
+<p>The maximum number of tolerations is 16.</p>
+<p>This is an alpha field and requires enabling the DRADeviceTaints feature gate.</p>
+
+    
+    <p class="type-desc"><em><p>The ResourceClaim this DeviceToleration is attached to tolerates any taint that matches the triple &lt;key,value,effect&gt; using the matching operator <operator>.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>tolerations.effect <span class="type">(string)</span></dt>
+      <dd><p>Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule and NoExecute.</p>
+</dd>
+      
+      <dt>tolerations.key <span class="type">(string)</span></dt>
+      <dd><p>Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys. Must be a label name.</p>
+</dd>
+      
+      <dt>tolerations.operator <span class="type">(string)</span></dt>
+      <dd><p>Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ResourceClaim can tolerate all taints of a particular category.</p>
+</dd>
+      
+      <dt>tolerations.tolerationSeconds <span class="type">(integer)</span></dt>
+      <dd><p>TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system. If larger than zero, the time when the pod needs to be evicted is calculated as <time when taint was adedd> + <toleration seconds>.</p>
+</dd>
+      
+      <dt>tolerations.value <span class="type">(string)</span></dt>
+      <dd><p>Value is the taint value the toleration matches to. If the operator is Exists, the value must be empty, otherwise just a regular string. Must be a label value.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -140,19 +777,28 @@ This is an alpha type and requires enabling the Dynamic">
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata</p>
-</dd>
+  <dd>
+    <p>Standard list metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.35/resource.k8s.io/v1beta2/resourceclaimtemplate/" aria-label="[]ResourceClaimTemplate type reference">ResourceClaimTemplate</a>)</span></dt>
-  <dd><p>Items is the list of resource claim templates.</p>
-</dd>
+  <dd>
+    <p>Items is the list of resource claim templates.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

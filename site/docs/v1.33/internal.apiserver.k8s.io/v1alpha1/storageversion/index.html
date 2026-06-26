@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>StorageVersion <span class="badge">internal.apiserver.k8s.io/v1alpha1</span></h1>
   
@@ -67,26 +68,42 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>The name is <group>.<resource>.</p>
-</dd>
+  <dd>
+    <p>The name is <group>.<resource>.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(StorageVersionSpec)</span></dt>
-  <dd><p>Spec is an empty spec. It is here to comply with Kubernetes API style.</p>
-</dd>
+  <dd>
+    <p>Spec is an empty spec. It is here to comply with Kubernetes API style.</p>
+
+    
+    <p class="type-desc"><em><p>StorageVersionSpec is an empty spec.</p>
+</em></p>
+    
+    
+  </dd>
   
   
   
   <dt class="req">status <span class="type">(<a href="#storageversionstatus" aria-label="StorageVersionStatus type reference">StorageVersionStatus</a>)</span></dt>
-  <dd><p>API server instances report the version they can decode and the version they encode objects to when persisting objects in the backend.</p>
-</dd>
+  <dd>
+    <p>API server instances report the version they can decode and the version they encode objects to when persisting objects in the backend.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   
   <section aria-labelledby="storageversionstatus">
@@ -100,25 +117,136 @@
   
   
   <dt>commonEncodingVersion <span class="type">(string)</span></dt>
-  <dd><p>If all API server instances agree on the same encoding storage version, then this field is set to that version. Otherwise this field is left empty. API servers should finish updating its storageVersionStatus entry before serving write operations, so that this field will be in sync with the reality.</p>
-</dd>
+  <dd>
+    <p>If all API server instances agree on the same encoding storage version, then this field is set to that version. Otherwise this field is left empty. API servers should finish updating its storageVersionStatus entry before serving write operations, so that this field will be in sync with the reality.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>conditions <span class="type">([]StorageVersionCondition)</span></dt>
-  <dd><p>The latest available observations of the storageVersion's state.</p>
-</dd>
+  <dt>conditions <span class="type">(<a href="#type-storageversioncondition" aria-label="[]StorageVersionCondition type reference">[]StorageVersionCondition</a>)</span></dt>
+  <dd>
+    <p>The latest available observations of the storageVersion's state.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>storageVersions <span class="type">([]ServerStorageVersion)</span></dt>
-  <dd><p>The reported versions per API server instance.</p>
+  <dd>
+    <p>The reported versions per API server instance.</p>
+
+    
+    <p class="type-desc"><em><p>An API server instance reports the version it can decode and the version it encodes objects to when persisting objects in the backend.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>storageVersions.apiServerID <span class="type">(string)</span></dt>
+      <dd><p>The ID of the reporting API server.</p>
 </dd>
+      
+      <dt>storageVersions.decodableVersions <span class="type">([]string)</span></dt>
+      <dd><p>The API server can decode objects encoded in these versions. The encodingVersion must be included in the decodableVersions.</p>
+</dd>
+      
+      <dt>storageVersions.encodingVersion <span class="type">(string)</span></dt>
+      <dd><p>The API server encodes the object to this version when persisting it in the backend (e.g., etcd).</p>
+</dd>
+      
+      <dt>storageVersions.servedVersions <span class="type">([]string)</span></dt>
+      <dd><p>The API server can serve these versions. DecodableVersions must include all ServedVersions.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-storageversioncondition">
+  <h3>StorageVersionCondition</h3>
+  
+  <div class="type-section-desc"><p>Describes the state of the storageVersion at a certain point.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">message <span class="type">(string)</span></dt>
+  <dd>
+    <p>A human readable message indicating details about the transition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">reason <span class="type">(string)</span></dt>
+  <dd>
+    <p>The reason for the condition's last transition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">status <span class="type">(string)</span></dt>
+  <dd>
+    <p>Status of the condition, one of True, False, Unknown.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">type <span class="type">(string)</span></dt>
+  <dd>
+    <p>Type of the condition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastTransitionTime <span class="type">(<a href="/docs/v1.33/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>Last time the condition transitioned from one status to another.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>observedGeneration <span class="type">(integer)</span></dt>
+  <dd>
+    <p>If set, this represents the .metadata.generation that the condition was set based upon.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="list-heading">
@@ -140,19 +268,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/internal.apiserver.k8s.io/v1alpha1/storageversion/" aria-label="[]StorageVersion type reference">StorageVersion</a>)</span></dt>
-  <dd><p>Items holds a list of StorageVersion</p>
-</dd>
+  <dd>
+    <p>Items holds a list of StorageVersion</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

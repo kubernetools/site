@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>ResourceSlice <span class="badge">resource.k8s.io/v1</span></h1>
   
@@ -79,21 +80,30 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object metadata</p>
-</dd>
+  <dd>
+    <p>Standard object metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#resourceslicespec" aria-label="ResourceSliceSpec type reference">ResourceSliceSpec</a>)</span></dt>
-  <dd><p>Contains the information published by the driver.</p>
+  <dd>
+    <p>Contains the information published by the driver.</p>
 <p>Changing the spec automatically increments the metadata.generation number.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="resourceslicespec">
     <h2 id="resourceslicespec">ResourceSliceSpec</h2>
@@ -106,67 +116,679 @@
   
   
   <dt class="req">driver <span class="type">(string)</span></dt>
-  <dd><p>Driver identifies the DRA driver providing the capacity information. A field selector can be used to list only ResourceSlice objects with a certain driver name.</p>
+  <dd>
+    <p>Driver identifies the DRA driver providing the capacity information. A field selector can be used to list only ResourceSlice objects with a certain driver name.</p>
 <p>Must be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. It should use only lower case characters. This field is immutable.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">pool <span class="type">(ResourcePool)</span></dt>
-  <dd><p>Pool describes the pool that this ResourceSlice belongs to.</p>
+  <dd>
+    <p>Pool describes the pool that this ResourceSlice belongs to.</p>
+
+    
+    <p class="type-desc"><em><p>ResourcePool describes the pool that ResourceSlices belong to.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">pool.generation <span class="type">(integer)</span></dt>
+      <dd><p>Generation tracks the change in a pool over time. Whenever a driver changes something about one or more of the resources in a pool, it must change the generation in all ResourceSlices which are part of that pool. Consumers of ResourceSlices should only consider resources from the pool with the highest generation number. The generation may be reset by drivers, which should be fine for consumers, assuming that all ResourceSlices in a pool are updated to match or deleted.</p>
+<p>Combined with ResourceSliceCount, this mechanism enables consumers to detect pools which are comprised of multiple ResourceSlices and are in an incomplete state.</p>
 </dd>
+      
+      <dt class="req">pool.name <span class="type">(string)</span></dt>
+      <dd><p>Name is used to identify the pool. For node-local devices, this is often the node name, but this is not required.</p>
+<p>It must not be longer than 253 characters and must consist of one or more DNS sub-domains separated by slashes. This field is immutable.</p>
+</dd>
+      
+      <dt class="req">pool.resourceSliceCount <span class="type">(integer)</span></dt>
+      <dd><p>ResourceSliceCount is the total number of ResourceSlices in the pool at this generation number. Must be greater than zero.</p>
+<p>Consumers can use this to check whether they have seen all ResourceSlices belonging to the same pool.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>allNodes <span class="type">(boolean)</span></dt>
-  <dd><p>AllNodes indicates that all nodes have access to the resources in the pool.</p>
+  <dd>
+    <p>AllNodes indicates that all nodes have access to the resources in the pool.</p>
 <p>Exactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
-  <dt>devices <span class="type">([]Device)</span></dt>
-  <dd><p>Devices lists some or all of the devices in this pool.</p>
+  <dt>devices <span class="type">(<a href="#type-device" aria-label="[]Device type reference">[]Device</a>)</span></dt>
+  <dd>
+    <p>Devices lists some or all of the devices in this pool.</p>
 <p>Must not have more than 128 entries. If any device uses taints or consumes counters the limit is 64.</p>
 <p>Only one of Devices and SharedCounters can be set in a ResourceSlice.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>nodeName <span class="type">(string)</span></dt>
-  <dd><p>NodeName identifies the node which provides the resources in this pool. A field selector can be used to list only ResourceSlice objects belonging to a certain node.</p>
+  <dd>
+    <p>NodeName identifies the node which provides the resources in this pool. A field selector can be used to list only ResourceSlice objects belonging to a certain node.</p>
 <p>This field can be used to limit access from nodes to ResourceSlices with the same node name. It also indicates to autoscalers that adding new nodes of the same type as some old node might also make new resources available.</p>
 <p>Exactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set. This field is immutable.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>nodeSelector <span class="type">(<a href="/docs/latest/common-definitions/nodeselector/" aria-label="NodeSelector type reference">NodeSelector</a>)</span></dt>
-  <dd><p>NodeSelector defines which nodes have access to the resources in the pool, when that pool is not limited to a single node.</p>
+  <dd>
+    <p>NodeSelector defines which nodes have access to the resources in the pool, when that pool is not limited to a single node.</p>
 <p>Must use exactly one term.</p>
 <p>Exactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>perDeviceNodeSelection <span class="type">(boolean)</span></dt>
-  <dd><p>PerDeviceNodeSelection defines whether the access from nodes to resources in the pool is set on the ResourceSlice level or on each device. If it is set to true, every device defined the ResourceSlice must specify this individually.</p>
+  <dd>
+    <p>PerDeviceNodeSelection defines whether the access from nodes to resources in the pool is set on the ResourceSlice level or on each device. If it is set to true, every device defined the ResourceSlice must specify this individually.</p>
 <p>Exactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
-  <dt>sharedCounters <span class="type">([]CounterSet)</span></dt>
-  <dd><p>SharedCounters defines a list of counter sets, each of which has a name and a list of counters available.</p>
+  <dt>sharedCounters <span class="type">(<a href="#type-counterset" aria-label="[]CounterSet type reference">[]CounterSet</a>)</span></dt>
+  <dd>
+    <p>SharedCounters defines a list of counter sets, each of which has a name and a list of counters available.</p>
 <p>The names of the counter sets must be unique in the ResourcePool.</p>
 <p>Only one of Devices and SharedCounters can be set in a ResourceSlice.</p>
 <p>The maximum number of counter sets is 8.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-device">
+  <h3>Device</h3>
+  
+  <div class="type-section-desc"><p>Device represents one individual hardware instance that can be selected based on its attributes. Besides the name, exactly one field must be set.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">name <span class="type">(string)</span></dt>
+  <dd>
+    <p>Name is unique identifier among all devices managed by the driver in the pool. It must be a DNS label.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>allNodes <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>AllNodes indicates that all nodes have access to the device.</p>
+<p>Must only be set if Spec.PerDeviceNodeSelection is set to true. At most one of NodeName, NodeSelector and AllNodes can be set.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>allowMultipleAllocations <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>AllowMultipleAllocations marks whether the device is allowed to be allocated to multiple DeviceRequests.</p>
+<p>If AllowMultipleAllocations is set to true, the device can be allocated more than once, and all of its capacity is consumable, regardless of whether the requestPolicy is defined or not.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>attributes <span class="type">(map[string]DeviceAttribute)</span></dt>
+  <dd>
+    <p>Attributes defines the set of attributes for this device. The name of each attribute must be unique in that set.</p>
+<p>The maximum number of attributes and capacities combined is 32.</p>
+
+    
+    <p class="type-desc"><em><p>DeviceAttribute must have exactly one field set.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>attributes.bool <span class="type">(boolean)</span></dt>
+      <dd><p>BoolValue is a true/false value.</p>
+</dd>
+      
+      <dt>attributes.bools <span class="type">([]boolean)</span></dt>
+      <dd><p>BoolValues is a non-empty list of true/false values.</p>
+</dd>
+      
+      <dt>attributes.int <span class="type">(integer)</span></dt>
+      <dd><p>IntValue is a number.</p>
+</dd>
+      
+      <dt>attributes.ints <span class="type">([]integer)</span></dt>
+      <dd><p>IntValues is a non-empty list of numbers.</p>
+<p>This is an alpha field and requires enabling the DRAListTypeAttributes feature gate.</p>
+</dd>
+      
+      <dt>attributes.string <span class="type">(string)</span></dt>
+      <dd><p>StringValue is a string. Must not be longer than 64 characters.</p>
+</dd>
+      
+      <dt>attributes.strings <span class="type">([]string)</span></dt>
+      <dd><p>StringValues is a non-empty list of strings. Each string must not be longer than 64 characters.</p>
+<p>This is an alpha field and requires enabling the DRAListTypeAttributes feature gate.</p>
+</dd>
+      
+      <dt>attributes.version <span class="type">(string)</span></dt>
+      <dd><p>VersionValue is a semantic version according to semver.org spec 2.0.0. Must not be longer than 64 characters.</p>
+</dd>
+      
+      <dt>attributes.versions <span class="type">([]string)</span></dt>
+      <dd><p>VersionValues is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters.</p>
+<p>This is an alpha field and requires enabling the DRAListTypeAttributes feature gate.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>bindingConditions <span class="type">([]string)</span></dt>
+  <dd>
+    <p>BindingConditions defines the conditions for proceeding with binding. All of these conditions must be set in the per-device status conditions with a value of True to proceed with binding the pod to the node while scheduling the pod.</p>
+<p>The maximum number of binding conditions is 4.</p>
+<p>The conditions must be a valid condition type string.</p>
+<p>This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>bindingFailureConditions <span class="type">([]string)</span></dt>
+  <dd>
+    <p>BindingFailureConditions defines the conditions for binding failure. They may be set in the per-device status conditions. If any is set to "True", a binding failure occurred.</p>
+<p>The maximum number of binding failure conditions is 4.</p>
+<p>The conditions must be a valid condition type string.</p>
+<p>This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>bindsToNode <span class="type">(boolean)</span></dt>
+  <dd>
+    <p>BindsToNode indicates if the usage of an allocation involving this device has to be limited to exactly the node that was chosen when allocating the claim. If set to true, the scheduler will set the ResourceClaim.Status.Allocation.NodeSelector to match the node where the allocation was made.</p>
+<p>This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>capacity <span class="type">(<a href="#type-devicecapacity" aria-label="map[string]DeviceCapacity type reference">map[string]DeviceCapacity</a>)</span></dt>
+  <dd>
+    <p>Capacity defines the set of capacities for this device. The name of each capacity must be unique in that set.</p>
+<p>The maximum number of attributes and capacities combined is 32.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>consumesCounters <span class="type">(<a href="#type-devicecounterconsumption" aria-label="[]DeviceCounterConsumption type reference">[]DeviceCounterConsumption</a>)</span></dt>
+  <dd>
+    <p>ConsumesCounters defines a list of references to sharedCounters and the set of counters that the device will consume from those counter sets.</p>
+<p>There can only be a single entry per counterSet.</p>
+<p>The maximum number of device counter consumptions per device is 2.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>nodeAllocatableResourceMappings <span class="type">(<a href="#type-nodeallocatableresourcemapping" aria-label="map[string]NodeAllocatableResourceMapping type reference">map[string]NodeAllocatableResourceMapping</a>)</span></dt>
+  <dd>
+    <p>NodeAllocatableResourceMappings defines the mapping of node resources that are managed by the DRA driver exposing this device. This includes resources currently reported in v1.Node <code>status.allocatable</code> that are not extended resources (see <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#extended-resources" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#extended-resources</a>). Examples include "cpu", "memory", "ephemeral-storage", and hugepages. In addition to standard requests made through the Pod <code>spec</code>, these resources can also be requested through claims and allocated by the DRA driver. For example, a CPU DRA driver might allocate exclusive CPUs or auxiliary node memory dependencies of an accelerator device. The keys of this map are the node-allocatable resource names (e.g., "cpu", "memory"). Extended resource names are not permitted as keys.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>nodeName <span class="type">(string)</span></dt>
+  <dd>
+    <p>NodeName identifies the node where the device is available.</p>
+<p>Must only be set if Spec.PerDeviceNodeSelection is set to true. At most one of NodeName, NodeSelector and AllNodes can be set.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>nodeSelector <span class="type">(<a href="/docs/latest/common-definitions/nodeselector/" aria-label="NodeSelector type reference">NodeSelector</a>)</span></dt>
+  <dd>
+    <p>NodeSelector defines the nodes where the device is available.</p>
+<p>Must use exactly one term.</p>
+<p>Must only be set if Spec.PerDeviceNodeSelection is set to true. At most one of NodeName, NodeSelector and AllNodes can be set.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>taints <span class="type">(<a href="#type-devicetaint" aria-label="[]DeviceTaint type reference">[]DeviceTaint</a>)</span></dt>
+  <dd>
+    <p>If specified, these are the driver-defined taints.</p>
+<p>The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128.</p>
+<p>This is a beta field and requires enabling the DRADeviceTaints feature gate.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-devicecapacity">
+  <h3>DeviceCapacity</h3>
+  
+  <div class="type-section-desc"><p>DeviceCapacity describes a quantity associated with a device.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">value <span class="type">(<a href="/docs/latest/common-definitions/quantity/" aria-label="Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>Value defines how much of a certain capacity that device has.</p>
+<p>This field reflects the fixed total capacity and does not change. The consumed amount is tracked separately by scheduler and does not affect this value.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>requestPolicy <span class="type">(<a href="#type-capacityrequestpolicy" aria-label="CapacityRequestPolicy type reference">CapacityRequestPolicy</a>)</span></dt>
+  <dd>
+    <p>RequestPolicy defines how this DeviceCapacity must be consumed when the device is allowed to be shared by multiple allocations.</p>
+<p>The Device must have allowMultipleAllocations set to true in order to set a requestPolicy.</p>
+<p>If unset, capacity requests are unconstrained: requests can consume any amount of capacity, as long as the total consumed across all allocations does not exceed the device's defined capacity. If request is also unset, default is the full capacity value.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-capacityrequestpolicy">
+  <h3>CapacityRequestPolicy</h3>
+  
+  <div class="type-section-desc"><p>CapacityRequestPolicy defines how requests consume device capacity.</p>
+<p>Must not set more than one ValidRequestValues.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>default <span class="type">(<a href="/docs/latest/common-definitions/quantity/" aria-label="Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>Default specifies how much of this capacity is consumed by a request that does not contain an entry for it in DeviceRequest's Capacity.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>validRange <span class="type">(<a href="#type-capacityrequestpolicyrange" aria-label="CapacityRequestPolicyRange type reference">CapacityRequestPolicyRange</a>)</span></dt>
+  <dd>
+    <p>ValidRange defines an acceptable quantity value range in consuming requests.</p>
+<p>If this field is set, Default must be defined and it must fall within the defined ValidRange.</p>
+<p>If the requested amount does not fall within the defined range, the request violates the policy, and this device cannot be allocated.</p>
+<p>If the request doesn't contain this capacity entry, Default value is used.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>validValues <span class="type">([]<a href="/docs/latest/common-definitions/quantity/" aria-label="[]Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>ValidValues defines a set of acceptable quantity values in consuming requests.</p>
+<p>Must not contain more than 10 entries. Must be sorted in ascending order.</p>
+<p>If this field is set, Default must be defined and it must be included in ValidValues list.</p>
+<p>If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) ∈ validValues), where requestedValue ≤ max(validValues).</p>
+<p>If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-capacityrequestpolicyrange">
+  <h3>CapacityRequestPolicyRange</h3>
+  
+  <div class="type-section-desc"><p>CapacityRequestPolicyRange defines a valid range for consumable capacity values.</p>
+<ul>
+<li>If the requested amount is less than Min, it is rounded up to the Min value.</li>
+<li>If Step is set and the requested amount is between Min and Max but not aligned with Step,
+it will be rounded up to the next value equal to Min + (n * Step).</li>
+<li>If Step is not set, the requested amount is used as-is if it falls within the range Min to Max (if set).</li>
+<li>If the requested or rounded amount exceeds Max (if set), the request does not satisfy the policy,
+and the device cannot be allocated.</li>
+</ul>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">min <span class="type">(<a href="/docs/latest/common-definitions/quantity/" aria-label="Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>Min specifies the minimum capacity allowed for a consumption request.</p>
+<p>Min must be greater than or equal to zero, and less than or equal to the capacity value. requestPolicy.default must be more than or equal to the minimum.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>max <span class="type">(<a href="/docs/latest/common-definitions/quantity/" aria-label="Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>Max defines the upper limit for capacity that can be requested.</p>
+<p>Max must be less than or equal to the capacity value. Min and requestPolicy.default must be less than or equal to the maximum.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>step <span class="type">(<a href="/docs/latest/common-definitions/quantity/" aria-label="Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>Step defines the step size between valid capacity amounts within the range.</p>
+<p>Max (if set) and requestPolicy.default must be a multiple of Step. Min + Step must be less than or equal to the capacity value.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-devicecounterconsumption">
+  <h3>DeviceCounterConsumption</h3>
+  
+  <div class="type-section-desc"><p>DeviceCounterConsumption defines a set of counters that a device will consume from a CounterSet.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">counterSet <span class="type">(string)</span></dt>
+  <dd>
+    <p>CounterSet is the name of the set from which the counters defined will be consumed.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">counters <span class="type">(<a href="#type-counter" aria-label="map[string]Counter type reference">map[string]Counter</a>)</span></dt>
+  <dd>
+    <p>Counters defines the counters that will be consumed by the device.</p>
+<p>The maximum number of counters is 32.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-counter">
+  <h3>Counter</h3>
+  
+  <div class="type-section-desc"><p>Counter describes a quantity associated with a device.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">value <span class="type">(<a href="/docs/latest/common-definitions/quantity/" aria-label="Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>Value defines how much of a certain device counter is available.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-nodeallocatableresourcemapping">
+  <h3>NodeAllocatableResourceMapping</h3>
+  
+  <div class="type-section-desc"><p>NodeAllocatableResourceMapping defines the translation between the DRA device/capacity units requested to the corresponding quantity of the node allocatable resource.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>allocationMultiplier <span class="type">(<a href="/docs/latest/common-definitions/quantity/" aria-label="Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>AllocationMultiplier is used as a multiplier for the allocated device count or the allocated capacity in the claim. It defaults to 1 if not specified. How the field is used also depends on whether <code>capacityKey</code> is set. 1.  If <code>capacityKey</code> is NOT set: <code>allocationMultiplier</code> multiplies the device count allocated to the claim.
+a. A DRA driver representing each CPU core as a device would have
+{ResourceName: "cpu", allocationMultiplier: "2"} in its
+<code>nodeAllocatableResourceMappings</code>. If 4 devices are allocated to the claim,
+4 * 2 CPUs would be considered as allocated and subtracted from the node's capacity.
+b. A GPU device that needs additional node memory per GPU allocation would
+have {ResourceName: "memory", allocationMultiplier: "2Gi"}.  Each allocated
+GPU device instance of this type will account for 2Gi of memory.</p>
+<ol start="2">
+<li>If <code>capacityKey</code> IS set: <code>allocationMultiplier</code> is multiplied by the amount of that capacity consumed.
+The final node allocatable resource amount is <code>consumedCapacity[capacityKey]</code> * <code>allocationMultiplier</code>.
+For example, if a Device's capacity "dra.example.com/cores" is consumed,
+and each "core" provides 2 "cpu"s, the mapping would be:
+{ResourceName: "cpu", capacityKey: "dra.example.com/cores", allocationMultiplier: "2"}.
+If a claim consumes 8 "dra.example.com/cores", the CPU footprint is 8 * 2 = 16.</li>
+</ol>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>capacityKey <span class="type">(string)</span></dt>
+  <dd>
+    <p>CapacityKey references a capacity name defined as a key in the <code>spec.devices[*].capacity</code> map. When this field is set, the value associated with this key in the <code>status.allocation.devices.results[*].consumedCapacity</code> map (for a specific claim allocation) determines the base quantity for the node allocatable resource. If <code>allocationMultiplier</code> is also set, it is multiplied with the base quantity. For example, if <code>spec.devices[*].capacity</code> has an entry "dra.example.com/memory": "128Gi", and this field is set to "dra.example.com/memory", then for a claim allocation that consumes { "dra.example.com/memory": "4Gi" } the base quantity for the node allocatable resource mapping will be "4Gi", and <code>allocationMultiplier</code> should be omitted or set to "1".</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-devicetaint">
+  <h3>DeviceTaint</h3>
+  
+  <div class="type-section-desc"><p>The device this taint is attached to has the "effect" on any claim which does not tolerate the taint and, through the claim, to pods using the claim.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">effect <span class="type">(string)</span></dt>
+  <dd>
+    <p>The effect of the taint on claims that do not tolerate the taint and through such claims on the pods using them.</p>
+<p>Valid effects are None, NoSchedule and NoExecute. PreferNoSchedule as used for nodes is not valid here. More effects may get added in the future. Consumers must treat unknown effects like None.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">key <span class="type">(string)</span></dt>
+  <dd>
+    <p>The taint key to be applied to a device. Must be a label name.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>timeAdded <span class="type">(<a href="/docs/latest/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>TimeAdded represents the time at which the taint was added or (only in a DeviceTaintRule) the effect was modified. Added automatically during create or update if not set.</p>
+<p>In addition, in a DeviceTaintRule a value provided during an update gets replaced with the current time if the provided value is the same as the old one and the new effect is different. Changing the key and/or value while keeping the effect unchanged is possible and does not update the time stamp because the eviction which uses it is either already started (NoExecute) or not started yet (NoEffect, NoSchedule).</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>value <span class="type">(string)</span></dt>
+  <dd>
+    <p>The taint value corresponding to the taint key. Must be a label value.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-counterset">
+  <h3>CounterSet</h3>
+  
+  <div class="type-section-desc"><p>CounterSet defines a named set of counters that are available to be used by devices defined in the ResourcePool.</p>
+<p>The counters are not allocatable by themselves, but can be referenced by devices. When a device is allocated, the portion of counters it uses will no longer be available for use by other devices.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">counters <span class="type">(<a href="#type-counter" aria-label="map[string]Counter type reference">map[string]Counter</a>)</span></dt>
+  <dd>
+    <p>Counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label.</p>
+<p>The maximum number of counters is 32.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">name <span class="type">(string)</span></dt>
+  <dd>
+    <p>Name defines the name of the counter set. It must be a DNS label.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -189,19 +811,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata</p>
-</dd>
+  <dd>
+    <p>Standard list metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/latest/resource.k8s.io/v1beta2/resourceslice/" aria-label="[]ResourceSlice type reference">ResourceSlice</a>)</span></dt>
-  <dd><p>Items is the list of resource ResourceSlices.</p>
-</dd>
+  <dd>
+    <p>Items is the list of resource ResourceSlices.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 
