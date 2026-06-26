@@ -173,7 +173,15 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/condition/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.kubernetools.com/docs/latest/common-definitions/crossversionobjectreference/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/intorstring/</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -189,6 +197,10 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/nodeselector/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.kubernetools.com/docs/latest/common-definitions/objectmeta/</loc>
     <changefreq>weekly</changefreq>
   </url>
@@ -197,7 +209,19 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/podschedulinggroup/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.kubernetools.com/docs/latest/common-definitions/quantity/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/resourcerequirements/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.kubernetools.com/docs/latest/common-definitions/toleration/</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>

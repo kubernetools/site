@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Condition &mdash; Kubernetes v1.33 | Kubernetes API Reference</title>
+  <meta name="description" content="Kubernetes Condition common definition for v1.33. Condition contains details for one aspect of the current state of this API Resource.">
+  <link rel="canonical" href="/docs/latest/common-definitions/condition/">
+  <link rel="stylesheet" href="/docs/style.css">
+  <script type="application/ld+json">{}</script>
+</head>
+<body>
+  <header>
+    <nav aria-label="Breadcrumb">
+      <ol>
+        
+        <li>
+          
+            <a href="/">Home</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/v1.33/">v1.33</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/v1.33/common-definitions/">Common Definitions</a>
+          
+        </li>
+        
+        <li>
+          
+            <span aria-current="page">Condition</span>
+          
+        </li>
+        
+      </ol>
+    </nav>
+  </header>
+  <main>
+    
+<article>
+  <h1>Condition</h1>
+  
+  <p>Condition contains details for one aspect of the current state of this API Resource.</p>
+
+  
+  
+  <section aria-labelledby="fields-heading">
+    <h2 id="fields-heading">Fields</h2>
+    <dl>
+      
+      <dt class="req">lastTransitionTime <span class="type">(Time)</span></dt>
+      <dd><p>lastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.</p>
+</dd>
+      
+      <dt class="req">message <span class="type">(string)</span></dt>
+      <dd><p>message is a human readable message indicating details about the transition. This may be an empty string.</p>
+</dd>
+      
+      <dt class="req">reason <span class="type">(string)</span></dt>
+      <dd><p>reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.</p>
+</dd>
+      
+      <dt class="req">status <span class="type">(string)</span></dt>
+      <dd><p>status of the condition, one of True, False, Unknown.</p>
+</dd>
+      
+      <dt class="req">type <span class="type">(string)</span></dt>
+      <dd><p>type of condition in CamelCase or in foo.example.com/CamelCase.</p>
+</dd>
+      
+      <dt>observedGeneration <span class="type">(integer)</span></dt>
+      <dd><p>observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.</p>
+</dd>
+      
+    </dl>
+  </section>
+  
+</article>
+
+  </main>
+  <footer>
+    <p>Kubernetools &mdash; Kubernetes API Reference</p>
+  </footer>
+</body>
+</html>
