@@ -98,13 +98,13 @@
 <dl>
   
   
-  <dt>maxUnavailable <span class="type">(IntOrString)</span></dt>
+  <dt>maxUnavailable <span class="type">(<a href="/docs/latest/common-definitions/intorstring/" aria-label="IntOrString type reference">IntOrString</a>)</span></dt>
   <dd><p>An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".</p>
 </dd>
   
   
   
-  <dt>minAvailable <span class="type">(IntOrString)</span></dt>
+  <dt>minAvailable <span class="type">(<a href="/docs/latest/common-definitions/intorstring/" aria-label="IntOrString type reference">IntOrString</a>)</span></dt>
   <dd><p>An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".</p>
 </dd>
   
@@ -140,7 +140,7 @@
 <dl>
   
   
-  <dt>conditions <span class="type">([]Condition)</span></dt>
+  <dt>conditions <span class="type">(<a href="/docs/latest/common-definitions/condition/" aria-label="[]Condition type reference">[]Condition</a>)</span></dt>
   <dd><p>Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed condition. The following are known values for the reason field (additional reasons could be added in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
 the number of allowed disruptions. Therefore no disruptions are
 allowed and the status of the condition will be False.</p>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toleration &mdash; Kubernetes v1.33 | Kubernetes API Reference</title>
+  <meta name="description" content="Kubernetes Toleration common definition for v1.33. The pod this Toleration is attached to tolerates any taint that matches the triple &lt;key,value,effect&gt; using the matching">
+  <link rel="canonical" href="/docs/latest/common-definitions/toleration/">
+  <link rel="stylesheet" href="/docs/style.css">
+  <script type="application/ld+json">{}</script>
+</head>
+<body>
+  <header>
+    <nav aria-label="Breadcrumb">
+      <ol>
+        
+        <li>
+          
+            <a href="/">Home</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/v1.33/">v1.33</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="/docs/v1.33/common-definitions/">Common Definitions</a>
+          
+        </li>
+        
+        <li>
+          
+            <span aria-current="page">Toleration</span>
+          
+        </li>
+        
+      </ol>
+    </nav>
+  </header>
+  <main>
+    
+<article>
+  <h1>Toleration</h1>
+  
+  <p>The pod this Toleration is attached to tolerates any taint that matches the triple &lt;key,value,effect&gt; using the matching operator <operator>.</p>
+
+  
+  
+  <section aria-labelledby="fields-heading">
+    <h2 id="fields-heading">Fields</h2>
+    <dl>
+      
+      <dt>effect <span class="type">(string)</span></dt>
+      <dd><p>Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.</p>
+</dd>
+      
+      <dt>key <span class="type">(string)</span></dt>
+      <dd><p>Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.</p>
+</dd>
+      
+      <dt>operator <span class="type">(string)</span></dt>
+      <dd><p>Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.</p>
+</dd>
+      
+      <dt>tolerationSeconds <span class="type">(integer)</span></dt>
+      <dd><p>TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.</p>
+</dd>
+      
+      <dt>value <span class="type">(string)</span></dt>
+      <dd><p>Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.</p>
+</dd>
+      
+    </dl>
+  </section>
+  
+</article>
+
+  </main>
+  <footer>
+    <p>Kubernetools &mdash; Kubernetes API Reference</p>
+  </footer>
+</body>
+</html>

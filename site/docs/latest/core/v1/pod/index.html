@@ -259,7 +259,7 @@
   
   
   
-  <dt>resources <span class="type">(ResourceRequirements)</span></dt>
+  <dt>resources <span class="type">(<a href="/docs/latest/common-definitions/resourcerequirements/" aria-label="ResourceRequirements type reference">ResourceRequirements</a>)</span></dt>
   <dd><p>Resources is the total amount of CPU and Memory resources required by all containers in the pod. It supports specifying Requests and Limits for "cpu", "memory" and "hugepages-" resource names only. ResourceClaims are not supported.</p>
 <p>This field enables fine-grained control over resource allocation for the entire pod, allowing resource sharing among containers in a pod.</p>
 <p>This is an alpha field and requires enabling the PodLevelResources feature gate.</p>
@@ -292,7 +292,7 @@
   
   
   
-  <dt>schedulingGroup <span class="type">(PodSchedulingGroup)</span></dt>
+  <dt>schedulingGroup <span class="type">(<a href="/docs/latest/common-definitions/podschedulinggroup/" aria-label="PodSchedulingGroup type reference">PodSchedulingGroup</a>)</span></dt>
   <dd><p>SchedulingGroup provides a reference to the immediate scheduling runtime grouping object that this Pod belongs to. This field is used by the scheduler to identify the group and apply the correct group scheduling policies. The association with a group also impacts other lifecycle aspects of a Pod that are relevant in a wider context of scheduling like preemption, resource attachment, etc. If not specified, the Pod is treated as a single unit in all of these aspects. The group object referenced by this field may not exist at the time the Pod is created. This field is immutable, but a group object with the same name may be recreated with different policies. Doing this during pod scheduling may result in the placement not conforming to the expected policies.</p>
 </dd>
   
@@ -340,7 +340,7 @@
   
   
   
-  <dt>tolerations <span class="type">([]Toleration)</span></dt>
+  <dt>tolerations <span class="type">(<a href="/docs/latest/common-definitions/toleration/" aria-label="[]Toleration type reference">[]Toleration</a>)</span></dt>
   <dd><p>If specified, the pod's tolerations.</p>
 </dd>
   
@@ -488,7 +488,7 @@
   
   
   
-  <dt>resources <span class="type">(ResourceRequirements)</span></dt>
+  <dt>resources <span class="type">(<a href="/docs/latest/common-definitions/resourcerequirements/" aria-label="ResourceRequirements type reference">ResourceRequirements</a>)</span></dt>
   <dd><p>Resources represents the compute resource requests and limits that have been applied at the pod level if pod-level requests or limits are set in PodSpec.Resources</p>
 </dd>
   
