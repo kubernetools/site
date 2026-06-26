@@ -189,7 +189,7 @@
   
   
   
-  <dt>imagePullSecrets <span class="type">(<a href="/docs/v1.34/common-definitions/localobjectreference/" aria-label="[]LocalObjectReference type reference">[]LocalObjectReference</a>)</span></dt>
+  <dt>imagePullSecrets <span class="type">([]<a href="/docs/v1.34/common-definitions/localobjectreference/" aria-label="[]LocalObjectReference type reference">LocalObjectReference</a>)</span></dt>
   <dd><p>ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. More info: <a href="https://kubernetes.io/docs/concepts/containers/images#specifying-imagepullsecrets-on-a-pod" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/containers/images#specifying-imagepullsecrets-on-a-pod</a></p>
 </dd>
   
@@ -221,7 +221,7 @@
   
   
   
-  <dt>overhead <span class="type">(map[string]Quantity)</span></dt>
+  <dt>overhead <span class="type">(map[string]<a href="/docs/v1.34/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
   <dd><p>Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. This field will be autopopulated at admission time by the RuntimeClass admission controller. If the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests. The RuntimeClass admission controller will reject Pod create requests which have the overhead already set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to the value defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as zero. More info: <a href="https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md" target="_blank" rel="noopener noreferrer">https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md</a></p>
 </dd>
   
@@ -334,7 +334,7 @@
   
   
   
-  <dt>tolerations <span class="type">(<a href="/docs/v1.34/common-definitions/toleration/" aria-label="[]Toleration type reference">[]Toleration</a>)</span></dt>
+  <dt>tolerations <span class="type">([]<a href="/docs/v1.34/common-definitions/toleration/" aria-label="[]Toleration type reference">Toleration</a>)</span></dt>
   <dd><p>If specified, the pod's tolerations.</p>
 </dd>
   
@@ -504,7 +504,7 @@
   
   
   
-  <dt class="req">items <span class="type">(<a href="/docs/v1.34/core/v1/pod/" aria-label="[]Pod type reference">[]Pod</a>)</span></dt>
+  <dt class="req">items <span class="type">([]<a href="/docs/v1.34/core/v1/pod/" aria-label="[]Pod type reference">Pod</a>)</span></dt>
   <dd><p>List of pods. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md</a></p>
 </dd>
   

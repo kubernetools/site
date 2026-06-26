@@ -212,7 +212,7 @@ When this field is not set, it means that no resize operation is in progress for
   
   
   
-  <dt>allocatedResources <span class="type">(map[string]Quantity)</span></dt>
+  <dt>allocatedResources <span class="type">(map[string]<a href="/docs/latest/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
   <dd><p>allocatedResources tracks the resources allocated to a PVC including its capacity. Key names follow standard Kubernetes label syntax. Valid values are either:
 * Un-prefixed keys:
 - storage - the capacity of the volume.
@@ -224,7 +224,7 @@ Apart from above values - keys that are unprefixed or have kubernetes.io prefix 
   
   
   
-  <dt>capacity <span class="type">(map[string]Quantity)</span></dt>
+  <dt>capacity <span class="type">(map[string]<a href="/docs/latest/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
   <dd><p>capacity represents the actual resources of the underlying volume.</p>
 </dd>
   
@@ -282,7 +282,7 @@ Apart from above values - keys that are unprefixed or have kubernetes.io prefix 
   
   
   
-  <dt class="req">items <span class="type">(<a href="/docs/latest/core/v1/persistentvolumeclaim/" aria-label="[]PersistentVolumeClaim type reference">[]PersistentVolumeClaim</a>)</span></dt>
+  <dt class="req">items <span class="type">([]<a href="/docs/latest/core/v1/persistentvolumeclaim/" aria-label="[]PersistentVolumeClaim type reference">PersistentVolumeClaim</a>)</span></dt>
   <dd><p>items is a list of persistent volume claims. More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims</a></p>
 </dd>
   

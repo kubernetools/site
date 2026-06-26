@@ -164,7 +164,7 @@
   
   
   
-  <dt>conditions <span class="type">(<a href="/docs/v1.33/common-definitions/condition/" aria-label="[]Condition type reference">[]Condition</a>)</span></dt>
+  <dt>conditions <span class="type">([]<a href="/docs/v1.33/common-definitions/condition/" aria-label="[]Condition type reference">Condition</a>)</span></dt>
   <dd><p>Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed condition. The following are known values for the reason field (additional reasons could be added in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
 the number of allowed disruptions. Therefore no disruptions are
 allowed and the status of the condition will be False.</p>
@@ -220,7 +220,7 @@ disruptions are provided by the disruptionsAllowed property.</li>
   
   
   
-  <dt class="req">items <span class="type">(<a href="/docs/v1.33/policy/v1/poddisruptionbudget/" aria-label="[]PodDisruptionBudget type reference">[]PodDisruptionBudget</a>)</span></dt>
+  <dt class="req">items <span class="type">([]<a href="/docs/v1.33/policy/v1/poddisruptionbudget/" aria-label="[]PodDisruptionBudget type reference">PodDisruptionBudget</a>)</span></dt>
   <dd><p>Items is a list of PodDisruptionBudgets</p>
 </dd>
   
