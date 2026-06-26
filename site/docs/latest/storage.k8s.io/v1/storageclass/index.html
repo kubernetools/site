@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>StorageClass <span class="badge">storage.k8s.io/v1</span></h1>
   
@@ -68,56 +69,129 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">provisioner <span class="type">(string)</span></dt>
-  <dd><p>provisioner indicates the type of the provisioner.</p>
-</dd>
+  <dd>
+    <p>provisioner indicates the type of the provisioner.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>allowVolumeExpansion <span class="type">(boolean)</span></dt>
-  <dd><p>allowVolumeExpansion shows whether the storage class allow volume expand.</p>
-</dd>
+  <dd>
+    <p>allowVolumeExpansion shows whether the storage class allow volume expand.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>allowedTopologies <span class="type">([]TopologySelectorTerm)</span></dt>
-  <dd><p>allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.</p>
-</dd>
+  <dt>allowedTopologies <span class="type">(<a href="#type-topologyselectorterm" aria-label="[]TopologySelectorTerm type reference">[]TopologySelectorTerm</a>)</span></dt>
+  <dd>
+    <p>allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>mountOptions <span class="type">([]string)</span></dt>
-  <dd><p>mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.</p>
-</dd>
+  <dd>
+    <p>mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>parameters <span class="type">(map[string]string)</span></dt>
-  <dd><p>parameters holds the parameters for the provisioner that should create volumes of this storage class.</p>
-</dd>
+  <dd>
+    <p>parameters holds the parameters for the provisioner that should create volumes of this storage class.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>reclaimPolicy <span class="type">(string)</span></dt>
-  <dd><p>reclaimPolicy controls the reclaimPolicy for dynamically provisioned PersistentVolumes of this storage class. Defaults to Delete.</p>
-</dd>
+  <dd>
+    <p>reclaimPolicy controls the reclaimPolicy for dynamically provisioned PersistentVolumes of this storage class. Defaults to Delete.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>volumeBindingMode <span class="type">(string)</span></dt>
-  <dd><p>volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.</p>
-</dd>
+  <dd>
+    <p>volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
+  
+<section class="type-section" id="type-topologyselectorterm">
+  <h3>TopologySelectorTerm</h3>
+  
+  <div class="type-section-desc"><p>A topology selector term represents the result of label queries. A null or empty topology selector term matches no objects. The requirements of them are ANDed. It provides a subset of functionality as NodeSelectorTerm. This is an alpha feature and may change in the future.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>matchLabelExpressions <span class="type">([]TopologySelectorLabelRequirement)</span></dt>
+  <dd>
+    <p>A list of topology selector requirements by labels.</p>
+
+    
+    <p class="type-desc"><em><p>A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">matchLabelExpressions.key <span class="type">(string)</span></dt>
+      <dd><p>The label key that the selector applies to.</p>
+</dd>
+      
+      <dt class="req">matchLabelExpressions.values <span class="type">([]string)</span></dt>
+      <dd><p>An array of string values. One value must match the label to be selected. Each entry in Values is ORed.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -140,19 +214,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/latest/storage.k8s.io/v1/storageclass/" aria-label="[]StorageClass type reference">StorageClass</a>)</span></dt>
-  <dd><p>items is the list of StorageClasses</p>
-</dd>
+  <dd>
+    <p>items is the list of StorageClasses</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

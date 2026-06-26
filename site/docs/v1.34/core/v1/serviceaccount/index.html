@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>ServiceAccount <span class="badge">core/v1</span></h1>
   
@@ -67,32 +68,49 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>automountServiceAccountToken <span class="type">(boolean)</span></dt>
-  <dd><p>AutomountServiceAccountToken indicates whether pods running as this service account should have an API token automatically mounted. Can be overridden at the pod level.</p>
-</dd>
+  <dd>
+    <p>AutomountServiceAccountToken indicates whether pods running as this service account should have an API token automatically mounted. Can be overridden at the pod level.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>imagePullSecrets <span class="type">([]<a href="/docs/v1.34/common-definitions/localobjectreference/" aria-label="[]LocalObjectReference type reference">LocalObjectReference</a>)</span></dt>
-  <dd><p>ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: <a href="https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod</a></p>
-</dd>
+  <dd>
+    <p>ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: <a href="https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>secrets <span class="type">([]<a href="/docs/v1.34/common-definitions/objectreference/" aria-label="[]ObjectReference type reference">ObjectReference</a>)</span></dt>
-  <dd><p>Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". The "kubernetes.io/enforce-mountable-secrets" annotation is deprecated since v1.32. Prefer separate namespaces to isolate access to mounted secrets. This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: <a href="https://kubernetes.io/docs/concepts/configuration/secret" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/configuration/secret</a></p>
-</dd>
+  <dd>
+    <p>Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". The "kubernetes.io/enforce-mountable-secrets" annotation is deprecated since v1.32. Prefer separate namespaces to isolate access to mounted secrets. This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: <a href="https://kubernetes.io/docs/concepts/configuration/secret" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/configuration/secret</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   
   
@@ -115,19 +133,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.34/core/v1/serviceaccount/" aria-label="[]ServiceAccount type reference">ServiceAccount</a>)</span></dt>
-  <dd><p>List of ServiceAccounts. More info: <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/</a></p>
-</dd>
+  <dd>
+    <p>List of ServiceAccounts. More info: <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

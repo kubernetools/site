@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>HorizontalPodAutoscaler <span class="badge">autoscaling/v1</span></h1>
   
@@ -73,26 +74,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#horizontalpodautoscalerspec" aria-label="HorizontalPodAutoscalerSpec type reference">HorizontalPodAutoscalerSpec</a>)</span></dt>
-  <dd><p>spec defines the behaviour of autoscaler. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a>.</p>
-</dd>
+  <dd>
+    <p>spec defines the behaviour of autoscaler. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a>.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#horizontalpodautoscalerstatus" aria-label="HorizontalPodAutoscalerStatus type reference">HorizontalPodAutoscalerStatus</a>)</span></dt>
-  <dd><p>status is the current information about the autoscaler.</p>
-</dd>
+  <dd>
+    <p>status is the current information about the autoscaler.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="horizontalpodautoscalerspec">
     <h2 id="horizontalpodautoscalerspec">HorizontalPodAutoscalerSpec</h2>
@@ -105,31 +119,48 @@
   
   
   <dt class="req">maxReplicas <span class="type">(integer)</span></dt>
-  <dd><p>maxReplicas is the upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.</p>
-</dd>
+  <dd>
+    <p>maxReplicas is the upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">scaleTargetRef <span class="type">(<a href="/docs/v1.34/common-definitions/crossversionobjectreference/" aria-label="CrossVersionObjectReference type reference">CrossVersionObjectReference</a>)</span></dt>
-  <dd><p>reference to scaled resource; horizontal pod autoscaler will learn the current resource consumption and will set the desired number of pods by using its Scale subresource.</p>
-</dd>
+  <dd>
+    <p>reference to scaled resource; horizontal pod autoscaler will learn the current resource consumption and will set the desired number of pods by using its Scale subresource.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>minReplicas <span class="type">(integer)</span></dt>
-  <dd><p>minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down.  It defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is enabled and at least one Object or External metric is configured.  Scaling is active as long as at least one metric value is available.</p>
-</dd>
+  <dd>
+    <p>minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down.  It defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is enabled and at least one Object or External metric is configured.  Scaling is active as long as at least one metric value is available.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>targetCPUUtilizationPercentage <span class="type">(integer)</span></dt>
-  <dd><p>targetCPUUtilizationPercentage is the target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified the default autoscaling policy will be used.</p>
-</dd>
+  <dd>
+    <p>targetCPUUtilizationPercentage is the target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified the default autoscaling policy will be used.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="horizontalpodautoscalerstatus">
@@ -143,37 +174,58 @@
   
   
   <dt class="req">currentReplicas <span class="type">(integer)</span></dt>
-  <dd><p>currentReplicas is the current number of replicas of pods managed by this autoscaler.</p>
-</dd>
+  <dd>
+    <p>currentReplicas is the current number of replicas of pods managed by this autoscaler.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">desiredReplicas <span class="type">(integer)</span></dt>
-  <dd><p>desiredReplicas is the  desired number of replicas of pods managed by this autoscaler.</p>
-</dd>
+  <dd>
+    <p>desiredReplicas is the  desired number of replicas of pods managed by this autoscaler.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>currentCPUUtilizationPercentage <span class="type">(integer)</span></dt>
-  <dd><p>currentCPUUtilizationPercentage is the current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.</p>
-</dd>
+  <dd>
+    <p>currentCPUUtilizationPercentage is the current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>lastScaleTime <span class="type">(Time)</span></dt>
-  <dd><p>lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods; used by the autoscaler to control how often the number of pods is changed.</p>
-</dd>
+  <dt>lastScaleTime <span class="type">(<a href="/docs/v1.34/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods; used by the autoscaler to control how often the number of pods is changed.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>observedGeneration <span class="type">(integer)</span></dt>
-  <dd><p>observedGeneration is the most recent generation observed by this autoscaler.</p>
-</dd>
+  <dd>
+    <p>observedGeneration is the most recent generation observed by this autoscaler.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="list-heading">
@@ -195,19 +247,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata.</p>
-</dd>
+  <dd>
+    <p>Standard list metadata.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.34/autoscaling/v2/horizontalpodautoscaler/" aria-label="[]HorizontalPodAutoscaler type reference">HorizontalPodAutoscaler</a>)</span></dt>
-  <dd><p>items is the list of horizontal pod autoscaler objects.</p>
-</dd>
+  <dd>
+    <p>items is the list of horizontal pod autoscaler objects.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

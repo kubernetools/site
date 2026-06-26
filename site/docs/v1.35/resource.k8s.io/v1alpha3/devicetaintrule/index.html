@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>DeviceTaintRule <span class="badge">resource.k8s.io/v1alpha3</span></h1>
   
@@ -67,27 +68,40 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object metadata</p>
-</dd>
+  <dd>
+    <p>Standard object metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#devicetaintrulespec" aria-label="DeviceTaintRuleSpec type reference">DeviceTaintRuleSpec</a>)</span></dt>
-  <dd><p>Spec specifies the selector and one taint.</p>
+  <dd>
+    <p>Spec specifies the selector and one taint.</p>
 <p>Changing the spec automatically increments the metadata.generation number.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#devicetaintrulestatus" aria-label="DeviceTaintRuleStatus type reference">DeviceTaintRuleStatus</a>)</span></dt>
-  <dd><p>Status provides information about what was requested in the spec.</p>
-</dd>
+  <dd>
+    <p>Status provides information about what was requested in the spec.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="devicetaintrulespec">
     <h2 id="devicetaintrulespec">DeviceTaintRuleSpec</h2>
@@ -99,20 +113,106 @@
 <dl>
   
   
-  <dt class="req">taint <span class="type">(DeviceTaint)</span></dt>
-  <dd><p>The taint that gets applied to matching devices.</p>
-</dd>
+  <dt class="req">taint <span class="type">(<a href="#type-devicetaint" aria-label="DeviceTaint type reference">DeviceTaint</a>)</span></dt>
+  <dd>
+    <p>The taint that gets applied to matching devices.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>deviceSelector <span class="type">(DeviceTaintSelector)</span></dt>
-  <dd><p>DeviceSelector defines which device(s) the taint is applied to. All selector criteria must be satisfied for a device to match. The empty selector matches all devices. Without a selector, no devices are matches.</p>
+  <dd>
+    <p>DeviceSelector defines which device(s) the taint is applied to. All selector criteria must be satisfied for a device to match. The empty selector matches all devices. Without a selector, no devices are matches.</p>
+
+    
+    <p class="type-desc"><em><p>DeviceTaintSelector defines which device(s) a DeviceTaintRule applies to. The empty selector matches all devices. Without a selector, no devices are matched.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>deviceSelector.device <span class="type">(string)</span></dt>
+      <dd><p>If device is set, only devices with that name are selected. This field corresponds to slice.spec.devices[].name.</p>
+<p>Setting also driver and pool may be required to avoid ambiguity, but is not required.</p>
 </dd>
+      
+      <dt>deviceSelector.driver <span class="type">(string)</span></dt>
+      <dd><p>If driver is set, only devices from that driver are selected. This fields corresponds to slice.spec.driver.</p>
+</dd>
+      
+      <dt>deviceSelector.pool <span class="type">(string)</span></dt>
+      <dd><p>If pool is set, only devices in that pool are selected.</p>
+<p>Also setting the driver name may be useful to avoid ambiguity when different drivers use the same pool name, but this is not required because selecting pools from different drivers may also be useful, for example when drivers with node-local devices use the node name as their pool name.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-devicetaint">
+  <h3>DeviceTaint</h3>
+  
+  <div class="type-section-desc"><p>The device this taint is attached to has the "effect" on any claim which does not tolerate the taint and, through the claim, to pods using the claim.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">effect <span class="type">(string)</span></dt>
+  <dd>
+    <p>The effect of the taint on claims that do not tolerate the taint and through such claims on the pods using them.</p>
+<p>Valid effects are None, NoSchedule and NoExecute. PreferNoSchedule as used for nodes is not valid here. More effects may get added in the future. Consumers must treat unknown effects like None.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">key <span class="type">(string)</span></dt>
+  <dd>
+    <p>The taint key to be applied to a device. Must be a label name.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>timeAdded <span class="type">(<a href="/docs/v1.35/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>TimeAdded represents the time at which the taint was added. Added automatically during create or update if not set.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>value <span class="type">(string)</span></dt>
+  <dd>
+    <p>The taint value corresponding to the taint key. Must be a label value.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="devicetaintrulestatus">
@@ -126,7 +226,8 @@
   
   
   <dt>conditions <span class="type">([]<a href="/docs/v1.35/common-definitions/condition/" aria-label="[]Condition type reference">Condition</a>)</span></dt>
-  <dd><p>Conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format.</p>
+  <dd>
+    <p>Conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format.</p>
 <p>The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise
 (includes the effects which don't cause eviction).</p>
 <ul>
@@ -135,12 +236,16 @@ in a human-readable format, updated periodically, may change</li>
 </ul>
 <p>For <code>effect: None</code>, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was <code>NoExecute</code>. This feedback can be used to decide whether changing the effect to <code>NoExecute</code> will work as intended. It only gets set once to avoid having to constantly update the status.</p>
 <p>Must have 8 or fewer entries.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="list-heading">
@@ -162,19 +267,28 @@ in a human-readable format, updated periodically, may change</li>
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata</p>
-</dd>
+  <dd>
+    <p>Standard list metadata</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.35/resource.k8s.io/v1alpha3/devicetaintrule/" aria-label="[]DeviceTaintRule type reference">DeviceTaintRule</a>)</span></dt>
-  <dd><p>Items is the list of DeviceTaintRules.</p>
-</dd>
+  <dd>
+    <p>Items is the list of DeviceTaintRules.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

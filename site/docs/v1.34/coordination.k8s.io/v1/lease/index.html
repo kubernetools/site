@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>Lease <span class="badge">coordination.k8s.io/v1</span></h1>
   
@@ -67,20 +68,29 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#leasespec" aria-label="LeaseSpec type reference">LeaseSpec</a>)</span></dt>
-  <dd><p>spec contains the specification of the Lease. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>spec contains the specification of the Lease. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="leasespec">
     <h2 id="leasespec">LeaseSpec</h2>
@@ -93,49 +103,84 @@
   
   
   <dt>acquireTime <span class="type">(MicroTime)</span></dt>
-  <dd><p>acquireTime is a time when the current lease was acquired.</p>
-</dd>
+  <dd>
+    <p>acquireTime is a time when the current lease was acquired.</p>
+
+    
+    <p class="type-desc"><em><p>MicroTime is version of Time with microsecond level precision.</p>
+</em></p>
+    
+    
+  </dd>
   
   
   
   <dt>holderIdentity <span class="type">(string)</span></dt>
-  <dd><p>holderIdentity contains the identity of the holder of a current lease. If Coordinated Leader Election is used, the holder identity must be equal to the elected LeaseCandidate.metadata.name field.</p>
-</dd>
+  <dd>
+    <p>holderIdentity contains the identity of the holder of a current lease. If Coordinated Leader Election is used, the holder identity must be equal to the elected LeaseCandidate.metadata.name field.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>leaseDurationSeconds <span class="type">(integer)</span></dt>
-  <dd><p>leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measured against the time of last observed renewTime.</p>
-</dd>
+  <dd>
+    <p>leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measured against the time of last observed renewTime.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>leaseTransitions <span class="type">(integer)</span></dt>
-  <dd><p>leaseTransitions is the number of transitions of a lease between holders.</p>
-</dd>
+  <dd>
+    <p>leaseTransitions is the number of transitions of a lease between holders.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>preferredHolder <span class="type">(string)</span></dt>
-  <dd><p>PreferredHolder signals to a lease holder that the lease has a more optimal holder and should be given up. This field can only be set if Strategy is also set.</p>
-</dd>
+  <dd>
+    <p>PreferredHolder signals to a lease holder that the lease has a more optimal holder and should be given up. This field can only be set if Strategy is also set.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>renewTime <span class="type">(MicroTime)</span></dt>
-  <dd><p>renewTime is a time when the current holder of a lease has last updated the lease.</p>
-</dd>
+  <dd>
+    <p>renewTime is a time when the current holder of a lease has last updated the lease.</p>
+
+    
+    <p class="type-desc"><em><p>MicroTime is version of Time with microsecond level precision.</p>
+</em></p>
+    
+    
+  </dd>
   
   
   
   <dt>strategy <span class="type">(string)</span></dt>
-  <dd><p>Strategy indicates the strategy for picking the leader for coordinated leader election. If the field is not specified, there is no active coordination for this lease. (Alpha) Using this field requires the CoordinatedLeaderElection feature gate to be enabled.</p>
-</dd>
+  <dd>
+    <p>Strategy indicates the strategy for picking the leader for coordinated leader election. If the field is not specified, there is no active coordination for this lease. (Alpha) Using this field requires the CoordinatedLeaderElection feature gate to be enabled.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   
@@ -158,19 +203,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.34/coordination.k8s.io/v1/lease/" aria-label="[]Lease type reference">Lease</a>)</span></dt>
-  <dd><p>items is a list of schema objects.</p>
-</dd>
+  <dd>
+    <p>items is a list of schema objects.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

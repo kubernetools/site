@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>Event <span class="badge">events.k8s.io/v1</span></h1>
   
@@ -67,98 +68,215 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">eventTime <span class="type">(MicroTime)</span></dt>
-  <dd><p>eventTime is the time when this Event was first observed. It is required.</p>
-</dd>
+  <dd>
+    <p>eventTime is the time when this Event was first observed. It is required.</p>
+
+    
+    <p class="type-desc"><em><p>MicroTime is version of Time with microsecond level precision.</p>
+</em></p>
+    
+    
+  </dd>
   
   
   
   <dt>action <span class="type">(string)</span></dt>
-  <dd><p>action is what action was taken/failed regarding to the regarding object. It is machine-readable. This field cannot be empty for new Events and it can have at most 128 characters.</p>
-</dd>
+  <dd>
+    <p>action is what action was taken/failed regarding to the regarding object. It is machine-readable. This field cannot be empty for new Events and it can have at most 128 characters.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>deprecatedCount <span class="type">(integer)</span></dt>
-  <dd><p>deprecatedCount is the deprecated field assuring backward compatibility with core.v1 Event type.</p>
-</dd>
+  <dd>
+    <p>deprecatedCount is the deprecated field assuring backward compatibility with core.v1 Event type.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>deprecatedFirstTimestamp <span class="type">(Time)</span></dt>
-  <dd><p>deprecatedFirstTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.</p>
-</dd>
+  <dt>deprecatedFirstTimestamp <span class="type">(<a href="/docs/v1.35/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>deprecatedFirstTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>deprecatedLastTimestamp <span class="type">(Time)</span></dt>
-  <dd><p>deprecatedLastTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.</p>
-</dd>
+  <dt>deprecatedLastTimestamp <span class="type">(<a href="/docs/v1.35/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>deprecatedLastTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>deprecatedSource <span class="type">(EventSource)</span></dt>
-  <dd><p>deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.</p>
+  <dd>
+    <p>deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.</p>
+
+    
+    <p class="type-desc"><em><p>EventSource contains information for an event.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>deprecatedSource.component <span class="type">(string)</span></dt>
+      <dd><p>Component from which the event is generated.</p>
 </dd>
+      
+      <dt>deprecatedSource.host <span class="type">(string)</span></dt>
+      <dd><p>Node name on which the event is generated.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>note <span class="type">(string)</span></dt>
-  <dd><p>note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.</p>
-</dd>
+  <dd>
+    <p>note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>reason <span class="type">(string)</span></dt>
-  <dd><p>reason is why the action was taken. It is human-readable. This field cannot be empty for new Events and it can have at most 128 characters.</p>
-</dd>
+  <dd>
+    <p>reason is why the action was taken. It is human-readable. This field cannot be empty for new Events and it can have at most 128 characters.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>regarding <span class="type">(<a href="/docs/v1.35/common-definitions/objectreference/" aria-label="ObjectReference type reference">ObjectReference</a>)</span></dt>
-  <dd><p>regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.</p>
-</dd>
+  <dd>
+    <p>regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>related <span class="type">(<a href="/docs/v1.35/common-definitions/objectreference/" aria-label="ObjectReference type reference">ObjectReference</a>)</span></dt>
-  <dd><p>related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.</p>
-</dd>
+  <dd>
+    <p>related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>reportingController <span class="type">(string)</span></dt>
-  <dd><p>reportingController is the name of the controller that emitted this Event, e.g. <code>kubernetes.io/kubelet</code>. This field cannot be empty for new Events.</p>
-</dd>
+  <dd>
+    <p>reportingController is the name of the controller that emitted this Event, e.g. <code>kubernetes.io/kubelet</code>. This field cannot be empty for new Events.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>reportingInstance <span class="type">(string)</span></dt>
-  <dd><p>reportingInstance is the ID of the controller instance, e.g. <code>kubelet-xyzf</code>. This field cannot be empty for new Events and it can have at most 128 characters.</p>
-</dd>
+  <dd>
+    <p>reportingInstance is the ID of the controller instance, e.g. <code>kubelet-xyzf</code>. This field cannot be empty for new Events and it can have at most 128 characters.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>series <span class="type">(EventSeries)</span></dt>
-  <dd><p>series is data about the Event series this event represents or nil if it's a singleton Event.</p>
-</dd>
+  <dt>series <span class="type">(<a href="#type-eventseries" aria-label="EventSeries type reference">EventSeries</a>)</span></dt>
+  <dd>
+    <p>series is data about the Event series this event represents or nil if it's a singleton Event.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>type <span class="type">(string)</span></dt>
-  <dd><p>type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.</p>
-</dd>
+  <dd>
+    <p>type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
+  
+<section class="type-section" id="type-eventseries">
+  <h3>EventSeries</h3>
+  
+  <div class="type-section-desc"><p>EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>count <span class="type">(integer)</span></dt>
+  <dd>
+    <p>Number of occurrences in this series up to the last heartbeat time</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastObservedTime <span class="type">(MicroTime)</span></dt>
+  <dd>
+    <p>Time of the last occurrence observed</p>
+
+    
+    <p class="type-desc"><em><p>MicroTime is version of Time with microsecond level precision.</p>
+</em></p>
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -181,19 +299,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.35/events.k8s.io/v1/event/" aria-label="[]Event type reference">Event</a>)</span></dt>
-  <dd><p>items is a list of schema objects.</p>
-</dd>
+  <dd>
+    <p>items is a list of schema objects.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

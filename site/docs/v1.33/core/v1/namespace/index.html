@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>Namespace <span class="badge">core/v1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#namespacespec" aria-label="NamespaceSpec type reference">NamespaceSpec</a>)</span></dt>
-  <dd><p>Spec defines the behavior of the Namespace. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>Spec defines the behavior of the Namespace. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#namespacestatus" aria-label="NamespaceStatus type reference">NamespaceStatus</a>)</span></dt>
-  <dd><p>Status describes the current status of a Namespace. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>Status describes the current status of a Namespace. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="namespacespec">
     <h2 id="namespacespec">NamespaceSpec</h2>
@@ -99,13 +113,18 @@
   
   
   <dt>finalizers <span class="type">([]string)</span></dt>
-  <dd><p>Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: <a href="https://kubernetes.io/docs/tasks/administer-cluster/namespaces/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</a></p>
-</dd>
+  <dd>
+    <p>Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: <a href="https://kubernetes.io/docs/tasks/administer-cluster/namespaces/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="namespacestatus">
@@ -118,20 +137,94 @@
 <dl>
   
   
-  <dt>conditions <span class="type">([]NamespaceCondition)</span></dt>
-  <dd><p>Represents the latest available observations of a namespace's current state.</p>
-</dd>
+  <dt>conditions <span class="type">(<a href="#type-namespacecondition" aria-label="[]NamespaceCondition type reference">[]NamespaceCondition</a>)</span></dt>
+  <dd>
+    <p>Represents the latest available observations of a namespace's current state.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>phase <span class="type">(string)</span></dt>
-  <dd><p>Phase is the current lifecycle phase of the namespace. More info: <a href="https://kubernetes.io/docs/tasks/administer-cluster/namespaces/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</a></p>
-</dd>
+  <dd>
+    <p>Phase is the current lifecycle phase of the namespace. More info: <a href="https://kubernetes.io/docs/tasks/administer-cluster/namespaces/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/tasks/administer-cluster/namespaces/</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-namespacecondition">
+  <h3>NamespaceCondition</h3>
+  
+  <div class="type-section-desc"><p>NamespaceCondition contains details about state of namespace.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">status <span class="type">(string)</span></dt>
+  <dd>
+    <p>Status of the condition, one of True, False, Unknown.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">type <span class="type">(string)</span></dt>
+  <dd>
+    <p>Type of namespace controller condition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastTransitionTime <span class="type">(<a href="/docs/v1.33/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>Last time the condition transitioned from one status to another.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>message <span class="type">(string)</span></dt>
+  <dd>
+    <p>Human-readable message indicating details about last transition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>reason <span class="type">(string)</span></dt>
+  <dd>
+    <p>Unique, one-word, CamelCase reason for the condition's last transition.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="list-heading">
@@ -153,19 +246,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/core/v1/namespace/" aria-label="[]Namespace type reference">Namespace</a>)</span></dt>
-  <dd><p>Items is the list of Namespace objects in the list. More info: <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/</a></p>
-</dd>
+  <dd>
+    <p>Items is the list of Namespace objects in the list. More info: <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

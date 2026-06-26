@@ -49,6 +49,7 @@
   <main>
     
 
+
 <article>
   <h1>Endpoints <span class="badge">core/v1</span></h1>
   
@@ -86,20 +87,178 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>subsets <span class="type">([]EndpointSubset)</span></dt>
-  <dd><p>The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.</p>
-</dd>
+  <dt>subsets <span class="type">(<a href="#type-endpointsubset" aria-label="[]EndpointSubset type reference">[]EndpointSubset</a>)</span></dt>
+  <dd>
+    <p>The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
+  
+<section class="type-section" id="type-endpointsubset">
+  <h3>EndpointSubset</h3>
+  
+  <div class="type-section-desc"><p>EndpointSubset is a group of addresses with a common set of ports. The expanded set of endpoints is the Cartesian product of Addresses x Ports. For example, given:</p>
+<pre><code>{
+  Addresses: [{"ip": "10.10.1.1"}, {"ip": "10.10.2.2"}],
+  Ports:     [{"name": "a", "port": 8675}, {"name": "b", "port": 309}]
+}
+</code></pre>
+<p>The resulting set of endpoints can be viewed as:</p>
+<pre><code>a: [ 10.10.1.1:8675, 10.10.2.2:8675 ],
+b: [ 10.10.1.1:309, 10.10.2.2:309 ]
+</code></pre>
+<p>Deprecated: This API is deprecated in v1.33+.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>addresses <span class="type">(<a href="#type-endpointaddress" aria-label="[]EndpointAddress type reference">[]EndpointAddress</a>)</span></dt>
+  <dd>
+    <p>IP addresses which offer the related ports that are marked as ready. These endpoints should be considered safe for load balancers and clients to utilize.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>notReadyAddresses <span class="type">(<a href="#type-endpointaddress" aria-label="[]EndpointAddress type reference">[]EndpointAddress</a>)</span></dt>
+  <dd>
+    <p>IP addresses which offer the related ports but are not currently marked as ready because they have not yet finished starting, have recently failed a readiness check, or have recently failed a liveness check.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>ports <span class="type">([]EndpointPort)</span></dt>
+  <dd>
+    <p>Port numbers available on the related IP addresses.</p>
+
+    
+    <p class="type-desc"><em><p>EndpointPort is a tuple that describes a single port. Deprecated: This API is deprecated in v1.33+.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">ports.port <span class="type">(integer)</span></dt>
+      <dd><p>The port number of the endpoint.</p>
+</dd>
+      
+      <dt>ports.appProtocol <span class="type">(string)</span></dt>
+      <dd><p>The application protocol for this port. This is used as a hint for implementations to offer richer behavior for protocols that they understand. This field follows standard Kubernetes label syntax. Valid values are either:</p>
+<ul>
+<li>
+<p>Un-prefixed protocol names - reserved for IANA standard service names (as per RFC-6335 and <a href="https://www.iana.org/assignments/service-names" target="_blank" rel="noopener noreferrer">https://www.iana.org/assignments/service-names</a>).</p>
+</li>
+<li>
+<p>Kubernetes-defined prefixed names:</p>
+<ul>
+<li>'kubernetes.io/h2c' - HTTP/2 prior knowledge over cleartext as described in <a href="https://www.rfc-editor.org/rfc/rfc9113.html#name-starting-http-2-with-prior-" target="_blank" rel="noopener noreferrer">https://www.rfc-editor.org/rfc/rfc9113.html#name-starting-http-2-with-prior-</a></li>
+<li>'kubernetes.io/ws'  - WebSocket over cleartext as described in <a href="https://www.rfc-editor.org/rfc/rfc6455" target="_blank" rel="noopener noreferrer">https://www.rfc-editor.org/rfc/rfc6455</a></li>
+<li>'kubernetes.io/wss' - WebSocket over TLS as described in <a href="https://www.rfc-editor.org/rfc/rfc6455" target="_blank" rel="noopener noreferrer">https://www.rfc-editor.org/rfc/rfc6455</a></li>
+</ul>
+</li>
+<li>
+<p>Other protocols should use implementation-defined prefixed names such as mycompany.com/my-custom-protocol.</p>
+</li>
+</ul>
+</dd>
+      
+      <dt>ports.name <span class="type">(string)</span></dt>
+      <dd><p>The name of this port.  This must match the 'name' field in the corresponding ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.</p>
+</dd>
+      
+      <dt>ports.protocol <span class="type">(string)</span></dt>
+      <dd><p>The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-endpointaddress">
+  <h3>EndpointAddress</h3>
+  
+  <div class="type-section-desc"><p>EndpointAddress is a tuple that describes single IP address. Deprecated: This API is deprecated in v1.33+.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">ip <span class="type">(string)</span></dt>
+  <dd>
+    <p>The IP of this endpoint. May not be loopback (127.0.0.0/8 or ::1), link-local (169.254.0.0/16 or fe80::/10), or link-local multicast (224.0.0.0/24 or ff02::/16).</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>hostname <span class="type">(string)</span></dt>
+  <dd>
+    <p>The Hostname of this endpoint</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>nodeName <span class="type">(string)</span></dt>
+  <dd>
+    <p>Optional: Node hosting this endpoint. This can be used to determine endpoints local to a node.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>targetRef <span class="type">(<a href="/docs/v1.34/common-definitions/objectreference/" aria-label="ObjectReference type reference">ObjectReference</a>)</span></dt>
+  <dd>
+    <p>Reference to object providing the endpoint.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -122,19 +281,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.34/core/v1/endpoints/" aria-label="[]Endpoints type reference">Endpoints</a>)</span></dt>
-  <dd><p>List of endpoints.</p>
-</dd>
+  <dd>
+    <p>List of endpoints.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

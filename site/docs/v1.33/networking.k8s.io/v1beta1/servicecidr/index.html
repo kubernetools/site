@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>ServiceCIDR <span class="badge">networking.k8s.io/v1beta1</span></h1>
   
@@ -73,26 +74,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#servicecidrspec" aria-label="ServiceCIDRSpec type reference">ServiceCIDRSpec</a>)</span></dt>
-  <dd><p>spec is the desired state of the ServiceCIDR. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>spec is the desired state of the ServiceCIDR. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#servicecidrstatus" aria-label="ServiceCIDRStatus type reference">ServiceCIDRStatus</a>)</span></dt>
-  <dd><p>status represents the current state of the ServiceCIDR. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>status represents the current state of the ServiceCIDR. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="servicecidrspec">
     <h2 id="servicecidrspec">ServiceCIDRSpec</h2>
@@ -105,13 +119,18 @@
   
   
   <dt>cidrs <span class="type">([]string)</span></dt>
-  <dd><p>CIDRs defines the IP blocks in CIDR notation (e.g. "192.168.0.0/24" or "2001:db8::/64") from which to assign service cluster IPs. Max of two CIDRs is allowed, one of each IP family. This field is immutable.</p>
-</dd>
+  <dd>
+    <p>CIDRs defines the IP blocks in CIDR notation (e.g. "192.168.0.0/24" or "2001:db8::/64") from which to assign service cluster IPs. Max of two CIDRs is allowed, one of each IP family. This field is immutable.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="servicecidrstatus">
@@ -125,13 +144,18 @@
   
   
   <dt>conditions <span class="type">([]<a href="/docs/v1.33/common-definitions/condition/" aria-label="[]Condition type reference">Condition</a>)</span></dt>
-  <dd><p>conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state</p>
-</dd>
+  <dd>
+    <p>conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="list-heading">
@@ -153,19 +177,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/networking.k8s.io/v1beta1/servicecidr/" aria-label="[]ServiceCIDR type reference">ServiceCIDR</a>)</span></dt>
-  <dd><p>items is the list of ServiceCIDRs.</p>
-</dd>
+  <dd>
+    <p>items is the list of ServiceCIDRs.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

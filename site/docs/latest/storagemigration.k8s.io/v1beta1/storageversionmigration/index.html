@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>StorageVersionMigration <span class="badge">storagemigration.k8s.io/v1beta1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#storageversionmigrationspec" aria-label="StorageVersionMigrationSpec type reference">StorageVersionMigrationSpec</a>)</span></dt>
-  <dd><p>Specification of the migration.</p>
-</dd>
+  <dd>
+    <p>Specification of the migration.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#storageversionmigrationstatus" aria-label="StorageVersionMigrationStatus type reference">StorageVersionMigrationStatus</a>)</span></dt>
-  <dd><p>Status of the migration.</p>
-</dd>
+  <dd>
+    <p>Status of the migration.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="storageversionmigrationspec">
     <h2 id="storageversionmigrationspec">StorageVersionMigrationSpec</h2>
@@ -99,13 +113,31 @@
   
   
   <dt class="req">resource <span class="type">(GroupResource)</span></dt>
-  <dd><p>The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.</p>
-</dd>
+  <dd>
+    <p>The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.</p>
+
+    
+    <p class="type-desc"><em><p>GroupResource specifies a Group and a Resource, but does not force a version.  This is useful for identifying concepts during lookup stages without having partially valid types</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">resource.group <span class="type">(string)</span></dt>
+      <dd>No description available.</dd>
+      
+      <dt class="req">resource.resource <span class="type">(string)</span></dt>
+      <dd>No description available.</dd>
+      
+    </dl>
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="storageversionmigrationstatus">
@@ -119,19 +151,28 @@
   
   
   <dt>conditions <span class="type">([]<a href="/docs/latest/common-definitions/condition/" aria-label="[]Condition type reference">Condition</a>)</span></dt>
-  <dd><p>The latest available observations of the migration's current state.</p>
-</dd>
+  <dd>
+    <p>The latest available observations of the migration's current state.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>resourceVersion <span class="type">(string)</span></dt>
-  <dd><p>ResourceVersion to compare with the GC cache for performing the migration. This is the current resource version of given group, version and resource when kube-controller-manager first observes this StorageVersionMigration resource.</p>
-</dd>
+  <dd>
+    <p>ResourceVersion to compare with the GC cache for performing the migration. This is the current resource version of given group, version and resource when kube-controller-manager first observes this StorageVersionMigration resource.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="list-heading">
@@ -153,19 +194,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/latest/storagemigration.k8s.io/v1beta1/storageversionmigration/" aria-label="[]StorageVersionMigration type reference">StorageVersionMigration</a>)</span></dt>
-  <dd><p>Items is the list of StorageVersionMigration</p>
-</dd>
+  <dd>
+    <p>Items is the list of StorageVersionMigration</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

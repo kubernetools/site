@@ -43,6 +43,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>Toleration</h1>
   
@@ -55,27 +56,48 @@
     <dl>
       
       <dt>effect <span class="type">(string)</span></dt>
-      <dd><p>Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.</p>
-</dd>
+      <dd>
+        <p>Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.</p>
+
+        
+        
+      </dd>
       
       <dt>key <span class="type">(string)</span></dt>
-      <dd><p>Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.</p>
-</dd>
+      <dd>
+        <p>Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.</p>
+
+        
+        
+      </dd>
       
       <dt>operator <span class="type">(string)</span></dt>
-      <dd><p>Operator represents a key's relationship to the value. Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).</p>
-</dd>
+      <dd>
+        <p>Operator represents a key's relationship to the value. Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category. Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).</p>
+
+        
+        
+      </dd>
       
       <dt>tolerationSeconds <span class="type">(integer)</span></dt>
-      <dd><p>TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.</p>
-</dd>
+      <dd>
+        <p>TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.</p>
+
+        
+        
+      </dd>
       
       <dt>value <span class="type">(string)</span></dt>
-      <dd><p>Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.</p>
-</dd>
+      <dd>
+        <p>Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.</p>
+
+        
+        
+      </dd>
       
     </dl>
   </section>
+  
   
 </article>
 

@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>Status <span class="badge">core/v1</span></h1>
   
@@ -67,44 +68,166 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.35/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>code <span class="type">(integer)</span></dt>
-  <dd><p>Suggested HTTP return code for this status, 0 if not set.</p>
-</dd>
+  <dd>
+    <p>Suggested HTTP return code for this status, 0 if not set.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>details <span class="type">(StatusDetails)</span></dt>
-  <dd><p>Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.</p>
-</dd>
+  <dt>details <span class="type">(<a href="#type-statusdetails" aria-label="StatusDetails type reference">StatusDetails</a>)</span></dt>
+  <dd>
+    <p>Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>message <span class="type">(string)</span></dt>
-  <dd><p>A human-readable description of the status of this operation.</p>
-</dd>
+  <dd>
+    <p>A human-readable description of the status of this operation.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>reason <span class="type">(string)</span></dt>
-  <dd><p>A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.</p>
-</dd>
+  <dd>
+    <p>A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(string)</span></dt>
-  <dd><p>Status of the operation. One of: "Success" or "Failure". More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>Status of the operation. One of: "Success" or "Failure". More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
+  
+<section class="type-section" id="type-statusdetails">
+  <h3>StatusDetails</h3>
+  
+  <div class="type-section-desc"><p>StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>kind <span class="type">(string)</span></dt>
+  <dd>
+    <p>The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>causes <span class="type">([]StatusCause)</span></dt>
+  <dd>
+    <p>The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.</p>
+
+    
+    <p class="type-desc"><em><p>StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>causes.field <span class="type">(string)</span></dt>
+      <dd><p>The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more than once in an array of causes due to fields having multiple errors. Optional.</p>
+<p>Examples:
+"name" - the field "name" on the current resource
+"items[0].name" - the field "name" on the first array entry in "items"</p>
+</dd>
+      
+      <dt>causes.message <span class="type">(string)</span></dt>
+      <dd><p>A human-readable description of the cause of the error.  This field may be presented as-is to a reader.</p>
+</dd>
+      
+      <dt>causes.reason <span class="type">(string)</span></dt>
+      <dd><p>A machine-readable description of the cause of the error. If this value is empty there is no information available.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>group <span class="type">(string)</span></dt>
+  <dd>
+    <p>The group attribute of the resource associated with the status StatusReason.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>name <span class="type">(string)</span></dt>
+  <dd>
+    <p>The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>retryAfterSeconds <span class="type">(integer)</span></dt>
+  <dd>
+    <p>If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>uid <span class="type">(string)</span></dt>
+  <dd>
+    <p>UID of the resource. (when there is a single resource which can be described). More info: <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids</a></p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   

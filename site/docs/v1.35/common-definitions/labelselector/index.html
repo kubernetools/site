@@ -43,6 +43,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>LabelSelector</h1>
   
@@ -55,15 +56,43 @@
     <dl>
       
       <dt>matchExpressions <span class="type">([]LabelSelectorRequirement)</span></dt>
-      <dd><p>matchExpressions is a list of label selector requirements. The requirements are ANDed.</p>
+      <dd>
+        <p>matchExpressions is a list of label selector requirements. The requirements are ANDed.</p>
+
+        
+        <p class="type-desc"><em><p>A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.</p>
+</em></p>
+        
+        
+        <dl class="sub-fields">
+          
+          <dt class="req">matchExpressions.key <span class="type">(string)</span></dt>
+          <dd><p>key is the label key that the selector applies to.</p>
 </dd>
+          
+          <dt class="req">matchExpressions.operator <span class="type">(string)</span></dt>
+          <dd><p>operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.</p>
+</dd>
+          
+          <dt>matchExpressions.values <span class="type">([]string)</span></dt>
+          <dd><p>values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.</p>
+</dd>
+          
+        </dl>
+        
+      </dd>
       
       <dt>matchLabels <span class="type">(map[string]string)</span></dt>
-      <dd><p>matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.</p>
-</dd>
+      <dd>
+        <p>matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.</p>
+
+        
+        
+      </dd>
       
     </dl>
   </section>
+  
   
 </article>
 

@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>ReplicaSet <span class="badge">apps/v1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#replicasetspec" aria-label="ReplicaSetSpec type reference">ReplicaSetSpec</a>)</span></dt>
-  <dd><p>Spec defines the specification of the desired behavior of the ReplicaSet. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>Spec defines the specification of the desired behavior of the ReplicaSet. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#replicasetstatus" aria-label="ReplicaSetStatus type reference">ReplicaSetStatus</a>)</span></dt>
-  <dd><p>Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-</dd>
+  <dd>
+    <p>Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="replicasetspec">
     <h2 id="replicasetspec">ReplicaSetSpec</h2>
@@ -99,31 +113,48 @@
   
   
   <dt class="req">selector <span class="type">(<a href="/docs/latest/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a>)</span></dt>
-  <dd><p>Selector is a label query over pods that should match the replica count. Label keys and values that must match in order to be controlled by this replica set. It must match the pod template's labels. More info: <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</a></p>
-</dd>
+  <dd>
+    <p>Selector is a label query over pods that should match the replica count. Label keys and values that must match in order to be controlled by this replica set. It must match the pod template's labels. More info: <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>minReadySeconds <span class="type">(integer)</span></dt>
-  <dd><p>Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)</p>
-</dd>
+  <dd>
+    <p>Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>replicas <span class="type">(integer)</span></dt>
-  <dd><p>Replicas is the number of desired pods. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset</a></p>
-</dd>
+  <dd>
+    <p>Replicas is the number of desired pods. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset</a></p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>template <span class="type">(PodTemplateSpec)</span></dt>
-  <dd><p>Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#pod-template" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#pod-template</a></p>
-</dd>
+  <dt>template <span class="type">(<a href="/docs/latest/common-definitions/podtemplatespec/" aria-label="PodTemplateSpec type reference">PodTemplateSpec</a>)</span></dt>
+  <dd>
+    <p>Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#pod-template" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#pod-template</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="replicasetstatus">
@@ -137,50 +168,144 @@
   
   
   <dt class="req">replicas <span class="type">(integer)</span></dt>
-  <dd><p>Replicas is the most recently observed number of non-terminating pods. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset</a></p>
-</dd>
+  <dd>
+    <p>Replicas is the most recently observed number of non-terminating pods. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>availableReplicas <span class="type">(integer)</span></dt>
-  <dd><p>The number of available non-terminating pods (ready for at least minReadySeconds) for this replica set.</p>
-</dd>
+  <dd>
+    <p>The number of available non-terminating pods (ready for at least minReadySeconds) for this replica set.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>conditions <span class="type">([]ReplicaSetCondition)</span></dt>
-  <dd><p>Represents the latest available observations of a replica set's current state.</p>
-</dd>
+  <dt>conditions <span class="type">(<a href="#type-replicasetcondition" aria-label="[]ReplicaSetCondition type reference">[]ReplicaSetCondition</a>)</span></dt>
+  <dd>
+    <p>Represents the latest available observations of a replica set's current state.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>fullyLabeledReplicas <span class="type">(integer)</span></dt>
-  <dd><p>The number of non-terminating pods that have labels matching the labels of the pod template of the replicaset.</p>
-</dd>
+  <dd>
+    <p>The number of non-terminating pods that have labels matching the labels of the pod template of the replicaset.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>observedGeneration <span class="type">(integer)</span></dt>
-  <dd><p>ObservedGeneration reflects the generation of the most recently observed ReplicaSet.</p>
-</dd>
+  <dd>
+    <p>ObservedGeneration reflects the generation of the most recently observed ReplicaSet.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>readyReplicas <span class="type">(integer)</span></dt>
-  <dd><p>The number of non-terminating pods targeted by this ReplicaSet with a Ready Condition.</p>
-</dd>
+  <dd>
+    <p>The number of non-terminating pods targeted by this ReplicaSet with a Ready Condition.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>terminatingReplicas <span class="type">(integer)</span></dt>
-  <dd><p>The number of terminating pods for this replica set. Terminating pods have a non-null .metadata.deletionTimestamp and have not yet reached the Failed or Succeeded .status.phase.</p>
+  <dd>
+    <p>The number of terminating pods for this replica set. Terminating pods have a non-null .metadata.deletionTimestamp and have not yet reached the Failed or Succeeded .status.phase.</p>
 <p>This is a beta field and requires enabling DeploymentReplicaSetTerminatingReplicas feature (enabled by default).</p>
-</dd>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-replicasetcondition">
+  <h3>ReplicaSetCondition</h3>
+  
+  <div class="type-section-desc"><p>ReplicaSetCondition describes the state of a replica set at a certain point.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">status <span class="type">(string)</span></dt>
+  <dd>
+    <p>Status of the condition, one of True, False, Unknown.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">type <span class="type">(string)</span></dt>
+  <dd>
+    <p>Type of replica set condition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastTransitionTime <span class="type">(<a href="/docs/latest/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>The last time the condition transitioned from one status to another.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>message <span class="type">(string)</span></dt>
+  <dd>
+    <p>A human readable message indicating details about the transition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>reason <span class="type">(string)</span></dt>
+  <dd>
+    <p>The reason for the condition's last transition.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="list-heading">
@@ -202,19 +327,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/latest/apps/v1/replicaset/" aria-label="[]ReplicaSet type reference">ReplicaSet</a>)</span></dt>
-  <dd><p>List of ReplicaSets. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset</a></p>
-</dd>
+  <dd>
+    <p>List of ReplicaSets. More info: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset</a></p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

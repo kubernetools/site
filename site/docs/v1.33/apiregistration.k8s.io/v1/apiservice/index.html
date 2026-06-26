@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>APIService <span class="badge">apiregistration.k8s.io/v1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#apiservicespec" aria-label="APIServiceSpec type reference">APIServiceSpec</a>)</span></dt>
-  <dd><p>Spec contains information for locating and communicating with a server</p>
-</dd>
+  <dd>
+    <p>Spec contains information for locating and communicating with a server</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#apiservicestatus" aria-label="APIServiceStatus type reference">APIServiceStatus</a>)</span></dt>
-  <dd><p>Status contains derived information about an API server</p>
-</dd>
+  <dd>
+    <p>Status contains derived information about an API server</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="apiservicespec">
     <h2 id="apiservicespec">APIServiceSpec</h2>
@@ -99,49 +113,101 @@
   
   
   <dt class="req">groupPriorityMinimum <span class="type">(integer)</span></dt>
-  <dd><p>GroupPriorityMinimum is the priority this group should have at least. Higher priority means that the group is preferred by clients over lower priority ones. Note that other versions of this group might specify even higher GroupPriorityMinimum values such that the whole group gets a higher priority. The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift, Deis) are recommended to be in the 2000s</p>
-</dd>
+  <dd>
+    <p>GroupPriorityMinimum is the priority this group should have at least. Higher priority means that the group is preferred by clients over lower priority ones. Note that other versions of this group might specify even higher GroupPriorityMinimum values such that the whole group gets a higher priority. The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift, Deis) are recommended to be in the 2000s</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">versionPriority <span class="type">(integer)</span></dt>
-  <dd><p>VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). Since it's inside of a group, the number can be small, probably in the 10s. In case of equal version priorities, the version string will be used to compute the order inside a group. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA &gt; beta &gt; alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.</p>
-</dd>
+  <dd>
+    <p>VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). Since it's inside of a group, the number can be small, probably in the 10s. In case of equal version priorities, the version string will be used to compute the order inside a group. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA &gt; beta &gt; alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>caBundle <span class="type">(string)</span></dt>
-  <dd><p>CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate. If unspecified, system trust roots on the apiserver are used.</p>
-</dd>
+  <dd>
+    <p>CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate. If unspecified, system trust roots on the apiserver are used.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>group <span class="type">(string)</span></dt>
-  <dd><p>Group is the API group name this server hosts</p>
-</dd>
+  <dd>
+    <p>Group is the API group name this server hosts</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>insecureSkipTLSVerify <span class="type">(boolean)</span></dt>
-  <dd><p>InsecureSkipTLSVerify disables TLS certificate verification when communicating with this server. This is strongly discouraged.  You should use the CABundle instead.</p>
-</dd>
+  <dd>
+    <p>InsecureSkipTLSVerify disables TLS certificate verification when communicating with this server. This is strongly discouraged.  You should use the CABundle instead.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>service <span class="type">(ServiceReference)</span></dt>
-  <dd><p>Service is a reference to the service for this API server.  It must communicate on port 443. If the Service is nil, that means the handling for the API groupversion is handled locally on this server. The call will simply delegate to the normal handler chain to be fulfilled.</p>
+  <dd>
+    <p>Service is a reference to the service for this API server.  It must communicate on port 443. If the Service is nil, that means the handling for the API groupversion is handled locally on this server. The call will simply delegate to the normal handler chain to be fulfilled.</p>
+
+    
+    <p class="type-desc"><em><p>ServiceReference holds a reference to Service.legacy.k8s.io</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">service.name <span class="type">(string)</span></dt>
+      <dd><p><code>name</code> is the name of the service. Required</p>
 </dd>
+      
+      <dt class="req">service.namespace <span class="type">(string)</span></dt>
+      <dd><p><code>namespace</code> is the namespace of the service. Required</p>
+</dd>
+      
+      <dt>service.path <span class="type">(string)</span></dt>
+      <dd><p><code>path</code> is an optional URL path which will be sent in any request to this service.</p>
+</dd>
+      
+      <dt>service.port <span class="type">(integer)</span></dt>
+      <dd><p>If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. <code>port</code> should be a valid port number (1-65535, inclusive).</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>version <span class="type">(string)</span></dt>
-  <dd><p>Version is the API version this server hosts.  For example, "v1"</p>
-</dd>
+  <dd>
+    <p>Version is the API version this server hosts.  For example, "v1"</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="apiservicestatus">
@@ -154,14 +220,84 @@
 <dl>
   
   
-  <dt>conditions <span class="type">([]APIServiceCondition)</span></dt>
-  <dd><p>Current service state of apiService.</p>
-</dd>
+  <dt>conditions <span class="type">(<a href="#type-apiservicecondition" aria-label="[]APIServiceCondition type reference">[]APIServiceCondition</a>)</span></dt>
+  <dd>
+    <p>Current service state of apiService.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-apiservicecondition">
+  <h3>APIServiceCondition</h3>
+  
+  <div class="type-section-desc"><p>APIServiceCondition describes the state of an APIService at a particular point</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">status <span class="type">(string)</span></dt>
+  <dd>
+    <p>Status is the status of the condition. Can be True, False, Unknown.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">type <span class="type">(string)</span></dt>
+  <dd>
+    <p>Type is the type of the condition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastTransitionTime <span class="type">(<a href="/docs/v1.33/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>Last time the condition transitioned from one status to another.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>message <span class="type">(string)</span></dt>
+  <dd>
+    <p>Human-readable message indicating details about last transition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>reason <span class="type">(string)</span></dt>
+  <dd>
+    <p>Unique, one-word, CamelCase reason for the condition's last transition.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="list-heading">
@@ -183,19 +319,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/apiregistration.k8s.io/v1/apiservice/" aria-label="[]APIService type reference">APIService</a>)</span></dt>
-  <dd><p>Items is the list of APIService</p>
-</dd>
+  <dd>
+    <p>Items is the list of APIService</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

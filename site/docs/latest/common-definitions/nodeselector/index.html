@@ -43,6 +43,7 @@
   </header>
   <main>
     
+
 <article>
   <h1>NodeSelector</h1>
   
@@ -54,12 +55,84 @@
     <h2 id="fields-heading">Fields</h2>
     <dl>
       
-      <dt class="req">nodeSelectorTerms <span class="type">([]NodeSelectorTerm)</span></dt>
-      <dd><p>Required. A list of node selector terms. The terms are ORed.</p>
-</dd>
+      <dt class="req">nodeSelectorTerms <span class="type">(<a href="#type-nodeselectorterm" aria-label="[]NodeSelectorTerm type reference">[]NodeSelectorTerm</a>)</span></dt>
+      <dd>
+        <p>Required. A list of node selector terms. The terms are ORed.</p>
+
+        
+        
+      </dd>
       
     </dl>
   </section>
+  
+  
+<section class="type-section" id="type-nodeselectorterm">
+  <h3>NodeSelectorTerm</h3>
+  
+  <div class="type-section-desc"><p>A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.</p>
+</div>
+  
+  <dl>
+    
+    <dt>matchExpressions <span class="type">([]NodeSelectorRequirement)</span></dt>
+    <dd>
+      <p>A list of node selector requirements by node's labels.</p>
+
+      
+      <p class="type-desc"><em><p>A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.</p>
+</em></p>
+      
+      
+      <dl class="sub-fields">
+        
+        <dt class="req">matchExpressions.key <span class="type">(string)</span></dt>
+        <dd><p>The label key that the selector applies to.</p>
+</dd>
+        
+        <dt class="req">matchExpressions.operator <span class="type">(string)</span></dt>
+        <dd><p>Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.</p>
+</dd>
+        
+        <dt>matchExpressions.values <span class="type">([]string)</span></dt>
+        <dd><p>An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.</p>
+</dd>
+        
+      </dl>
+      
+    </dd>
+    
+    <dt>matchFields <span class="type">([]NodeSelectorRequirement)</span></dt>
+    <dd>
+      <p>A list of node selector requirements by node's fields.</p>
+
+      
+      <p class="type-desc"><em><p>A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.</p>
+</em></p>
+      
+      
+      <dl class="sub-fields">
+        
+        <dt class="req">matchFields.key <span class="type">(string)</span></dt>
+        <dd><p>The label key that the selector applies to.</p>
+</dd>
+        
+        <dt class="req">matchFields.operator <span class="type">(string)</span></dt>
+        <dd><p>Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.</p>
+</dd>
+        
+        <dt>matchFields.values <span class="type">([]string)</span></dt>
+        <dd><p>An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.</p>
+</dd>
+        
+      </dl>
+      
+    </dd>
+    
+  </dl>
+</section>
+
+  
   
 </article>
 

@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>Deployment <span class="badge">apps/v1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#deploymentspec" aria-label="DeploymentSpec type reference">DeploymentSpec</a>)</span></dt>
-  <dd><p>Specification of the desired behavior of the Deployment.</p>
-</dd>
+  <dd>
+    <p>Specification of the desired behavior of the Deployment.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#deploymentstatus" aria-label="DeploymentStatus type reference">DeploymentStatus</a>)</span></dt>
-  <dd><p>Most recently observed status of the Deployment.</p>
-</dd>
+  <dd>
+    <p>Most recently observed status of the Deployment.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="deploymentspec">
     <h2 id="deploymentspec">DeploymentSpec</h2>
@@ -99,55 +113,158 @@
   
   
   <dt class="req">selector <span class="type">(<a href="/docs/v1.33/common-definitions/labelselector/" aria-label="LabelSelector type reference">LabelSelector</a>)</span></dt>
-  <dd><p>Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment. It must match the pod template's labels.</p>
-</dd>
+  <dd>
+    <p>Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment. It must match the pod template's labels.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt class="req">template <span class="type">(PodTemplateSpec)</span></dt>
-  <dd><p>Template describes the pods that will be created. The only allowed template.spec.restartPolicy value is "Always".</p>
-</dd>
+  <dt class="req">template <span class="type">(<a href="/docs/v1.33/common-definitions/podtemplatespec/" aria-label="PodTemplateSpec type reference">PodTemplateSpec</a>)</span></dt>
+  <dd>
+    <p>Template describes the pods that will be created. The only allowed template.spec.restartPolicy value is "Always".</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>minReadySeconds <span class="type">(integer)</span></dt>
-  <dd><p>Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)</p>
-</dd>
+  <dd>
+    <p>Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>paused <span class="type">(boolean)</span></dt>
-  <dd><p>Indicates that the deployment is paused.</p>
-</dd>
+  <dd>
+    <p>Indicates that the deployment is paused.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>progressDeadlineSeconds <span class="type">(integer)</span></dt>
-  <dd><p>The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. Defaults to 600s.</p>
-</dd>
+  <dd>
+    <p>The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. Defaults to 600s.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>replicas <span class="type">(integer)</span></dt>
-  <dd><p>Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.</p>
-</dd>
+  <dd>
+    <p>Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>revisionHistoryLimit <span class="type">(integer)</span></dt>
-  <dd><p>The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.</p>
-</dd>
+  <dd>
+    <p>The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>strategy <span class="type">(DeploymentStrategy)</span></dt>
-  <dd><p>The deployment strategy to use to replace existing pods with new ones.</p>
-</dd>
+  <dt>strategy <span class="type">(<a href="#type-deploymentstrategy" aria-label="DeploymentStrategy type reference">DeploymentStrategy</a>)</span></dt>
+  <dd>
+    <p>The deployment strategy to use to replace existing pods with new ones.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-deploymentstrategy">
+  <h3>DeploymentStrategy</h3>
+  
+  <div class="type-section-desc"><p>DeploymentStrategy describes how to replace existing pods with new ones.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>rollingUpdate <span class="type">(<a href="#type-rollingupdatedeployment" aria-label="RollingUpdateDeployment type reference">RollingUpdateDeployment</a>)</span></dt>
+  <dd>
+    <p>Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>type <span class="type">(string)</span></dt>
+  <dd>
+    <p>Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-rollingupdatedeployment">
+  <h3>RollingUpdateDeployment</h3>
+  
+  <div class="type-section-desc"><p>Spec to control the desired behavior of rolling update.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>maxSurge <span class="type">(<a href="/docs/v1.33/common-definitions/intorstring/" aria-label="IntOrString type reference">IntOrString</a>)</span></dt>
+  <dd>
+    <p>The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>maxUnavailable <span class="type">(<a href="/docs/v1.33/common-definitions/intorstring/" aria-label="IntOrString type reference">IntOrString</a>)</span></dt>
+  <dd>
+    <p>The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="deploymentstatus">
@@ -161,62 +278,174 @@
   
   
   <dt>availableReplicas <span class="type">(integer)</span></dt>
-  <dd><p>Total number of available non-terminating pods (ready for at least minReadySeconds) targeted by this deployment.</p>
-</dd>
+  <dd>
+    <p>Total number of available non-terminating pods (ready for at least minReadySeconds) targeted by this deployment.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>collisionCount <span class="type">(integer)</span></dt>
-  <dd><p>Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.</p>
-</dd>
+  <dd>
+    <p>Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>conditions <span class="type">([]DeploymentCondition)</span></dt>
-  <dd><p>Represents the latest available observations of a deployment's current state.</p>
-</dd>
+  <dt>conditions <span class="type">(<a href="#type-deploymentcondition" aria-label="[]DeploymentCondition type reference">[]DeploymentCondition</a>)</span></dt>
+  <dd>
+    <p>Represents the latest available observations of a deployment's current state.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>observedGeneration <span class="type">(integer)</span></dt>
-  <dd><p>The generation observed by the deployment controller.</p>
-</dd>
+  <dd>
+    <p>The generation observed by the deployment controller.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>readyReplicas <span class="type">(integer)</span></dt>
-  <dd><p>Total number of non-terminating pods targeted by this Deployment with a Ready Condition.</p>
-</dd>
+  <dd>
+    <p>Total number of non-terminating pods targeted by this Deployment with a Ready Condition.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>replicas <span class="type">(integer)</span></dt>
-  <dd><p>Total number of non-terminating pods targeted by this deployment (their labels match the selector).</p>
-</dd>
+  <dd>
+    <p>Total number of non-terminating pods targeted by this deployment (their labels match the selector).</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>terminatingReplicas <span class="type">(integer)</span></dt>
-  <dd><p>Total number of terminating pods targeted by this deployment. Terminating pods have a non-null .metadata.deletionTimestamp and have not yet reached the Failed or Succeeded .status.phase.</p>
+  <dd>
+    <p>Total number of terminating pods targeted by this deployment. Terminating pods have a non-null .metadata.deletionTimestamp and have not yet reached the Failed or Succeeded .status.phase.</p>
 <p>This is an alpha field. Enable DeploymentReplicaSetTerminatingReplicas to be able to use this field.</p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
   <dt>unavailableReplicas <span class="type">(integer)</span></dt>
-  <dd><p>Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.</p>
-</dd>
+  <dd>
+    <p>Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>updatedReplicas <span class="type">(integer)</span></dt>
-  <dd><p>Total number of non-terminating pods targeted by this deployment that have the desired template spec.</p>
-</dd>
+  <dd>
+    <p>Total number of non-terminating pods targeted by this deployment that have the desired template spec.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-deploymentcondition">
+  <h3>DeploymentCondition</h3>
+  
+  <div class="type-section-desc"><p>DeploymentCondition describes the state of a deployment at a certain point.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">status <span class="type">(string)</span></dt>
+  <dd>
+    <p>Status of the condition, one of True, False, Unknown.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">type <span class="type">(string)</span></dt>
+  <dd>
+    <p>Type of deployment condition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastTransitionTime <span class="type">(<a href="/docs/v1.33/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>Last time the condition transitioned from one status to another.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastUpdateTime <span class="type">(<a href="/docs/v1.33/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>The last time this condition was updated.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>message <span class="type">(string)</span></dt>
+  <dd>
+    <p>A human readable message indicating details about the transition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>reason <span class="type">(string)</span></dt>
+  <dd>
+    <p>The reason for the condition's last transition.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="list-heading">
@@ -238,19 +467,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata.</p>
-</dd>
+  <dd>
+    <p>Standard list metadata.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/apps/v1/deployment/" aria-label="[]Deployment type reference">Deployment</a>)</span></dt>
-  <dd><p>Items is the list of Deployments.</p>
-</dd>
+  <dd>
+    <p>Items is the list of Deployments.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

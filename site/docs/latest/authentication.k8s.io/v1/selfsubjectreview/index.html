@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>SelfSubjectReview <span class="badge">authentication.k8s.io/v1</span></h1>
   
@@ -67,20 +68,29 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>metadata is standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>metadata is standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#selfsubjectreviewstatus" aria-label="SelfSubjectReviewStatus type reference">SelfSubjectReviewStatus</a>)</span></dt>
-  <dd><p>status is filled in by the server with the user attributes.</p>
-</dd>
+  <dd>
+    <p>status is filled in by the server with the user attributes.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   
   <section aria-labelledby="selfsubjectreviewstatus">
@@ -94,13 +104,41 @@
   
   
   <dt>userInfo <span class="type">(UserInfo)</span></dt>
-  <dd><p>userInfo is a set of attributes belonging to the user making this request.</p>
+  <dd>
+    <p>userInfo is a set of attributes belonging to the user making this request.</p>
+
+    
+    <p class="type-desc"><em><p>UserInfo holds the information about the user needed to implement the user.Info interface.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>userInfo.extra <span class="type">(map[string]string)</span></dt>
+      <dd><p>extra is any additional information provided by the authenticator.</p>
 </dd>
+      
+      <dt>userInfo.groups <span class="type">([]string)</span></dt>
+      <dd><p>groups is the names of groups this user is a part of.</p>
+</dd>
+      
+      <dt>userInfo.uid <span class="type">(string)</span></dt>
+      <dd><p>uid is a unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.</p>
+</dd>
+      
+      <dt>userInfo.username <span class="type">(string)</span></dt>
+      <dd><p>username is the name that uniquely identifies this user among all active users.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
 </article>

@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>Workload <span class="badge">scheduling.k8s.io/v1alpha2</span></h1>
   
@@ -67,20 +68,29 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object's metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#workloadspec" aria-label="WorkloadSpec type reference">WorkloadSpec</a>)</span></dt>
-  <dd><p>Spec defines the desired behavior of a Workload.</p>
-</dd>
+  <dd>
+    <p>Spec defines the desired behavior of a Workload.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="workloadspec">
     <h2 id="workloadspec">WorkloadSpec</h2>
@@ -92,20 +102,225 @@
 <dl>
   
   
-  <dt class="req">podGroupTemplates <span class="type">([]PodGroupTemplate)</span></dt>
-  <dd><p>PodGroupTemplates is the list of templates that make up the Workload. The maximum number of templates is 8. This field is immutable.</p>
-</dd>
+  <dt class="req">podGroupTemplates <span class="type">(<a href="#type-podgrouptemplate" aria-label="[]PodGroupTemplate type reference">[]PodGroupTemplate</a>)</span></dt>
+  <dd>
+    <p>PodGroupTemplates is the list of templates that make up the Workload. The maximum number of templates is 8. This field is immutable.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>controllerRef <span class="type">(<a href="/docs/latest/common-definitions/typedlocalobjectreference/" aria-label="TypedLocalObjectReference type reference">TypedLocalObjectReference</a>)</span></dt>
-  <dd><p>ControllerRef is an optional reference to the controlling object, such as a Deployment or Job. This field is intended for use by tools like CLIs to provide a link back to the original workload definition. This field is immutable.</p>
-</dd>
+  <dd>
+    <p>ControllerRef is an optional reference to the controlling object, such as a Deployment or Job. This field is intended for use by tools like CLIs to provide a link back to the original workload definition. This field is immutable.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-podgrouptemplate">
+  <h3>PodGroupTemplate</h3>
+  
+  <div class="type-section-desc"><p>PodGroupTemplate represents a template for a set of pods with a scheduling policy.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">name <span class="type">(string)</span></dt>
+  <dd>
+    <p>Name is a unique identifier for the PodGroupTemplate within the Workload. It must be a DNS label. This field is immutable.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">schedulingPolicy <span class="type">(<a href="#type-podgroupschedulingpolicy" aria-label="PodGroupSchedulingPolicy type reference">PodGroupSchedulingPolicy</a>)</span></dt>
+  <dd>
+    <p>SchedulingPolicy defines the scheduling policy for this PodGroupTemplate.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>disruptionMode <span class="type">(string)</span></dt>
+  <dd>
+    <p>DisruptionMode defines the mode in which a given PodGroup can be disrupted. One of Pod, PodGroup. This field is available only when the WorkloadAwarePreemption feature gate is enabled.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>priority <span class="type">(integer)</span></dt>
+  <dd>
+    <p>Priority is the value of priority of pod groups created from this template. Various system components use this field to find the priority of the pod group. When Priority Admission Controller is enabled, it prevents users from setting this field. The admission controller populates this field from PriorityClassName. The higher the value, the higher the priority. This field is available only when the WorkloadAwarePreemption feature gate is enabled.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>priorityClassName <span class="type">(string)</span></dt>
+  <dd>
+    <p>PriorityClassName indicates the priority that should be considered when scheduling a pod group created from this template. If no priority class is specified, admission control can set this to the global default priority class if it exists. Otherwise, pod groups created from this template will have the priority set to zero. This field is available only when the WorkloadAwarePreemption feature gate is enabled.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>resourceClaims <span class="type">([]PodGroupResourceClaim)</span></dt>
+  <dd>
+    <p>ResourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate.</p>
+<p>This is an alpha-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled.</p>
+<p>This field is immutable.</p>
+
+    
+    <p class="type-desc"><em><p>PodGroupResourceClaim references exactly one ResourceClaim, either directly or by naming a ResourceClaimTemplate which is then turned into a ResourceClaim for the PodGroup.</p>
+<p>It adds a name to it that uniquely identifies the ResourceClaim inside the PodGroup. Pods that need access to the ResourceClaim define a matching reference in its own Spec.ResourceClaims. The Pod's claim must match all fields of the PodGroup's claim exactly.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">resourceClaims.name <span class="type">(string)</span></dt>
+      <dd><p>Name uniquely identifies this resource claim inside the PodGroup. This must be a DNS_LABEL.</p>
+</dd>
+      
+      <dt>resourceClaims.resourceClaimName <span class="type">(string)</span></dt>
+      <dd><p>ResourceClaimName is the name of a ResourceClaim object in the same namespace as this PodGroup. The ResourceClaim will be reserved for the PodGroup instead of its individual pods.</p>
+<p>Exactly one of ResourceClaimName and ResourceClaimTemplateName must be set.</p>
+</dd>
+      
+      <dt>resourceClaims.resourceClaimTemplateName <span class="type">(string)</span></dt>
+      <dd><p>ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this PodGroup.</p>
+<p>The template will be used to create a new ResourceClaim, which will be bound to this PodGroup. When this PodGroup is deleted, the ResourceClaim will also be deleted. The PodGroup name and resource name, along with a generated component, will be used to form a unique name for the ResourceClaim, which will be recorded in podgroup.status.resourceClaimStatuses.</p>
+<p>This field is immutable and no changes will be made to the corresponding ResourceClaim by the control plane after creating the ResourceClaim.</p>
+<p>Exactly one of ResourceClaimName and ResourceClaimTemplateName must be set.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>schedulingConstraints <span class="type">(<a href="#type-podgroupschedulingconstraints" aria-label="PodGroupSchedulingConstraints type reference">PodGroupSchedulingConstraints</a>)</span></dt>
+  <dd>
+    <p>SchedulingConstraints defines optional scheduling constraints (e.g. topology) for this PodGroupTemplate. This field is only available when the TopologyAwareWorkloadScheduling feature gate is enabled.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-podgroupschedulingpolicy">
+  <h3>PodGroupSchedulingPolicy</h3>
+  
+  <div class="type-section-desc"><p>PodGroupSchedulingPolicy defines the scheduling configuration for a PodGroup. Exactly one policy must be set.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>basic <span class="type">(BasicSchedulingPolicy)</span></dt>
+  <dd>
+    <p>Basic specifies that the pods in this group should be scheduled using standard Kubernetes scheduling behavior.</p>
+
+    
+    <p class="type-desc"><em><p>BasicSchedulingPolicy indicates that standard Kubernetes scheduling behavior should be used.</p>
+</em></p>
+    
+    
+  </dd>
+  
+  
+  
+  <dt>gang <span class="type">(GangSchedulingPolicy)</span></dt>
+  <dd>
+    <p>Gang specifies that the pods in this group should be scheduled using all-or-nothing semantics.</p>
+
+    
+    <p class="type-desc"><em><p>GangSchedulingPolicy defines the parameters for gang scheduling.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">gang.minCount <span class="type">(integer)</span></dt>
+      <dd><p>MinCount is the minimum number of pods that must be schedulable or scheduled at the same time for the scheduler to admit the entire group. It must be a positive integer.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-podgroupschedulingconstraints">
+  <h3>PodGroupSchedulingConstraints</h3>
+  
+  <div class="type-section-desc"><p>PodGroupSchedulingConstraints defines scheduling constraints (e.g. topology) for a PodGroup.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>topology <span class="type">([]TopologyConstraint)</span></dt>
+  <dd>
+    <p>Topology defines the topology constraints for the pod group. Currently only a single topology constraint can be specified. This may change in the future.</p>
+
+    
+    <p class="type-desc"><em><p>TopologyConstraint defines a topology constraint for a PodGroup.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">topology.key <span class="type">(string)</span></dt>
+      <dd><p>Key specifies the key of the node label representing the topology domain. All pods within the PodGroup must be colocated within the same domain instance. Different PodGroups can land on different domain instances even if they derive from the same PodGroupTemplate. Examples: "topology.kubernetes.io/rack"</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -128,19 +343,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/latest/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata.</p>
-</dd>
+  <dd>
+    <p>Standard list metadata.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/latest/scheduling.k8s.io/v1alpha2/workload/" aria-label="[]Workload type reference">Workload</a>)</span></dt>
-  <dd><p>Items is the list of Workloads.</p>
-</dd>
+  <dd>
+    <p>Items is the list of Workloads.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

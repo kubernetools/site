@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>RuntimeClass <span class="badge">node.k8s.io/v1</span></h1>
   
@@ -67,33 +68,110 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">handler <span class="type">(string)</span></dt>
-  <dd><p>handler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node &amp; CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The Handler must be lowercase, conform to the DNS Label (RFC 1123) requirements, and is immutable.</p>
-</dd>
+  <dd>
+    <p>handler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node &amp; CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The Handler must be lowercase, conform to the DNS Label (RFC 1123) requirements, and is immutable.</p>
+
+    
+    
+  </dd>
   
   
   
-  <dt>overhead <span class="type">(Overhead)</span></dt>
-  <dd><p>overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
+  <dt>overhead <span class="type">(<a href="#type-overhead" aria-label="Overhead type reference">Overhead</a>)</span></dt>
+  <dd>
+    <p>overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
 <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/pod-overhead/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/scheduling-eviction/pod-overhead/</a></p>
-</dd>
+
+    
+    
+  </dd>
   
   
   
-  <dt>scheduling <span class="type">(Scheduling)</span></dt>
-  <dd><p>scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.</p>
-</dd>
+  <dt>scheduling <span class="type">(<a href="#type-scheduling" aria-label="Scheduling type reference">Scheduling</a>)</span></dt>
+  <dd>
+    <p>scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
+  
+<section class="type-section" id="type-overhead">
+  <h3>Overhead</h3>
+  
+  <div class="type-section-desc"><p>Overhead structure represents the resource overhead associated with running a pod.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>podFixed <span class="type">(map[string]<a href="/docs/v1.33/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
+  <dd>
+    <p>podFixed represents the fixed resource overhead associated with running a pod.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-scheduling">
+  <h3>Scheduling</h3>
+  
+  <div class="type-section-desc"><p>Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>nodeSelector <span class="type">(map[string]string)</span></dt>
+  <dd>
+    <p>nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>tolerations <span class="type">([]<a href="/docs/v1.33/common-definitions/toleration/" aria-label="[]Toleration type reference">Toleration</a>)</span></dt>
+  <dd>
+    <p>tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   
@@ -116,19 +194,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/node.k8s.io/v1/runtimeclass/" aria-label="[]RuntimeClass type reference">RuntimeClass</a>)</span></dt>
-  <dd><p>items is a list of schema objects.</p>
-</dd>
+  <dd>
+    <p>items is a list of schema objects.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 

@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>SelfSubjectAccessReview <span class="badge">authorization.k8s.io/v1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.34/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">spec <span class="type">(<a href="#selfsubjectaccessreviewspec" aria-label="SelfSubjectAccessReviewSpec type reference">SelfSubjectAccessReviewSpec</a>)</span></dt>
-  <dd><p>Spec holds information about the request being evaluated.  user and groups must be empty</p>
-</dd>
+  <dd>
+    <p>Spec holds information about the request being evaluated.  user and groups must be empty</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#subjectaccessreviewstatus" aria-label="SubjectAccessReviewStatus type reference">SubjectAccessReviewStatus</a>)</span></dt>
-  <dd><p>Status is filled in by the server and indicates whether the request is allowed or not</p>
-</dd>
+  <dd>
+    <p>Status is filled in by the server and indicates whether the request is allowed or not</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="selfsubjectaccessreviewspec">
     <h2 id="selfsubjectaccessreviewspec">SelfSubjectAccessReviewSpec</h2>
@@ -99,19 +113,256 @@
   
   
   <dt>nonResourceAttributes <span class="type">(NonResourceAttributes)</span></dt>
-  <dd><p>NonResourceAttributes describes information for a non-resource access request</p>
+  <dd>
+    <p>NonResourceAttributes describes information for a non-resource access request</p>
+
+    
+    <p class="type-desc"><em><p>NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>nonResourceAttributes.path <span class="type">(string)</span></dt>
+      <dd><p>Path is the URL path of the request</p>
 </dd>
-  
-  
-  
-  <dt>resourceAttributes <span class="type">(ResourceAttributes)</span></dt>
-  <dd><p>ResourceAuthorizationAttributes describes information for a resource access request</p>
+      
+      <dt>nonResourceAttributes.verb <span class="type">(string)</span></dt>
+      <dd><p>Verb is the standard HTTP verb</p>
 </dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+  
+  <dt>resourceAttributes <span class="type">(<a href="#type-resourceattributes" aria-label="ResourceAttributes type reference">ResourceAttributes</a>)</span></dt>
+  <dd>
+    <p>ResourceAuthorizationAttributes describes information for a resource access request</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-resourceattributes">
+  <h3>ResourceAttributes</h3>
+  
+  <div class="type-section-desc"><p>ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>fieldSelector <span class="type">(<a href="#type-fieldselectorattributes" aria-label="FieldSelectorAttributes type reference">FieldSelectorAttributes</a>)</span></dt>
+  <dd>
+    <p>fieldSelector describes the limitation on access based on field.  It can only limit access, not broaden it.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>group <span class="type">(string)</span></dt>
+  <dd>
+    <p>Group is the API Group of the Resource.  "*" means all.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>labelSelector <span class="type">(<a href="#type-labelselectorattributes" aria-label="LabelSelectorAttributes type reference">LabelSelectorAttributes</a>)</span></dt>
+  <dd>
+    <p>labelSelector describes the limitation on access based on labels.  It can only limit access, not broaden it.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>name <span class="type">(string)</span></dt>
+  <dd>
+    <p>Name is the name of the resource being requested for a "get" or deleted for a "delete". "" (empty) means all.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>namespace <span class="type">(string)</span></dt>
+  <dd>
+    <p>Namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces "" (empty) is defaulted for LocalSubjectAccessReviews "" (empty) is empty for cluster-scoped resources "" (empty) means "all" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>resource <span class="type">(string)</span></dt>
+  <dd>
+    <p>Resource is one of the existing resource types.  "*" means all.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>subresource <span class="type">(string)</span></dt>
+  <dd>
+    <p>Subresource is one of the existing resource types.  "" means none.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>verb <span class="type">(string)</span></dt>
+  <dd>
+    <p>Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  "*" means all.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>version <span class="type">(string)</span></dt>
+  <dd>
+    <p>Version is the API Version of the Resource.  "*" means all.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-fieldselectorattributes">
+  <h3>FieldSelectorAttributes</h3>
+  
+  <div class="type-section-desc"><p>FieldSelectorAttributes indicates a field limited access. Webhook authors are encouraged to * ensure rawSelector and requirements are not both set * consider the requirements field if set * not try to parse or consider the rawSelector field if set. This is to avoid another CVE-2022-2880 (i.e. getting different systems to agree on how exactly to parse a query is not something we want), see <a href="https://www.oxeye.io/resources/golang-parameter-smuggling-attack" target="_blank" rel="noopener noreferrer">https://www.oxeye.io/resources/golang-parameter-smuggling-attack</a> for more details. For the *SubjectAccessReview endpoints of the kube-apiserver: * If rawSelector is empty and requirements are empty, the request is not limited. * If rawSelector is present and requirements are empty, the rawSelector will be parsed and limited if the parsing succeeds. * If rawSelector is empty and requirements are present, the requirements should be honored * If rawSelector is present and requirements are present, the request is invalid.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>rawSelector <span class="type">(string)</span></dt>
+  <dd>
+    <p>rawSelector is the serialization of a field selector that would be included in a query parameter. Webhook implementations are encouraged to ignore rawSelector. The kube-apiserver's *SubjectAccessReview will parse the rawSelector as long as the requirements are not present.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>requirements <span class="type">([]FieldSelectorRequirement)</span></dt>
+  <dd>
+    <p>requirements is the parsed interpretation of a field selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood.</p>
+
+    
+    <p class="type-desc"><em><p>FieldSelectorRequirement is a selector that contains values, a key, and an operator that relates the key and values.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">requirements.key <span class="type">(string)</span></dt>
+      <dd><p>key is the field selector key that the requirement applies to.</p>
+</dd>
+      
+      <dt class="req">requirements.operator <span class="type">(string)</span></dt>
+      <dd><p>operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. The list of operators may grow in the future.</p>
+</dd>
+      
+      <dt>requirements.values <span class="type">([]string)</span></dt>
+      <dd><p>values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
+  
+<section class="type-section" id="type-labelselectorattributes">
+  <h3>LabelSelectorAttributes</h3>
+  
+  <div class="type-section-desc"><p>LabelSelectorAttributes indicates a label limited access. Webhook authors are encouraged to * ensure rawSelector and requirements are not both set * consider the requirements field if set * not try to parse or consider the rawSelector field if set. This is to avoid another CVE-2022-2880 (i.e. getting different systems to agree on how exactly to parse a query is not something we want), see <a href="https://www.oxeye.io/resources/golang-parameter-smuggling-attack" target="_blank" rel="noopener noreferrer">https://www.oxeye.io/resources/golang-parameter-smuggling-attack</a> for more details. For the *SubjectAccessReview endpoints of the kube-apiserver: * If rawSelector is empty and requirements are empty, the request is not limited. * If rawSelector is present and requirements are empty, the rawSelector will be parsed and limited if the parsing succeeds. * If rawSelector is empty and requirements are present, the requirements should be honored * If rawSelector is present and requirements are present, the request is invalid.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt>rawSelector <span class="type">(string)</span></dt>
+  <dd>
+    <p>rawSelector is the serialization of a field selector that would be included in a query parameter. Webhook implementations are encouraged to ignore rawSelector. The kube-apiserver's *SubjectAccessReview will parse the rawSelector as long as the requirements are not present.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>requirements <span class="type">([]LabelSelectorRequirement)</span></dt>
+  <dd>
+    <p>requirements is the parsed interpretation of a label selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood.</p>
+
+    
+    <p class="type-desc"><em><p>A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt class="req">requirements.key <span class="type">(string)</span></dt>
+      <dd><p>key is the label key that the selector applies to.</p>
+</dd>
+      
+      <dt class="req">requirements.operator <span class="type">(string)</span></dt>
+      <dd><p>operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.</p>
+</dd>
+      
+      <dt>requirements.values <span class="type">([]string)</span></dt>
+      <dd><p>values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="subjectaccessreviewstatus">
@@ -125,31 +376,48 @@
   
   
   <dt class="req">allowed <span class="type">(boolean)</span></dt>
-  <dd><p>Allowed is required. True if the action would be allowed, false otherwise.</p>
-</dd>
+  <dd>
+    <p>Allowed is required. True if the action would be allowed, false otherwise.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>denied <span class="type">(boolean)</span></dt>
-  <dd><p>Denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.</p>
-</dd>
+  <dd>
+    <p>Denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>evaluationError <span class="type">(string)</span></dt>
-  <dd><p>EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.</p>
-</dd>
+  <dd>
+    <p>EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>reason <span class="type">(string)</span></dt>
-  <dd><p>Reason is optional.  It indicates why a request was allowed or denied.</p>
-</dd>
+  <dd>
+    <p>Reason is optional.  It indicates why a request was allowed or denied.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
 </article>

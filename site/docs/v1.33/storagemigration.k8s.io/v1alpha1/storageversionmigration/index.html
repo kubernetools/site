@@ -44,6 +44,7 @@
   <main>
     
 
+
 <article>
   <h1>StorageVersionMigration <span class="badge">storagemigration.k8s.io/v1alpha1</span></h1>
   
@@ -67,26 +68,39 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/objectmeta/" aria-label="ObjectMeta type reference">ObjectMeta</a>)</span></dt>
-  <dd><p>Standard object metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard object metadata. More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt>spec <span class="type">(<a href="#storageversionmigrationspec" aria-label="StorageVersionMigrationSpec type reference">StorageVersionMigrationSpec</a>)</span></dt>
-  <dd><p>Specification of the migration.</p>
-</dd>
+  <dd>
+    <p>Specification of the migration.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>status <span class="type">(<a href="#storageversionmigrationstatus" aria-label="StorageVersionMigrationStatus type reference">StorageVersionMigrationStatus</a>)</span></dt>
-  <dd><p>Status of the migration.</p>
-</dd>
+  <dd>
+    <p>Status of the migration.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
     
   </section>
+  
   
   <section aria-labelledby="storageversionmigrationspec">
     <h2 id="storageversionmigrationspec">StorageVersionMigrationSpec</h2>
@@ -99,19 +113,47 @@
   
   
   <dt class="req">resource <span class="type">(GroupVersionResource)</span></dt>
-  <dd><p>The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.</p>
+  <dd>
+    <p>The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.</p>
+
+    
+    <p class="type-desc"><em><p>The names of the group, the version, and the resource.</p>
+</em></p>
+    
+    
+    <dl class="sub-fields">
+      
+      <dt>resource.group <span class="type">(string)</span></dt>
+      <dd><p>The name of the group.</p>
 </dd>
+      
+      <dt>resource.resource <span class="type">(string)</span></dt>
+      <dd><p>The name of the resource.</p>
+</dd>
+      
+      <dt>resource.version <span class="type">(string)</span></dt>
+      <dd><p>The name of the version.</p>
+</dd>
+      
+    </dl>
+    
+  </dd>
   
   
   
   <dt>continueToken <span class="type">(string)</span></dt>
-  <dd><p>The token used in the list options to get the next chunk of objects to migrate. When the .status.conditions indicates the migration is "Running", users can use this token to check the progress of the migration.</p>
-</dd>
+  <dd>
+    <p>The token used in the list options to get the next chunk of objects to migrate. When the .status.conditions indicates the migration is "Running", users can use this token to check the progress of the migration.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
   
   <section aria-labelledby="storageversionmigrationstatus">
@@ -124,20 +166,94 @@
 <dl>
   
   
-  <dt>conditions <span class="type">([]MigrationCondition)</span></dt>
-  <dd><p>The latest available observations of the migration's current state.</p>
-</dd>
+  <dt>conditions <span class="type">(<a href="#type-migrationcondition" aria-label="[]MigrationCondition type reference">[]MigrationCondition</a>)</span></dt>
+  <dd>
+    <p>The latest available observations of the migration's current state.</p>
+
+    
+    
+  </dd>
   
   
   
   <dt>resourceVersion <span class="type">(string)</span></dt>
-  <dd><p>ResourceVersion to compare with the GC cache for performing the migration. This is the current resource version of given group, version and resource when kube-controller-manager first observes this StorageVersionMigration resource.</p>
-</dd>
+  <dd>
+    <p>ResourceVersion to compare with the GC cache for performing the migration. This is the current resource version of given group, version and resource when kube-controller-manager first observes this StorageVersionMigration resource.</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
+  
+<section class="type-section" id="type-migrationcondition">
+  <h3>MigrationCondition</h3>
+  
+  <div class="type-section-desc"><p>Describes the state of a migration at a certain point.</p>
+</div>
+  
+  
+<dl>
+  
+  
+  <dt class="req">status <span class="type">(string)</span></dt>
+  <dd>
+    <p>Status of the condition, one of True, False, Unknown.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt class="req">type <span class="type">(string)</span></dt>
+  <dd>
+    <p>Type of the condition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>lastUpdateTime <span class="type">(<a href="/docs/v1.33/common-definitions/time/" aria-label="Time type reference">Time</a>)</span></dt>
+  <dd>
+    <p>The last time this condition was updated.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>message <span class="type">(string)</span></dt>
+  <dd>
+    <p>A human readable message indicating details about the transition.</p>
+
+    
+    
+  </dd>
+  
+  
+  
+  <dt>reason <span class="type">(string)</span></dt>
+  <dd>
+    <p>The reason for the condition's last transition.</p>
+
+    
+    
+  </dd>
+  
+  
+</dl>
+
+</section>
+
+  
   
   
   <section aria-labelledby="list-heading">
@@ -159,19 +275,28 @@
   
   
   <dt>metadata <span class="type">(<a href="/docs/v1.33/common-definitions/listmeta/" aria-label="ListMeta type reference">ListMeta</a>)</span></dt>
-  <dd><p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
-</dd>
+  <dd>
+    <p>Standard list metadata More info: <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata" target="_blank" rel="noopener noreferrer">https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</a></p>
+
+    
+    
+  </dd>
   
   
   
   <dt class="req">items <span class="type">([]<a href="/docs/v1.33/storagemigration.k8s.io/v1alpha1/storageversionmigration/" aria-label="[]StorageVersionMigration type reference">StorageVersionMigration</a>)</span></dt>
-  <dd><p>Items is the list of StorageVersionMigration</p>
-</dd>
+  <dd>
+    <p>Items is the list of StorageVersionMigration</p>
+
+    
+    
+  </dd>
   
   
 </dl>
 
   </section>
+  
   
 </article>
 
