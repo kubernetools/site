@@ -206,7 +206,7 @@ described in section 4 of RFC5280.</li>
   
   
   
-  <dt>conditions <span class="type">(<a href="/docs/v1.34/common-definitions/condition/" aria-label="[]Condition type reference">[]Condition</a>)</span></dt>
+  <dt>conditions <span class="type">([]<a href="/docs/v1.34/common-definitions/condition/" aria-label="[]Condition type reference">Condition</a>)</span></dt>
   <dd><p>conditions applied to the request.</p>
 <p>The types "Issued", "Denied", and "Failed" have special handling.  At most one of these conditions may be present, and they must have status "True".</p>
 <p>If the request is denied with <code>Reason=UnsupportedKeyType</code>, the signer may suggest a key type that will work in the message field.</p>
@@ -254,7 +254,7 @@ described in section 4 of RFC5280.</li>
   
   
   
-  <dt class="req">items <span class="type">(<a href="/docs/v1.34/certificates.k8s.io/v1alpha1/podcertificaterequest/" aria-label="[]PodCertificateRequest type reference">[]PodCertificateRequest</a>)</span></dt>
+  <dt class="req">items <span class="type">([]<a href="/docs/v1.34/certificates.k8s.io/v1alpha1/podcertificaterequest/" aria-label="[]PodCertificateRequest type reference">PodCertificateRequest</a>)</span></dt>
   <dd><p>items is a collection of PodCertificateRequest objects</p>
 </dd>
   

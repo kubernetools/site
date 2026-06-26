@@ -164,7 +164,7 @@
   
   
   
-  <dt>volumeClaimTemplates <span class="type">(<a href="/docs/latest/core/v1/persistentvolumeclaim/" aria-label="[]PersistentVolumeClaim type reference">[]PersistentVolumeClaim</a>)</span></dt>
+  <dt>volumeClaimTemplates <span class="type">([]<a href="/docs/latest/core/v1/persistentvolumeclaim/" aria-label="[]PersistentVolumeClaim type reference">PersistentVolumeClaim</a>)</span></dt>
   <dd><p>volumeClaimTemplates is a list of claims that pods are allowed to reference. The StatefulSet controller is responsible for mapping network identities to claims in a way that maintains the identity of a pod. Every claim in this list must have at least one matching (by name) volumeMount in one container in the template. A claim in this list takes precedence over any volumes in the template, with the same name.</p>
 </dd>
   
@@ -272,7 +272,7 @@
   
   
   
-  <dt class="req">items <span class="type">(<a href="/docs/latest/apps/v1/statefulset/" aria-label="[]StatefulSet type reference">[]StatefulSet</a>)</span></dt>
+  <dt class="req">items <span class="type">([]<a href="/docs/latest/apps/v1/statefulset/" aria-label="[]StatefulSet type reference">StatefulSet</a>)</span></dt>
   <dd><p>Items is the list of stateful sets.</p>
 </dd>
   

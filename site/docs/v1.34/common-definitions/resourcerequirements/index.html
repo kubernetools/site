@@ -54,17 +54,17 @@
     <h2 id="fields-heading">Fields</h2>
     <dl>
       
-      <dt>claims <span class="type">(<a href="/docs/v1.34/resource.k8s.io/v1beta2/resourceclaim/" aria-label="[]ResourceClaim type reference">[]ResourceClaim</a>)</span></dt>
+      <dt>claims <span class="type">([]<a href="/docs/v1.34/resource.k8s.io/v1beta2/resourceclaim/" aria-label="[]ResourceClaim type reference">ResourceClaim</a>)</span></dt>
       <dd><p>Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.</p>
 <p>This field depends on the DynamicResourceAllocation feature gate.</p>
 <p>This field is immutable. It can only be set for containers.</p>
 </dd>
       
-      <dt>limits <span class="type">(map[string]Quantity)</span></dt>
+      <dt>limits <span class="type">(map[string]<a href="/docs/v1.34/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
       <dd><p>Limits describes the maximum amount of compute resources allowed. More info: <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></p>
 </dd>
       
-      <dt>requests <span class="type">(map[string]Quantity)</span></dt>
+      <dt>requests <span class="type">(map[string]<a href="/docs/v1.34/common-definitions/quantity/" aria-label="map[string]Quantity type reference">Quantity</a>)</span></dt>
       <dd><p>Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></p>
 </dd>
       
