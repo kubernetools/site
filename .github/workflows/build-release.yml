@@ -24,7 +24,7 @@ jobs:
           TAG=$(gh release view --repo kubernetools/docgen --json tagName -q .tagName)
           gh release download "$TAG" \
             --repo kubernetools/docgen \
-            --pattern "*linux-x86_64" \
+            --pattern "docgen-*linux-x86_64" \
             --output docgen
           chmod +x docgen
         env:
