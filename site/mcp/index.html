@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kubernetes Resources Reference via MCP — Kubernetools</title>
+  <meta name="description"
+        content="Connect any MCP-compatible AI agent to the hosted Kubernetools MCP server for the Kubernetes resources reference — Pods, Deployments, and every other API kind — directly from your agent.">
+  <link rel="canonical" href="https://www.kubernetools.com/mcp/">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://www.kubernetools.com/mcp/">
+  <meta property="og:title"       content="Kubernetes Resources Reference via MCP — Kubernetools">
+  <meta property="og:description" content="Connect any MCP-compatible AI agent to the hosted Kubernetools MCP server for the Kubernetes resources reference — Pods, Deployments, and every other API kind — directly from your agent.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Kubernetes Resources Reference via MCP — Kubernetools",
+    "url": "https://www.kubernetools.com/mcp/",
+    "description": "Connect any MCP-compatible AI agent to the hosted Kubernetools MCP server for the Kubernetes resources reference, directly from your agent."
+  }
+  </script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 700px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+    h2 { margin-top: 2.5rem; }
+    .tagline { color: #555; margin-top: 0; }
+    .breadcrumb { font-size: 0.9rem; margin-bottom: 1.5rem; }
+    a { color: #326ce5; }
+    code {
+      background: #f0f2f5;
+      padding: 0.15em 0.4em;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #1a1a1a;
+      color: #f0f2f5;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    pre code { background: none; padding: 0; color: inherit; }
+    .note {
+      background: #f5f7fb;
+      border-left: 3px solid #326ce5;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .cta {
+      display: inline-block;
+      margin: 1.5rem 0;
+      padding: 0.6rem 1.2rem;
+      background: #326ce5;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .cta:hover { background: #1a55d4; }
+    ul, ol { padding-left: 1.3rem; }
+    li { margin: 0.3rem 0; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+      font-size: 0.85rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <p class="breadcrumb"><a href="/">← Kubernetools</a></p>
+
+  <main>
+    <h1>Kubernetes Resources Reference via MCP</h1>
+    <p class="tagline">Ask your AI agent about Kubernetes resources directly</p>
+
+    <p>
+      Kubernetools offers the same Kubernetes resources reference as an
+      <a href="https://modelcontextprotocol.io/">MCP</a> (Model Context
+      Protocol) server, free to use at
+      <code>https://mcp.kubernetools.com/</code>. Connect it to any
+      MCP-compatible agent, and you can ask questions like "what fields does
+      a Deployment spec have?" or "how do I set a Pod's restart policy?" and
+      get answers pulled straight from the official Kubernetes API
+      definitions — no need to open a browser and search the docs yourself.
+    </p>
+
+    <h2>Connect your agent</h2>
+    <p>
+      Most MCP clients accept a remote server configuration in this form
+      (consult your client's documentation for exactly where to add it):
+    </p>
+    <pre><code>{
+  "mcpServers": {
+    "kubernetools": {
+      "url": "https://mcp.kubernetools.com/?version=v1.36"
+    }
+  }
+}</code></pre>
+    <p>
+      That's it — no sign-up, no API key. Once connected, your agent will be
+      able to look up Kubernetes resources for you automatically whenever
+      it's relevant to your question.
+    </p>
+
+    <h2>Choosing a Kubernetes version</h2>
+    <p>
+      The <code>version</code> part of the URL controls which Kubernetes
+      release the answers come from. Change <code>v1.36</code> to
+      <code>v1.35</code>, <code>v1.34</code>, or <code>v1.33</code> if you're
+      working with an older cluster. If you leave it out, the most recent
+      version is used.
+    </p>
+    <p>
+      Managing clusters on different Kubernetes versions? Add one server
+      entry per version, each with its own name and <code>version</code> in
+      the URL, so your agent always checks the reference that matches the
+      cluster you're working on:
+    </p>
+    <pre><code>{
+  "mcpServers": {
+    "kubernetools-1.35": {
+      "type": "http",
+      "url": "https://mcp.kubernetools.com/?version=v1.35"
+    },
+    "kubernetools-1.36": {
+      "type": "http",
+      "url": "https://mcp.kubernetools.com/?version=v1.36"
+    }
+  }
+}</code></pre>
+    <p>
+      Your agent will then see both as separate tool sets and can query
+      whichever version is relevant to your question.
+    </p>
+
+    <h2>What you can ask</h2>
+    <p>
+      You don't need to know the exact tool names below to use the server —
+      just ask your question naturally and your agent will pick the right
+      one. They're listed here for reference:
+    </p>
+    <ul>
+      <li>
+        <strong>Find a resource</strong> — browse or search for a Kubernetes
+        kind, such as "list all resources in the apps group."
+      </li>
+      <li>
+        <strong>Look up a resource in detail</strong> — get every field for a
+        specific kind, such as "what fields does a Deployment have?"
+      </li>
+      <li>
+        <strong>Look up a related type</strong> — drill into a nested type
+        mentioned in another resource, such as "tell me more about
+        PodSpec."
+      </li>
+    </ul>
+
+    <div class="note">
+      Want to run your own private instance instead of using the hosted
+      service? See the
+      <a href="https://github.com/kubernetools/mcp-server">mcp-server
+      repository</a> for the container image and setup instructions.
+    </div>
+
+    <a class="cta" href="/docs/latest/">Browse the API reference →</a>
+  </main>
+
+  <footer>
+    &copy; 2026 Philippe Martin &mdash;
+    Source: <a href="https://github.com/kubernetools/mcp-server">github.com/kubernetools/mcp-server</a>
+  </footer>
+</body>
+</html>
